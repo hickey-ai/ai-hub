@@ -30,6 +30,7 @@ record Order(long id, String customer, String email, List<OrderItem> items, BigD
 record CartLine(@Min(1) long productId, @Min(1) int quantity) {}
 record CheckoutRequest(@NotBlank String customer, @Email @NotBlank String email, @NotEmpty List<@Valid CartLine> items) {}
 record ShopState(List<Product> products, List<Order> orders, long nextOrderId) {}
+record ProductPage(List<Product> items, int total, int page, int size) {}
 
 @RestController
 @RequestMapping("/api")
@@ -60,6 +61,45 @@ class ShopController {
         products.put(id, new Product(id, name, category, description, new BigDecimal(price), icon, color, stock, badge));
     }
     @GetMapping("/products") synchronized List<Product> products() { return List.copyOf(products.values()); }
+    @GetMapping("/products/{id}") synchronized Product product(@PathVariable long id) {
+        Product product = products.get(id);
+        if (product == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "商品不存在");
+        return product;
+    }
+    @GetMapping("/products/search") synchronized ProductPage search(
+            @RequestParam(defaultValue = "") String keyword,
+            @RequestParam(defaultValue = "") String category,
+            @RequestParam(defaultValue = "default") String sort,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(required = false) BigDecimal minPrice,
+            @RequestParam(required = false) BigDecimal maxPrice,
+            @RequestParam(defaultValue = "false") boolean inStock) {
+        if (page < 0 || size < 1 || size > 100 || minPrice != null && minPrice.signum() < 0
+                || maxPrice != null && maxPrice.signum() < 0
+                || minPrice != null && maxPrice != null && minPrice.compareTo(maxPrice) > 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "筛选参数无效");
+        }
+        Comparator<Product> comparator = switch (sort) {
+            case "default" -> Comparator.comparingLong(Product::id);
+            case "price_asc" -> Comparator.comparing(Product::price).thenComparingLong(Product::id);
+            case "price_desc" -> Comparator.comparing(Product::price).reversed().thenComparingLong(Product::id);
+            case "newest" -> Comparator.comparingLong(Product::id).reversed();
+            default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "排序参数无效");
+        };
+        String term = keyword.trim().toLowerCase(Locale.ROOT);
+        List<Product> matched = products.values().stream()
+                .filter(p -> term.isEmpty() || p.name().toLowerCase(Locale.ROOT).contains(term)
+                        || p.description().toLowerCase(Locale.ROOT).contains(term))
+                .filter(p -> category.isBlank() || p.category().equals(category))
+                .filter(p -> minPrice == null || p.price().compareTo(minPrice) >= 0)
+                .filter(p -> maxPrice == null || p.price().compareTo(maxPrice) <= 0)
+                .filter(p -> !inStock || p.stock() > 0)
+                .sorted(comparator).toList();
+        long start = (long) page * size;
+        if (start >= matched.size()) return new ProductPage(List.of(), matched.size(), page, size);
+        return new ProductPage(matched.subList((int) start, (int) Math.min(start + size, matched.size())), matched.size(), page, size);
+    }
     @PostMapping("/orders") @ResponseStatus(HttpStatus.CREATED)
     synchronized Order checkout(@Valid @RequestBody CheckoutRequest request) {
         Map<Long, Integer> quantities = new LinkedHashMap<>();

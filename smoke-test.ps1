@@ -23,6 +23,11 @@ try {
                 $items = Invoke-RestMethod "$url/api/$endpoint"
                 if ($null -eq $items -or $items.Count -lt 1) { throw "$project API empty" }
                 if ($project -eq 'shop') {
+                    $search = Invoke-RestMethod "$url/api/products/search?keyword=台灯&size=20"
+                    if ($search.total -ne 1 -or $search.items[0].id -ne 1) { throw 'Shop search API failed' }
+                    if ((Invoke-WebRequest "$url/api/products/1").StatusCode -ne 200) { throw 'Shop detail API failed' }
+                }
+                if ($project -eq 'shop') {
                     if ($run -eq 1) {
                         $stock = $items[0].stock
                         $body = @{ customer='Smoke'; email='smoke@example.com'; items=@(@{productId=1;quantity=1}) } | ConvertTo-Json -Depth 5

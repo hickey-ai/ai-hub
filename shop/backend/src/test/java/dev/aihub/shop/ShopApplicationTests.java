@@ -13,6 +13,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(properties = "aihub.data-file=target/test-data/shop-${random.uuid}.json" ) @AutoConfigureMockMvc
 class ShopApplicationTests {
     @Autowired MockMvc mvc;
+    @Test void searchAndDetail() throws Exception {
+        mvc.perform(get("/api/products/search").param("keyword", "台灯").param("category", "家居生活"))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.total").value(1))
+            .andExpect(jsonPath("$.items[0].id").value(1));
+        mvc.perform(get("/api/products/search").param("sort", "price_desc").param("page", "1").param("size", "2"))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.total").value(6))
+            .andExpect(jsonPath("$.items[0].price").value(199));
+        mvc.perform(get("/api/products/search").param("minPrice", "100").param("maxPrice", "200"))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.total").value(3));
+        mvc.perform(get("/api/products/1")).andExpect(status().isOk()).andExpect(jsonPath("$.stock").isNumber());
+        mvc.perform(get("/api/products/999")).andExpect(status().isNotFound());
+        mvc.perform(get("/api/products/search").param("sort", "invalid")).andExpect(status().isBadRequest());
+        mvc.perform(get("/api/products/search").param("size", "101")).andExpect(status().isBadRequest());
+        mvc.perform(get("/api/products/search").param("minPrice", "200").param("maxPrice", "100")).andExpect(status().isBadRequest());
+    }
     @Test void catalogAndCheckout() throws Exception {
         mvc.perform(get("/api/products")).andExpect(status().isOk()).andExpect(jsonPath("$[0].name").value("Arc 台灯"));
         String body = """ 

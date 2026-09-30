@@ -4,7 +4,7 @@
 
 | 项目 | 功能闭环 | 本机地址 | 页面截图 |
 | --- | --- | --- | --- |
-| [shop](./shop/README.md) | 商品搜索、购物车、库存校验与下单 | http://127.0.0.1:8081 | [商城](./shop/screenshots/storefront.png) |
+| [shop](./shop/README.md) | 京东式商品检索、详情、购物车、库存校验与下单；电脑端 + 微信小程序 | http://127.0.0.1:8081 | [商城](./shop/screenshots/storefront.png) |
 | [manage](./manage/README.md) | 用户增删改查、角色查看和仪表盘 | http://127.0.0.1:8082 | [工作台](./manage/screenshots/dashboard.png) |
 | [crm](./crm/README.md) | 客户、商机、跟进和阶段流转 | http://127.0.0.1:8083 | [销售漏斗](./crm/screenshots/pipeline.png) |
 | [oa](./oa/README.md) | 请假/报销草稿、提交与审批 | http://127.0.0.1:8084 | [审批](./oa/screenshots/approvals.png) |
@@ -35,7 +35,7 @@
 ./test-all.sh        # macOS / Linux
 ```
 
-Windows 还可运行 `./smoke-test.ps1`，启动四个真实 jar 验证页面、JS、API，并验证商城下单后的进程重启数据；其临时数据及日志保留在系统临时目录。CI 对四个项目运行同样的构建测试；后端测试覆盖业务校验与重启后的 JSON 数据读取。单独测试可在各项目目录运行 `mvn -f backend/pom.xml test`。截图位于各项目 `screenshots/`，由运行页面取得。
+Windows 还可运行 `./smoke-test.ps1`，启动四个真实 jar 验证页面、JS、API，并验证商城搜索、详情、下单后的进程重启数据；其临时数据及日志保留在系统临时目录。`test-all` 还会构建微信小程序产物。CI 对四个项目运行同样的构建测试；后端测试覆盖业务校验与重启后的 JSON 数据读取。单独测试可在各项目目录运行 `mvn -f backend/pom.xml test`。截图位于各项目 `screenshots/`，由运行页面取得。
 
 **使用范围：**可在自己的电脑上体验、演示及改造；不含登录鉴权、服务端权限、正式支付、审计、数据库迁移及多实例并发保障。`server.address` 默认仅绑定 `127.0.0.1`，**不能直接用于公网或真实业务生产**，尤其 OA 审批和管理角色只是演示字段。
 

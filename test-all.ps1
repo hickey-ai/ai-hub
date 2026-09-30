@@ -2,6 +2,11 @@
 $ErrorActionPreference = 'Stop'
 Push-Location $PSScriptRoot
 try {
+    Write-Host '=== shop mini-program ==='
+    npm.cmd --prefix 'shop/miniprogram' ci
+    if ($LASTEXITCODE -ne 0) { throw 'shop mini-program npm ci failed' }
+    npm.cmd --prefix 'shop/miniprogram' run build:mp-weixin
+    if ($LASTEXITCODE -ne 0) { throw 'shop mini-program build failed' }
     foreach ($project in @('shop', 'manage', 'crm', 'oa')) {
         Write-Host "=== $project ==="
         npm.cmd --prefix "$project/frontend" ci

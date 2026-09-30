@@ -1,0 +1,17 @@
+<script setup>
+import { computed, ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
+import { request } from '../../services/api'
+const product = ref(null); const quantity = ref(1); const loading = ref(true); const cart = ref({})
+const total = computed(() => product.value ? Number(product.value.price) * quantity.value : 0)
+async function load(id) { try { const result = await request(`/api/products/${id}`); if (result.statusCode !== 200) throw new Error(); product.value = result.data } catch { uni.showToast({ title: '商品加载失败', icon: 'none' }) } finally { loading.value = false } }
+function addCart() { if (!product.value) return; const existing = uni.getStorageSync('shop-cart') || {}; cart.value = { ...existing, [product.value.id]: Math.min(product.value.stock, (existing[product.value.id] || 0) + quantity.value) }; uni.setStorageSync('shop-cart', cart.value); uni.showToast({ title: '已加入购物车', icon: 'success' }) }
+function buyNow() { addCart(); uni.switchTab({ url: '/pages/cart/cart' }) }
+onLoad(options => load(options.id))
+</script>
+<template>
+  <view class="page"><view v-if="loading" class="center">加载中...</view><view v-else-if="product"><view :class="['hero', product.color]"><text>{{ product.icon }}</text></view><view class="info"><text class="badge">{{ product.badge || '精选' }}</text><text class="name">{{ product.name }}</text><text class="desc">{{ product.description }}</text><text class="price">¥{{ Number(product.price).toFixed(2) }}</text><view class="service"><text>库存 {{ product.stock }}</text><text>服务端校验库存</text><text>演示订单可用</text></view></view><view class="section"><text class="title">商品信息</text><text class="copy">精选生活好物，支持电脑端与微信小程序同源浏览。提交订单前会再次校验库存，避免超卖。</text></view><view class="bottom"><view class="quantity"><text>数量</text><button @tap="quantity=Math.max(1,quantity-1)">−</button><text>{{ quantity }}</text><button @tap="quantity=Math.min(product.stock,quantity+1)">+</button></view><button class="buy" :disabled="!product.stock" @tap="buyNow">立即购买</button><button class="add" :disabled="!product.stock" @tap="addCart">加入购物车</button></view></view></view>
+</template>
+<style scoped>
+.page{min-height:100vh;background:#f5f5f5;padding-bottom:150rpx}.hero{height:570rpx;display:flex;align-items:center;justify-content:center}.hero>text{font-size:270rpx;filter:drop-shadow(20rpx 24rpx 12rpx #5554)}.peach{background:#f4dfcb}.sage{background:#dce9d5}.lilac{background:#e4dfeb}.sand{background:#ede5d4}.blue{background:#d6e2e9}.rose{background:#f2e0df}.info,.section{background:#fff;padding:28rpx}.badge{color:#a86d52;font-size:22rpx}.name{display:block;font-size:40rpx;font-weight:bold;margin-top:15rpx}.desc{display:block;color:#888;font-size:25rpx;margin-top:15rpx}.price{display:block;color:#e1251b;font-size:46rpx;font-weight:bold;margin-top:24rpx}.service{display:flex;gap:26rpx;color:#888;font-size:21rpx;margin-top:20rpx}.section{margin-top:20rpx}.title{display:block;font-size:29rpx;font-weight:bold;margin-bottom:15rpx}.copy{font-size:24rpx;color:#777;line-height:1.7}.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1rpx solid #ddd;padding:18rpx 20rpx calc(18rpx + env(safe-area-inset-bottom));display:flex;align-items:center;gap:10rpx}.quantity{display:flex;align-items:center;gap:10rpx;font-size:22rpx}.quantity button{width:44rpx;height:44rpx;line-height:40rpx;padding:0}.buy,.add{color:#fff;border-radius:5rpx;padding:0 22rpx;height:76rpx;font-size:23rpx}.buy{background:#ff8a00}.add{background:#e1251b}.center{text-align:center;padding:160rpx;color:#888}
+</style>

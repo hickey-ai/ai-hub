@@ -22,6 +22,8 @@ jobs:
           java-version: '21'
           cache: maven
           cache-dependency-path: ${{ matrix.project }}/backend/pom.xml
+      - if: matrix.project == 'shop'
+        run: npm --prefix shop/miniprogram ci && npm --prefix shop/miniprogram run build:mp-weixin
       - run: npm --prefix ${{ matrix.project }}/frontend ci
       - run: npm --prefix ${{ matrix.project }}/frontend run build -- --outDir ../backend/src/main/resources/static --emptyOutDir
       - run: mvn -f ${{ matrix.project }}/backend/pom.xml package
