@@ -9,7 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest @AutoConfigureMockMvc
+@SpringBootTest(properties = "aihub.data-file=target/test-data/crm-${random.uuid}.json" ) @AutoConfigureMockMvc
 class CrmApplicationTests {
     @Autowired MockMvc mvc;
     @Test void customerOpportunityFollowUpAndWin() throws Exception {

@@ -1,0 +1,28 @@
+name: Verify four projects
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [shop, manage, crm, oa]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ${{ matrix.project }}/frontend/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: ${{ matrix.project }}/backend/pom.xml
+      - run: npm --prefix ${{ matrix.project }}/frontend ci
+      - run: npm --prefix ${{ matrix.project }}/frontend run build -- --outDir ../backend/src/main/resources/static --emptyOutDir
+      - run: mvn -f ${{ matrix.project }}/backend/pom.xml package
+      - run: jar tf ${{ matrix.project }}/backend/target/${{ matrix.project }}-api-0.1.0.jar | grep -qx 'BOOT-INF/classes/static/index.html'

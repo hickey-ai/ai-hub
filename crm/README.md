@@ -2,25 +2,32 @@
 
 ![销售漏斗实际运行截图](./screenshots/pipeline.png)
 
-独立的 Vue 3 + Java 21/Spring Boot 客户关系演示。**客户建档 → 创建商机 → 记录跟进 → 逐阶段推进 → 赢单/流失**，页面含销售漏斗、客户列表、商机详情和统计。商机只能从“发现需求 → 方案沟通 → 商务谈判 → 已赢单”逐步推进，也可在活动阶段标记流失；结束后不可再跟进。
+客户建档、商机创建、跟进记录、合法阶段推进及赢单/流失。 Vue 3 + Java 21/Spring Boot；页面截图来自本地实际运行。
 
-## 运行
+## 一键运行
 
-需要 Java 21、Maven、Node.js 20.19+/22.12+ 和 npm。分别打开两个终端：
+需要 Java 21、Maven、Node.js 20.19+/22.12+ 和 npm；在本目录执行：
 
-```bash
-cd crm/backend && mvn spring-boot:run     # http://localhost:8083
-cd crm/frontend && npm ci && npm run dev  # http://127.0.0.1:5175
+```powershell
+./run.ps1           # Windows PowerShell
 ```
 
-前端代理 `/api` 到 8083。运行 `cd crm/backend && mvn test` 和 `cd crm/frontend && npm run build` 验证。
+```sh
+./run.sh            # macOS / Linux
+```
 
-## API
+首次执行会下载依赖、构建前端、运行后端测试并启动单个 jar。浏览器打开 **http://127.0.0.1:8083**，前后端同一端口，无需另开终端。按 Ctrl+C 停止。Windows 如有旧 Vite 开发服务占用 `frontend/node_modules`，请先关闭再运行。
 
-- `GET/POST /api/customers`：客户列表/新增。
-- `GET/POST /api/opportunities`：商机列表/新增；客户 ID 必须存在，金额须大于零。
-- `PATCH /api/opportunities/{id}/stage`：合法阶段推进，非法转换返回 409。
-- `GET/POST /api/opportunities/{id}/activities`：查看/新增跟进；结束后新增返回 409。
-- `GET /api/stats`：客户、进行中商机、赢单和预计金额。
+数据保存在本项目 `data/crm.json`，停止服务后可复制备份；如需恢复默认演示数据，停止后删除该文件并重启。文件损坏时启动会报错，不会自动清空。不要多个进程共用此文件。
 
-**边界：**数据保存在服务进程内存，重启重置；示例负责人只是文本字段，无身份认证、权限、持久化、审计与并发业务保证。不要直接用于生产或公网服务。页面截图来自实际本地运行，而非设计稿。
+## 测试
+
+```sh
+mvn -f backend/pom.xml test
+npm --prefix frontend ci
+npm --prefix frontend run build
+```
+
+在仓库根目录执行 `./test-all.ps1`（Windows）或 `./test-all.sh`（macOS / Linux）会验证全部四个项目及 jar 中的页面资源。前端截图参见上方。
+
+**使用边界：**负责人只是文本字段；没有身份认证、审计或多人协作冲突处理。 默认只监听本机 `127.0.0.1`；这是可本地直接使用的样板，**不适合未经改造部署到公网或生产环境**。

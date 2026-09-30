@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest @AutoConfigureMockMvc
+@SpringBootTest(properties = "aihub.data-file=target/test-data/manage-${random.uuid}.json" ) @AutoConfigureMockMvc
 class ManageApplicationTests {
     @Autowired MockMvc mvc;
     @Test void userLifecycle() throws Exception {

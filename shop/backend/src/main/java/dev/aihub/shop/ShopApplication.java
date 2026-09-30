@@ -1,5 +1,7 @@
 package dev.aihub.shop;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Email;
@@ -27,6 +29,7 @@ record OrderItem(long productId, String name, int quantity, BigDecimal unitPrice
 record Order(long id, String customer, String email, List<OrderItem> items, BigDecimal total, Instant createdAt) {}
 record CartLine(@Min(1) long productId, @Min(1) int quantity) {}
 record CheckoutRequest(@NotBlank String customer, @Email @NotBlank String email, @NotEmpty List<@Valid CartLine> items) {}
+record ShopState(List<Product> products, List<Order> orders, long nextOrderId) {}
 
 @RestController
 @RequestMapping("/api")
@@ -34,8 +37,18 @@ class ShopController {
     private final Map<Long, Product> products = new LinkedHashMap<>();
     private final List<Order> orders = new ArrayList<>();
     private long nextOrderId = 1001;
+    private final StateFile<ShopState> store;
 
-    ShopController() {
+    ShopController(ObjectMapper mapper, @Value("${aihub.data-file}") String filename) {
+        store = new StateFile<>(mapper, filename, ShopState.class);
+        var previous = store.read();
+        if (previous.isPresent()) {
+            ShopState state = previous.get();
+            state.products().forEach(p -> products.put(p.id(), p));
+            orders.addAll(state.orders());
+            nextOrderId = state.nextOrderId();
+            return;
+        }
         seed(1, "Arc 台灯", "家居生活", "以温柔弧线点亮日常阅读时光。", "329.00", "💡", "peach", 18, "热卖");
         seed(2, "Daily 保温杯", "生活好物", "随身带走恰到好处的温度。", "169.00", "☕", "sage", 32, "新品");
         seed(3, "Soft Linen 抱枕", "家居生活", "天然织感，为沙发添一份松弛。", "199.00", "🛋️", "lilac", 24, "");
@@ -59,9 +72,14 @@ class ShopController {
             lines.add(new OrderItem(p.id(), p.name(), entry.getValue(), p.price()));
         }
         BigDecimal total = lines.stream().map(i -> i.unitPrice().multiply(BigDecimal.valueOf(i.quantity()))).reduce(BigDecimal.ZERO, BigDecimal::add);
-        lines.forEach(i -> products.computeIfPresent(i.productId(), (id, p) -> p.withStock(p.stock() - i.quantity())));
-        Order order = new Order(nextOrderId++, request.customer().trim(), request.email().trim(), List.copyOf(lines), total, Instant.now());
-        orders.add(order);
+        Map<Long, Product> updatedProducts = new LinkedHashMap<>(products);
+        lines.forEach(i -> updatedProducts.computeIfPresent(i.productId(), (id, p) -> p.withStock(p.stock() - i.quantity())));
+        Order order = new Order(nextOrderId, request.customer().trim(), request.email().trim(), List.copyOf(lines), total, Instant.now());
+        List<Order> updatedOrders = new ArrayList<>(orders);
+        updatedOrders.add(order);
+        store.write(new ShopState(List.copyOf(updatedProducts.values()), List.copyOf(updatedOrders), nextOrderId + 1));
+        products.clear(); products.putAll(updatedProducts);
+        orders.add(order); nextOrderId++;
         return order;
     }
 }
