@@ -13,8 +13,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CrmApplicationTests {
     @Autowired MockMvc mvc;
     @Test void customerOpportunityFollowUpAndWin() throws Exception {
-        mvc.perform(post("/api/customers").contentType(MediaType.APPLICATION_JSON).content(""" 
-            {"name":"新客户","contact":"王先生","industry":"教育","owner":"林知夏"} 
+        mvc.perform(post("/api/customers").contentType(MediaType.APPLICATION_JSON).content("""
+            {"name":"新客户","contact":"王先生","industry":"教育","owner":"林知夏"}
             """)).andExpect(status().isCreated()).andExpect(jsonPath("$.id").value(4));
         mvc.perform(post("/api/opportunities").contentType(MediaType.APPLICATION_JSON).content("""
             {"customerId":4,"title":"采购项目","amount":68000,"owner":"林知夏"}

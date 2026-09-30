@@ -21,4 +21,3 @@ onMounted(load)
   <div v-if="modal" class="overlay" @click.self="modal = false"><form class="dialog" @submit.prevent="create"><button type="button" class="close" @click="modal = false">×</button><div class="eyebrow">NEW APPLICATION</div><h2>发起新申请</h2><p>先保存为草稿，确认内容后再提交审批。</p><label>申请类型<select v-model="form.type"><option>请假</option><option>报销</option></select></label><label>申请标题<input v-model="form.title" required placeholder="例如：客户拜访交通费" /></label><label>申请人<input v-model="form.applicant" required placeholder="例如：林知夏" /></label><label>事项说明<textarea v-model="form.detail" required placeholder="请描述申请内容…"></textarea></label><label v-if="form.type === '报销'">报销金额（元）<input v-model="form.amount" type="number" min="0" required /></label><div class="dialog-actions"><button type="button" class="outline" @click="modal = false">取消</button><button class="primary" :disabled="busy">保存草稿</button></div></form></div>
 </div>
 </template>
-
