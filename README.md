@@ -6,6 +6,8 @@
 | --- | --- | --- | --- |
 | [shop](./shop/README.md) | 电商商城 | 商品浏览/搜索/分类、购物车、库存校验与下单 | [截图](./shop/screenshots/storefront.png) |
 | [manage](./manage/README.md) | 通用管理脚手架 | 仪表盘、用户增删改、角色查看、基础统计 | [截图](./manage/screenshots/dashboard.png) |
+| [crm](./crm/README.md) | 客户关系 CRM | 客户建档、商机跟进、阶段推进、赢单/流失 | [截图](./crm/screenshots/pipeline.png) |
+| [oa](./oa/README.md) | 办公审批 OA | 请假/报销草稿、提交、同意/驳回 | [截图](./oa/screenshots/approvals.png) |
 
 ## 快速开始
 
@@ -18,10 +20,12 @@
 | --- | --- | --- |
 | shop | `cd shop/backend && mvn spring-boot:run`（8081） | `cd shop/frontend && npm install && npm run dev`（5173） |
 | manage | `cd manage/backend && mvn spring-boot:run`（8082） | `cd manage/frontend && npm install && npm run dev`（5174） |
+| crm | `cd crm/backend && mvn spring-boot:run`（8083） | `cd crm/frontend && npm ci && npm run dev`（5175） |
+| oa | `cd oa/backend && mvn spring-boot:run`（8084） | `cd oa/frontend && npm ci && npm run dev`（5176） |
 
 ## 业务系统地图
 
-[调研和建设清单](./docs/business-map.md)区分 **参考项目**、**已实现** 和 **待建设**。下一批可选 CRM（客户/商机）、ERP（采购/库存）、OA（审批）、CMS（内容发布）、HRM（人事）、预约、工单、教育、医疗等。每个类型应有独立业务闭环、测试、截图后再改为“已实现”。
+[调研和建设清单](./docs/business-map.md)区分 **参考项目**、**已实现** 和 **待建设**。后续可选 ERP（采购/库存）、CMS（内容发布）、HRM（人事）、预约、工单、教育、医疗等。每个类型应有独立业务闭环、测试、截图后再改为“已实现”。
 
 ## 技术约定
 
