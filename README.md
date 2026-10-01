@@ -1,13 +1,73 @@
-# ai-hub · Vue + Java 21 业务系统合集
+<div align="center">
 
-> **让每一种职业，都有机会找到适合自己的软件。只要你愿意提出需求、使用和共建，我们就持续把想法做成能运行、能测试、能看见页面的项目。**
+![ai-hub · 让每一种职业都有自己的软件](./docs/ai-hub-cover.svg)
 
-ai-hub 面向不同行业与职业，持续汇集电商、管理、销售、办公、金融、健康、养生、医疗、教育、门禁、理发、餐饮、自助零售、日程安排、汽车养护、家庭成长和科研实验记录等业务场景。无论你是经营者、从业者、开发者，还是正在寻找数字化工具的人，都可以从现有项目开始体验、改造，或提出下一种值得实现的软件。
+**17 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
 
-**当前进度：**仓库现有十七个可在**本机单用户**运行的独立业务系统样板；“所有职业都能找到所需软件”是长期愿景，**不是宣称目前已覆盖所有职业**。下表只列已实现项目，后续类型见[业务系统调研与后续类型](./docs/business-map.md)。项目为自主实现的演示与二次开发基础，不复制第三方源码，也不是生产级 SaaS。
+[立即体验](#-30-秒开始体验) · [浏览项目](#-项目宇宙) · [系统架构](#-系统架构) · [页面截图](#-真实页面) · [测试与边界](#-验证与使用边界)
+
+</div>
+
+> **只要你愿意提出需求，我们就把更多职业的想法做成看得见、跑得起来、能验证的产品。**
+>
+> ai-hub 是持续生长的业务软件合集，不是“已经覆盖所有职业”的承诺。每个列为已实现的项目都有独立的业务页面、Java API、运行脚本、测试与真实页面截图。
+
+## ✨ 为什么是 ai-hub
+
+| 真实业务场景 | 开箱可体验 | 自主实现、方便改造 |
+| :--- | :--- | :--- |
+| 从电商、管理到医疗、科研、家庭记录，覆盖 **17 个独立系统**；不是同一套空壳换标题。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 17 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
+
+## ⚡ 30 秒开始体验
+
+> 需要 **Java 21、Maven、Node.js 20.19+/22.12+ 和 npm**；首次运行会联网下载依赖。以下命令会安装前端依赖、构建页面、运行后端测试、打包并启动服务。
+
+<table>
+<tr><th>Windows PowerShell</th><th>macOS / Linux</th></tr>
+<tr><td><code>./shop/run.ps1</code></td><td><code>./shop/run.sh</code></td></tr>
+<tr><td colspan="2">浏览器打开 <code>http://127.0.0.1:8081</code>。想体验其它项目？把 <code>shop</code> 换成下方项目名，并打开对应端口。按 <code>Ctrl+C</code> 停止。</td></tr>
+</table>
+
+也可以从 [科研实验记录](./labbook/README.md) 开始：运行 `./labbook/run.ps1`（Windows）或 `./labbook/run.sh`（macOS/Linux），打开 `http://127.0.0.1:8097`。**这些是本机单用户演示系统，不可直接部署到公网。**
+
+## 🪐 项目宇宙
+
+每个项目名称都可进入独立 README，了解功能、运行方式与完整截图。地址默认仅在当前电脑可访问。
+
+| 场景 | 项目 | 已实现能力 | 本机端口 |
+| :--- | :--- | :--- | :--- |
+| **交易与服务** | [shop · 商城](./shop/README.md) | 电脑端与微信小程序、商品检索、详情、购物车、库存校验与下单 | `8081` |
+| | [barber · 理发](./barber/README.md) | 小程序服务、设计师、时段预约与取消 | `8091` |
+| | [dining · 点餐](./dining/README.md) | 小程序桌号、菜品、餐篮、备注与订单 | `8092` |
+| | [selfshop · 自助购物](./selfshop/README.md) | 小程序搜索、扫码入口、库存、购物袋与结算 | `8093` |
+| **企业运营** | [manage · 通用后台](./manage/README.md) | 若依式控制台、用户、角色、菜单、部门、日志与个人中心 | `8082` |
+| | [crm · 客户关系](./crm/README.md) | 客户、商机、跟进和阶段流转 | `8083` |
+| | [oa · 协同办公](./oa/README.md) | 请假/报销草稿、提交与审批 | `8084` |
+| | [finance · 金融工作台](./finance/README.md) | 账户、流水、风险提醒与经营指标 | `8085` |
+| **行业场景** | [health · 健康](./health/README.md) | 健康档案、随访预约与指标提醒 | `8086` |
+| | [wellness · 养生](./wellness/README.md) | 会员、养生计划、课程和打卡 | `8087` |
+| | [hospital · 医院](./hospital/README.md) | 患者、门诊预约、病区与医嘱工作台 | `8088` |
+| | [school · 学校](./school/README.md) | 学生、课程、出勤与校园事务 | `8089` |
+| | [access · 门禁](./access/README.md) | 门点、人员、访客与通行事件 | `8090` |
+| **生活与研究** | [schedule · 日程](./schedule/README.md) | 日程、分类、完成状态与未来安排 | `8094` |
+| | [carcare · 汽车养护](./carcare/README.md) | 车辆、里程、维修保养与费用记录 | `8095` |
+| | [parenting · 养娃](./parenting/README.md) | 成长档案、日常与里程碑记录 | `8096` |
+| | [labbook · 科研实验](./labbook/README.md) | 八个学科模板、实验、样本、修订历史与 JSON 导出 | `8097` |
+
+## 🖼️ 真实页面
+
+以下画面来自实际运行的项目，不是设计稿。点击图片进入对应项目的完整说明。
+
+<table>
+<tr><td width="50%" align="center"><a href="./shop/README.md"><img src="./shop/screenshots/desktop-home.png" alt="shop 商城电脑端首页" width="100%" /></a><br/><b>shop · 电脑端商城</b></td><td width="50%" align="center"><a href="./manage/README.md"><img src="./manage/screenshots/dashboard.png" alt="manage 通用管理后台" width="100%" /></a><br/><b>manage · 通用管理后台</b></td></tr>
+<tr><td width="50%" align="center"><a href="./labbook/README.md"><img src="./labbook/screenshots/overview.png" alt="labbook 科研实验记录总览" width="100%" /></a><br/><b>labbook · 跨学科实验记录</b></td><td width="50%" align="center"><a href="./barber/README.md"><img src="./barber/screenshots/overview.png" alt="barber 理发小程序" width="100%" /></a><br/><b>barber · 预约小程序</b></td></tr>
+</table>
+
+<details>
+<summary><b>展开全部 17 个项目的页面截图索引</b></summary>
 
 | 项目 | 功能闭环 | 本机地址 | 页面截图 |
-| --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- |
 | [shop](./shop/README.md) | 京东式商品检索、详情、购物车、库存校验与下单；电脑端 + 微信小程序 | http://127.0.0.1:8081 | [电脑端首页](./shop/screenshots/desktop-home.png) · [商品列表](./shop/screenshots/desktop-catalog.png) · [商品详情](./shop/screenshots/desktop-detail.png) · [购物车](./shop/screenshots/desktop-cart.png) · [订单结算](./shop/screenshots/desktop-checkout.png) · [小程序首页](./shop/screenshots/miniprogram-home.png) · [小程序详情](./shop/screenshots/miniprogram-detail.png) · [小程序购物车](./shop/screenshots/miniprogram-cart.png) |
 | [manage](./manage/README.md) | 若依式通用后台：控制台、用户、角色、菜单、部门、日志、个人中心 | http://127.0.0.1:8082 | [控制台](./manage/screenshots/dashboard.png) · [用户](./manage/screenshots/users.png) · [角色](./manage/screenshots/roles.png) · [菜单](./manage/screenshots/menus.png) · [部门](./manage/screenshots/departments.png) · [日志](./manage/screenshots/logs.png) · [个人中心](./manage/screenshots/profile.png) |
 | [crm](./crm/README.md) | 客户、商机、跟进和阶段流转 | http://127.0.0.1:8083 | [销售漏斗](./crm/screenshots/pipeline.png) |
@@ -26,60 +86,34 @@ ai-hub 面向不同行业与职业，持续汇集电商、管理、销售、办�
 | [parenting](./parenting/README.md) | 成长档案、成长记录与分类检索 | http://127.0.0.1:8096 | [总览](./parenting/screenshots/overview.png) · [成长档案](./parenting/screenshots/primary.png) · [成长记录](./parenting/screenshots/secondary.png) |
 | [labbook](./labbook/README.md) | 跨学科实验、样本、修订历史与 JSON 导出 | http://127.0.0.1:8097 | [总览](./labbook/screenshots/overview.png) · [实验](./labbook/screenshots/experiments.png) · [样本](./labbook/screenshots/samples.png) · [学科模板](./labbook/screenshots/templates.png) · [详情](./labbook/screenshots/detail.png) · [编辑](./labbook/screenshots/editor.png) |
 
-## manage 页面预览
+</details>
 
-`manage` 参考 Gitee 上 RuoYi-Vue、RuoYi-Vue-Plus 的后台信息架构，以 Vue 3 + Java 21/Spring Boot 自主实现：
+## 🧭 系统架构
 
-- [控制台](./manage/screenshots/dashboard.png)
-- [用户管理](./manage/screenshots/users.png)
-- [角色管理](./manage/screenshots/roles.png)
-- [菜单管理](./manage/screenshots/menus.png)
-- [部门管理](./manage/screenshots/departments.png)
-- [操作日志](./manage/screenshots/logs.png)
-- [个人中心](./manage/screenshots/profile.png)
+![ai-hub 独立项目架构：用户入口、Vue 交互层、Java 服务、本地 JSON 与构建验证链路](./docs/architecture.svg)
 
-每个项目只有在业务页面、后端接口、测试和实际运行截图都完成后，才会在合集文档中标记为已实现。
+**关键设计：**
 
-## shop 页面预览
+1. **项目独立：**17 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
+2. **Web 一体交付：**Vue 页面由 Vite 构建后放入 Spring Boot 的静态资源目录，随可执行 jar 一起提供；浏览器通过同源 `/api` 请求业务接口。
+3. **小程序单独构建：**shop、barber、dining、selfshop 的 uni-app 构建微信小程序产物；小程序和电脑端的代码形态不同，但对应 Java API 保持独立。
+4. **数据本机持久化：**业务数据位于各项目的 `data/<项目>.json`，重启仍保留。停服后复制 JSON 文件备份；停服后移走它可重置演示数据。文件损坏时服务拒绝启动，避免覆盖原数据。
+5. **测试再交付：**前端构建、后端测试、jar 静态页检查和真实进程冒烟都纳入根目录脚本。架构图表达的是当前本机演示形态，**不是生产高可用架构**。
 
-- 电脑端：首页、商品列表、商品详情、购物车、订单结算：见 [shop/README.md](./shop/README.md)。
-- 微信小程序：uni-app H5 运行截图覆盖首页、商品详情、购物车与订单信息；微信开发者工具产物位于 `shop/miniprogram/dist/build/mp-weixin/`。
-
-## 直接运行
-
-安装 **Java 21、Maven、Node.js 20.19+/22.12+、npm**，克隆仓库后在根目录执行其中一个项目的命令：
+## ✅ 验证与使用边界
 
 ```powershell
-./shop/run.ps1       # Windows PowerShell；其他项目换成 manage / crm / oa / finance / health / wellness / hospital / school / access / barber / dining / selfshop / schedule / carcare / parenting / labbook
+./test-all.ps1      # Windows：17 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
+./smoke-test.ps1    # Windows：启动 17 个真实服务，检查页面、JS 与 API
 ```
 
-```sh
-./shop/run.sh        # macOS / Linux；其他项目换成 manage / crm / oa / finance / health / wellness / hospital / school / access / barber / dining / selfshop / schedule / carcare / parenting / labbook
-```
+macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。截图保存在各项目的 `screenshots/`；新项目只有具备页面、接口、测试和实际截图后才列入目录。
 
-脚本会运行 `npm ci`、构建前端、执行后端测试并打成单个可执行 jar，随后启动。打开上表地址即可使用，无需另开 Vite 开发服务器；首次运行要联网下载依赖。按 **Ctrl+C** 停止。若已有对应项目的 Vite 开发服务器，请先停止再执行脚本，避免 Windows 上 `npm ci` 遇到文件占用。十七个项目端口互不冲突，可分别启动。
+> [!IMPORTANT]
+> **这是可直接在本机体验、学习和二次开发的样板，不是可直接上生产的 SaaS。** 默认绑定 `127.0.0.1`；没有统一登录鉴权、正式权限隔离、支付、加密、不可篡改审计、数据库迁移与多实例并发保障。金融、医疗、未成年人、门禁、科研等敏感场景尤其不能直接处理真实业务数据。正式部署前须完成安全、隐私、合规与灾备设计。
 
-业务数据写在各项目的 `<项目>/data/<项目>.json`，数据文件不提交到 Git，**重启仍保留**。先停止服务，再复制 JSON 文件备份；要重置演示数据，停止服务后删除对应 JSON 文件并重启。若 JSON 损坏，服务拒绝启动而不是悄悄覆盖原数据。仅支持单进程访问同一数据文件，不支持多个实例共享写入。
+## 🌱 下一站
 
-## 验证
+“让所有职业都能找到软件”是方向，而非当前覆盖范围。更多候选类型与参考项目见 [业务系统调研与建设清单](./docs/business-map.md)。欢迎从一个真实业务问题出发，提出下一款值得认真做的软件。
 
-```powershell
-./test-all.ps1       # Windows：Web 前端与四个小程序构建 + 后端测试/打包 + jar 静态页检查
-```
-
-```sh
-./test-all.sh        # macOS / Linux
-```
-
-Windows 还可运行 `./smoke-test.ps1`，启动十七个真实 jar 验证页面、JS、API，并验证商城搜索、详情、下单后的进程重启数据；其临时数据及日志保留在系统临时目录。`test-all` 会构建十七个项目和四个微信小程序产物。后端测试覆盖业务校验与重启后的 JSON 数据读取。单独测试可在各项目目录运行 `mvn -f backend/pom.xml test`。截图位于各项目 `screenshots/`，由运行页面取得。
-
-**使用范围：**可在自己的电脑上体验、演示及改造；不含登录鉴权、服务端权限、正式支付、审计、数据库迁移及多实例并发保障。`server.address` 默认仅绑定 `127.0.0.1`，**不能直接用于公网或真实业务生产**，尤其 OA 审批和管理角色只是演示字段。
-
-[业务系统调研与后续类型](./docs/business-map.md)区分参考项目、已实现及待建设。每个类型需完成业务闭环、测试和截图才列为已实现。联系邮箱：3174667330@qq.com；Git 签名仅配置在本仓库，不更改全局设置。
-## 新增行业系统
-
-当前已补充金融、健康、养生、医院、学校和门禁六个行业工作台。它们统一采用 Vue 3 + Java 21/Spring Boot，均提供总览、核心业务管理、记录处理页面、JSON API、前端构建和后端测试。
-
-这些行业涉及资金、健康、医疗、未成年人、身份和出入权限等敏感数据，当前版本定位为本机演示与二次开发样板。正式上线前必须补充数据库、登录鉴权、细粒度 RBAC、操作审计、脱敏、加密、备份、合规评审和灾备方案。
-
-完整行业清单见 [业务系统调研与后续类型](./docs/business-map.md)。
+**联系：**3174667330@qq.com · Git 提交邮箱仅设置在此仓库，不修改全局配置。
