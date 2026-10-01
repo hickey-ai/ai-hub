@@ -4,10 +4,15 @@
 
 | 项目 | 功能闭环 | 本机地址 | 页面截图 |
 | --- | --- | --- | --- |
-| [shop](./shop/README.md) | 京东式商品检索、详情、购物车、库存校验与下单；电脑端 + 微信小程序 | http://127.0.0.1:8081 | [商城](./shop/screenshots/storefront.png) |
+| [shop](./shop/README.md) | 京东式商品检索、详情、购物车、库存校验与下单；电脑端 + 微信小程序 | http://127.0.0.1:8081 | [电脑端首页](./shop/screenshots/desktop-home.png) · [商品列表](./shop/screenshots/desktop-catalog.png) · [商品详情](./shop/screenshots/desktop-detail.png) · [购物车](./shop/screenshots/desktop-cart.png) · [订单结算](./shop/screenshots/desktop-checkout.png) · [小程序首页](./shop/screenshots/miniprogram-home.png) · [小程序详情](./shop/screenshots/miniprogram-detail.png) · [小程序购物车](./shop/screenshots/miniprogram-cart.png) |
 | [manage](./manage/README.md) | 用户增删改查、角色查看和仪表盘 | http://127.0.0.1:8082 | [工作台](./manage/screenshots/dashboard.png) |
 | [crm](./crm/README.md) | 客户、商机、跟进和阶段流转 | http://127.0.0.1:8083 | [销售漏斗](./crm/screenshots/pipeline.png) |
 | [oa](./oa/README.md) | 请假/报销草稿、提交与审批 | http://127.0.0.1:8084 | [审批](./oa/screenshots/approvals.png) |
+
+## shop 页面预览
+
+- 电脑端：首页、商品列表、商品详情、购物车、订单结算：见 [shop/README.md](./shop/README.md)。
+- 微信小程序：uni-app H5 运行截图覆盖首页、商品详情、购物车与订单信息；微信开发者工具产物位于 `shop/miniprogram/dist/build/mp-weixin/`。
 
 ## 直接运行
 
