@@ -3,9 +3,9 @@ Push-Location $PSScriptRoot
 $dir = Join-Path $env:TEMP ('ai-hub-smoke-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $dir | Out-Null
 try {
-    $webProjects = @('shop','manage','crm','oa','finance','health','wellness','hospital','school','access','schedule','carcare','parenting')
-    $webPorts = @{ shop=18081; manage=18082; crm=18083; oa=18084; finance=18085; health=18086; wellness=18087; hospital=18088; school=18089; access=18090; schedule=18094; carcare=18095; parenting=18096 }
-    $webEndpoints = @{ shop='products'; manage='users'; crm='customers'; oa='requests'; finance='accounts'; health='members'; wellness='plans'; hospital='patients'; school='students'; access='doors'; schedule='events'; carcare='vehicles'; parenting='children' }
+    $webProjects = @('shop','manage','crm','oa','finance','health','wellness','hospital','school','access','schedule','carcare','parenting','labbook')
+    $webPorts = @{ shop=18081; manage=18082; crm=18083; oa=18084; finance=18085; health=18086; wellness=18087; hospital=18088; school=18089; access=18090; schedule=18094; carcare=18095; parenting=18096; labbook=18097 }
+    $webEndpoints = @{ shop='products'; manage='users'; crm='customers'; oa='requests'; finance='accounts'; health='members'; wellness='plans'; hospital='patients'; school='students'; access='doors'; schedule='events'; carcare='vehicles'; parenting='children'; labbook='experiments' }
     foreach ($project in $webProjects) {
         $port = $webPorts[$project]; $endpoint = $webEndpoints[$project]
         $jar = (Resolve-Path "$project/backend/target/$project-api-0.1.0.jar").Path
@@ -33,5 +33,5 @@ try {
             Write-Host "$project API OK"
         } finally { Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue; $proc.WaitForExit() }
     }
-    Write-Host 'All sixteen real-process checks passed.'
+    Write-Host 'All seventeen real-process checks passed.'
 } finally { Pop-Location }
