@@ -13,6 +13,9 @@
 | 理发 | 理发预约小程序 | 服务、设计师、时段、预约、取消 | **barber 已实现演示闭环**；真实排班、会员、收银未做 |
 | 点餐 | 扫码点餐小程序 | 桌号、菜品、餐篮、备注、后厨状态 | **dining 已实现演示闭环**；真实后厨、支付、退款未做 |
 | 自助购物 | 自助购物小程序 | 商品、搜索、扫码、库存、购物袋、结算 | **selfshop 已实现演示闭环**；支付、防损、电子小票未做 |
+| 日程记录 | 日程与未来安排 | 分类、完成状态、搜索、时间校验 | **schedule 本机演示闭环**；提醒推送/多用户协作未做 |
+| 汽车维修记录 | 车辆养护台 | 车辆档案、里程、保养维修和费用 | **carcare 本机演示闭环**；维修工单/配件库存未做 |
+| 养娃记录 | 家庭成长记录 | 成长档案、日常与里程碑记录 | **parenting 本机演示闭环**；多人共享/医疗诊断未做 |
 | 商城 | [mall (GitHub)](https://github.com/macrozheng/mall)、[mall (Gitee)](https://gitee.com/macrozheng/mall) | 商品、订单、库存、营销 | **shop 最小闭环**；支付/售后未做 |
 | 管理后台 | [RuoYi-Vue-Plus (GitHub)](https://github.com/dromara/RuoYi-Vue-Plus)、[RuoYi-Vue-Plus (Gitee)](https://gitee.com/dromara/RuoYi-Vue-Plus) | 用户、角色、菜单、权限 | **manage 演示样板**；生产 RBAC 未做 |
 | CRM | [悟空CRM (GitHub)](https://github.com/WuKongOpenSource/WukongCRM-11.0-JAVA)、[悟空CRM (Gitee)](https://gitee.com/wukongcrm) | 客户、线索、商机、跟进 | **crm 最小闭环**；正式鉴权/线索池未做 |
