@@ -7,7 +7,7 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'shop mini-program npm ci failed' }
     npm.cmd --prefix 'shop/miniprogram' run build:mp-weixin
     if ($LASTEXITCODE -ne 0) { throw 'shop mini-program build failed' }
-    foreach ($project in @('shop', 'manage', 'crm', 'oa')) {
+    foreach ($project in @('shop', 'manage', 'crm', 'oa', 'finance', 'health', 'wellness', 'hospital', 'school', 'access')) {
         Write-Host "=== $project ==="
         npm.cmd --prefix "$project/frontend" ci
         if ($LASTEXITCODE -ne 0) { throw "$project npm ci failed" }
@@ -21,5 +21,5 @@ try {
             throw "$project jar does not contain the frontend"
         }
     }
-    Write-Host 'All four projects passed.'
+    Write-Host 'All ten projects passed.'
 } finally { Pop-Location }

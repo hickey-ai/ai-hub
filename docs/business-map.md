@@ -1,9 +1,15 @@
 # 业务系统调研与建设清单
 
-2026-09-30 从 GitHub/Gitee 可公开访问项目中抽样，侧重业务模块、交互模式和技术边界；参考链接**不是**复制授权，也不表示它们全部使用 Java 21。该调研非全网穷举。
+2026-10-01 从 GitHub/Gitee 可公开访问项目中抽样，侧重业务模块、交互模式和技术边界；参考链接**不是**复制授权，也不表示它们全部使用 Java 21。该调研非全网穷举。
 
 | 领域 | 参考项目 | 可借鉴的领域能力 | ai-hub 状态 |
 | --- | --- | --- | --- |
+| 金融 | 金融经营台 | 账户、流水、风险提醒 | **finance 已实现演示闭环**；真实资金系统未做 |
+| 健康 | 健康管理台 | 健康档案、随访、指标提醒 | **health 已实现演示闭环**；医疗建议与合规未做 |
+| 养生 | 养生服务台 | 会员、计划、课程、打卡 | **wellness 已实现演示闭环**；真实服务履约未做 |
+| 医院 | 医院运营台 | 患者、门诊、病区、医嘱 | **hospital 已实现演示闭环**；HIS/EMR 对接未做 |
+| 学校 | 学校教务台 | 学生、课程、出勤、事务 | **school 已实现演示闭环**；教务数据合规未做 |
+| 门禁 | 门禁安全台 | 门点、访客、通行、异常 | **access 已实现演示闭环**；真实硬件接入未做 |
 | 商城 | [mall (GitHub)](https://github.com/macrozheng/mall)、[mall (Gitee)](https://gitee.com/macrozheng/mall) | 商品、订单、库存、营销 | **shop 最小闭环**；支付/售后未做 |
 | 管理后台 | [RuoYi-Vue-Plus (GitHub)](https://github.com/dromara/RuoYi-Vue-Plus)、[RuoYi-Vue-Plus (Gitee)](https://gitee.com/dromara/RuoYi-Vue-Plus) | 用户、角色、菜单、权限 | **manage 演示样板**；生产 RBAC 未做 |
 | CRM | [悟空CRM (GitHub)](https://github.com/WuKongOpenSource/WukongCRM-11.0-JAVA)、[悟空CRM (Gitee)](https://gitee.com/wukongcrm) | 客户、线索、商机、跟进 | **crm 最小闭环**；正式鉴权/线索池未做 |
