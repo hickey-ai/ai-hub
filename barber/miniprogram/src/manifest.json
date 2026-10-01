@@ -1,0 +1,15 @@
+{
+  "vueVersion": "3",
+  "name": "ai-hub-barber",
+  "versionCode": "100",
+  "appid": "__UNI__AIHUBBARBER",
+  "description": "理发预约 微信小程序",
+  "mp-weixin": {
+    "setting": {
+      "urlCheck": false
+    },
+    "usingComponents": true,
+    "appid": ""
+  },
+  "versionName": "0.1.0"
+}

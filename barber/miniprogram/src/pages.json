@@ -1,0 +1,49 @@
+{
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "服务"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "预约"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "我的"
+      }
+    ],
+    "selectedColor": "#2a3c34",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "color": "#93939a"
+  },
+  "globalStyle": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f7f7f6",
+    "navigationBarTextStyle": "black"
+  },
+  "pages": [
+    {
+      "style": {
+        "navigationBarTitleText": "LUNE 理发预约",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      },
+      "path": "pages/index/index"
+    },
+    {
+      "style": {
+        "navigationBarTitleText": "预约"
+      },
+      "path": "pages/cart/cart"
+    },
+    {
+      "style": {
+        "navigationBarTitleText": "我的"
+      },
+      "path": "pages/orders/orders"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "点餐"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "餐篮"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "订单"
+      }
+    ],
+    "selectedColor": "#2a3c34",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "color": "#93939a"
+  },
+  "globalStyle": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f7f7f6",
+    "navigationBarTextStyle": "black"
+  },
+  "pages": [
+    {
+      "style": {
+        "navigationBarTitleText": "食刻 扫码点餐",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      },
+      "path": "pages/index/index"
+    },
+    {
+      "style": {
+        "navigationBarTitleText": "餐篮"
+      },
+      "path": "pages/cart/cart"
+    },
+    {
+      "style": {
+        "navigationBarTitleText": "订单"
+      },
+      "path": "pages/orders/orders"
+    }
+  ]
+}

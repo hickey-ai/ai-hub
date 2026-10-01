@@ -2,11 +2,13 @@
 $ErrorActionPreference = 'Stop'
 Push-Location $PSScriptRoot
 try {
-    Write-Host '=== shop mini-program ==='
-    npm.cmd --prefix 'shop/miniprogram' ci
-    if ($LASTEXITCODE -ne 0) { throw 'shop mini-program npm ci failed' }
-    npm.cmd --prefix 'shop/miniprogram' run build:mp-weixin
-    if ($LASTEXITCODE -ne 0) { throw 'shop mini-program build failed' }
+    foreach ($project in @('shop', 'barber', 'dining', 'selfshop')) {
+        Write-Host "=== $project mini-program ==="
+        npm.cmd --prefix "$project/miniprogram" ci
+        if ($LASTEXITCODE -ne 0) { throw "$project mini-program npm ci failed" }
+        npm.cmd --prefix "$project/miniprogram" run build:mp-weixin
+        if ($LASTEXITCODE -ne 0) { throw "$project mini-program build failed" }
+    }
     foreach ($project in @('shop', 'manage', 'crm', 'oa', 'finance', 'health', 'wellness', 'hospital', 'school', 'access')) {
         Write-Host "=== $project ==="
         npm.cmd --prefix "$project/frontend" ci
@@ -21,5 +23,12 @@ try {
             throw "$project jar does not contain the frontend"
         }
     }
-    Write-Host 'All ten projects passed.'
+    foreach ($project in @('barber', 'dining', 'selfshop')) {
+        Write-Host "=== $project backend ==="
+        mvn.cmd -f "$project/backend/pom.xml" package
+        if ($LASTEXITCODE -ne 0) { throw "$project backend tests/package failed" }
+        $jar = "$project/backend/target/$project-api-0.1.0.jar"
+        if (-not (Test-Path $jar)) { throw "$project jar missing" }
+    }
+    Write-Host 'All thirteen projects passed.'
 } finally { Pop-Location }
