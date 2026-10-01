@@ -14,14 +14,14 @@
         "text": "我的"
       }
     ],
-    "selectedColor": "#2a3c34",
+    "selectedColor": "#1677ff",
     "borderStyle": "white",
     "backgroundColor": "#ffffff",
-    "color": "#93939a"
+    "color": "#8a94a6"
   },
   "globalStyle": {
     "navigationBarBackgroundColor": "#ffffff",
-    "backgroundColor": "#f7f7f6",
+    "backgroundColor": "#f5f7fb",
     "navigationBarTextStyle": "black"
   },
   "pages": [
