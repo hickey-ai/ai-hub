@@ -6,7 +6,7 @@
 
 ### Turn a real need into software you can see and run.
 
-**84 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
+**87 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
 
 [Explore the ecosystem](#-ai-hub-ecosystem-matrix) · [Get started](#-quick-start) · [All projects](#-project-universe) · [Screenshots](#-real-screenshots) · [Architecture](#-architecture)
 
@@ -34,7 +34,7 @@
 | Layer | Projects / entry points | What to explore | Current scope |
 | :--- | :--- | :--- | :--- |
 | **Workflow applications** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | Storefront purchase flow, administration dashboard and experiment records | Feature depth varies; these are not complete production products |
-| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 84 projects**, not additional systems |
+| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 87 projects**, not additional systems |
 | **Sector record desks** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [more sectors ↓](#-project-universe) | Industry records, related entries, search and forms | Mostly single-user local demos; no real ticketing, diagnosis, closing or regulatory workflows |
 | **Creative utilities** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill workspace, HTML mini-games and directory demo, public-page crawling | Local utilities and demos, not a hosted AI platform or large-scale crawler |
 
@@ -115,6 +115,21 @@ Each link opens that project's README with its startup notes and screenshots. So
 | **Infrastructure & civic** | [telecom · Telecom facilities](./telecom/README.md) | Sites and maintenance tasks; local-only demo | `8127` |
 |  | [itops · IT operations](./itops/README.md) | Assets and incident notes; local-only demo | `8128` |
 |  | [civic · Civic services](./civic/README.md) | Services and application records; local-only demo | `8129` |
+| **Quality & internal support** | [testops · Test management](./testops/README.md) | Test cases and manual execution records; local demo | `8165` |
+|  | [ticketops · Internal tickets](./ticketops/README.md) | Queues, priorities, assignees and status; local demo | `8166` |
+|  | [bugtrack · Defect tracker](./bugtrack/README.md) | Projects, defects, reproduction steps and status; local demo | `8167` |
+
+## 🧪 Testing, tickets & defects · 3 new platforms
+
+These are **three independent, single-user local workspaces**, not an integrated SaaS suite. Test management records cases and manual results; internal tickets track queues, assignees and progress; defect tracking records issues, reproduction steps and verification states. The existing [service after-sales demo](./service/README.md) is for customer support, not internal requests.
+
+<table><tr>
+<td width="33%" align="center"><a href="./testops/README.md"><img src="./testops/screenshots/overview.png" alt="Actual test management page" width="100%" /></a><br/><b>testops · Test management</b><br/><sub>Cases → manual runs</sub></td>
+<td width="33%" align="center"><a href="./ticketops/README.md"><img src="./ticketops/screenshots/overview.png" alt="Actual internal ticket page" width="100%" /></a><br/><b>ticketops · Internal tickets</b><br/><sub>Queues → requests</sub></td>
+<td width="33%" align="center"><a href="./bugtrack/README.md"><img src="./bugtrack/screenshots/overview.png" alt="Actual defect tracking page" width="100%" /></a><br/><b>bugtrack · Defect tracking</b><br/><sub>Projects → issues</sub></td>
+</tr></table>
+
+For example, run `./testops/run.ps1` (Windows) or `./testops/run.sh` (macOS/Linux), then open `http://127.0.0.1:8165`. Use the matching directory and port above for the other two. **No automated test execution, CI integration, cross-project sync, multi-user collaboration, SLA timers or notifications.**
 
 ## 🆕 35 more sector record desks
 
@@ -179,7 +194,7 @@ These images were captured from running applications, not mockups. Click through
 </table>
 
 <details>
-<summary><b>Browse screenshots for all 84 projects</b></summary>
+<summary><b>Browse screenshots for all 87 projects</b></summary>
 
 | Project | Local address | Actual screenshots |
 | :--- | :--- | :--- |
@@ -268,6 +283,10 @@ These images were captured from running applications, not mockups. Click through
 | [returns](./returns/README.md) | http://127.0.0.1:8163 | [Overview](./returns/screenshots/overview.png) · [Primary records](./returns/screenshots/primary.png) · [Related records](./returns/screenshots/secondary.png) · [Editor](./returns/screenshots/editor.png) |
 | [realestate](./realestate/README.md) | http://127.0.0.1:8164 | [Overview](./realestate/screenshots/overview.png) · [Primary records](./realestate/screenshots/primary.png) · [Related records](./realestate/screenshots/secondary.png) · [Editor](./realestate/screenshots/editor.png) |
 
+| [testops](./testops/README.md) | http://127.0.0.1:8165 | [Overview](./testops/screenshots/overview.png) · [Cases](./testops/screenshots/primary.png) · [Manual runs](./testops/screenshots/secondary.png) · [Editor](./testops/screenshots/editor.png) |
+| [ticketops](./ticketops/README.md) | http://127.0.0.1:8166 | [Overview](./ticketops/screenshots/overview.png) · [Queues](./ticketops/screenshots/primary.png) · [Tickets](./ticketops/screenshots/secondary.png) · [Editor](./ticketops/screenshots/editor.png) |
+| [bugtrack](./bugtrack/README.md) | http://127.0.0.1:8167 | [Overview](./bugtrack/screenshots/overview.png) · [Projects](./bugtrack/screenshots/primary.png) · [Defects](./bugtrack/screenshots/secondary.png) · [Editor](./bugtrack/screenshots/editor.png) |
+
 </details>
 
 ## 🧭 Architecture
@@ -283,13 +302,13 @@ These images were captured from running applications, not mockups. Click through
 ## ✅ Validation and limits
 
 ```powershell
-./test-all.ps1      # Windows: build/package/test 84 projects, including four mini-program builds
-./smoke-test.ps1    # Windows: start 84 real services and check their pages/assets/APIs
+./test-all.ps1      # Windows: build/package/test 87 projects, including four mini-program builds
+./smoke-test.ps1    # Windows: start 87 real services and check their pages/assets/APIs
 ```
 
 On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. Screenshots live in each project's `screenshots/` directory.
 
-**Last full local validation: October 2, 2026.** All 84 projects passed the build/backend/package checks and real-process smoke checks. Each of the newest 35 projects has four actual screenshots; the previous 16 also have four each. This validates the local demos, **not** their performance, security or regulatory compliance in production.
+**Validation record (October 2, 2026).** The previous 84 projects passed frontend builds, backend tests/packages and real-process page/API smoke checks. The three new platforms—testops, ticketops and bugtrack—individually passed frontend builds, backend tests/packages, real-process smoke checks and browser form checks, with four actual screenshots each. The full 87-project scripts now include them, but **a full 87-project run was not completed in this round**. These checks validate local demos, **not** production performance, security or regulatory compliance.
 
 > [!IMPORTANT]
 > These are runnable local examples for learning and further development, **not production-ready SaaS applications**. The default host is `127.0.0.1`. There is no shared authentication, formal permission isolation, payment integration, encryption, tamper-proof audit, database migrations or multi-instance concurrency guarantee. In particular, do not use sensitive real-world financial, medical, child, access-control or research data without a proper security, privacy, compliance and disaster-recovery design.

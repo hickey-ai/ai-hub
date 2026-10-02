@@ -6,7 +6,7 @@
 
 ### 把每一种真实需求，变成看得见的软件。
 
-**84 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
+**87 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
 
 [探索生态矩阵](#-ai-hub-生态矩阵) · [一键体验](#-快速开始) · [全部项目](#-项目宇宙) · [页面截图](#-真实页面) · [架构与边界](#-系统架构)
 
@@ -34,7 +34,7 @@
 | 生态层 | 代表项目 / 入口 | 你能体验到什么 | 当前边界 |
 | :--- | :--- | :--- | :--- |
 | **业务流程应用** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | 商城购买链路、管理控制台、实验记录等各有侧重的独立体验 | 功能深度不一致；不等于生产级全功能产品 |
-| **移动端触点** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | 四个项目的 uni-app 微信小程序构建，连接各自 Java API | **4 个构建目标包含在 84 个项目内**，不是额外四套系统 |
+| **移动端触点** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | 四个项目的 uni-app 微信小程序构建，连接各自 Java API | **4 个构建目标包含在 87 个项目内**，不是额外四套系统 |
 | **行业记录样板** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [更多行业 ↓](#-项目宇宙) | 行业档案、关联记录、搜索和表单；用来讨论具体业务需求 | 多数为本机单用户记录演示，不含真实票务、诊断、交易或监管流程 |
 | **创意与效率工具** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill 工作台、HTML 小游戏与黄页样板、公开页面抓取 | 本机工具与演示，不是托管 AI 平台或大规模爬虫服务 |
 
@@ -115,6 +115,21 @@
 | **基础设施与公共事务** | [telecom · 通信设施](./telecom/README.md) | 通信站点、维护任务的本机记录样板 | `8127` |
 |  | [itops · IT 运维](./itops/README.md) | 设备资产、故障记录的本机记录样板 | `8128` |
 |  | [civic · 公共服务](./civic/README.md) | 服务事项、办理登记的本机记录样板 | `8129` |
+| **质量与内部支持** | [testops · 测试管理](./testops/README.md) | 测试用例与手工执行结果记录（本机样板） | `8165` |
+|  | [ticketops · 内部工单](./ticketops/README.md) | 队列、优先级、处理人与状态（本机样板） | `8166` |
+|  | [bugtrack · 缺陷跟踪](./bugtrack/README.md) | 项目、缺陷、复现步骤与验证状态（本机样板） | `8167` |
+
+## 🧪 测试、工单与缺陷 · 新增 3 个平台
+
+这三个平台是**独立的本机单用户工作台**，不是同一套账号下联动的 SaaS。测试平台记录用例与人工执行结果；内部工单记录队列、指派和处理进度；缺陷平台记录问题、复现步骤和状态。已有 [service 售后工单](./service/README.md) 面向客户售后，不与内部工单混为一谈。
+
+<table><tr>
+<td width="33%" align="center"><a href="./testops/README.md"><img src="./testops/screenshots/overview.png" alt="测试管理平台真实页面" width="100%" /></a><br/><b>testops · 测试管理</b><br/><sub>用例 → 手工执行记录</sub></td>
+<td width="33%" align="center"><a href="./ticketops/README.md"><img src="./ticketops/screenshots/overview.png" alt="内部工单平台真实页面" width="100%" /></a><br/><b>ticketops · 内部工单</b><br/><sub>队列 → 工单处理</sub></td>
+<td width="33%" align="center"><a href="./bugtrack/README.md"><img src="./bugtrack/screenshots/overview.png" alt="缺陷跟踪平台真实页面" width="100%" /></a><br/><b>bugtrack · 缺陷跟踪</b><br/><sub>项目 → 问题记录</sub></td>
+</tr></table>
+
+例如运行 `./testops/run.ps1`（Windows）或 `./testops/run.sh`（macOS/Linux），打开 `http://127.0.0.1:8165`。另两个项目使用各自目录和上方端口。**不提供自动化测试执行、CI 集成、跨项目同步、多用户协作、SLA 计时或通知。**
 
 ## 🆕 新增 35 个细分行业入口
 
@@ -191,7 +206,7 @@
 </table>
 
 <details>
-<summary><b>展开全部 84 个项目的页面截图索引</b></summary>
+<summary><b>展开全部 87 个项目的页面截图索引</b></summary>
 
 | 项目 | 已演示能力 | 本机地址 | 页面截图 |
 | :--- | :--- | :--- | :--- |
@@ -281,6 +296,10 @@
 | [returns](./returns/README.md) | 商品档案与退换申请的本机记录演示 | http://127.0.0.1:8163 | [总览](./returns/screenshots/overview.png) · [商品档案](./returns/screenshots/primary.png) · [退换申请](./returns/screenshots/secondary.png) · [编辑表单](./returns/screenshots/editor.png) |
 | [realestate](./realestate/README.md) | 房源档案与带看记录的本机记录演示 | http://127.0.0.1:8164 | [总览](./realestate/screenshots/overview.png) · [房源档案](./realestate/screenshots/primary.png) · [带看记录](./realestate/screenshots/secondary.png) · [编辑表单](./realestate/screenshots/editor.png) |
 
+| [testops](./testops/README.md) | 测试用例与手工执行记录的本机演示 | http://127.0.0.1:8165 | [总览](./testops/screenshots/overview.png) · [测试用例](./testops/screenshots/primary.png) · [执行记录](./testops/screenshots/secondary.png) · [编辑表单](./testops/screenshots/editor.png) |
+| [ticketops](./ticketops/README.md) | 队列与内部工单的本机演示 | http://127.0.0.1:8166 | [总览](./ticketops/screenshots/overview.png) · [队列](./ticketops/screenshots/primary.png) · [工单](./ticketops/screenshots/secondary.png) · [编辑表单](./ticketops/screenshots/editor.png) |
+| [bugtrack](./bugtrack/README.md) | 项目与缺陷记录的本机演示 | http://127.0.0.1:8167 | [总览](./bugtrack/screenshots/overview.png) · [项目](./bugtrack/screenshots/primary.png) · [缺陷](./bugtrack/screenshots/secondary.png) · [编辑表单](./bugtrack/screenshots/editor.png) |
+
 </details>
 
 ## 🧭 系统架构
@@ -289,7 +308,7 @@
 
 **关键设计：**
 
-1. **项目独立：**84 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
+1. **项目独立：**87 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
 2. **Web 一体交付：**Vue 页面由 Vite 构建后放入 Spring Boot 的静态资源目录，随可执行 jar 一起提供；浏览器通过同源 `/api` 请求业务接口。
 3. **小程序单独构建：**shop、barber、dining、selfshop 的 uni-app 构建微信小程序产物；小程序和电脑端的代码形态不同，但对应 Java API 保持独立。
 4. **数据本机持久化：**业务数据位于各项目的 `data/<项目>.json`，重启仍保留。停服后复制 JSON 文件备份；停服后移走它可重置演示数据。文件损坏时服务拒绝启动，避免覆盖原数据。
@@ -298,11 +317,11 @@
 ## ✅ 验证与使用边界
 
 ```powershell
-./test-all.ps1      # Windows：84 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
-./smoke-test.ps1    # Windows：启动 84 个真实服务，检查页面、JS 与 API
+./test-all.ps1      # Windows：87 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
+./smoke-test.ps1    # Windows：启动 87 个真实服务，检查页面、JS 与 API
 ```
 
-**最近一次全量验收（2026-10-02）：**84 个项目完成前端构建、后端测试和打包检查；84 个真实 Java 进程的页面/API 冒烟通过。新增 35 个项目各有 4 张真实截图；上一轮 16 个项目也各有 4 张，根目录截图索引链接已检查。测试覆盖本机演示流程，不代表生产环境的性能、安全或行业合规认证。
+**验证记录（2026-10-02）：**此前 84 个项目完成前端构建、后端测试、打包和真实 Java 进程的页面/API 冒烟；本轮新增的 testops、ticketops、bugtrack 分别通过前端构建、后端测试/打包、真实进程冒烟及浏览器表单检查，各附 4 张实际截图。87 个项目的完整脚本已经纳入新入口，但**本轮未重新跑完 87 项全量检查**。这些检查验证本机演示，不代表生产环境的性能、安全或行业合规认证。
 
 macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。截图保存在各项目的 `screenshots/`；新项目只有具备页面、接口、测试和实际截图后才列入目录。
 
