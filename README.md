@@ -1,6 +1,8 @@
 <div align="center">
 
-![ai-hub · 让每一种职业都有自己的软件](./docs/ai-hub-cover.svg)
+<p align="center">
+  <img src="./docs/ai-hub-hero.gif" alt="ai-hub · 让每一种职业都有自己的软件" width="1200">
+</p>
 
 **20 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
 
@@ -11,6 +13,10 @@
 > **只要你愿意提出需求，我们就把更多职业的想法做成看得见、跑得起来、能验证的产品。**
 >
 > ai-hub 是持续生长的业务软件合集，不是“已经覆盖所有职业”的承诺。每个列为已实现的项目都有独立的业务页面、Java API、运行脚本、测试与真实页面截图。
+
+<p align="center">
+  <img src="./docs/ai-hub-constellation.gif" alt="ai-hub 业务领域星图" width="1200">
+</p>
 
 ## ✨ 为什么是 ai-hub
 
