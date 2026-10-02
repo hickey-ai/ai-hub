@@ -42,7 +42,17 @@ def validator(entities):
 
 from extra_sectors import EXTRA
 from new_sectors import NEW
-SECTORS += EXTRA + NEW
+from more_sectors import EXTRA as MORE
+SECTORS += EXTRA + NEW + MORE
+
+# Fail before copying a template: duplicate keys would make Java Map.of seeds crash at startup.
+if len({s[0] for s in SECTORS}) != len(SECTORS) or len({s[1] for s in SECTORS}) != len(SECTORS):
+    raise ValueError("Duplicate sector slug or port")
+for sector in SECTORS:
+    for entity in sector[7]:
+        names = [field[0] for field in entity[3]]
+        if len(names) != len(set(names)):
+            raise ValueError(f"Duplicate fields in {sector[0]}/{entity[0]}")
 
 for slug,port,cn,en,subtitle,accent,soft,entities in SECTORS:
     dst=root/slug
@@ -119,6 +129,20 @@ class {class_name}ApplicationTests {{
     }}
 }}
 '''
+    # Exercise relation, enum and date validation for every generated sector.
+    invalid=f'''        var badRelation=mapper.readTree(payload).deepCopy();
+        ((com.fasterxml.jackson.databind.node.ObjectNode)badRelation).put("{ref}", 99999);
+        mvc.perform(post("/api/"+resource).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(badRelation))).andExpect(status().isBadRequest());
+        var badStatus=mapper.readTree(payload).deepCopy();
+        ((com.fasterxml.jackson.databind.node.ObjectNode)badStatus).put("status", "INVALID_STATUS");
+        mvc.perform(post("/api/"+resource).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(badStatus))).andExpect(status().isBadRequest());
+        var badDate=mapper.readTree(payload).deepCopy();
+        ((com.fasterxml.jackson.databind.node.ObjectNode)badDate).put("eventDate", "bad-date");
+        mvc.perform(post("/api/"+resource).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(badDate))).andExpect(status().isBadRequest());
+'''
+    # Early sectors have varying field names; add this only for the newer schema.
+    if any(f[0]=='eventDate' for f in entities[1][3]) and any(f[0]=='status' for f in entities[1][3]):
+        test=test.replace('        String created=mvc.perform(',invalid+'        String created=mvc.perform(')
     (tests/slug/(class_name+'ApplicationTests.java')).write_text(test,encoding='utf-8')
     config={'cn':cn,'en':en,'subtitle':subtitle,'accent':accent,'soft':soft,'entities':[{'key':k,'title':title,'singular':title,'icon':icon,'fields':[list(f) for f in fields],'columns':[f[0] for f in fields if f[2]!='textarea']} for k,title,icon,fields,_ in entities]}
     (dst/'frontend/src/config.js').write_text('export default '+json.dumps(config,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
@@ -127,11 +151,18 @@ class {class_name}ApplicationTests {{
     content=content.replace("const parent = config.entities.find(e => e.key === (key === 'vehicleId' ? 'vehicles' : 'children'))", "const relation = config.entities.flatMap(e => e.fields).find(f => f[0] === key && f[2] === 'relation')\n    const parent = config.entities.find(e => e.key === relation?.[4])")
     content=content.replace('return found?.plate || found?.name || \'已删除档案\'', "return found?.[parent?.fields[0][0]] || '已删除档案'")
     content=content.replace(':value="x.id">{{x.plate||x.name}}', ':value="x.id">{{x[config.entities.find(e=>e.key===field[4]).fields[0][0]]}}')
+    content=content.replace('const recent = computed(', '''const activityLabel = item => {
+  const entity = config.entities.at(-1)
+  const field = entity.fields.find(f => !['relation','date','select','textarea'].includes(f[2]))
+  return `${entity.title} · ${item[field?.[0]] ?? item.id}`
+}
+const recent = computed(''',1)
+    content=content.replace('<strong>{{item.title||item.type||item.name||item.plate}}</strong><small>{{item.date||item.startAt||item.birthDate}} · {{item.category||item.model||\'已保存\'}}</small>', '<strong>{{activityLabel(item)}}</strong><small>{{item.eventDate||item.date||item.startAt||\'\'}} · {{item.status||item.category||\'已保存\'}}</small>')
     app.write_text(content,encoding='utf-8')
     html=dst/'frontend/index.html'; html.write_text(html.read_text(encoding='utf-8').replace('汽车维修记录',cn),encoding='utf-8')
     package=dst/'frontend/package.json'; package.write_text(package.read_text(encoding='utf-8').replace('carcare',slug).replace('9095',str(port+1000)),encoding='utf-8')
     vite=dst/'frontend/vite.config.js'; vite.write_text(vite.read_text(encoding='utf-8').replace('8095',str(port)),encoding='utf-8')
     for script in ('run.ps1','run.sh'):
-        p=dst/script; p.write_text(p.read_text(encoding='utf-8').replace('carcare-api',slug+'-api'),encoding='utf-8')
-    (dst/'README.md').write_text(f'''# {cn} · {slug}\n\n{subtitle}。Vue 3 + Java 21 / Spring Boot 独立本机单用户演示，提供 {entities[0][1]} 和 {entities[1][1]} 两个关联的业务页面，支持检索、新增、修改、删除和本地 JSON 持久化。首次载入虚构数据，后续存储在 `data/{slug}.json`。\n\n## 直接体验\n\n准备 Java 21、Maven、Node.js 20.19+/22.12+、npm。在仓库根目录运行 `./{slug}/run.ps1`（Windows）或 `./{slug}/run.sh`（macOS/Linux），打开 http://127.0.0.1:{port}。首次构建会联网下载依赖，Ctrl+C 停止。\n\n## API 与测试\n\n`GET /api/{{resource}}`、`POST /api/{{resource}}`、`PUT /api/{{resource}}/{{id}}`、`DELETE /api/{{resource}}/{{id}}`。字段、必填、类别、数字、日期、关联关系均在服务端校验。无效输入 400、不存在 404、删除被引用档案 409。执行 `mvn -f {slug}/backend/pom.xml test`，或根目录运行 `./test-all.ps1`。\n\n## 真实页面截图\n\n![{cn}总览](./screenshots/overview.png)\n![{entities[0][1]}](./screenshots/primary.png)\n![{entities[1][1]}](./screenshots/secondary.png)\n\n## 使用边界\n\n本机单用户样板，不含正式鉴权、权限隔离、数据库、并发写入、外部设备、真实资金或生产流程控制；状态由用户手动维护。请勿录入敏感或真实业务数据，也不要直接部署到公网。\n''',encoding='utf-8')
+        p=dst/script; content=p.read_text(encoding='utf-8').replace('carcare-api',slug+'-api'); p.write_bytes(content.encode('utf-8')) if script=='run.sh' else p.write_text(content,encoding='utf-8')
+    (dst/'README.md').write_text(f'''# {cn} · {slug}\n\n{subtitle}。Vue 3 + Java 21 / Spring Boot 独立本机单用户演示，提供 {entities[0][1]} 和 {entities[1][1]} 两个关联的业务页面，支持检索、新增、修改、删除和本地 JSON 持久化。首次载入虚构数据，后续存储在 `data/{slug}.json`。\n\n## 直接体验\n\n准备 Java 21、Maven、Node.js 20.19+/22.12+、npm。在仓库根目录运行 `./{slug}/run.ps1`（Windows）或 `./{slug}/run.sh`（macOS/Linux），打开 http://127.0.0.1:{port}。首次构建会联网下载依赖，Ctrl+C 停止。\n\n## API 与测试\n\n`GET /api/{{resource}}`、`POST /api/{{resource}}`、`PUT /api/{{resource}}/{{id}}`、`DELETE /api/{{resource}}/{{id}}`。字段、必填、类别、数字、日期、关联关系均在服务端校验。无效输入 400、不存在 404、删除被引用档案 409。执行 `mvn -f {slug}/backend/pom.xml test`，或根目录运行 `./test-all.ps1`。\n\n## 真实页面截图\n\n![{cn}总览](./screenshots/overview.png)\n![{entities[0][1]}](./screenshots/primary.png)\n![{entities[1][1]}](./screenshots/secondary.png)\n![新增表单](./screenshots/editor.png)\n\n## 使用边界\n\n本机单用户样板，不含正式鉴权、权限隔离、数据库、并发写入、外部设备、真实资金或生产流程控制；状态由用户手动维护。请勿录入敏感或真实业务数据，也不要直接部署到公网。\n''',encoding='utf-8')
     print(slug,port)

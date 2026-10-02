@@ -6,7 +6,7 @@
   <img src="./docs/ai-hub-hero.gif" alt="ai-hub · 让每一种职业都有自己的软件" width="1200">
 </p>
 
-**49 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
+**84 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
 
 [立即体验](#-快速开始) · [浏览项目](#-项目宇宙) · [系统架构](#-系统架构) · [页面截图](#-真实页面) · [测试与边界](#-验证与使用边界)
 
@@ -26,7 +26,7 @@
 
 | 真实业务场景 | 开箱可体验 | 自主实现、方便改造 |
 | :--- | :--- | :--- |
-| 从电商、管理到医疗、科研、家庭记录，覆盖 **49 个独立系统**；新增行业目录复用记录台模板，深度与完整产品不同。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 49 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
+| 从电商、管理到医疗、科研、家庭记录，覆盖 **84 个独立系统**；新增行业目录复用记录台模板，深度与完整产品不同。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 84 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
 
 ## ⚡ 快速开始
 
@@ -96,7 +96,53 @@
 |  | [itops · IT 运维](./itops/README.md) | 设备资产、故障记录的本机记录样板 | `8128` |
 |  | [civic · 公共服务](./civic/README.md) | 服务事项、办理登记的本机记录样板 | `8129` |
 
-## 🆕 本轮新增 · 16 个行业记录台
+## 🆕 新增 35 个细分行业入口
+
+景区管理、房产交易及出行、医疗、教育、宠物、门店、企业和供应链等方向均可单独启动。**每个新增项目是可操作的本机单用户记录样板**：两类关联资源、字段校验、检索／增删改、本地 JSON 持久化；不是完整行业生产系统。特别是景区票务／容量控制、房产交易／合同签署、医疗检验、停车计费、跨境合规和真实收付款均未实现。
+
+| **出行、园区与景区** | [parking · 停车场](./parking/README.md) | 停车区域／停车记录 · 车位与进出场登记（本机记录样板） | `8130` |
+|  | [charging · 充电站](./charging/README.md) | 充电站点／充电记录 · 充电站点与充电登记（本机记录样板） | `8131` |
+|  | [parkops · 园区运营](./parkops/README.md) | 园区档案／巡检记录 · 园区设施与巡检台账（本机记录样板） | `8132` |
+|  | [fleet · 车队管理](./fleet/README.md) | 车队车辆／行车任务 · 车队与行车任务（本机记录样板） | `8133` |
+|  | [scenic · 景区管理](./scenic/README.md) | 景点档案／游览登记 · 景点资源与游览登记（本机记录样板） | `8134` |
+| **医疗服务细分** | [clinic · 诊所管理](./clinic/README.md) | 诊室档案／预约登记 · 诊室与预约登记（本机记录样板） | `8135` |
+|  | [dental · 口腔门诊](./dental/README.md) | 牙椅档案／就诊登记 · 牙椅与就诊排期（本机记录样板） | `8136` |
+|  | [aesthetics · 医美服务](./aesthetics/README.md) | 服务项目／咨询登记 · 项目与咨询跟进（本机记录样板） | `8137` |
+|  | [rehab · 康复训练](./rehab/README.md) | 训练方案／训练记录 · 方案与训练记录（本机记录样板） | `8138` |
+|  | [lis · 检验台账](./lis/README.md) | 检验项目／样本登记 · 项目与样本流转演示（本机记录样板） | `8139` |
+| **教育与学习** | [kindergarten · 幼儿园管理](./kindergarten/README.md) | 班级档案／班级活动 · 班级与活动记录（本机记录样板） | `8140` |
+|  | [training · 培训机构](./training/README.md) | 培训课程／报名登记 · 课程与报名记录（本机记录样板） | `8141` |
+|  | [elearning · 在线学习](./elearning/README.md) | 线上课程／学习进度 · 课程与学习记录（本机记录样板） | `8142` |
+|  | [exam · 考试管理](./exam/README.md) | 考试场次／报考登记 · 场次与报考登记（本机记录样板） | `8143` |
+|  | [library · 图书馆](./library/README.md) | 馆藏图书／借阅登记 · 图书与借阅台账（本机记录样板） | `8144` |
+| **宠物服务** | [petcare · 宠物照护](./petcare/README.md) | 宠物档案／照护记录 · 宠物与照护记录（本机记录样板） | `8145` |
+|  | [petboarding · 宠物寄养](./petboarding/README.md) | 寄养空间／寄养登记 · 房间与寄养登记（本机记录样板） | `8146` |
+|  | [petgrooming · 宠物美容](./petgrooming/README.md) | 美容服务／美容预约 · 服务与预约登记（本机记录样板） | `8147` |
+|  | [veterinary · 宠物诊所](./veterinary/README.md) | 诊室档案／到访记录 · 诊室与到访台账（本机记录样板） | `8148` |
+| **门店与生活服务** | [pos · 门店收银](./pos/README.md) | 收银台档案／收银记录 · 收银台与手工交易台账（本机记录样板） | `8149` |
+|  | [loyalty · 会员运营](./loyalty/README.md) | 会员等级／会员档案 · 等级与会员登记（本机记录样板） | `8150` |
+|  | [laundry · 洗衣门店](./laundry/README.md) | 洗护设备／洗护订单 · 设备与洗护订单（本机记录样板） | `8151` |
+|  | [gym · 健身房](./gym/README.md) | 团体课程／课程预约 · 课程与预约台账（本机记录样板） | `8152` |
+|  | [photography · 摄影工作室](./photography/README.md) | 拍摄套餐／拍摄预约 · 套餐与拍摄预约（本机记录样板） | `8153` |
+|  | [wedding · 婚庆策划](./wedding/README.md) | 婚礼方案／婚礼档期 · 方案与婚礼档期（本机记录样板） | `8154` |
+| **企业经营** | [accounting · 财务记账](./accounting/README.md) | 账簿分类／记账条目 · 账簿与手工记账（本机记录样板） | `8155` |
+|  | [contracts · 合同管理](./contracts/README.md) | 合同模板／合同登记 · 模板与合同台账（本机记录样板） | `8156` |
+|  | [projectops · 项目执行](./projectops/README.md) | 项目档案／项目里程碑 · 项目与里程碑跟踪（本机记录样板） | `8157` |
+|  | [maintenance · 设备维保](./maintenance/README.md) | 设备档案／维保工单 · 设备与维保工单（本机记录样板） | `8158` |
+|  | [qms · 质量管理](./qms/README.md) | 检验标准／质量检查 · 标准与检查记录（本机记录样板） | `8159` |
+| **供应链与房产** | [coldchain · 冷链运输](./coldchain/README.md) | 冷链箱档案／运输记录 · 容器与运输登记（本机记录样板） | `8160` |
+|  | [freshdelivery · 生鲜配送](./freshdelivery/README.md) | 配送线路／配送任务 · 线路与配送任务（本机记录样板） | `8161` |
+|  | [crossborder · 跨境业务](./crossborder/README.md) | 跨境商品／跨境运单 · 商品与跨境运单（本机记录样板） | `8162` |
+|  | [returns · 退换货](./returns/README.md) | 商品档案／退换申请 · 商品与退换登记（本机记录样板） | `8163` |
+|  | [realestate · 房产交易](./realestate/README.md) | 房源档案／带看记录 · 房源与带看台账（本机记录样板） | `8164` |
+
+[scenic 景区管理](./scenic/README.md) 与 [realestate 房产交易](./realestate/README.md) 可从各自 README 启动；已有 [property 物业房产](./property/README.md) 侧重房源与报修。
+
+<table>
+<tr><td width="50%" align="center"><a href="./scenic/README.md"><img src="./scenic/screenshots/overview.png" alt="景区景点与游览登记总览" width="100%" /></a><br/><b>景区管理 · scenic</b></td><td width="50%" align="center"><a href="./realestate/README.md"><img src="./realestate/screenshots/primary.png" alt="房产房源与参考挂牌价列表" width="100%" /></a><br/><b>房产管理 · realestate</b></td></tr>
+</table>
+
+## 🆕 上一轮新增 · 16 个行业记录台
 
 > 从内容、采购到养老、环境和公共服务，每个入口都是**可在本机运行的独立样板**：两类关联记录、检索与编辑、Java API、本地 JSON 持久化及实际页面截图。先体验具体场景，再按真实业务需求扩展；**不等同于完整生产系统**。
 
@@ -125,7 +171,7 @@
 </table>
 
 <details>
-<summary><b>展开全部 49 个项目的页面截图索引</b></summary>
+<summary><b>展开全部 84 个项目的页面截图索引</b></summary>
 
 | 项目 | 已演示能力 | 本机地址 | 页面截图 |
 | :--- | :--- | :--- | :--- |
@@ -179,6 +225,41 @@
 | [telecom](./telecom/README.md) | 通信站点与维护任务的本机演示 | http://127.0.0.1:8127 | [总览](./telecom/screenshots/overview.png) · [通信站点](./telecom/screenshots/primary.png) · [维护任务](./telecom/screenshots/secondary.png) · [编辑表单](./telecom/screenshots/editor.png) |
 | [itops](./itops/README.md) | 设备资产与故障记录的本机演示 | http://127.0.0.1:8128 | [总览](./itops/screenshots/overview.png) · [设备资产](./itops/screenshots/primary.png) · [故障记录](./itops/screenshots/secondary.png) · [编辑表单](./itops/screenshots/editor.png) |
 | [civic](./civic/README.md) | 服务事项与办理登记的本机演示 | http://127.0.0.1:8129 | [总览](./civic/screenshots/overview.png) · [服务事项](./civic/screenshots/primary.png) · [办理登记](./civic/screenshots/secondary.png) · [编辑表单](./civic/screenshots/editor.png) |
+| [parking](./parking/README.md) | 停车区域与停车记录的本机记录演示 | http://127.0.0.1:8130 | [总览](./parking/screenshots/overview.png) · [停车区域](./parking/screenshots/primary.png) · [停车记录](./parking/screenshots/secondary.png) · [编辑表单](./parking/screenshots/editor.png) |
+| [charging](./charging/README.md) | 充电站点与充电记录的本机记录演示 | http://127.0.0.1:8131 | [总览](./charging/screenshots/overview.png) · [充电站点](./charging/screenshots/primary.png) · [充电记录](./charging/screenshots/secondary.png) · [编辑表单](./charging/screenshots/editor.png) |
+| [parkops](./parkops/README.md) | 园区档案与巡检记录的本机记录演示 | http://127.0.0.1:8132 | [总览](./parkops/screenshots/overview.png) · [园区档案](./parkops/screenshots/primary.png) · [巡检记录](./parkops/screenshots/secondary.png) · [编辑表单](./parkops/screenshots/editor.png) |
+| [fleet](./fleet/README.md) | 车队车辆与行车任务的本机记录演示 | http://127.0.0.1:8133 | [总览](./fleet/screenshots/overview.png) · [车队车辆](./fleet/screenshots/primary.png) · [行车任务](./fleet/screenshots/secondary.png) · [编辑表单](./fleet/screenshots/editor.png) |
+| [scenic](./scenic/README.md) | 景点档案与游览登记的本机记录演示 | http://127.0.0.1:8134 | [总览](./scenic/screenshots/overview.png) · [景点档案](./scenic/screenshots/primary.png) · [游览登记](./scenic/screenshots/secondary.png) · [编辑表单](./scenic/screenshots/editor.png) |
+| [clinic](./clinic/README.md) | 诊室档案与预约登记的本机记录演示 | http://127.0.0.1:8135 | [总览](./clinic/screenshots/overview.png) · [诊室档案](./clinic/screenshots/primary.png) · [预约登记](./clinic/screenshots/secondary.png) · [编辑表单](./clinic/screenshots/editor.png) |
+| [dental](./dental/README.md) | 牙椅档案与就诊登记的本机记录演示 | http://127.0.0.1:8136 | [总览](./dental/screenshots/overview.png) · [牙椅档案](./dental/screenshots/primary.png) · [就诊登记](./dental/screenshots/secondary.png) · [编辑表单](./dental/screenshots/editor.png) |
+| [aesthetics](./aesthetics/README.md) | 服务项目与咨询登记的本机记录演示 | http://127.0.0.1:8137 | [总览](./aesthetics/screenshots/overview.png) · [服务项目](./aesthetics/screenshots/primary.png) · [咨询登记](./aesthetics/screenshots/secondary.png) · [编辑表单](./aesthetics/screenshots/editor.png) |
+| [rehab](./rehab/README.md) | 训练方案与训练记录的本机记录演示 | http://127.0.0.1:8138 | [总览](./rehab/screenshots/overview.png) · [训练方案](./rehab/screenshots/primary.png) · [训练记录](./rehab/screenshots/secondary.png) · [编辑表单](./rehab/screenshots/editor.png) |
+| [lis](./lis/README.md) | 检验项目与样本登记的本机记录演示 | http://127.0.0.1:8139 | [总览](./lis/screenshots/overview.png) · [检验项目](./lis/screenshots/primary.png) · [样本登记](./lis/screenshots/secondary.png) · [编辑表单](./lis/screenshots/editor.png) |
+| [kindergarten](./kindergarten/README.md) | 班级档案与班级活动的本机记录演示 | http://127.0.0.1:8140 | [总览](./kindergarten/screenshots/overview.png) · [班级档案](./kindergarten/screenshots/primary.png) · [班级活动](./kindergarten/screenshots/secondary.png) · [编辑表单](./kindergarten/screenshots/editor.png) |
+| [training](./training/README.md) | 培训课程与报名登记的本机记录演示 | http://127.0.0.1:8141 | [总览](./training/screenshots/overview.png) · [培训课程](./training/screenshots/primary.png) · [报名登记](./training/screenshots/secondary.png) · [编辑表单](./training/screenshots/editor.png) |
+| [elearning](./elearning/README.md) | 线上课程与学习进度的本机记录演示 | http://127.0.0.1:8142 | [总览](./elearning/screenshots/overview.png) · [线上课程](./elearning/screenshots/primary.png) · [学习进度](./elearning/screenshots/secondary.png) · [编辑表单](./elearning/screenshots/editor.png) |
+| [exam](./exam/README.md) | 考试场次与报考登记的本机记录演示 | http://127.0.0.1:8143 | [总览](./exam/screenshots/overview.png) · [考试场次](./exam/screenshots/primary.png) · [报考登记](./exam/screenshots/secondary.png) · [编辑表单](./exam/screenshots/editor.png) |
+| [library](./library/README.md) | 馆藏图书与借阅登记的本机记录演示 | http://127.0.0.1:8144 | [总览](./library/screenshots/overview.png) · [馆藏图书](./library/screenshots/primary.png) · [借阅登记](./library/screenshots/secondary.png) · [编辑表单](./library/screenshots/editor.png) |
+| [petcare](./petcare/README.md) | 宠物档案与照护记录的本机记录演示 | http://127.0.0.1:8145 | [总览](./petcare/screenshots/overview.png) · [宠物档案](./petcare/screenshots/primary.png) · [照护记录](./petcare/screenshots/secondary.png) · [编辑表单](./petcare/screenshots/editor.png) |
+| [petboarding](./petboarding/README.md) | 寄养空间与寄养登记的本机记录演示 | http://127.0.0.1:8146 | [总览](./petboarding/screenshots/overview.png) · [寄养空间](./petboarding/screenshots/primary.png) · [寄养登记](./petboarding/screenshots/secondary.png) · [编辑表单](./petboarding/screenshots/editor.png) |
+| [petgrooming](./petgrooming/README.md) | 美容服务与美容预约的本机记录演示 | http://127.0.0.1:8147 | [总览](./petgrooming/screenshots/overview.png) · [美容服务](./petgrooming/screenshots/primary.png) · [美容预约](./petgrooming/screenshots/secondary.png) · [编辑表单](./petgrooming/screenshots/editor.png) |
+| [veterinary](./veterinary/README.md) | 诊室档案与到访记录的本机记录演示 | http://127.0.0.1:8148 | [总览](./veterinary/screenshots/overview.png) · [诊室档案](./veterinary/screenshots/primary.png) · [到访记录](./veterinary/screenshots/secondary.png) · [编辑表单](./veterinary/screenshots/editor.png) |
+| [pos](./pos/README.md) | 收银台档案与收银记录的本机记录演示 | http://127.0.0.1:8149 | [总览](./pos/screenshots/overview.png) · [收银台档案](./pos/screenshots/primary.png) · [收银记录](./pos/screenshots/secondary.png) · [编辑表单](./pos/screenshots/editor.png) |
+| [loyalty](./loyalty/README.md) | 会员等级与会员档案的本机记录演示 | http://127.0.0.1:8150 | [总览](./loyalty/screenshots/overview.png) · [会员等级](./loyalty/screenshots/primary.png) · [会员档案](./loyalty/screenshots/secondary.png) · [编辑表单](./loyalty/screenshots/editor.png) |
+| [laundry](./laundry/README.md) | 洗护设备与洗护订单的本机记录演示 | http://127.0.0.1:8151 | [总览](./laundry/screenshots/overview.png) · [洗护设备](./laundry/screenshots/primary.png) · [洗护订单](./laundry/screenshots/secondary.png) · [编辑表单](./laundry/screenshots/editor.png) |
+| [gym](./gym/README.md) | 团体课程与课程预约的本机记录演示 | http://127.0.0.1:8152 | [总览](./gym/screenshots/overview.png) · [团体课程](./gym/screenshots/primary.png) · [课程预约](./gym/screenshots/secondary.png) · [编辑表单](./gym/screenshots/editor.png) |
+| [photography](./photography/README.md) | 拍摄套餐与拍摄预约的本机记录演示 | http://127.0.0.1:8153 | [总览](./photography/screenshots/overview.png) · [拍摄套餐](./photography/screenshots/primary.png) · [拍摄预约](./photography/screenshots/secondary.png) · [编辑表单](./photography/screenshots/editor.png) |
+| [wedding](./wedding/README.md) | 婚礼方案与婚礼档期的本机记录演示 | http://127.0.0.1:8154 | [总览](./wedding/screenshots/overview.png) · [婚礼方案](./wedding/screenshots/primary.png) · [婚礼档期](./wedding/screenshots/secondary.png) · [编辑表单](./wedding/screenshots/editor.png) |
+| [accounting](./accounting/README.md) | 账簿分类与记账条目的本机记录演示 | http://127.0.0.1:8155 | [总览](./accounting/screenshots/overview.png) · [账簿分类](./accounting/screenshots/primary.png) · [记账条目](./accounting/screenshots/secondary.png) · [编辑表单](./accounting/screenshots/editor.png) |
+| [contracts](./contracts/README.md) | 合同模板与合同登记的本机记录演示 | http://127.0.0.1:8156 | [总览](./contracts/screenshots/overview.png) · [合同模板](./contracts/screenshots/primary.png) · [合同登记](./contracts/screenshots/secondary.png) · [编辑表单](./contracts/screenshots/editor.png) |
+| [projectops](./projectops/README.md) | 项目档案与项目里程碑的本机记录演示 | http://127.0.0.1:8157 | [总览](./projectops/screenshots/overview.png) · [项目档案](./projectops/screenshots/primary.png) · [项目里程碑](./projectops/screenshots/secondary.png) · [编辑表单](./projectops/screenshots/editor.png) |
+| [maintenance](./maintenance/README.md) | 设备档案与维保工单的本机记录演示 | http://127.0.0.1:8158 | [总览](./maintenance/screenshots/overview.png) · [设备档案](./maintenance/screenshots/primary.png) · [维保工单](./maintenance/screenshots/secondary.png) · [编辑表单](./maintenance/screenshots/editor.png) |
+| [qms](./qms/README.md) | 检验标准与质量检查的本机记录演示 | http://127.0.0.1:8159 | [总览](./qms/screenshots/overview.png) · [检验标准](./qms/screenshots/primary.png) · [质量检查](./qms/screenshots/secondary.png) · [编辑表单](./qms/screenshots/editor.png) |
+| [coldchain](./coldchain/README.md) | 冷链箱档案与运输记录的本机记录演示 | http://127.0.0.1:8160 | [总览](./coldchain/screenshots/overview.png) · [冷链箱档案](./coldchain/screenshots/primary.png) · [运输记录](./coldchain/screenshots/secondary.png) · [编辑表单](./coldchain/screenshots/editor.png) |
+| [freshdelivery](./freshdelivery/README.md) | 配送线路与配送任务的本机记录演示 | http://127.0.0.1:8161 | [总览](./freshdelivery/screenshots/overview.png) · [配送线路](./freshdelivery/screenshots/primary.png) · [配送任务](./freshdelivery/screenshots/secondary.png) · [编辑表单](./freshdelivery/screenshots/editor.png) |
+| [crossborder](./crossborder/README.md) | 跨境商品与跨境运单的本机记录演示 | http://127.0.0.1:8162 | [总览](./crossborder/screenshots/overview.png) · [跨境商品](./crossborder/screenshots/primary.png) · [跨境运单](./crossborder/screenshots/secondary.png) · [编辑表单](./crossborder/screenshots/editor.png) |
+| [returns](./returns/README.md) | 商品档案与退换申请的本机记录演示 | http://127.0.0.1:8163 | [总览](./returns/screenshots/overview.png) · [商品档案](./returns/screenshots/primary.png) · [退换申请](./returns/screenshots/secondary.png) · [编辑表单](./returns/screenshots/editor.png) |
+| [realestate](./realestate/README.md) | 房源档案与带看记录的本机记录演示 | http://127.0.0.1:8164 | [总览](./realestate/screenshots/overview.png) · [房源档案](./realestate/screenshots/primary.png) · [带看记录](./realestate/screenshots/secondary.png) · [编辑表单](./realestate/screenshots/editor.png) |
 
 </details>
 
@@ -188,7 +269,7 @@
 
 **关键设计：**
 
-1. **项目独立：**49 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
+1. **项目独立：**84 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
 2. **Web 一体交付：**Vue 页面由 Vite 构建后放入 Spring Boot 的静态资源目录，随可执行 jar 一起提供；浏览器通过同源 `/api` 请求业务接口。
 3. **小程序单独构建：**shop、barber、dining、selfshop 的 uni-app 构建微信小程序产物；小程序和电脑端的代码形态不同，但对应 Java API 保持独立。
 4. **数据本机持久化：**业务数据位于各项目的 `data/<项目>.json`，重启仍保留。停服后复制 JSON 文件备份；停服后移走它可重置演示数据。文件损坏时服务拒绝启动，避免覆盖原数据。
@@ -197,11 +278,11 @@
 ## ✅ 验证与使用边界
 
 ```powershell
-./test-all.ps1      # Windows：49 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
-./smoke-test.ps1    # Windows：启动 49 个真实服务，检查页面、JS 与 API
+./test-all.ps1      # Windows：84 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
+./smoke-test.ps1    # Windows：启动 84 个真实服务，检查页面、JS 与 API
 ```
 
-**最近一次全量验收（2026-10-02）：**49 个项目完成前端构建、后端测试和打包检查；49 个真实 Java 进程的页面/API 冒烟通过。新增 16 个项目各有 4 张真实截图，根目录截图索引链接已检查。测试覆盖本机演示流程，不代表生产环境的性能、安全或行业合规认证。
+**最近一次全量验收（2026-10-02）：**84 个项目完成前端构建、后端测试和打包检查；84 个真实 Java 进程的页面/API 冒烟通过。新增 35 个项目各有 4 张真实截图；上一轮 16 个项目也各有 4 张，根目录截图索引链接已检查。测试覆盖本机演示流程，不代表生产环境的性能、安全或行业合规认证。
 
 macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。截图保存在各项目的 `screenshots/`；新项目只有具备页面、接口、测试和实际截图后才列入目录。
 
@@ -210,6 +291,6 @@ macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <�
 
 ## 🌱 下一站
 
-“让所有职业都能找到软件”是方向，而非当前覆盖范围。新增 29 个行业目录是**可运行的档案／记录演示**，并非已经实现 ERP 自动库存结转、生产 MES、物流调度、酒店房态冲突控制、正式审批等完整行业系统。CMS、仓储、采购、照护、公共服务等新增目录同样仅覆盖本机档案/记录功能，不具备出版审核、真实仓储结转、保险理赔或政务身份校验等完整流程。更多候选类型与参考项目见 [业务系统调研与建设清单](./docs/business-map.md)。欢迎从一个真实业务问题出发，提出下一款值得认真做的软件。
+“让所有职业都能找到软件”是方向，而非当前覆盖范围。本轮的 35 个入口也是行业概念样板，不能直接处理真实个人、健康或财务数据。新增 29 个行业目录是**可运行的档案／记录演示**，并非已经实现 ERP 自动库存结转、生产 MES、物流调度、酒店房态冲突控制、正式审批等完整行业系统。CMS、仓储、采购、照护、公共服务等新增目录同样仅覆盖本机档案/记录功能，不具备出版审核、真实仓储结转、保险理赔或政务身份校验等完整流程。更多候选类型与参考项目见 [业务系统调研与建设清单](./docs/business-map.md)。欢迎从一个真实业务问题出发，提出下一款值得认真做的软件。
 
 **定制开发联系：**QQ **3174667330** · 邮箱 **3174667330@qq.com**。Git 提交邮箱仅设置在此仓库，不修改全局配置。

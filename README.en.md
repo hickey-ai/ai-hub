@@ -4,7 +4,7 @@
 
 <p align="center"><img src="./docs/ai-hub-hero.gif" alt="ai-hub: software ideas for more professions" width="1200"></p>
 
-**49 runnable local projects** · **4 WeChat mini-program builds** · **Vue 3 + Java 21** · **Local-first**
+**84 runnable local projects** · **4 WeChat mini-program builds** · **Vue 3 + Java 21** · **Local-first**
 
 [Get started](#-quick-start) · [Explore projects](#-project-universe) · [Screenshots](#-real-screenshots) · [Architecture](#-architecture) · [Validation](#-validation-and-limits)
 
@@ -20,7 +20,7 @@
 
 | Explore real scenarios | Run one project at a time | Adapt the code |
 | :--- | :--- | :--- |
-| Commerce, administration, healthcare, science, family journals and more across **49 independent directories**. The newer sector projects share a simple record-desk pattern; their depth varies. | Build a Vue frontend and serve it with its Java backend. No need to start all 49 services. | Vue 3 + Java 21 / Spring Boot for web projects; uni-app for the four WeChat mini-program builds. Each project has its own port and local data file. |
+| Commerce, administration, healthcare, science, family journals and more across **84 independent directories**. The newer sector projects share a simple record-desk pattern; their depth varies. | Build a Vue frontend and serve it with its Java backend. No need to start all 84 services. | Vue 3 + Java 21 / Spring Boot for web projects; uni-app for the four WeChat mini-program builds. Each project has its own port and local data file. |
 
 ## ⚡ Quick start
 
@@ -90,7 +90,51 @@ Each link opens that project's README with its startup notes and screenshots. So
 |  | [itops · IT operations](./itops/README.md) | Assets and incident notes; local-only demo | `8128` |
 |  | [civic · Civic services](./civic/README.md) | Services and application records; local-only demo | `8129` |
 
-## 🆕 Newest 16 sector record desks
+## 🆕 35 more sector record desks
+
+Attraction operations and real-estate viewings join travel, clinical, education, pet, retail, business, and supply-chain niches. Every new directory is an independently runnable **single-user local record demo**, not production software. Ticketing, capacity enforcement, property closing, medical diagnostics, parking billing, customs compliance, and real money movement are **not implemented**. The existing [property demo](./property/README.md) covers units and repair requests; [realestate](./realestate/README.md) covers listings and viewings.
+
+<table>
+<tr><td width="50%" align="center"><a href="./scenic/README.md"><img src="./scenic/screenshots/overview.png" alt="Attraction and visitor record overview" width="100%" /></a><br/><b>Scenic attractions · scenic</b></td><td width="50%" align="center"><a href="./realestate/README.md"><img src="./realestate/screenshots/primary.png" alt="Property listing records" width="100%" /></a><br/><b>Real estate · realestate</b></td></tr>
+</table>
+
+| **Travel, parks & attractions** | [parking · Parking](./parking/README.md) | parking areas & stays; local record demo | `8130` |
+|  | [charging · EV charging](./charging/README.md) | stations & charging sessions; local record demo | `8131` |
+|  | [parkops · Park operations](./parkops/README.md) | parks & inspections; local record demo | `8132` |
+|  | [fleet · Fleet management](./fleet/README.md) | vehicles & trips; local record demo | `8133` |
+|  | [scenic · Scenic attractions](./scenic/README.md) | spots & visit registrations; local record demo | `8134` |
+| **Care & diagnostics records** | [clinic · Clinic](./clinic/README.md) | rooms & appointments; local record demo | `8135` |
+|  | [dental · Dental practice](./dental/README.md) | chairs & visits; local record demo | `8136` |
+|  | [aesthetics · Aesthetic services](./aesthetics/README.md) | services & consultations; local record demo | `8137` |
+|  | [rehab · Rehabilitation](./rehab/README.md) | programs & training sessions; local record demo | `8138` |
+|  | [lis · Lab sample registry](./lis/README.md) | assays & sample registrations; local record demo | `8139` |
+| **Education & learning** | [kindergarten · Kindergarten](./kindergarten/README.md) | classes & activities; local record demo | `8140` |
+|  | [training · Training center](./training/README.md) | courses & enrollments; local record demo | `8141` |
+|  | [elearning · E-learning](./elearning/README.md) | courses & learning progress; local record demo | `8142` |
+|  | [exam · Exam administration](./exam/README.md) | exams & registrations; local record demo | `8143` |
+|  | [library · Library](./library/README.md) | books & loans; local record demo | `8144` |
+| **Pet services** | [petcare · Pet care](./petcare/README.md) | pets & care logs; local record demo | `8145` |
+|  | [petboarding · Pet boarding](./petboarding/README.md) | rooms & boarding stays; local record demo | `8146` |
+|  | [petgrooming · Pet grooming](./petgrooming/README.md) | packages & appointments; local record demo | `8147` |
+|  | [veterinary · Veterinary visits](./veterinary/README.md) | rooms & pet visits; local record demo | `8148` |
+| **Retail & local services** | [pos · Point-of-sale records](./pos/README.md) | counters & receipt records; local record demo | `8149` |
+|  | [loyalty · Loyalty](./loyalty/README.md) | tiers & member records; local record demo | `8150` |
+|  | [laundry · Laundry](./laundry/README.md) | machines & laundry orders; local record demo | `8151` |
+|  | [gym · Fitness club](./gym/README.md) | classes & bookings; local record demo | `8152` |
+|  | [photography · Photography studio](./photography/README.md) | packages & shoots; local record demo | `8153` |
+|  | [wedding · Wedding planning](./wedding/README.md) | plans & event dates; local record demo | `8154` |
+| **Business operations** | [accounting · Accounting ledger](./accounting/README.md) | ledgers & entries; local record demo | `8155` |
+|  | [contracts · Contract registry](./contracts/README.md) | templates & contracts; local record demo | `8156` |
+|  | [projectops · Project operations](./projectops/README.md) | projects & milestones; local record demo | `8157` |
+|  | [maintenance · Equipment maintenance](./maintenance/README.md) | assets & work orders; local record demo | `8158` |
+|  | [qms · Quality inspection](./qms/README.md) | standards & check records; local record demo | `8159` |
+| **Supply chain & real estate** | [coldchain · Cold chain](./coldchain/README.md) | containers & transports; local record demo | `8160` |
+|  | [freshdelivery · Fresh delivery](./freshdelivery/README.md) | routes & deliveries; local record demo | `8161` |
+|  | [crossborder · Cross-border shipments](./crossborder/README.md) | products & shipments; local record demo | `8162` |
+|  | [returns · Returns](./returns/README.md) | products & return requests; local record demo | `8163` |
+|  | [realestate · Real-estate listings](./realestate/README.md) | listings & viewings; local record demo | `8164` |
+
+## Previous 16 sector record desks
 
 The newest projects cover content and procurement (cms, wms, b2b); care and services (eldercare, pharmacy, insurance, rental, homeservice); resources (water, sanitation, mining, forestry, fishery); and infrastructure (telecom, itops, civic). Each provides two related record types, search and editing, a Java API, local JSON persistence, tests, and four captured pages. **They are record demos, not complete publishing, warehousing, medical, insurance or public-administration systems.**
 
@@ -109,7 +153,7 @@ These images were captured from running applications, not mockups. Click through
 </table>
 
 <details>
-<summary><b>Browse screenshots for all 49 projects</b></summary>
+<summary><b>Browse screenshots for all 84 projects</b></summary>
 
 | Project | Local address | Actual screenshots |
 | :--- | :--- | :--- |
@@ -162,6 +206,41 @@ These images were captured from running applications, not mockups. Click through
 | [telecom](./telecom/README.md) | http://127.0.0.1:8127 | [Overview](./telecom/screenshots/overview.png) · [Primary records](./telecom/screenshots/primary.png) · [Related records](./telecom/screenshots/secondary.png) · [Editor](./telecom/screenshots/editor.png) |
 | [itops](./itops/README.md) | http://127.0.0.1:8128 | [Overview](./itops/screenshots/overview.png) · [Primary records](./itops/screenshots/primary.png) · [Related records](./itops/screenshots/secondary.png) · [Editor](./itops/screenshots/editor.png) |
 | [civic](./civic/README.md) | http://127.0.0.1:8129 | [Overview](./civic/screenshots/overview.png) · [Primary records](./civic/screenshots/primary.png) · [Related records](./civic/screenshots/secondary.png) · [Editor](./civic/screenshots/editor.png) |
+| [parking](./parking/README.md) | http://127.0.0.1:8130 | [Overview](./parking/screenshots/overview.png) · [Primary records](./parking/screenshots/primary.png) · [Related records](./parking/screenshots/secondary.png) · [Editor](./parking/screenshots/editor.png) |
+| [charging](./charging/README.md) | http://127.0.0.1:8131 | [Overview](./charging/screenshots/overview.png) · [Primary records](./charging/screenshots/primary.png) · [Related records](./charging/screenshots/secondary.png) · [Editor](./charging/screenshots/editor.png) |
+| [parkops](./parkops/README.md) | http://127.0.0.1:8132 | [Overview](./parkops/screenshots/overview.png) · [Primary records](./parkops/screenshots/primary.png) · [Related records](./parkops/screenshots/secondary.png) · [Editor](./parkops/screenshots/editor.png) |
+| [fleet](./fleet/README.md) | http://127.0.0.1:8133 | [Overview](./fleet/screenshots/overview.png) · [Primary records](./fleet/screenshots/primary.png) · [Related records](./fleet/screenshots/secondary.png) · [Editor](./fleet/screenshots/editor.png) |
+| [scenic](./scenic/README.md) | http://127.0.0.1:8134 | [Overview](./scenic/screenshots/overview.png) · [Primary records](./scenic/screenshots/primary.png) · [Related records](./scenic/screenshots/secondary.png) · [Editor](./scenic/screenshots/editor.png) |
+| [clinic](./clinic/README.md) | http://127.0.0.1:8135 | [Overview](./clinic/screenshots/overview.png) · [Primary records](./clinic/screenshots/primary.png) · [Related records](./clinic/screenshots/secondary.png) · [Editor](./clinic/screenshots/editor.png) |
+| [dental](./dental/README.md) | http://127.0.0.1:8136 | [Overview](./dental/screenshots/overview.png) · [Primary records](./dental/screenshots/primary.png) · [Related records](./dental/screenshots/secondary.png) · [Editor](./dental/screenshots/editor.png) |
+| [aesthetics](./aesthetics/README.md) | http://127.0.0.1:8137 | [Overview](./aesthetics/screenshots/overview.png) · [Primary records](./aesthetics/screenshots/primary.png) · [Related records](./aesthetics/screenshots/secondary.png) · [Editor](./aesthetics/screenshots/editor.png) |
+| [rehab](./rehab/README.md) | http://127.0.0.1:8138 | [Overview](./rehab/screenshots/overview.png) · [Primary records](./rehab/screenshots/primary.png) · [Related records](./rehab/screenshots/secondary.png) · [Editor](./rehab/screenshots/editor.png) |
+| [lis](./lis/README.md) | http://127.0.0.1:8139 | [Overview](./lis/screenshots/overview.png) · [Primary records](./lis/screenshots/primary.png) · [Related records](./lis/screenshots/secondary.png) · [Editor](./lis/screenshots/editor.png) |
+| [kindergarten](./kindergarten/README.md) | http://127.0.0.1:8140 | [Overview](./kindergarten/screenshots/overview.png) · [Primary records](./kindergarten/screenshots/primary.png) · [Related records](./kindergarten/screenshots/secondary.png) · [Editor](./kindergarten/screenshots/editor.png) |
+| [training](./training/README.md) | http://127.0.0.1:8141 | [Overview](./training/screenshots/overview.png) · [Primary records](./training/screenshots/primary.png) · [Related records](./training/screenshots/secondary.png) · [Editor](./training/screenshots/editor.png) |
+| [elearning](./elearning/README.md) | http://127.0.0.1:8142 | [Overview](./elearning/screenshots/overview.png) · [Primary records](./elearning/screenshots/primary.png) · [Related records](./elearning/screenshots/secondary.png) · [Editor](./elearning/screenshots/editor.png) |
+| [exam](./exam/README.md) | http://127.0.0.1:8143 | [Overview](./exam/screenshots/overview.png) · [Primary records](./exam/screenshots/primary.png) · [Related records](./exam/screenshots/secondary.png) · [Editor](./exam/screenshots/editor.png) |
+| [library](./library/README.md) | http://127.0.0.1:8144 | [Overview](./library/screenshots/overview.png) · [Primary records](./library/screenshots/primary.png) · [Related records](./library/screenshots/secondary.png) · [Editor](./library/screenshots/editor.png) |
+| [petcare](./petcare/README.md) | http://127.0.0.1:8145 | [Overview](./petcare/screenshots/overview.png) · [Primary records](./petcare/screenshots/primary.png) · [Related records](./petcare/screenshots/secondary.png) · [Editor](./petcare/screenshots/editor.png) |
+| [petboarding](./petboarding/README.md) | http://127.0.0.1:8146 | [Overview](./petboarding/screenshots/overview.png) · [Primary records](./petboarding/screenshots/primary.png) · [Related records](./petboarding/screenshots/secondary.png) · [Editor](./petboarding/screenshots/editor.png) |
+| [petgrooming](./petgrooming/README.md) | http://127.0.0.1:8147 | [Overview](./petgrooming/screenshots/overview.png) · [Primary records](./petgrooming/screenshots/primary.png) · [Related records](./petgrooming/screenshots/secondary.png) · [Editor](./petgrooming/screenshots/editor.png) |
+| [veterinary](./veterinary/README.md) | http://127.0.0.1:8148 | [Overview](./veterinary/screenshots/overview.png) · [Primary records](./veterinary/screenshots/primary.png) · [Related records](./veterinary/screenshots/secondary.png) · [Editor](./veterinary/screenshots/editor.png) |
+| [pos](./pos/README.md) | http://127.0.0.1:8149 | [Overview](./pos/screenshots/overview.png) · [Primary records](./pos/screenshots/primary.png) · [Related records](./pos/screenshots/secondary.png) · [Editor](./pos/screenshots/editor.png) |
+| [loyalty](./loyalty/README.md) | http://127.0.0.1:8150 | [Overview](./loyalty/screenshots/overview.png) · [Primary records](./loyalty/screenshots/primary.png) · [Related records](./loyalty/screenshots/secondary.png) · [Editor](./loyalty/screenshots/editor.png) |
+| [laundry](./laundry/README.md) | http://127.0.0.1:8151 | [Overview](./laundry/screenshots/overview.png) · [Primary records](./laundry/screenshots/primary.png) · [Related records](./laundry/screenshots/secondary.png) · [Editor](./laundry/screenshots/editor.png) |
+| [gym](./gym/README.md) | http://127.0.0.1:8152 | [Overview](./gym/screenshots/overview.png) · [Primary records](./gym/screenshots/primary.png) · [Related records](./gym/screenshots/secondary.png) · [Editor](./gym/screenshots/editor.png) |
+| [photography](./photography/README.md) | http://127.0.0.1:8153 | [Overview](./photography/screenshots/overview.png) · [Primary records](./photography/screenshots/primary.png) · [Related records](./photography/screenshots/secondary.png) · [Editor](./photography/screenshots/editor.png) |
+| [wedding](./wedding/README.md) | http://127.0.0.1:8154 | [Overview](./wedding/screenshots/overview.png) · [Primary records](./wedding/screenshots/primary.png) · [Related records](./wedding/screenshots/secondary.png) · [Editor](./wedding/screenshots/editor.png) |
+| [accounting](./accounting/README.md) | http://127.0.0.1:8155 | [Overview](./accounting/screenshots/overview.png) · [Primary records](./accounting/screenshots/primary.png) · [Related records](./accounting/screenshots/secondary.png) · [Editor](./accounting/screenshots/editor.png) |
+| [contracts](./contracts/README.md) | http://127.0.0.1:8156 | [Overview](./contracts/screenshots/overview.png) · [Primary records](./contracts/screenshots/primary.png) · [Related records](./contracts/screenshots/secondary.png) · [Editor](./contracts/screenshots/editor.png) |
+| [projectops](./projectops/README.md) | http://127.0.0.1:8157 | [Overview](./projectops/screenshots/overview.png) · [Primary records](./projectops/screenshots/primary.png) · [Related records](./projectops/screenshots/secondary.png) · [Editor](./projectops/screenshots/editor.png) |
+| [maintenance](./maintenance/README.md) | http://127.0.0.1:8158 | [Overview](./maintenance/screenshots/overview.png) · [Primary records](./maintenance/screenshots/primary.png) · [Related records](./maintenance/screenshots/secondary.png) · [Editor](./maintenance/screenshots/editor.png) |
+| [qms](./qms/README.md) | http://127.0.0.1:8159 | [Overview](./qms/screenshots/overview.png) · [Primary records](./qms/screenshots/primary.png) · [Related records](./qms/screenshots/secondary.png) · [Editor](./qms/screenshots/editor.png) |
+| [coldchain](./coldchain/README.md) | http://127.0.0.1:8160 | [Overview](./coldchain/screenshots/overview.png) · [Primary records](./coldchain/screenshots/primary.png) · [Related records](./coldchain/screenshots/secondary.png) · [Editor](./coldchain/screenshots/editor.png) |
+| [freshdelivery](./freshdelivery/README.md) | http://127.0.0.1:8161 | [Overview](./freshdelivery/screenshots/overview.png) · [Primary records](./freshdelivery/screenshots/primary.png) · [Related records](./freshdelivery/screenshots/secondary.png) · [Editor](./freshdelivery/screenshots/editor.png) |
+| [crossborder](./crossborder/README.md) | http://127.0.0.1:8162 | [Overview](./crossborder/screenshots/overview.png) · [Primary records](./crossborder/screenshots/primary.png) · [Related records](./crossborder/screenshots/secondary.png) · [Editor](./crossborder/screenshots/editor.png) |
+| [returns](./returns/README.md) | http://127.0.0.1:8163 | [Overview](./returns/screenshots/overview.png) · [Primary records](./returns/screenshots/primary.png) · [Related records](./returns/screenshots/secondary.png) · [Editor](./returns/screenshots/editor.png) |
+| [realestate](./realestate/README.md) | http://127.0.0.1:8164 | [Overview](./realestate/screenshots/overview.png) · [Primary records](./realestate/screenshots/primary.png) · [Related records](./realestate/screenshots/secondary.png) · [Editor](./realestate/screenshots/editor.png) |
 
 </details>
 
@@ -178,13 +257,13 @@ These images were captured from running applications, not mockups. Click through
 ## ✅ Validation and limits
 
 ```powershell
-./test-all.ps1      # Windows: build/package/test 49 projects, including four mini-program builds
-./smoke-test.ps1    # Windows: start 49 real services and check their pages/assets/APIs
+./test-all.ps1      # Windows: build/package/test 84 projects, including four mini-program builds
+./smoke-test.ps1    # Windows: start 84 real services and check their pages/assets/APIs
 ```
 
 On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. Screenshots live in each project's `screenshots/` directory.
 
-**Last full local validation: October 2, 2026.** All 49 projects passed the build/backend/package checks and real-process smoke checks. Each of the newest 16 projects has four actual screenshots. This validates the local demos, **not** their performance, security or regulatory compliance in production.
+**Last full local validation: October 2, 2026.** All 84 projects passed the build/backend/package checks and real-process smoke checks. Each of the newest 35 projects has four actual screenshots; the previous 16 also have four each. This validates the local demos, **not** their performance, security or regulatory compliance in production.
 
 > [!IMPORTANT]
 > These are runnable local examples for learning and further development, **not production-ready SaaS applications**. The default host is `127.0.0.1`. There is no shared authentication, formal permission isolation, payment integration, encryption, tamper-proof audit, database migrations or multi-instance concurrency guarantee. In particular, do not use sensitive real-world financial, medical, child, access-control or research data without a proper security, privacy, compliance and disaster-recovery design.

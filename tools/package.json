@@ -1,5 +1,5 @@
 {
   "private": true,
-  "scripts": {"capture:sectors": "node capture-sectors.cjs"},
+  "scripts": {"capture:sectors": "node capture-sectors.cjs", "capture:new": "node capture-sectors.cjs --new"},
   "devDependencies": {"playwright-core": "1.63.0"}
 }
