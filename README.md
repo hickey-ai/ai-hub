@@ -6,7 +6,7 @@
 
 **49 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
 
-[立即体验](#-30-秒开始体验) · [浏览项目](#-项目宇宙) · [系统架构](#-系统架构) · [页面截图](#-真实页面) · [测试与边界](#-验证与使用边界)
+[立即体验](#-快速开始) · [浏览项目](#-项目宇宙) · [系统架构](#-系统架构) · [页面截图](#-真实页面) · [测试与边界](#-验证与使用边界)
 
 </div>
 
@@ -24,7 +24,7 @@
 | :--- | :--- | :--- |
 | 从电商、管理到医疗、科研、家庭记录，覆盖 **49 个独立系统**；新增行业目录复用记录台模板，深度与完整产品不同。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 49 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
 
-## ⚡ 30 秒开始体验
+## ⚡ 快速开始
 
 > 需要 **Java 21、Maven、Node.js 20.19+/22.12+ 和 npm**；首次运行会联网下载依赖。以下命令会安装前端依赖、构建页面、运行后端测试、打包并启动服务。
 
@@ -91,6 +91,24 @@
 | **基础设施与公共事务** | [telecom · 通信设施](./telecom/README.md) | 通信站点、维护任务的本机记录样板 | `8127` |
 |  | [itops · IT 运维](./itops/README.md) | 设备资产、故障记录的本机记录样板 | `8128` |
 |  | [civic · 公共服务](./civic/README.md) | 服务事项、办理登记的本机记录样板 | `8129` |
+
+## 🆕 本轮新增 · 16 个行业记录台
+
+> 从内容、采购到养老、环境和公共服务，每个入口都是**可在本机运行的独立样板**：两类关联记录、检索与编辑、Java API、本地 JSON 持久化及实际页面截图。先体验具体场景，再按真实业务需求扩展；**不等同于完整生产系统**。
+
+| 方向 | 新增项目 | 从这里开始 |
+| :--- | :--- | :--- |
+| 内容与交易 | [cms 内容发布](./cms/README.md) · [wms 仓储管理](./wms/README.md) · [b2b 批发采购](./b2b/README.md) | 栏目/稿件、库位/作业、供应商/采购单 |
+| 照护与服务 | [eldercare 养老护理](./eldercare/README.md) · [pharmacy 药店台账](./pharmacy/README.md) · [insurance 保险服务](./insurance/README.md) · [rental 物品租赁](./rental/README.md) · [homeservice 上门服务](./homeservice/README.md) | 档案与服务、批次、理赔进度、租借、上门任务 |
+| 资源与环境 | [water 水务设施](./water/README.md) · [sanitation 城市环卫](./sanitation/README.md) · [mining 矿山作业](./mining/README.md) · [forestry 林地巡护](./forestry/README.md) · [fishery 水产养殖](./fishery/README.md) | 设施/巡检、清运、班次、巡护、投喂记录 |
+| 基础设施与公共事务 | [telecom 通信设施](./telecom/README.md) · [itops IT 运维](./itops/README.md) · [civic 公共服务](./civic/README.md) | 站点/维护、资产/故障、事项/办理登记 |
+
+<table>
+<tr><td width="50%" align="center"><a href="./cms/README.md"><img src="./cms/screenshots/overview.png" alt="cms 内容发布本机记录台总览" width="100%" /></a><br/><b>内容发布 · cms</b></td><td width="50%" align="center"><a href="./wms/README.md"><img src="./wms/screenshots/primary.png" alt="wms 仓储库位列表" width="100%" /></a><br/><b>仓储管理 · wms</b></td></tr>
+<tr><td width="50%" align="center"><a href="./eldercare/README.md"><img src="./eldercare/screenshots/secondary.png" alt="eldercare 养老照护记录" width="100%" /></a><br/><b>养老护理 · eldercare</b></td><td width="50%" align="center"><a href="./civic/README.md"><img src="./civic/screenshots/editor.png" alt="civic 公共服务办理登记表单" width="100%" /></a><br/><b>公共服务 · civic</b></td></tr>
+</table>
+
+**如何体验新增项目？** 例如 Windows 运行 `./cms/run.ps1`，macOS/Linux 运行 `./cms/run.sh`，打开 `http://127.0.0.1:8114`；其他项目替换目录名并使用上表对应端口。每个项目 README 都有启动说明和四张截图（总览、两类列表、编辑表单）。
 
 ## 🖼️ 真实页面
 
@@ -178,6 +196,8 @@
 ./test-all.ps1      # Windows：49 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
 ./smoke-test.ps1    # Windows：启动 49 个真实服务，检查页面、JS 与 API
 ```
+
+**最近一次全量验收（2026-10-02）：**49 个项目完成前端构建、后端测试和打包检查；49 个真实 Java 进程的页面/API 冒烟通过。新增 16 个项目各有 4 张真实截图，根目录截图索引链接已检查。测试覆盖本机演示流程，不代表生产环境的性能、安全或行业合规认证。
 
 macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。截图保存在各项目的 `screenshots/`；新项目只有具备页面、接口、测试和实际截图后才列入目录。
 
