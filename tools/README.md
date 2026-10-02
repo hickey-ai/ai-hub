@@ -1,4 +1,4 @@
-# 截图工具（新增 13 个行业样板）
+# 截图工具（行业记录样板）
 
 在仓库根目录，先完成 `./test-all.ps1`（Windows）或 `./test-all.sh`（macOS/Linux），再运行：
 

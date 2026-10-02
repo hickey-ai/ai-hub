@@ -41,7 +41,8 @@ def validator(entities):
     return ' '.join(blocks)
 
 from extra_sectors import EXTRA
-SECTORS += EXTRA
+from new_sectors import NEW
+SECTORS += EXTRA + NEW
 
 for slug,port,cn,en,subtitle,accent,soft,entities in SECTORS:
     dst=root/slug

@@ -4,7 +4,7 @@
   <img src="./docs/ai-hub-hero.gif" alt="ai-hub · 让每一种职业都有自己的软件" width="1200">
 </p>
 
-**33 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
+**49 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
 
 [立即体验](#-30-秒开始体验) · [浏览项目](#-项目宇宙) · [系统架构](#-系统架构) · [页面截图](#-真实页面) · [测试与边界](#-验证与使用边界)
 
@@ -22,7 +22,7 @@
 
 | 真实业务场景 | 开箱可体验 | 自主实现、方便改造 |
 | :--- | :--- | :--- |
-| 从电商、管理到医疗、科研、家庭记录，覆盖 **33 个独立系统**；新增 13 个行业目录复用记录台模板，深度与完整产品不同。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 33 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
+| 从电商、管理到医疗、科研、家庭记录，覆盖 **49 个独立系统**；新增行业目录复用记录台模板，深度与完整产品不同。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 49 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
 
 ## ⚡ 30 秒开始体验
 
@@ -75,6 +75,22 @@
 | | [legal · 法律服务](./legal/README.md) | 委托档案、案件进度与下一步行动 | `8111` |
 | | [culture · 文化体育](./culture/README.md) | 场馆空间、活动安排与状态 | `8112` |
 | | [community · 社区公益](./community/README.md) | 服务项目、需求登记与处理记录 | `8113` |
+| **内容与交易** | [cms · 内容发布](./cms/README.md) | 内容栏目、稿件记录的本机记录样板 | `8114` |
+|  | [wms · 仓储管理](./wms/README.md) | 仓库库位、作业记录的本机记录样板 | `8115` |
+|  | [b2b · 批发采购](./b2b/README.md) | 供应商档案、采购订单的本机记录样板 | `8116` |
+| **照护与服务** | [eldercare · 养老护理](./eldercare/README.md) | 长者档案、照护记录的本机记录样板 | `8117` |
+|  | [pharmacy · 药店台账](./pharmacy/README.md) | 药品目录、批次记录的本机记录样板 | `8118` |
+|  | [insurance · 保险服务](./insurance/README.md) | 保单档案、理赔进度的本机记录样板 | `8119` |
+|  | [rental · 物品租赁](./rental/README.md) | 出租设备、租借记录的本机记录样板 | `8120` |
+|  | [homeservice · 上门服务](./homeservice/README.md) | 客户档案、上门任务的本机记录样板 | `8121` |
+| **资源与环境** | [water · 水务设施](./water/README.md) | 设施档案、巡检记录的本机记录样板 | `8122` |
+|  | [sanitation · 城市环卫](./sanitation/README.md) | 作业线路、清运记录的本机记录样板 | `8123` |
+|  | [mining · 矿山作业](./mining/README.md) | 作业区域、班次记录的本机记录样板 | `8124` |
+|  | [forestry · 林地巡护](./forestry/README.md) | 林区档案、巡护记录的本机记录样板 | `8125` |
+|  | [fishery · 水产养殖](./fishery/README.md) | 养殖池塘、投喂记录的本机记录样板 | `8126` |
+| **基础设施与公共事务** | [telecom · 通信设施](./telecom/README.md) | 通信站点、维护任务的本机记录样板 | `8127` |
+|  | [itops · IT 运维](./itops/README.md) | 设备资产、故障记录的本机记录样板 | `8128` |
+|  | [civic · 公共服务](./civic/README.md) | 服务事项、办理登记的本机记录样板 | `8129` |
 
 ## 🖼️ 真实页面
 
@@ -87,9 +103,9 @@
 </table>
 
 <details>
-<summary><b>展开全部 33 个项目的页面截图索引</b></summary>
+<summary><b>展开全部 49 个项目的页面截图索引</b></summary>
 
-| 项目 | 功能闭环 | 本机地址 | 页面截图 |
+| 项目 | 已演示能力 | 本机地址 | 页面截图 |
 | :--- | :--- | :--- | :--- |
 | [shop](./shop/README.md) | 京东式商品检索、详情、购物车、库存校验与下单；电脑端 + 微信小程序 | http://127.0.0.1:8081 | [电脑端首页](./shop/screenshots/desktop-home.png) · [商品列表](./shop/screenshots/desktop-catalog.png) · [商品详情](./shop/screenshots/desktop-detail.png) · [购物车](./shop/screenshots/desktop-cart.png) · [订单结算](./shop/screenshots/desktop-checkout.png) · [小程序首页](./shop/screenshots/miniprogram-home.png) · [小程序详情](./shop/screenshots/miniprogram-detail.png) · [小程序购物车](./shop/screenshots/miniprogram-cart.png) |
 | [manage](./manage/README.md) | 若依式通用后台：控制台、用户、角色、菜单、部门、日志、个人中心 | http://127.0.0.1:8082 | [控制台](./manage/screenshots/dashboard.png) · [用户](./manage/screenshots/users.png) · [角色](./manage/screenshots/roles.png) · [菜单](./manage/screenshots/menus.png) · [部门](./manage/screenshots/departments.png) · [日志](./manage/screenshots/logs.png) · [个人中心](./manage/screenshots/profile.png) |
@@ -125,6 +141,23 @@
 | [culture](./culture/README.md) | 场馆空间与活动安排，本机演示样板 | http://127.0.0.1:8112 | [总览](./culture/screenshots/overview.png) · [场馆空间](./culture/screenshots/primary.png) · [活动安排](./culture/screenshots/secondary.png) · [编辑表单](./culture/screenshots/editor.png) |
 | [community](./community/README.md) | 服务项目与服务需求，本机演示样板 | http://127.0.0.1:8113 | [总览](./community/screenshots/overview.png) · [服务项目](./community/screenshots/primary.png) · [服务需求](./community/screenshots/secondary.png) · [编辑表单](./community/screenshots/editor.png) |
 
+| [cms](./cms/README.md) | 内容栏目与稿件记录的本机演示 | http://127.0.0.1:8114 | [总览](./cms/screenshots/overview.png) · [内容栏目](./cms/screenshots/primary.png) · [稿件记录](./cms/screenshots/secondary.png) · [编辑表单](./cms/screenshots/editor.png) |
+| [wms](./wms/README.md) | 仓库库位与作业记录的本机演示 | http://127.0.0.1:8115 | [总览](./wms/screenshots/overview.png) · [仓库库位](./wms/screenshots/primary.png) · [作业记录](./wms/screenshots/secondary.png) · [编辑表单](./wms/screenshots/editor.png) |
+| [b2b](./b2b/README.md) | 供应商档案与采购订单的本机演示 | http://127.0.0.1:8116 | [总览](./b2b/screenshots/overview.png) · [供应商档案](./b2b/screenshots/primary.png) · [采购订单](./b2b/screenshots/secondary.png) · [编辑表单](./b2b/screenshots/editor.png) |
+| [eldercare](./eldercare/README.md) | 长者档案与照护记录的本机演示 | http://127.0.0.1:8117 | [总览](./eldercare/screenshots/overview.png) · [长者档案](./eldercare/screenshots/primary.png) · [照护记录](./eldercare/screenshots/secondary.png) · [编辑表单](./eldercare/screenshots/editor.png) |
+| [pharmacy](./pharmacy/README.md) | 药品目录与批次记录的本机演示 | http://127.0.0.1:8118 | [总览](./pharmacy/screenshots/overview.png) · [药品目录](./pharmacy/screenshots/primary.png) · [批次记录](./pharmacy/screenshots/secondary.png) · [编辑表单](./pharmacy/screenshots/editor.png) |
+| [insurance](./insurance/README.md) | 保单档案与理赔进度的本机演示 | http://127.0.0.1:8119 | [总览](./insurance/screenshots/overview.png) · [保单档案](./insurance/screenshots/primary.png) · [理赔进度](./insurance/screenshots/secondary.png) · [编辑表单](./insurance/screenshots/editor.png) |
+| [rental](./rental/README.md) | 出租设备与租借记录的本机演示 | http://127.0.0.1:8120 | [总览](./rental/screenshots/overview.png) · [出租设备](./rental/screenshots/primary.png) · [租借记录](./rental/screenshots/secondary.png) · [编辑表单](./rental/screenshots/editor.png) |
+| [homeservice](./homeservice/README.md) | 客户档案与上门任务的本机演示 | http://127.0.0.1:8121 | [总览](./homeservice/screenshots/overview.png) · [客户档案](./homeservice/screenshots/primary.png) · [上门任务](./homeservice/screenshots/secondary.png) · [编辑表单](./homeservice/screenshots/editor.png) |
+| [water](./water/README.md) | 设施档案与巡检记录的本机演示 | http://127.0.0.1:8122 | [总览](./water/screenshots/overview.png) · [设施档案](./water/screenshots/primary.png) · [巡检记录](./water/screenshots/secondary.png) · [编辑表单](./water/screenshots/editor.png) |
+| [sanitation](./sanitation/README.md) | 作业线路与清运记录的本机演示 | http://127.0.0.1:8123 | [总览](./sanitation/screenshots/overview.png) · [作业线路](./sanitation/screenshots/primary.png) · [清运记录](./sanitation/screenshots/secondary.png) · [编辑表单](./sanitation/screenshots/editor.png) |
+| [mining](./mining/README.md) | 作业区域与班次记录的本机演示 | http://127.0.0.1:8124 | [总览](./mining/screenshots/overview.png) · [作业区域](./mining/screenshots/primary.png) · [班次记录](./mining/screenshots/secondary.png) · [编辑表单](./mining/screenshots/editor.png) |
+| [forestry](./forestry/README.md) | 林区档案与巡护记录的本机演示 | http://127.0.0.1:8125 | [总览](./forestry/screenshots/overview.png) · [林区档案](./forestry/screenshots/primary.png) · [巡护记录](./forestry/screenshots/secondary.png) · [编辑表单](./forestry/screenshots/editor.png) |
+| [fishery](./fishery/README.md) | 养殖池塘与投喂记录的本机演示 | http://127.0.0.1:8126 | [总览](./fishery/screenshots/overview.png) · [养殖池塘](./fishery/screenshots/primary.png) · [投喂记录](./fishery/screenshots/secondary.png) · [编辑表单](./fishery/screenshots/editor.png) |
+| [telecom](./telecom/README.md) | 通信站点与维护任务的本机演示 | http://127.0.0.1:8127 | [总览](./telecom/screenshots/overview.png) · [通信站点](./telecom/screenshots/primary.png) · [维护任务](./telecom/screenshots/secondary.png) · [编辑表单](./telecom/screenshots/editor.png) |
+| [itops](./itops/README.md) | 设备资产与故障记录的本机演示 | http://127.0.0.1:8128 | [总览](./itops/screenshots/overview.png) · [设备资产](./itops/screenshots/primary.png) · [故障记录](./itops/screenshots/secondary.png) · [编辑表单](./itops/screenshots/editor.png) |
+| [civic](./civic/README.md) | 服务事项与办理登记的本机演示 | http://127.0.0.1:8129 | [总览](./civic/screenshots/overview.png) · [服务事项](./civic/screenshots/primary.png) · [办理登记](./civic/screenshots/secondary.png) · [编辑表单](./civic/screenshots/editor.png) |
+
 </details>
 
 ## 🧭 系统架构
@@ -133,7 +166,7 @@
 
 **关键设计：**
 
-1. **项目独立：**33 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
+1. **项目独立：**49 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
 2. **Web 一体交付：**Vue 页面由 Vite 构建后放入 Spring Boot 的静态资源目录，随可执行 jar 一起提供；浏览器通过同源 `/api` 请求业务接口。
 3. **小程序单独构建：**shop、barber、dining、selfshop 的 uni-app 构建微信小程序产物；小程序和电脑端的代码形态不同，但对应 Java API 保持独立。
 4. **数据本机持久化：**业务数据位于各项目的 `data/<项目>.json`，重启仍保留。停服后复制 JSON 文件备份；停服后移走它可重置演示数据。文件损坏时服务拒绝启动，避免覆盖原数据。
@@ -142,8 +175,8 @@
 ## ✅ 验证与使用边界
 
 ```powershell
-./test-all.ps1      # Windows：33 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
-./smoke-test.ps1    # Windows：启动 33 个真实服务，检查页面、JS 与 API
+./test-all.ps1      # Windows：49 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
+./smoke-test.ps1    # Windows：启动 49 个真实服务，检查页面、JS 与 API
 ```
 
 macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。截图保存在各项目的 `screenshots/`；新项目只有具备页面、接口、测试和实际截图后才列入目录。
@@ -153,6 +186,6 @@ macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <�
 
 ## 🌱 下一站
 
-“让所有职业都能找到软件”是方向，而非当前覆盖范围。新增 13 个行业项目是**可运行的档案／记录演示**，并非已经实现 ERP 自动库存结转、生产 MES、物流调度、酒店房态冲突控制、正式审批等完整行业系统。更多候选类型与参考项目见 [业务系统调研与建设清单](./docs/business-map.md)。欢迎从一个真实业务问题出发，提出下一款值得认真做的软件。
+“让所有职业都能找到软件”是方向，而非当前覆盖范围。新增 29 个行业目录是**可运行的档案／记录演示**，并非已经实现 ERP 自动库存结转、生产 MES、物流调度、酒店房态冲突控制、正式审批等完整行业系统。CMS、仓储、采购、照护、公共服务等新增目录同样仅覆盖本机档案/记录功能，不具备出版审核、真实仓储结转、保险理赔或政务身份校验等完整流程。更多候选类型与参考项目见 [业务系统调研与建设清单](./docs/business-map.md)。欢迎从一个真实业务问题出发，提出下一款值得认真做的软件。
 
 **联系：**3174667330@qq.com · Git 提交邮箱仅设置在此仓库，不修改全局配置。

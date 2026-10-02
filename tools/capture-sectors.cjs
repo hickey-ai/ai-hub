@@ -4,7 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const root = path.resolve(__dirname, '..')
 const chrome = process.env.CHROMIUM_PATH || chromium.executablePath()
-const projects = [["erp", 8101, "products"], ["manufacturing", 8102, "materials"], ["logistics", 8103, "vehicles"], ["property", 8104, "units"], ["agriculture", 8105, "plots"], ["construction", 8106, "projects"], ["hospitality", 8107, "rooms"], ["hrm", 8108, "employees"], ["service", 8109, "customers"], ["energy", 8110, "assets"], ["legal", 8111, "clients"], ["culture", 8112, "venues"], ["community", 8113, "programs"]]
+const projects = [["erp", 8101, "products"], ["manufacturing", 8102, "materials"], ["logistics", 8103, "vehicles"], ["property", 8104, "units"], ["agriculture", 8105, "plots"], ["construction", 8106, "projects"], ["hospitality", 8107, "rooms"], ["hrm", 8108, "employees"], ["service", 8109, "customers"], ["energy", 8110, "assets"], ["legal", 8111, "clients"], ["culture", 8112, "venues"], ["community", 8113, "programs"], ["cms", 8114, "sections"], ["wms", 8115, "bins"], ["b2b", 8116, "suppliers"], ["eldercare", 8117, "residents"], ["pharmacy", 8118, "medicines"], ["insurance", 8119, "policies"], ["rental", 8120, "assets"], ["homeservice", 8121, "customers"], ["water", 8122, "stations"], ["sanitation", 8123, "routes"], ["mining", 8124, "sites"], ["forestry", 8125, "parcels"], ["fishery", 8126, "ponds"], ["telecom", 8127, "sites"], ["itops", 8128, "assets"], ["civic", 8129, "services"]]
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 async function waitReady(port, endpoint, proc) {
   for (let i=0; i<80; i++) {

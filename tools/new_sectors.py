@@ -1,0 +1,55 @@
+"""Second wave of independent, local-only record demonstrations.
+
+The two linked resources in each sector are intentionally narrow. They do not
+model production transactions, regulated workflows, or real-world identity.
+"""
+NEW = [
+ ('cms',8114,'内容发布','CONTENT STUDIO','从栏目到稿件，把编辑与发布状态整理成清楚的内容台账','#7162c9','#f0edff',[
+   ('sections','内容栏目','▦',[('code','栏目编码','text',1),('name','栏目名称','text',1),('editor','负责编辑','text',1),('status','栏目状态','select',1,['启用','停用'])],{'code':'NEWS','name':'产品动态','editor':'演示编辑','status':'启用'}),
+   ('articles','稿件记录','✦',[('sectionId','所属栏目','relation',1,'sections'),('title','稿件标题','text',1),('author','作者','text',1),('publishDate','计划发布日期','date',1),('status','稿件状态','select',1,['草稿','待审核','已发布','已撤回']),('summary','内容摘要','textarea',0)],{'sectionId':1,'title':'秋季产品速览','author':'演示作者','publishDate':'2026-10-02','status':'草稿','summary':'虚构内容演示'})]),
+ ('wms',8115,'仓储管理','WAREHOUSE FLOW','库位和库存作业记录，帮助团队看清货物去向','#2e79ad','#eaf5fd',[
+   ('bins','仓库库位','▦',[('code','库位编号','text',1),('warehouse','仓库名称','text',1),('zone','所在区域','text',1),('capacity','参考容量','number',1),('status','库位状态','select',1,['可用','停用'])],{'code':'A-01-01','warehouse':'演示一号仓','zone':'A 区','capacity':200,'status':'可用'}),
+   ('movements','作业记录','↔',[('binId','关联库位','relation',1,'bins'),('sku','货品编码','text',1),('type','作业类型','select',1,['入库','拣货','盘点','出库']),('quantity','作业数量','number',1),('date','作业日期','date',1),('notes','作业备注','textarea',0)],{'binId':1,'sku':'DEMO-01','type':'入库','quantity':40,'date':'2026-10-02','notes':'虚构仓储记录'})]),
+ ('b2b',8116,'批发采购','TRADE DESK','供应商与采购单的轻量协作台账','#4373a5','#edf4fc',[
+   ('suppliers','供应商档案','▣',[('code','供应商编号','text',1),('name','供应商名称','text',1),('contact','联系岗位','text',1),('category','供货类别','text',1),('status','合作状态','select',1,['待评估','合作中','暂停'])],{'code':'SUP-01','name':'演示文具供应商','contact':'销售经理','category':'办公用品','status':'合作中'}),
+   ('purchases','采购订单','▤',[('supplierId','关联供应商','relation',1,'suppliers'),('orderNo','采购单号','text',1),('item','采购商品','text',1),('quantity','数量','number',1),('unitPrice','参考单价','money',1),('dueDate','预计到货','date',1),('status','订单状态','select',1,['草稿','已确认','已收货','已取消'])],{'supplierId':1,'orderNo':'PO-DEMO-01','item':'笔记本','quantity':50,'unitPrice':12.5,'dueDate':'2026-10-15','status':'草稿'})]),
+ ('eldercare',8117,'养老护理','CARE CIRCLE','照护对象与每日服务记录，虚构数据安心演示','#a16286','#fbedf5',[
+   ('residents','长者档案','▣',[('code','档案编号','text',1),('name','称呼','text',1),('careLevel','照护等级','select',1,['自理','协助','重点关注']),('room','房间编号','text',1),('status','入住状态','select',1,['在住','离住'])],{'code':'CARE-01','name':'演示长者甲','careLevel':'协助','room':'A101','status':'在住'}),
+   ('visits','照护记录','✦',[('residentId','关联长者','relation',1,'residents'),('date','服务日期','date',1),('type','服务类别','select',1,['日常关怀','饮食协助','活动陪伴','异常报告']),('staff','服务人员','text',1),('status','记录状态','select',1,['待执行','已记录']),('notes','服务备注','textarea',0)],{'residentId':1,'date':'2026-10-02','type':'日常关怀','staff':'演示护理员','status':'已记录','notes':'虚构记录，不含健康判断'})]),
+ ('pharmacy',8118,'药店台账','PHARMA DESK','药品目录与批次记录，仅供本机学习演示','#25998e','#e7f7f4',[
+   ('medicines','药品目录','▦',[('code','药品编码','text',1),('name','展示名称','text',1),('form','剂型','text',1),('unit','计量单位','text',1),('status','上架状态','select',1,['待核对','上架','下架'])],{'code':'DEMO-MED-01','name':'演示商品甲','form':'示例剂型','unit':'盒','status':'待核对'}),
+   ('batches','批次记录','✦',[('medicineId','关联药品','relation',1,'medicines'),('batchNo','批次号','text',1),('expiryDate','标示效期','date',1),('quantity','记录数量','number',1),('status','批次状态','select',1,['待验收','在库','隔离','已移出']),('notes','记录备注','textarea',0)],{'medicineId':1,'batchNo':'DEMO-BATCH-01','expiryDate':'2027-10-02','quantity':20,'status':'待验收','notes':'完全虚构，不可用于真实药品管理'})]),
+ ('insurance',8119,'保险服务','POLICY DESK','保单档案与理赔进度，展示服务流程记录','#4278bd','#ecf3ff',[
+   ('policies','保单档案','▣',[('policyNo','保单编号','text',1),('product','产品类别','text',1),('holder','投保人代号','text',1),('effectiveDate','起保日期','date',1),('status','保单状态','select',1,['待生效','有效','已终止'])],{'policyNo':'DEMO-POL-01','product':'演示保障方案','holder':'虚构客户 A','effectiveDate':'2026-10-02','status':'有效'}),
+   ('claims','理赔进度','✦',[('policyId','关联保单','relation',1,'policies'),('claimNo','案件编号','text',1),('reportedDate','报案日期','date',1),('amount','申报金额','money',1),('status','案件状态','select',1,['已报案','资料审核','已结案','已撤回']),('notes','处理备注','textarea',0)],{'policyId':1,'claimNo':'DEMO-CLAIM-01','reportedDate':'2026-10-02','amount':1200,'status':'已报案','notes':'虚构理赔记录'})]),
+ ('rental',8120,'物品租赁','RENTAL STUDIO','设备档案和租借记录，从交付到归还清晰可查','#b26b4c','#fff1e9',[
+   ('assets','出租设备','▣',[('code','设备编号','text',1),('name','设备名称','text',1),('category','设备类别','text',1),('dailyRate','参考日租金','money',1),('status','设备状态','select',1,['可租','维护中','停用'])],{'code':'RENT-01','name':'演示摄影灯','category':'摄影器材','dailyRate':60,'status':'可租'}),
+   ('rentals','租借记录','✦',[('assetId','关联设备','relation',1,'assets'),('orderNo','租借单号','text',1),('renter','租客代号','text',1),('startDate','起租日期','date',1),('returnDate','预计归还','date',1),('status','租借状态','select',1,['已预约','已借出','已归还','已取消']),('notes','备注','textarea',0)],{'assetId':1,'orderNo':'DEMO-RENT-01','renter':'演示用户 A','startDate':'2026-10-02','returnDate':'2026-10-04','status':'已预约','notes':'虚构租借'})]),
+ ('homeservice',8121,'上门服务','HOME CREW','客户登记和上门任务，透明记录服务进度','#bd7461','#fff1ea',[
+   ('customers','客户档案','▣',[('code','客户编号','text',1),('name','客户代号','text',1),('area','服务区域','text',1),('requestType','常用服务','text',1)],{'code':'HOME-01','name':'演示客户 A','area':'示例街区','requestType':'家电保养'}),
+   ('jobs','上门任务','✦',[('customerId','关联客户','relation',1,'customers'),('title','服务事项','text',1),('appointmentDate','预约日期','date',1),('worker','服务人员','text',1),('status','任务状态','select',1,['待分配','已预约','服务中','已完成','已取消']),('notes','服务备注','textarea',0)],{'customerId':1,'title':'空调清洁演示','appointmentDate':'2026-10-02','worker':'演示师傅','status':'已预约','notes':'虚构上门任务'})]),
+ ('water',8122,'水务设施','WATER WORKS','水务设施与巡检数据的本机记录台','#14859e','#e7f6fa',[
+   ('stations','设施档案','▦',[('code','设施编号','text',1),('name','设施名称','text',1),('district','区域','text',1),('status','设施状态','select',1,['正常','检修','停用'])],{'code':'WTR-01','name':'演示泵站','district':'虚构片区','status':'正常'}),
+   ('checks','巡检记录','✦',[('stationId','关联设施','relation',1,'stations'),('date','巡检日期','date',1),('inspector','巡检人','text',1),('reading','读数','number',1),('result','巡检结论','select',1,['正常','待复查','已报修']),('notes','巡检备注','textarea',0)],{'stationId':1,'date':'2026-10-02','inspector':'演示巡检员','reading':42,'result':'正常','notes':'虚构读数，不可用于实时监控'})]),
+ ('sanitation',8123,'城市环卫','CITY CLEAN','线路和清运记录，掌握每日作业状况','#40866b','#e9f7ef',[
+   ('routes','作业线路','▦',[('code','线路编号','text',1),('name','线路名称','text',1),('area','服务片区','text',1),('frequency','作业频次','text',1),('status','线路状态','select',1,['启用','暂停'])],{'code':'ENV-01','name':'演示环卫线','area':'虚构片区','frequency':'每日','status':'启用'}),
+   ('collections','清运记录','✦',[('routeId','关联线路','relation',1,'routes'),('date','作业日期','date',1),('crew','班组','text',1),('loads','车次数','number',1),('status','作业状态','select',1,['待执行','作业中','已完成','异常']),('notes','作业备注','textarea',0)],{'routeId':1,'date':'2026-10-02','crew':'演示班组','loads':2,'status':'已完成','notes':'虚构清运记录'})]),
+ ('mining',8124,'矿山作业','MINE LOG','作业区域与班次日志，记录演示信息不替代安全生产系统','#a47443','#fff1e5',[
+   ('sites','作业区域','▦',[('code','区域编号','text',1),('name','区域名称','text',1),('supervisor','现场负责人','text',1),('status','区域状态','select',1,['待检查','作业中','暂停'])],{'code':'MINE-01','name':'演示作业区','supervisor':'虚构负责人','status':'待检查'}),
+   ('shifts','班次记录','✦',[('siteId','关联区域','relation',1,'sites'),('date','作业日期','date',1),('team','作业班组','text',1),('headcount','出勤人数','number',1),('risk','风险记录','select',1,['待检查','无异常','需整改']),('notes','班次备注','textarea',0)],{'siteId':1,'date':'2026-10-02','team':'演示班组','headcount':4,'risk':'待检查','notes':'虚构数据，不用于安全决策'})]),
+ ('forestry',8125,'林地巡护','FOREST WATCH','林区档案与巡护记录，让观察和处理都有迹可循','#508461','#e9f5ec',[
+   ('parcels','林区档案','▦',[('code','林区编号','text',1),('name','林区名称','text',1),('area','面积（亩）','money',1),('manager','负责人员','text',1),('status','林区状态','select',1,['正常','待巡查','暂停开放'])],{'code':'FOR-01','name':'演示林区','area':24.5,'manager':'演示护林员','status':'待巡查'}),
+   ('patrols','巡护记录','✦',[('parcelId','关联林区','relation',1,'parcels'),('date','巡护日期','date',1),('observer','巡护人员','text',1),('finding','观察结论','select',1,['无异常','待复查','已上报']),('notes','巡护备注','textarea',0)],{'parcelId':1,'date':'2026-10-02','observer':'演示护林员','finding':'无异常','notes':'虚构巡护记录'})]),
+ ('fishery',8126,'水产养殖','AQUA NOTES','池塘与投喂巡查记录，让养殖信息有序留存','#278ca3','#e6f7fa',[
+   ('ponds','养殖池塘','▦',[('code','池塘编号','text',1),('species','养殖品种','text',1),('area','面积（亩）','money',1),('status','池塘状态','select',1,['空池','养殖中','休整中'])],{'code':'POND-01','species':'演示鱼种','area':5.5,'status':'养殖中'}),
+   ('feedings','投喂记录','✦',[('pondId','关联池塘','relation',1,'ponds'),('date','记录日期','date',1),('feed','饲料名称','text',1),('quantity','投喂量','number',1),('observer','记录人','text',1),('notes','巡查备注','textarea',0)],{'pondId':1,'date':'2026-10-02','feed':'演示饲料','quantity':20,'observer':'演示养殖员','notes':'虚构投喂记录'})]),
+ ('telecom',8127,'通信设施','SIGNAL DESK','站点与维护任务，掌握网络设施运行记录','#3367b4','#edf2ff',[
+   ('sites','通信站点','▦',[('code','站点编号','text',1),('name','站点名称','text',1),('district','所在片区','text',1),('status','站点状态','select',1,['运行中','维护中','停用'])],{'code':'TEL-01','name':'演示站点','district':'示例区域','status':'运行中'}),
+   ('workorders','维护任务','✦',[('siteId','关联站点','relation',1,'sites'),('title','维护事项','text',1),('date','计划日期','date',1),('priority','优先级','select',1,['一般','紧急']),('status','任务状态','select',1,['待处理','处理中','已完成']),('notes','维护备注','textarea',0)],{'siteId':1,'title':'例行设备巡检','date':'2026-10-02','priority':'一般','status':'待处理','notes':'虚构站点记录'})]),
+ ('itops',8128,'IT 运维','OPS CENTER','资产与故障记录，为运维工作提供清晰的时间线','#555eaa','#eef0fc',[
+   ('assets','设备资产','▦',[('code','资产编号','text',1),('name','资产名称','text',1),('owner','归属团队','text',1),('status','资产状态','select',1,['在线','维护中','停用'])],{'code':'OPS-01','name':'演示服务器','owner':'演示运维组','status':'在线'}),
+   ('incidents','故障记录','✦',[('assetId','关联资产','relation',1,'assets'),('ticketNo','事件编号','text',1),('title','故障标题','text',1),('reportedDate','发现日期','date',1),('severity','严重程度','select',1,['低','中','高']),('status','处理状态','select',1,['待处理','处理中','已恢复']),('notes','处置备注','textarea',0)],{'assetId':1,'ticketNo':'INC-01','title':'演示性能告警','reportedDate':'2026-10-02','severity':'低','status':'待处理','notes':'虚构事件记录'})]),
+ ('civic',8129,'公共服务','CIVIC FLOW','服务事项与办理登记，为申请处理提供可见进度','#44779b','#eaf4fa',[
+   ('services','服务事项','▦',[('code','事项编号','text',1),('name','事项名称','text',1),('department','承办部门','text',1),('days','参考办理天数','number',1),('status','事项状态','select',1,['开放','暂停'])],{'code':'CIV-01','name':'便民咨询演示','department':'演示服务台','days':3,'status':'开放'}),
+   ('cases','办理登记','✦',[('serviceId','关联事项','relation',1,'services'),('caseNo','登记编号','text',1),('applicant','申请人代号','text',1),('date','登记日期','date',1),('status','处理状态','select',1,['待受理','处理中','已完成','已退回']),('notes','处理备注','textarea',0)],{'serviceId':1,'caseNo':'CIV-CASE-01','applicant':'虚构用户 A','date':'2026-10-02','status':'待受理','notes':'虚构办事记录，不包含真实身份资料'})]),
+]
