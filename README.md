@@ -2,7 +2,7 @@
 
 ![ai-hub · 让每一种职业都有自己的软件](./docs/ai-hub-cover.svg)
 
-**17 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
+**19 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
 
 [立即体验](#-30-秒开始体验) · [浏览项目](#-项目宇宙) · [系统架构](#-系统架构) · [页面截图](#-真实页面) · [测试与边界](#-验证与使用边界)
 
@@ -16,7 +16,7 @@
 
 | 真实业务场景 | 开箱可体验 | 自主实现、方便改造 |
 | :--- | :--- | :--- |
-| 从电商、管理到医疗、科研、家庭记录，覆盖 **17 个独立系统**；不是同一套空壳换标题。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 17 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
+| 从电商、管理到医疗、科研、家庭记录，覆盖 **19 个独立系统**；不是同一套空壳换标题。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 19 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
 
 ## ⚡ 30 秒开始体验
 
@@ -53,6 +53,8 @@
 | | [carcare · 汽车养护](./carcare/README.md) | 车辆、里程、维修保养与费用记录 | `8095` |
 | | [parenting · 养娃](./parenting/README.md) | 成长档案、日常与里程碑记录 | `8096` |
 | | [labbook · 科研实验](./labbook/README.md) | 八个学科模板、实验、样本、修订历史与 JSON 导出 | `8097` |
+| **AI 与创意** | [ai · AI 工作台](./ai/README.md) | CLI 工具箱、Skill 技能库、Prompt 工作台与安全命令预览 | `8098` |
+| | [html · HTML 创意工坊](./html/README.md) | HTML/CSS/JS 实时预览、模板、小程序式小游戏与虚构黄页 | `8099` |
 
 ## 🖼️ 真实页面
 
@@ -61,10 +63,11 @@
 <table>
 <tr><td width="50%" align="center"><a href="./shop/README.md"><img src="./shop/screenshots/desktop-home.png" alt="shop 商城电脑端首页" width="100%" /></a><br/><b>shop · 电脑端商城</b></td><td width="50%" align="center"><a href="./manage/README.md"><img src="./manage/screenshots/dashboard.png" alt="manage 通用管理后台" width="100%" /></a><br/><b>manage · 通用管理后台</b></td></tr>
 <tr><td width="50%" align="center"><a href="./labbook/README.md"><img src="./labbook/screenshots/overview.png" alt="labbook 科研实验记录总览" width="100%" /></a><br/><b>labbook · 跨学科实验记录</b></td><td width="50%" align="center"><a href="./barber/README.md"><img src="./barber/screenshots/overview.png" alt="barber 理发小程序" width="100%" /></a><br/><b>barber · 预约小程序</b></td></tr>
+<tr><td width="50%" align="center"><a href="./ai/README.md"><img src="./ai/screenshots/overview.png" alt="ai 本机 AI 工作台" width="100%" /></a><br/><b>ai · 本机 AI 工作台</b></td><td width="50%" align="center"><a href="./html/README.md"><img src="./html/screenshots/studio.png" alt="html 创意工坊工作台" width="100%" /></a><br/><b>html · HTML 创意工坊</b></td></tr>
 </table>
 
 <details>
-<summary><b>展开全部 17 个项目的页面截图索引</b></summary>
+<summary><b>展开全部 19 个项目的页面截图索引</b></summary>
 
 | 项目 | 功能闭环 | 本机地址 | 页面截图 |
 | :--- | :--- | :--- | :--- |
@@ -85,6 +88,8 @@
 | [carcare](./carcare/README.md) | 车辆档案、保养维修、里程与费用记录 | http://127.0.0.1:8095 | [总览](./carcare/screenshots/overview.png) · [车辆](./carcare/screenshots/primary.png) · [维修记录](./carcare/screenshots/secondary.png) |
 | [parenting](./parenting/README.md) | 成长档案、成长记录与分类检索 | http://127.0.0.1:8096 | [总览](./parenting/screenshots/overview.png) · [成长档案](./parenting/screenshots/primary.png) · [成长记录](./parenting/screenshots/secondary.png) |
 | [labbook](./labbook/README.md) | 跨学科实验、样本、修订历史与 JSON 导出 | http://127.0.0.1:8097 | [总览](./labbook/screenshots/overview.png) · [实验](./labbook/screenshots/experiments.png) · [样本](./labbook/screenshots/samples.png) · [学科模板](./labbook/screenshots/templates.png) · [详情](./labbook/screenshots/detail.png) · [编辑](./labbook/screenshots/editor.png) |
+| [ai](./ai/README.md) | CLI 工具箱、Skill 技能库、Prompt 工作台 | http://127.0.0.1:8098 | [总览](./ai/screenshots/overview.png) · [CLI](./ai/screenshots/cli.png) · [技能库](./ai/screenshots/skills.png) · [Prompt](./ai/screenshots/prompt.png) · [技能详情](./ai/screenshots/skill-detail.png) |
+| [html](./html/README.md) | HTML/CSS/JS 工作台、模板、小游戏与黄页目录 | http://127.0.0.1:8099 | [工作台](./html/screenshots/studio.png) · [模板](./html/screenshots/templates.png) · [小游戏](./html/screenshots/games.png) · [黄页](./html/screenshots/directory.png) · [黄页详情](./html/screenshots/directory-detail.png) |
 
 </details>
 
@@ -94,7 +99,7 @@
 
 **关键设计：**
 
-1. **项目独立：**17 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
+1. **项目独立：**19 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
 2. **Web 一体交付：**Vue 页面由 Vite 构建后放入 Spring Boot 的静态资源目录，随可执行 jar 一起提供；浏览器通过同源 `/api` 请求业务接口。
 3. **小程序单独构建：**shop、barber、dining、selfshop 的 uni-app 构建微信小程序产物；小程序和电脑端的代码形态不同，但对应 Java API 保持独立。
 4. **数据本机持久化：**业务数据位于各项目的 `data/<项目>.json`，重启仍保留。停服后复制 JSON 文件备份；停服后移走它可重置演示数据。文件损坏时服务拒绝启动，避免覆盖原数据。
@@ -103,8 +108,8 @@
 ## ✅ 验证与使用边界
 
 ```powershell
-./test-all.ps1      # Windows：17 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
-./smoke-test.ps1    # Windows：启动 17 个真实服务，检查页面、JS 与 API
+./test-all.ps1      # Windows：19 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
+./smoke-test.ps1    # Windows：启动 19 个真实服务，检查页面、JS 与 API
 ```
 
 macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。截图保存在各项目的 `screenshots/`；新项目只有具备页面、接口、测试和实际截图后才列入目录。
