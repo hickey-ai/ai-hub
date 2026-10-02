@@ -2,31 +2,51 @@
 
 **[简体中文](./README.md) · [English](./README.en.md)**
 
-<p align="center">
-  <img src="./docs/ai-hub-hero.gif" alt="ai-hub · 让每一种职业都有自己的软件" width="1200">
-</p>
+<img src="./docs/ai-hub-hero.gif" alt="ai-hub：让更多职业的软件创意变成可运行的项目" width="1200" />
 
-**84 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
+### 把每一种真实需求，变成看得见的软件。
 
-[立即体验](#-快速开始) · [浏览项目](#-项目宇宙) · [系统架构](#-系统架构) · [页面截图](#-真实页面) · [测试与边界](#-验证与使用边界)
+**84 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
+
+[探索生态矩阵](#-ai-hub-生态矩阵) · [一键体验](#-快速开始) · [全部项目](#-项目宇宙) · [页面截图](#-真实页面) · [架构与边界](#-系统架构)
 
 </div>
 
-> **只要你愿意提出需求，我们就把更多职业的想法做成看得见、跑得起来、能验证的产品。**
->
-> ai-hub 是持续生长的业务软件合集，不是“已经覆盖所有职业”的承诺。每个列为已实现的项目都有独立的业务页面、Java API、运行脚本、测试与真实页面截图。
+> **ai-hub 是持续生长的业务软件合集。** 从有完整交互流程的精选项目，到覆盖更多职业的轻量记录样板，再到小程序和创意工具：选一个目录，运行、查看页面、验证功能，然后按自己的业务继续改造。**“让每种职业都有软件”是愿景，不是已经覆盖所有行业流程的承诺。**
 
-<p align="center">
-  <img src="./docs/ai-hub-constellation.gif" alt="ai-hub 业务领域星图" width="1200">
-</p>
+## ✨ 从这里进入
 
-> 💬 **需要为你的行业定制开发？** 欢迎添加 QQ **3174667330**，说明业务场景、使用人数和期望功能。我们可以围绕真实需求讨论方案；现有演示项目不代表可直接用于生产。
+<table>
+<tr>
+<td width="25%" align="center"><a href="./shop/README.md"><img src="./shop/screenshots/desktop-home.png" alt="shop 电脑端商城首页截图" width="100%" /></a><br/><b>01 · 交易体验</b><br/><sub>shop · 商品 / 购物车 / 订单</sub></td>
+<td width="25%" align="center"><a href="./manage/README.md"><img src="./manage/screenshots/dashboard.png" alt="manage 管理后台截图" width="100%" /></a><br/><b>02 · 企业运营</b><br/><sub>manage · 控制台 / 用户 / 角色</sub></td>
+<td width="25%" align="center"><a href="./labbook/README.md"><img src="./labbook/screenshots/overview.png" alt="labbook 实验记录截图" width="100%" /></a><br/><b>03 · 科研记录</b><br/><sub>labbook · 实验 / 修订 / 导出</sub></td>
+<td width="25%" align="center"><a href="./scenic/README.md"><img src="./scenic/screenshots/overview.png" alt="scenic 景区管理记录样板截图" width="100%" /></a><br/><b>04 · 行业样板</b><br/><sub>scenic · 景点 / 游客记录</sub></td>
+</tr>
+</table>
 
-## ✨ 为什么是 ai-hub
+<div align="center"><sub>以上均为实际运行页面，而非效果图。点击图片查看项目说明与更多截图。</sub></div>
 
-| 真实业务场景 | 开箱可体验 | 自主实现、方便改造 |
-| :--- | :--- | :--- |
-| 从电商、管理到医疗、科研、家庭记录，覆盖 **84 个独立系统**；新增行业目录复用记录台模板，深度与完整产品不同。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 84 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
+## 🧩 ai-hub 生态矩阵
+
+![ai-hub 生态矩阵：业务流程、小程序触点、行业记录样板、创意工具，以及独立本机技术链路](./docs/ecosystem-matrix.svg)
+
+| 生态层 | 代表项目 / 入口 | 你能体验到什么 | 当前边界 |
+| :--- | :--- | :--- | :--- |
+| **业务流程应用** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | 商城购买链路、管理控制台、实验记录等各有侧重的独立体验 | 功能深度不一致；不等于生产级全功能产品 |
+| **移动端触点** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | 四个项目的 uni-app 微信小程序构建，连接各自 Java API | **4 个构建目标包含在 84 个项目内**，不是额外四套系统 |
+| **行业记录样板** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [更多行业 ↓](#-项目宇宙) | 行业档案、关联记录、搜索和表单；用来讨论具体业务需求 | 多数为本机单用户记录演示，不含真实票务、诊断、交易或监管流程 |
+| **创意与效率工具** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill 工作台、HTML 小游戏与黄页样板、公开页面抓取 | 本机工具与演示，不是托管 AI 平台或大规模爬虫服务 |
+
+**共同的交付方式，不是共享单体服务：**各项目独立目录、独立端口、独立数据文件；Vue 3 页面经构建由 Java 21 / Spring Boot 服务提供，配有测试脚本和实际截图。[看完整架构](#-系统架构) · [看使用边界](#-验证与使用边界)
+
+<details>
+<summary><b>展开 ai-hub 业务星图动效</b></summary>
+<br/>
+<img src="./docs/ai-hub-constellation.gif" alt="ai-hub 业务领域星图动效" width="1200" />
+</details>
+
+> 💬 **你的行业还缺合适的软件？** 可加 QQ **3174667330** 讨论定制开发：告诉我们业务场景、使用人数与期待的流程。现有项目是可以运行和验证的起点，正式上线需要进一步设计、开发与验收。
 
 ## ⚡ 快速开始
 

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="970" viewBox="0 0 1400 970" role="img" aria-labelledby="title desc">
+<title id="title">ai-hub ecosystem matrix</title>
+<desc id="desc">Four product groups: workflow applications, WeChat mini-programs, sector record desks, and creative utilities. Each project is independent, built with Vue and Java 21, and intended for local evaluation.</desc>
+<defs>
+  <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#090E23"/><stop offset=".52" stop-color="#111A3D"/><stop offset="1" stop-color="#0C273E"/></linearGradient>
+  <linearGradient id="a" x2="1" y2="1"><stop stop-color="#77E8DE"/><stop offset="1" stop-color="#58A7FF"/></linearGradient>
+  <linearGradient id="b" x2="1" y2="1"><stop stop-color="#A69BFF"/><stop offset="1" stop-color="#F092C2"/></linearGradient>
+  <linearGradient id="c" x2="1" y2="1"><stop stop-color="#FFCB85"/><stop offset="1" stop-color="#FC8E8E"/></linearGradient>
+  <linearGradient id="d" x2="1" y2="1"><stop stop-color="#81E6B5"/><stop offset="1" stop-color="#66BCF7"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="62"/></filter>
+  <filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#020716" flood-opacity=".35"/></filter>
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#9DCEF8" stroke-opacity=".055"/></pattern>
+</defs>
+<rect width="1400" height="970" rx="30" fill="url(#bg)"/>
+<rect width="1400" height="970" rx="30" fill="url(#grid)"/>
+<circle cx="1235" cy="78" r="170" fill="#476AFF" opacity=".19" filter="url(#glow)"/>
+<circle cx="77" cy="780" r="185" fill="#2DE6C5" opacity=".11" filter="url(#glow)"/>
+<g font-family="Inter,Segoe UI,Arial,sans-serif">
+  <rect x="48" y="37" width="205" height="31" rx="15.5" fill="#213653" stroke="#436987"/>
+  <circle cx="67" cy="53" r="4" fill="#6AEED5"/>
+  <text x="80" y="58" font-size="13" font-weight="700" letter-spacing="2" fill="#B3EADD">THE PRODUCT MAP</text>
+  <text x="48" y="119" font-size="45" font-weight="800" fill="#FFFFFF">The ai-hub ecosystem</text>
+  <text x="50" y="153" font-size="17" fill="#A9BBD4">One collection. Independent projects. Four ways to explore real-world software ideas.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="48" y="185" width="638" height="273" rx="24" fill="#192541" stroke="#426077"/>
+    <rect x="714" y="185" width="638" height="273" rx="24" fill="#201F43" stroke="#655380"/>
+    <rect x="48" y="482" width="638" height="273" rx="24" fill="#30283B" stroke="#735E6A"/>
+    <rect x="714" y="482" width="638" height="273" rx="24" fill="#192C39" stroke="#476C6C"/>
+  </g>
+  <rect x="48" y="185" width="638" height="5" rx="3" fill="url(#a)"/>
+  <rect x="714" y="185" width="638" height="5" rx="3" fill="url(#b)"/>
+  <rect x="48" y="482" width="638" height="5" rx="3" fill="url(#c)"/>
+  <rect x="714" y="482" width="638" height="5" rx="3" fill="url(#d)"/>
+
+  <text x="77" y="225" font-size="14" font-weight="800" letter-spacing="2" fill="#8FE8E0">01 / WEB WORKFLOWS</text>
+  <text x="77" y="269" font-size="31" font-weight="800" fill="#F7FAFF">Signature experiences</text>
+  <text x="77" y="304" font-size="16" fill="#B9CDE1">Explore richer flows and purpose-built interfaces.</text>
+  <rect x="77" y="328" width="575" height="94" rx="15" fill="#101D35" stroke="#35526A"/>
+  <text x="97" y="357" font-size="17" font-weight="700" fill="#91E7E6">shop</text><text x="225" y="357" font-size="15" fill="#D7E5F4">catalog · cart · orders</text>
+  <text x="97" y="385" font-size="17" font-weight="700" fill="#91E7E6">manage</text><text x="225" y="385" font-size="15" fill="#D7E5F4">admin dashboard · users · roles</text>
+  <text x="97" y="411" font-size="17" font-weight="700" fill="#91E7E6">labbook</text><text x="225" y="411" font-size="15" fill="#D7E5F4">experiment notes · revisions</text>
+
+  <text x="743" y="225" font-size="14" font-weight="800" letter-spacing="2" fill="#CAB0FF">02 / MOBILE TOUCHPOINTS</text>
+  <text x="743" y="269" font-size="31" font-weight="800" fill="#F7FAFF">WeChat mini-programs</text>
+  <text x="743" y="304" font-size="16" fill="#CEC6E2">uni-app builds connected to their own Java APIs.</text>
+  <rect x="743" y="329" width="575" height="94" rx="15" fill="#191933" stroke="#584971"/>
+  <text x="765" y="362" font-size="19" font-weight="700" fill="#E2D3FF">shop</text>
+  <text x="925" y="362" font-size="19" font-weight="700" fill="#E2D3FF">barber</text>
+  <text x="1090" y="362" font-size="19" font-weight="700" fill="#E2D3FF">dining</text>
+  <text x="765" y="400" font-size="19" font-weight="700" fill="#E2D3FF">selfshop</text>
+  <text x="925" y="400" font-size="14" fill="#CEC6E2">4 build targets, not 4 extra projects</text>
+
+  <text x="77" y="522" font-size="14" font-weight="800" letter-spacing="2" fill="#FFD2A0">03 / SECTOR RECORD DESKS</text>
+  <text x="77" y="566" font-size="31" font-weight="800" fill="#F7FAFF">A growing industry atlas</text>
+  <text x="77" y="601" font-size="16" fill="#DDCCD1">Local records, linked entries, search and forms.</text>
+  <rect x="77" y="625" width="575" height="94" rx="15" fill="#241E32" stroke="#6A5465"/>
+  <text x="97" y="656" font-size="17" font-weight="700" fill="#FFD6AD">Places</text><text x="240" y="656" font-size="15" fill="#F0DBDF">scenic · realestate · property</text>
+  <text x="97" y="683" font-size="17" font-weight="700" fill="#FFD6AD">People</text><text x="240" y="683" font-size="15" fill="#F0DBDF">health · school · eldercare</text>
+  <text x="97" y="710" font-size="17" font-weight="700" fill="#FFD6AD">Operations</text><text x="240" y="710" font-size="15" fill="#F0DBDF">erp · logistics · maintenance</text>
+
+  <text x="743" y="522" font-size="14" font-weight="800" letter-spacing="2" fill="#A8F2CC">04 / CREATIVE &amp; UTILITIES</text>
+  <text x="743" y="566" font-size="31" font-weight="800" fill="#F7FAFF">Build, play, discover</text>
+  <text x="743" y="601" font-size="16" fill="#BDDAD7">Small tools to experiment with ideas locally.</text>
+  <rect x="743" y="625" width="575" height="94" rx="15" fill="#112630" stroke="#426A64"/>
+  <text x="763" y="656" font-size="17" font-weight="700" fill="#A9F0CD">ai</text><text x="892" y="656" font-size="15" fill="#DAECE8">CLI · skills · prompts</text>
+  <text x="763" y="683" font-size="17" font-weight="700" fill="#A9F0CD">html</text><text x="892" y="683" font-size="15" fill="#DAECE8">studio · games · directory</text>
+  <text x="763" y="710" font-size="17" font-weight="700" fill="#A9F0CD">crawler</text><text x="892" y="710" font-size="15" fill="#DAECE8">public-page extraction</text>
+
+  <rect x="48" y="781" width="1304" height="129" rx="23" fill="#121E36" stroke="#416078"/>
+  <text x="77" y="817" font-size="14" font-weight="800" letter-spacing="2" fill="#78DBE9">COMMON CONVENTIONS, NOT A SHARED MONOLITH</text>
+  <text x="77" y="856" font-size="21" font-weight="700" fill="#F6FBFF">Vue 3 / uni-app</text>
+  <text x="314" y="856" font-size="22" fill="#78DBE9">→</text>
+  <text x="352" y="856" font-size="21" font-weight="700" fill="#F6FBFF">Java 21 / Spring Boot</text>
+  <text x="674" y="856" font-size="22" fill="#78DBE9">→</text>
+  <text x="712" y="856" font-size="21" font-weight="700" fill="#F6FBFF">Local JSON</text>
+  <text x="861" y="856" font-size="22" fill="#78DBE9">→</text>
+  <text x="900" y="856" font-size="21" font-weight="700" fill="#F6FBFF">Tests + screenshots</text>
+  <text x="78" y="885" font-size="15" fill="#9FB6D0">84 independent runnable local demos · different feature depth · not production-ready SaaS</text>
+  <text x="49" y="947" font-size="14" letter-spacing="2" fill="#7F9EB7">AI-HUB  /  EXPLORE ONE PROJECT AT A TIME</text>
+</g>
+</svg>

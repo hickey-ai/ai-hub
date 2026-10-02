@@ -2,25 +2,51 @@
 
 **[简体中文](./README.md) · [English](./README.en.md)**
 
-<p align="center"><img src="./docs/ai-hub-hero.gif" alt="ai-hub: software ideas for more professions" width="1200"></p>
+<img src="./docs/ai-hub-hero.gif" alt="ai-hub: runnable software ideas for more professions" width="1200" />
 
-**84 runnable local projects** · **4 WeChat mini-program builds** · **Vue 3 + Java 21** · **Local-first**
+### Turn a real need into software you can see and run.
 
-[Get started](#-quick-start) · [Explore projects](#-project-universe) · [Screenshots](#-real-screenshots) · [Architecture](#-architecture) · [Validation](#-validation-and-limits)
+**84 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
+
+[Explore the ecosystem](#-ai-hub-ecosystem-matrix) · [Get started](#-quick-start) · [All projects](#-project-universe) · [Screenshots](#-real-screenshots) · [Architecture](#-architecture)
 
 </div>
 
-> **A growing collection of software ideas for real work.** Tell us what your profession needs, and we can turn a concrete use case into something visible, runnable and testable. This is a direction, not a claim that every profession or every production workflow is already covered.
+> **ai-hub is a growing collection of business software projects.** Explore selected workflows, lightweight record desks for many professions, mini-programs and creative utilities. Pick one directory, run it, inspect the actual pages and adapt it to a concrete need. **Software for every profession is a vision, not a claim of complete industry coverage today.**
 
-> 💬 **Need custom development for your business? Add QQ `3174667330`.** Share your use case, expected users and must-have features to discuss a tailored solution. The existing demos are starting points, not production-ready systems.
+## ✨ Pick an entry point
 
-<p align="center"><img src="./docs/ai-hub-constellation.gif" alt="ai-hub sector constellation" width="1200"></p>
+<table>
+<tr>
+<td width="25%" align="center"><a href="./shop/README.md"><img src="./shop/screenshots/desktop-home.png" alt="shop desktop storefront screenshot" width="100%" /></a><br/><b>01 · Commerce</b><br/><sub>shop · catalog / cart / orders</sub></td>
+<td width="25%" align="center"><a href="./manage/README.md"><img src="./manage/screenshots/dashboard.png" alt="manage dashboard screenshot" width="100%" /></a><br/><b>02 · Operations</b><br/><sub>manage · dashboard / users / roles</sub></td>
+<td width="25%" align="center"><a href="./labbook/README.md"><img src="./labbook/screenshots/overview.png" alt="labbook experiment records screenshot" width="100%" /></a><br/><b>03 · Research</b><br/><sub>labbook · experiments / revisions</sub></td>
+<td width="25%" align="center"><a href="./scenic/README.md"><img src="./scenic/screenshots/overview.png" alt="scenic attraction record demo screenshot" width="100%" /></a><br/><b>04 · Sector demos</b><br/><sub>scenic · attractions / visitor records</sub></td>
+</tr>
+</table>
 
-## ✨ Why ai-hub
+<div align="center"><sub>These are screenshots from running projects, not mockups. Click any image for its project guide and more screenshots.</sub></div>
 
-| Explore real scenarios | Run one project at a time | Adapt the code |
-| :--- | :--- | :--- |
-| Commerce, administration, healthcare, science, family journals and more across **84 independent directories**. The newer sector projects share a simple record-desk pattern; their depth varies. | Build a Vue frontend and serve it with its Java backend. No need to start all 84 services. | Vue 3 + Java 21 / Spring Boot for web projects; uni-app for the four WeChat mini-program builds. Each project has its own port and local data file. |
+## 🧩 ai-hub ecosystem matrix
+
+![ai-hub ecosystem matrix: workflow apps, mini-programs, sector record desks, creative tools, and the independent local build chain](./docs/ecosystem-matrix.svg)
+
+| Layer | Projects / entry points | What to explore | Current scope |
+| :--- | :--- | :--- | :--- |
+| **Workflow applications** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | Storefront purchase flow, administration dashboard and experiment records | Feature depth varies; these are not complete production products |
+| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 84 projects**, not additional systems |
+| **Sector record desks** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [more sectors ↓](#-project-universe) | Industry records, related entries, search and forms | Mostly single-user local demos; no real ticketing, diagnosis, closing or regulatory workflows |
+| **Creative utilities** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill workspace, HTML mini-games and directory demo, public-page crawling | Local utilities and demos, not a hosted AI platform or large-scale crawler |
+
+**Shared delivery conventions, not a shared monolith:** Each project owns its directory, port and data file. Vue 3 pages are built and served by a Java 21 / Spring Boot application, with test scripts and actual screenshots. [See the architecture](#-architecture) · [Read the limits](#-validation-and-limits)
+
+<details>
+<summary><b>Expand the animated sector constellation</b></summary>
+<br/>
+<img src="./docs/ai-hub-constellation.gif" alt="Animated ai-hub sector constellation" width="1200" />
+</details>
+
+> 💬 **Need something for your profession?** Add QQ **3174667330** to discuss custom development. Bring your use case, number of users and essential workflows. These runnable projects are starting points; a production deployment needs further design, implementation and acceptance testing.
 
 ## ⚡ Quick start
 
