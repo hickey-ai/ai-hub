@@ -80,7 +80,7 @@ npm --prefix frontend run build
 mvn -f backend/pom.xml package
 ```
 
-在仓库根目录执行 `./test-all.ps1`（Windows）或 `./test-all.sh`（macOS / Linux）会验证全部四个项目，并检查 jar 是否包含最新前端静态资源。
+在仓库根目录执行 `./test-all.ps1`（Windows）或 `./test-all.sh`（macOS / Linux）会验证全部 33 个项目，并检查 jar 是否包含最新前端静态资源。
 
 ## 本地数据与使用边界
 

@@ -10,3 +10,6 @@
 
 **/data/
 **/backend/src/main/resources/static/
+
+**/__pycache__/
+*.pyc

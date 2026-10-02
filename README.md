@@ -4,7 +4,7 @@
   <img src="./docs/ai-hub-hero.gif" alt="ai-hub · 让每一种职业都有自己的软件" width="1200">
 </p>
 
-**20 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
+**33 个可运行项目** · **4 个微信小程序构建** · **Vue 3 + Java 21** · **本机优先**
 
 [立即体验](#-30-秒开始体验) · [浏览项目](#-项目宇宙) · [系统架构](#-系统架构) · [页面截图](#-真实页面) · [测试与边界](#-验证与使用边界)
 
@@ -22,7 +22,7 @@
 
 | 真实业务场景 | 开箱可体验 | 自主实现、方便改造 |
 | :--- | :--- | :--- |
-| 从电商、管理到医疗、科研、家庭记录，覆盖 **20 个独立系统**；不是同一套空壳换标题。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 20 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
+| 从电商、管理到医疗、科研、家庭记录，覆盖 **33 个独立系统**；新增 13 个行业目录复用记录台模板，深度与完整产品不同。 | 前端构建后随 Java 服务提供页面；选择一个项目运行即可，无需同时启动 33 套服务。 | 统一使用 **Vue 3 + Java 21 / Spring Boot**；小程序采用 uni-app。每个项目独立目录、端口与数据文件。 |
 
 ## ⚡ 30 秒开始体验
 
@@ -61,6 +61,20 @@
 | | [labbook · 科研实验](./labbook/README.md) | 八个学科模板、实验、样本、修订历史与 JSON 导出 | `8097` |
 | **AI 与创意** | [ai · AI 工作台](./ai/README.md) | CLI 工具箱、Skill 技能库、Prompt 工作台与安全命令预览 | `8098` |
 | | [html · HTML 创意工坊](./html/README.md) | HTML/CSS/JS 实时预览、模板、小程序式小游戏与虚构黄页 | `8099` |
+| | [crawler · 网页抓取](./crawler/README.md) | 公开网页单页抓取、摘要、链接与历史 | `8100` |
+| **供应链与制造** | [erp · 进销存](./erp/README.md) | 商品档案、出入库流水、关联与检索 | `8101` |
+| | [manufacturing · 制造](./manufacturing/README.md) | 物料档案、生产工单、进度记录 | `8102` |
+| | [logistics · 物流](./logistics/README.md) | 车辆档案、运输运单和状态记录 | `8103` |
+| **地产与农业** | [property · 物业房产](./property/README.md) | 房源档案、报修事项与处理记录 | `8104` |
+| | [agriculture · 农业养殖](./agriculture/README.md) | 地块档案、农事活动记录 | `8105` |
+| | [construction · 建筑工程](./construction/README.md) | 工程项目、现场施工日志 | `8106` |
+| **服务行业** | [hospitality · 酒店旅游](./hospitality/README.md) | 客房档案、预订记录与房态 | `8107` |
+| | [hrm · 人力资源](./hrm/README.md) | 员工档案、假勤申请与状态 | `8108` |
+| | [service · 售后工单](./service/README.md) | 客户档案、服务工单与跟进 | `8109` |
+| | [energy · 能源环保](./energy/README.md) | 监测设备、巡检读数与结论 | `8110` |
+| | [legal · 法律服务](./legal/README.md) | 委托档案、案件进度与下一步行动 | `8111` |
+| | [culture · 文化体育](./culture/README.md) | 场馆空间、活动安排与状态 | `8112` |
+| | [community · 社区公益](./community/README.md) | 服务项目、需求登记与处理记录 | `8113` |
 
 ## 🖼️ 真实页面
 
@@ -73,7 +87,7 @@
 </table>
 
 <details>
-<summary><b>展开全部 20 个项目的页面截图索引</b></summary>
+<summary><b>展开全部 33 个项目的页面截图索引</b></summary>
 
 | 项目 | 功能闭环 | 本机地址 | 页面截图 |
 | :--- | :--- | :--- | :--- |
@@ -97,6 +111,19 @@
 | [ai](./ai/README.md) | CLI 工具箱、Skill 技能库、Prompt 工作台 | http://127.0.0.1:8098 | [总览](./ai/screenshots/overview.png) · [CLI](./ai/screenshots/cli.png) · [技能库](./ai/screenshots/skills.png) · [Prompt](./ai/screenshots/prompt.png) · [技能详情](./ai/screenshots/skill-detail.png) |
 | [html](./html/README.md) | HTML/CSS/JS 工作台、模板、小游戏与黄页目录 | http://127.0.0.1:8099 | [工作台](./html/screenshots/studio.png) · [模板](./html/screenshots/templates.png) · [小游戏](./html/screenshots/games.png) · [黄页](./html/screenshots/directory.png) · [黄页详情](./html/screenshots/directory-detail.png) |
 | [crawler](./crawler/README.md) | 公开网页单页抓取、结构化摘要、链接提取与抓取历史 | http://127.0.0.1:8100 | [总览](./crawler/screenshots/overview.png) · [抓取结果](./crawler/screenshots/crawl.png) · [抓取历史](./crawler/screenshots/history.png) |
+| [erp](./erp/README.md) | 商品与出入库，本机演示样板 | http://127.0.0.1:8101 | [总览](./erp/screenshots/overview.png) · [商品档案](./erp/screenshots/primary.png) · [出入库流水](./erp/screenshots/secondary.png) · [编辑表单](./erp/screenshots/editor.png) |
+| [manufacturing](./manufacturing/README.md) | 物料与生产工单，本机演示样板 | http://127.0.0.1:8102 | [总览](./manufacturing/screenshots/overview.png) · [物料档案](./manufacturing/screenshots/primary.png) · [生产工单](./manufacturing/screenshots/secondary.png) · [编辑表单](./manufacturing/screenshots/editor.png) |
+| [logistics](./logistics/README.md) | 车辆与运单，本机演示样板 | http://127.0.0.1:8103 | [总览](./logistics/screenshots/overview.png) · [运输车辆](./logistics/screenshots/primary.png) · [运输运单](./logistics/screenshots/secondary.png) · [编辑表单](./logistics/screenshots/editor.png) |
+| [property](./property/README.md) | 房源档案与报修工单，本机演示样板 | http://127.0.0.1:8104 | [总览](./property/screenshots/overview.png) · [房源档案](./property/screenshots/primary.png) · [报修工单](./property/screenshots/secondary.png) · [编辑表单](./property/screenshots/editor.png) |
+| [agriculture](./agriculture/README.md) | 地块档案与农事记录，本机演示样板 | http://127.0.0.1:8105 | [总览](./agriculture/screenshots/overview.png) · [地块档案](./agriculture/screenshots/primary.png) · [农事记录](./agriculture/screenshots/secondary.png) · [编辑表单](./agriculture/screenshots/editor.png) |
+| [construction](./construction/README.md) | 工程项目与施工日志，本机演示样板 | http://127.0.0.1:8106 | [总览](./construction/screenshots/overview.png) · [工程项目](./construction/screenshots/primary.png) · [施工日志](./construction/screenshots/secondary.png) · [编辑表单](./construction/screenshots/editor.png) |
+| [hospitality](./hospitality/README.md) | 客房档案与预订记录，本机演示样板 | http://127.0.0.1:8107 | [总览](./hospitality/screenshots/overview.png) · [客房档案](./hospitality/screenshots/primary.png) · [预订记录](./hospitality/screenshots/secondary.png) · [编辑表单](./hospitality/screenshots/editor.png) |
+| [hrm](./hrm/README.md) | 员工档案与假勤申请，本机演示样板 | http://127.0.0.1:8108 | [总览](./hrm/screenshots/overview.png) · [员工档案](./hrm/screenshots/primary.png) · [假勤申请](./hrm/screenshots/secondary.png) · [编辑表单](./hrm/screenshots/editor.png) |
+| [service](./service/README.md) | 客户档案与服务工单，本机演示样板 | http://127.0.0.1:8109 | [总览](./service/screenshots/overview.png) · [客户档案](./service/screenshots/primary.png) · [服务工单](./service/screenshots/secondary.png) · [编辑表单](./service/screenshots/editor.png) |
+| [energy](./energy/README.md) | 监测设备与巡检记录，本机演示样板 | http://127.0.0.1:8110 | [总览](./energy/screenshots/overview.png) · [监测设备](./energy/screenshots/primary.png) · [巡检记录](./energy/screenshots/secondary.png) · [编辑表单](./energy/screenshots/editor.png) |
+| [legal](./legal/README.md) | 委托人档案与案件进度，本机演示样板 | http://127.0.0.1:8111 | [总览](./legal/screenshots/overview.png) · [委托人档案](./legal/screenshots/primary.png) · [案件进度](./legal/screenshots/secondary.png) · [编辑表单](./legal/screenshots/editor.png) |
+| [culture](./culture/README.md) | 场馆空间与活动安排，本机演示样板 | http://127.0.0.1:8112 | [总览](./culture/screenshots/overview.png) · [场馆空间](./culture/screenshots/primary.png) · [活动安排](./culture/screenshots/secondary.png) · [编辑表单](./culture/screenshots/editor.png) |
+| [community](./community/README.md) | 服务项目与服务需求，本机演示样板 | http://127.0.0.1:8113 | [总览](./community/screenshots/overview.png) · [服务项目](./community/screenshots/primary.png) · [服务需求](./community/screenshots/secondary.png) · [编辑表单](./community/screenshots/editor.png) |
 
 </details>
 
@@ -106,7 +133,7 @@
 
 **关键设计：**
 
-1. **项目独立：**20 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
+1. **项目独立：**33 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
 2. **Web 一体交付：**Vue 页面由 Vite 构建后放入 Spring Boot 的静态资源目录，随可执行 jar 一起提供；浏览器通过同源 `/api` 请求业务接口。
 3. **小程序单独构建：**shop、barber、dining、selfshop 的 uni-app 构建微信小程序产物；小程序和电脑端的代码形态不同，但对应 Java API 保持独立。
 4. **数据本机持久化：**业务数据位于各项目的 `data/<项目>.json`，重启仍保留。停服后复制 JSON 文件备份；停服后移走它可重置演示数据。文件损坏时服务拒绝启动，避免覆盖原数据。
@@ -115,8 +142,8 @@
 ## ✅ 验证与使用边界
 
 ```powershell
-./test-all.ps1      # Windows：20 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
-./smoke-test.ps1    # Windows：启动 20 个真实服务，检查页面、JS 与 API
+./test-all.ps1      # Windows：33 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
+./smoke-test.ps1    # Windows：启动 33 个真实服务，检查页面、JS 与 API
 ```
 
 macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。截图保存在各项目的 `screenshots/`；新项目只有具备页面、接口、测试和实际截图后才列入目录。
@@ -126,6 +153,6 @@ macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <�
 
 ## 🌱 下一站
 
-“让所有职业都能找到软件”是方向，而非当前覆盖范围。更多候选类型与参考项目见 [业务系统调研与建设清单](./docs/business-map.md)。欢迎从一个真实业务问题出发，提出下一款值得认真做的软件。
+“让所有职业都能找到软件”是方向，而非当前覆盖范围。新增 13 个行业项目是**可运行的档案／记录演示**，并非已经实现 ERP 自动库存结转、生产 MES、物流调度、酒店房态冲突控制、正式审批等完整行业系统。更多候选类型与参考项目见 [业务系统调研与建设清单](./docs/business-map.md)。欢迎从一个真实业务问题出发，提出下一款值得认真做的软件。
 
 **联系：**3174667330@qq.com · Git 提交邮箱仅设置在此仓库，不修改全局配置。

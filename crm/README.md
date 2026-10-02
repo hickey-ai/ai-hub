@@ -28,6 +28,6 @@ npm --prefix frontend ci
 npm --prefix frontend run build
 ```
 
-在仓库根目录执行 `./test-all.ps1`（Windows）或 `./test-all.sh`（macOS / Linux）会验证全部四个项目及 jar 中的页面资源。前端截图参见上方。
+在仓库根目录执行 `./test-all.ps1`（Windows）或 `./test-all.sh`（macOS / Linux）会验证全部 33 个项目及 jar 中的页面资源。前端截图参见上方。
 
 **使用边界：**负责人只是文本字段；没有身份认证、审计或多人协作冲突处理。 默认只监听本机 `127.0.0.1`；这是可本地直接使用的样板，**不适合未经改造部署到公网或生产环境**。

@@ -9,7 +9,7 @@ try {
         npm.cmd --prefix "$project/miniprogram" run build:mp-weixin
         if ($LASTEXITCODE -ne 0) { throw "$project mini-program build failed" }
     }
-    foreach ($project in @('shop', 'manage', 'crm', 'oa', 'finance', 'health', 'wellness', 'hospital', 'school', 'access', 'schedule', 'carcare', 'parenting', 'labbook', 'ai', 'html', 'crawler')) {
+    foreach ($project in @('shop', 'manage', 'crm', 'oa', 'finance', 'health', 'wellness', 'hospital', 'school', 'access', 'schedule', 'carcare', 'parenting', 'labbook', 'ai', 'html', 'crawler', 'erp', 'manufacturing', 'logistics', 'property', 'agriculture', 'construction', 'hospitality', 'hrm', 'service', 'energy', 'legal', 'culture', 'community')) {
         Write-Host "=== $project ==="
         npm.cmd --prefix "$project/frontend" ci
         if ($LASTEXITCODE -ne 0) { throw "$project npm ci failed" }
@@ -30,5 +30,5 @@ try {
         $jar = "$project/backend/target/$project-api-0.1.0.jar"
         if (-not (Test-Path $jar)) { throw "$project jar missing" }
     }
-    Write-Host 'All twenty projects passed.'
+    Write-Host 'All thirty-three projects passed.'
 } finally { Pop-Location }

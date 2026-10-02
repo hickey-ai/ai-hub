@@ -3,9 +3,9 @@ Push-Location $PSScriptRoot
 $dir = Join-Path $env:TEMP ('ai-hub-smoke-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $dir | Out-Null
 try {
-    $webProjects = @('shop','manage','crm','oa','finance','health','wellness','hospital','school','access','schedule','carcare','parenting','labbook','ai','html','crawler')
-    $webPorts = @{ shop=18081; manage=18082; crm=18083; oa=18084; finance=18085; health=18086; wellness=18087; hospital=18088; school=18089; access=18090; schedule=18094; carcare=18095; parenting=18096; labbook=18097; ai=18098; html=18099; crawler=18100 }
-    $webEndpoints = @{ shop='products'; manage='users'; crm='customers'; oa='requests'; finance='accounts'; health='members'; wellness='plans'; hospital='patients'; school='students'; access='doors'; schedule='events'; carcare='vehicles'; parenting='children'; labbook='experiments'; ai='skills'; html='directory'; crawler='overview' }
+    $webProjects = @('shop','manage','crm','oa','finance','health','wellness','hospital','school','access','schedule','carcare','parenting','labbook','ai','html','crawler','erp','manufacturing','logistics','property','agriculture','construction','hospitality','hrm','service','energy','legal','culture','community')
+    $webPorts = @{ shop=18081; manage=18082; crm=18083; oa=18084; finance=18085; health=18086; wellness=18087; hospital=18088; school=18089; access=18090; schedule=18094; carcare=18095; parenting=18096; labbook=18097; ai=18098; html=18099; crawler=18100; erp=18101; manufacturing=18102; logistics=18103; property=18104; agriculture=18105; construction=18106; hospitality=18107; hrm=18108; service=18109; energy=18110; legal=18111; culture=18112; community=18113 }
+    $webEndpoints = @{ shop='products'; manage='users'; crm='customers'; oa='requests'; finance='accounts'; health='members'; wellness='plans'; hospital='patients'; school='students'; access='doors'; schedule='events'; carcare='vehicles'; parenting='children'; labbook='experiments'; ai='skills'; html='directory'; crawler='overview'; erp='products'; manufacturing='materials'; logistics='vehicles'; property='units'; agriculture='plots'; construction='projects'; hospitality='rooms'; hrm='employees'; service='customers'; energy='assets'; legal='clients'; culture='venues'; community='programs' }
     foreach ($project in $webProjects) {
         $port = $webPorts[$project]; $endpoint = $webEndpoints[$project]
         $jar = (Resolve-Path "$project/backend/target/$project-api-0.1.0.jar").Path
@@ -33,5 +33,5 @@ try {
             Write-Host "$project API OK"
         } finally { Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue; $proc.WaitForExit() }
     }
-    Write-Host 'All twenty real-process checks passed.'
+    Write-Host 'All thirty-three real-process checks passed.'
 } finally { Pop-Location }
