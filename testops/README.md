@@ -12,7 +12,7 @@
 
 ## API 与测试
 
-`GET /api/{resource}`、`POST /api/{resource}`、`PUT /api/{resource}/{id}`、`DELETE /api/{resource}/{id}`。字段、必填、类别、数字、日期、关联关系均在服务端校验。无效输入 400、不存在 404、删除被引用档案 409。执行 `mvn -f testops/backend/pom.xml test`，或根目录运行 `./test-all.ps1`。
+`GET /api/{resource}`、`POST /api/{resource}`、`PUT /api/{resource}/{id}`、`DELETE /api/{resource}/{id}`。字段、必填、类别、数字、日期、关联关系均在服务端校验。无效输入 400、不存在 404、删除被引用档案或编号重复 409；测试用例编号全局唯一（忽略大小写，首尾空格自动去除），编辑自身不冲突。执行 `mvn -f testops/backend/pom.xml test`，或根目录运行 `./test-all.ps1`。
 
 ## 真实页面截图
 

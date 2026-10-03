@@ -70,6 +70,7 @@ class RecordsController {
     @ResponseStatus(HttpStatus.CREATED)
     synchronized Map<String,Object> create(@PathVariable String resource, @RequestBody Map<String,Object> input) {
         var item = validate(resource, input);
+        ensureUnique(resource, item, null);
         item.put("id", nextId++);
         data.get(resource).add(item);
         try { persist(); }
@@ -82,6 +83,7 @@ class RecordsController {
         var list = records(resource);
         int index = indexOf(list, id);
         var item = validate(resource, input);
+        ensureUnique(resource, item, id);
         item.put("id", id);
         var previous = list.set(index, item);
         try { persist(); }
@@ -177,6 +179,15 @@ class RecordsController {
             } default -> throw new ResponseStatusException(HttpStatus.NOT_FOUND); }
         return out;
     }
+    private void ensureUnique(String resource, Map<String,Object> item, Long excludeId) {
+        if (!resource.equals("testcases")) return;
+        String number = (String) item.get("caseNo");
+        boolean exists = records(resource).stream().anyMatch(row ->
+            (excludeId == null || ((Number) row.get("id")).longValue() != excludeId)
+            && number.equalsIgnoreCase((String) row.get("caseNo")));
+        if (exists) throw new ResponseStatusException(HttpStatus.CONFLICT, "编号已存在");
+    }
+
     private void persist() {
         try {
             Path parent = file.getParent();

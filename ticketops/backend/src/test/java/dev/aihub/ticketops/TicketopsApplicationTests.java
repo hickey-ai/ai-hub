@@ -24,7 +24,7 @@ class TicketopsApplicationTests {
         mvc.perform(get("/api/queues")).andExpect(status().isOk()).andExpect(jsonPath("$[0].id").exists());
         mvc.perform(get("/api/unknown")).andExpect(status().isNotFound());
         mvc.perform(post("/api/"+resource).contentType(MediaType.APPLICATION_JSON).content("{}")).andExpect(status().isBadRequest());
-        String payload=mapper.writeValueAsString(mapper.readValue("{\"queueId\": 1, \"ticketNo\": \"IT-2026-001\", \"title\": \"演示设备接入申请\", \"priority\": \"普通\", \"status\": \"处理中\", \"assignee\": \"演示处理人\", \"eventDate\": \"2026-10-02\", \"notes\": \"虚构内部请求\"}",java.util.Map.class));
+        String payload=mapper.writeValueAsString(mapper.readValue("{\"queueId\": 1, \"ticketNo\": \"IT-2026-002\", \"title\": \"演示设备接入申请\", \"priority\": \"普通\", \"status\": \"处理中\", \"assignee\": \"演示处理人\", \"eventDate\": \"2026-10-02\", \"notes\": \"虚构内部请求\"}",java.util.Map.class));
         var badRelation=mapper.readTree(payload).deepCopy();
         ((com.fasterxml.jackson.databind.node.ObjectNode)badRelation).put("queueId", 99999);
         mvc.perform(post("/api/"+resource).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(badRelation))).andExpect(status().isBadRequest());
@@ -42,5 +42,27 @@ class TicketopsApplicationTests {
         assertEquals(2,new RecordsController(mapper,FILE.toString()).list(resource).size());
         mvc.perform(delete("/api/"+resource+"/"+id)).andExpect(status().isNoContent());
         mvc.perform(delete("/api/"+resource+"/"+id)).andExpect(status().isNotFound());
+    }
+
+    @Test void rejectsDuplicateNumbersWithoutChangingStoredRecords() throws Exception {
+        String path = "/api/tickets";
+        var original = mapper.readTree(mvc.perform(get(path)).andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString()).get(0);
+        var duplicate = original.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ObjectNode) duplicate).put("ticketNo", "  it-2026-001  ");
+        mvc.perform(post(path).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(duplicate)))
+            .andExpect(status().isConflict());
+        var different = original.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ObjectNode) different).put("ticketNo", "UNIQUE-QUALITY-LOOP-01");
+        String created = mvc.perform(post(path).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(different)))
+            .andExpect(status().isCreated()).andReturn().getResponse().getContentAsString();
+        long id = mapper.readTree(created).get("id").asLong();
+        mvc.perform(put(path + "/" + id).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(different)))
+            .andExpect(status().isOk());
+        mvc.perform(put(path + "/" + id).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(duplicate)))
+            .andExpect(status().isConflict());
+        assertEquals("UNIQUE-QUALITY-LOOP-01", new RecordsController(mapper, FILE.toString()).list("tickets").stream()
+            .filter(row -> ((Number) row.get("id")).longValue() == id).findFirst().orElseThrow().get("ticketNo"));
+        mvc.perform(delete(path + "/" + id)).andExpect(status().isNoContent());
     }
 }

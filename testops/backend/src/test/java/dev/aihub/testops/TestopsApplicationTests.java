@@ -43,4 +43,26 @@ class TestopsApplicationTests {
         mvc.perform(delete("/api/"+resource+"/"+id)).andExpect(status().isNoContent());
         mvc.perform(delete("/api/"+resource+"/"+id)).andExpect(status().isNotFound());
     }
+
+    @Test void rejectsDuplicateNumbersWithoutChangingStoredRecords() throws Exception {
+        String path = "/api/testcases";
+        var original = mapper.readTree(mvc.perform(get(path)).andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString()).get(0);
+        var duplicate = original.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ObjectNode) duplicate).put("caseNo", "  tc-demo-01  ");
+        mvc.perform(post(path).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(duplicate)))
+            .andExpect(status().isConflict());
+        var different = original.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ObjectNode) different).put("caseNo", "UNIQUE-QUALITY-LOOP-01");
+        String created = mvc.perform(post(path).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(different)))
+            .andExpect(status().isCreated()).andReturn().getResponse().getContentAsString();
+        long id = mapper.readTree(created).get("id").asLong();
+        mvc.perform(put(path + "/" + id).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(different)))
+            .andExpect(status().isOk());
+        mvc.perform(put(path + "/" + id).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(duplicate)))
+            .andExpect(status().isConflict());
+        assertEquals("UNIQUE-QUALITY-LOOP-01", new RecordsController(mapper, FILE.toString()).list("testcases").stream()
+            .filter(row -> ((Number) row.get("id")).longValue() == id).findFirst().orElseThrow().get("caseNo"));
+        mvc.perform(delete(path + "/" + id)).andExpect(status().isNoContent());
+    }
 }
