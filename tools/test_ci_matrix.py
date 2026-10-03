@@ -1,4 +1,7 @@
 import importlib.util
+import json
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -21,6 +24,14 @@ class MatrixTests(unittest.TestCase):
         self.assertEqual(module.select(["tools/create-sector.py"], known), known)
         self.assertEqual(module.select(["test-all.sh"], known), known)
 
+    def test_cli_outputs_valid_github_job_values(self):
+        result = subprocess.run(
+            [sys.executable, str(Path(__file__).with_name("ci-matrix.py")), "--base", "", "--head", "HEAD"],
+            text=True, capture_output=True, check=True,
+        )
+        outputs = dict(line.split("=", 1) for line in result.stdout.splitlines())
+        self.assertEqual(outputs["has_projects"], "true")
+        self.assertEqual(len(json.loads(outputs["matrix"])["include"]), 87)
     def test_docs_only(self):
         self.assertEqual(module.select(["README.md", "docs/architecture.svg"], module.projects()), [])
 
