@@ -6,7 +6,7 @@
 
 ### 把每一种真实需求，变成看得见的软件。
 
-**88 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
+**98 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
 
 [探索生态矩阵](#-ai-hub-生态矩阵) · [一键体验](#-快速开始) · [全部项目](#-项目宇宙) · [页面截图](#-真实页面) · [架构与边界](#-系统架构)
 
@@ -34,7 +34,7 @@
 | 生态层 | 代表项目 / 入口 | 你能体验到什么 | 当前边界 |
 | :--- | :--- | :--- | :--- |
 | **业务流程应用** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | 商城购买链路、管理控制台、实验记录等各有侧重的独立体验 | 功能深度不一致；不等于生产级全功能产品 |
-| **移动端触点** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | 四个项目的 uni-app 微信小程序构建，连接各自 Java API | **4 个构建目标包含在 88 个项目内**，不是额外四套系统 |
+| **移动端触点** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | 四个项目的 uni-app 微信小程序构建，连接各自 Java API | **4 个构建目标包含在 98 个项目内**，不是额外四套系统 |
 | **行业记录样板** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [更多行业 ↓](#-项目宇宙) | 行业档案、关联记录、搜索和表单；用来讨论具体业务需求 | 多数为本机单用户记录演示，不含真实票务、诊断、交易或监管流程 |
 | **创意与效率工具** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill 工作台、HTML 小游戏与黄页样板、公开页面抓取 | 本机工具与演示，不是托管 AI 平台或大规模爬虫服务 |
 
@@ -202,6 +202,25 @@
 
 **如何体验新增项目？** 例如 Windows 运行 `./cms/run.ps1`，macOS/Linux 运行 `./cms/run.sh`，打开 `http://127.0.0.1:8114`；其他项目替换目录名并使用上表对应端口。每个项目 README 都有启动说明和四张截图（总览、两类列表、编辑表单）。
 
+## 🧭 新增 10 个行业方向 · 可启动的本机记录台
+
+下列项目均为 Vue 3 + Java 21 的**本机单用户演示**，具备两类关联档案、表单校验、检索、增删改和 JSON 保存；不是实际调度、法定溯源、消防监管、售票支付、评标或审计系统。
+
+| 项目 | 当前可体验的记录 | 地址 |
+| :--- | :--- | :--- |
+| [公交地铁运营 · transit](./transit/README.md) | 线路／班次登记 | `http://127.0.0.1:8169` |
+| [食品批次溯源 · foodsafety](./foodsafety/README.md) | 食品批次／流转记录 | `http://127.0.0.1:8170` |
+| [应急消防巡检 · emergency](./emergency/README.md) | 巡检场所／隐患记录 | `http://127.0.0.1:8171` |
+| [演出赛事票务台账 · events](./events/README.md) | 场馆／活动场次 | `http://127.0.0.1:8172` |
+| [港口航运记录 · maritime](./maritime/README.md) | 港口泊位／靠港记录 | `http://127.0.0.1:8173` |
+| [博物馆藏品档案 · museum](./museum/README.md) | 藏品／借展记录 | `http://127.0.0.1:8174` |
+| [汽车销售线索 · autosales](./autosales/README.md) | 车辆／意向客户 | `http://127.0.0.1:8175` |
+| [采购招投标台账 · procurement](./procurement/README.md) | 采购需求／报价记录 | `http://127.0.0.1:8176` |
+| [仪器计量校准 · calibration](./calibration/README.md) | 仪器／校准记录 | `http://127.0.0.1:8177` |
+| [审计事务所项目 · auditfirm](./auditfirm/README.md) | 审计项目／底稿登记 | `http://127.0.0.1:8178` |
+
+Windows 从仓库根目录运行 `./transit/run.ps1`；macOS/Linux 运行 `./transit/run.sh`。其他方向替换项目名与上表端口。每个项目 README 含四个真实页面截图。
+
 ## 🖼️ 真实页面
 
 以下画面来自实际运行的项目，不是设计稿。点击图片进入对应项目的完整说明。
@@ -213,7 +232,7 @@
 </table>
 
 <details>
-<summary><b>展开全部 88 个项目的页面截图索引</b></summary>
+<summary><b>展开全部 98 个项目的页面截图索引</b></summary>
 
 | 项目 | 已演示能力 | 本机地址 | 页面截图 |
 | :--- | :--- | :--- | :--- |
@@ -305,6 +324,16 @@
 | [ticketops](./ticketops/README.md) | 队列与内部工单的本机演示 | http://127.0.0.1:8166 | [总览](./ticketops/screenshots/overview.png) · [队列](./ticketops/screenshots/primary.png) · [工单](./ticketops/screenshots/secondary.png) · [编辑表单](./ticketops/screenshots/editor.png) |
 | [bugtrack](./bugtrack/README.md) | 项目与缺陷记录的本机演示 | http://127.0.0.1:8167 | [总览](./bugtrack/screenshots/overview.png) · [项目](./bugtrack/screenshots/primary.png) · [缺陷](./bugtrack/screenshots/secondary.png) · [编辑表单](./bugtrack/screenshots/editor.png) |
 | [gridops](./gridops/README.md) | 网格事件登记与流转本机演示 | http://127.0.0.1:8168 | [总览](./gridops/screenshots/overview.png) · [事件](./gridops/screenshots/cases.png) · [时间线](./gridops/screenshots/timeline.png) · [登记](./gridops/screenshots/editor.png) |
+| [transit](./transit/README.md) | 线路／班次登记的本机记录演示 | http://127.0.0.1:8169 | [总览](./transit/screenshots/overview.png) · [运营线路](./transit/screenshots/primary.png) · [班次记录](./transit/screenshots/secondary.png) · [新增表单](./transit/screenshots/editor.png) |
+| [foodsafety](./foodsafety/README.md) | 食品批次／流转记录的本机记录演示 | http://127.0.0.1:8170 | [总览](./foodsafety/screenshots/overview.png) · [食品批次](./foodsafety/screenshots/primary.png) · [流转记录](./foodsafety/screenshots/secondary.png) · [新增表单](./foodsafety/screenshots/editor.png) |
+| [emergency](./emergency/README.md) | 巡检场所／隐患记录的本机记录演示 | http://127.0.0.1:8171 | [总览](./emergency/screenshots/overview.png) · [巡检场所](./emergency/screenshots/primary.png) · [巡检记录](./emergency/screenshots/secondary.png) · [新增表单](./emergency/screenshots/editor.png) |
+| [events](./events/README.md) | 场馆／活动场次的本机记录演示 | http://127.0.0.1:8172 | [总览](./events/screenshots/overview.png) · [活动场馆](./events/screenshots/primary.png) · [活动场次](./events/screenshots/secondary.png) · [新增表单](./events/screenshots/editor.png) |
+| [maritime](./maritime/README.md) | 港口泊位／靠港记录的本机记录演示 | http://127.0.0.1:8173 | [总览](./maritime/screenshots/overview.png) · [港口泊位](./maritime/screenshots/primary.png) · [靠港记录](./maritime/screenshots/secondary.png) · [新增表单](./maritime/screenshots/editor.png) |
+| [museum](./museum/README.md) | 藏品／借展记录的本机记录演示 | http://127.0.0.1:8174 | [总览](./museum/screenshots/overview.png) · [馆藏档案](./museum/screenshots/primary.png) · [借展登记](./museum/screenshots/secondary.png) · [新增表单](./museum/screenshots/editor.png) |
+| [autosales](./autosales/README.md) | 车辆／意向客户的本机记录演示 | http://127.0.0.1:8175 | [总览](./autosales/screenshots/overview.png) · [在售车辆](./autosales/screenshots/primary.png) · [客户意向](./autosales/screenshots/secondary.png) · [新增表单](./autosales/screenshots/editor.png) |
+| [procurement](./procurement/README.md) | 采购需求／报价记录的本机记录演示 | http://127.0.0.1:8176 | [总览](./procurement/screenshots/overview.png) · [采购需求](./procurement/screenshots/primary.png) · [报价记录](./procurement/screenshots/secondary.png) · [新增表单](./procurement/screenshots/editor.png) |
+| [calibration](./calibration/README.md) | 仪器／校准记录的本机记录演示 | http://127.0.0.1:8177 | [总览](./calibration/screenshots/overview.png) · [仪器档案](./calibration/screenshots/primary.png) · [校准记录](./calibration/screenshots/secondary.png) · [新增表单](./calibration/screenshots/editor.png) |
+| [auditfirm](./auditfirm/README.md) | 审计项目／底稿登记的本机记录演示 | http://127.0.0.1:8178 | [总览](./auditfirm/screenshots/overview.png) · [审计项目](./auditfirm/screenshots/primary.png) · [工作底稿](./auditfirm/screenshots/secondary.png) · [新增表单](./auditfirm/screenshots/editor.png) |
 
 </details>
 
@@ -314,7 +343,7 @@
 
 **关键设计：**
 
-1. **项目独立：**88 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
+1. **项目独立：**98 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
 2. **Web 一体交付：**Vue 页面由 Vite 构建后放入 Spring Boot 的静态资源目录，随可执行 jar 一起提供；浏览器通过同源 `/api` 请求业务接口。
 3. **小程序单独构建：**shop、barber、dining、selfshop 的 uni-app 构建微信小程序产物；小程序和电脑端的代码形态不同，但对应 Java API 保持独立。
 4. **数据本机持久化：**业务数据位于各项目的 `data/<项目>.json`，重启仍保留。停服后复制 JSON 文件备份；停服后移走它可重置演示数据。文件损坏时服务拒绝启动，避免覆盖原数据。
@@ -323,15 +352,17 @@
 ## ✅ 验证与使用边界
 
 ```powershell
-./test-all.ps1      # Windows：88 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
-./smoke-test.ps1    # Windows：启动 88 个真实服务，检查页面、JS 与 API
+./test-all.ps1      # Windows：98 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
+./smoke-test.ps1    # Windows：启动 98 个真实服务，检查页面、JS 与 API
 ```
+
+**本轮新增验证（2026-10-03）：**10 个新增项目分别执行前端构建、Java 测试与打包、真实进程冒烟及浏览器页面／表单检查；**98 项全量尚未重新跑完**，截图见各项目。
 
 **补充验证（2026-10-03）：**新增 gridops 单独通过 Vue 构建、Java 测试与打包、真实服务页面/API、浏览器创建和完整流转/刷新持久化检查；**88 项全量未重跑**，历史 87 项验证记录见下方，不能将旧记录视为本轮全量通过。
 
 **验证记录（2026-10-02）：**此前 84 个项目完成前端构建、后端测试、打包和真实 Java 进程的页面/API 冒烟；本轮新增的 testops、ticketops、bugtrack 分别通过前端构建、后端测试/打包、真实进程冒烟及浏览器表单检查，各附 4 张实际截图。87 个项目的完整脚本已经纳入新入口，但**本轮未重新跑完 87 项全量检查**。这些检查验证本机演示，不代表生产环境的性能、安全或行业合规认证。
 
-macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。**每个项目都提供 `run.ps1` 和可执行的 `run.sh`**；截图保存在各项目的 `screenshots/`。GitHub Actions 对推送/PR 自动挑选有变更的项目构建与运行后端测试；共享构建脚本变更和每周定时任务覆盖完整 88 项。CI 仅检查构建、后端测试与打包静态页面，**不等于 88 项浏览器/业务流程测试**。[查看 100 轮质量自查账本](./docs/quality-loop.md)。
+macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。**每个项目都提供 `run.ps1` 和可执行的 `run.sh`**；截图保存在各项目的 `screenshots/`。GitHub Actions 对推送/PR 自动挑选有变更的项目构建与运行后端测试；共享构建脚本变更和每周定时任务覆盖完整 98 项。CI 仅检查构建、后端测试与打包静态页面，**不等于 98 项浏览器/业务流程测试**。[查看 100 轮质量自查账本](./docs/quality-loop.md)。
 
 > [!IMPORTANT]
 > **这是可直接在本机体验、学习和二次开发的样板，不是可直接上生产的 SaaS。** 默认绑定 `127.0.0.1`；没有统一登录鉴权、正式权限隔离、支付、加密、不可篡改审计、数据库迁移与多实例并发保障。金融、医疗、未成年人、门禁、科研等敏感场景尤其不能直接处理真实业务数据。正式部署前须完成安全、隐私、合规与灾备设计。

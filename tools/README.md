@@ -11,3 +11,5 @@ npm --prefix tools run capture:sectors
 需要 Java 21、Node.js 和 Chromium。脚本逐个启动本机 Java jar，访问真实页面并捕获总览、两个资源列表和新增表单各一张截图；遇到页面异常直接失败。可用环境变量 `CHROMIUM_PATH` 指向已有的 Chromium 可执行文件。请在干净的演示数据目录执行，避免把自己的数据截图提交到仓库；脚本不会验证业务交易流程或生产可用性。
 
 如只需重新拍摄本轮三个平台的页面，先构建 testops、ticketops、bugtrack 的 jar，再运行 `node tools/capture-sectors.cjs --platforms`。每个项目生成总览、两个资源列表和表单截图。
+
+本轮新增 10 个行业记录台的 jar 构建完成后，可运行 `node tools/capture-sectors.cjs --gaps`，逐项拍摄总览、两类列表与新增表单，并检查真实 Vue 表单创建。

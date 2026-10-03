@@ -44,7 +44,8 @@ from extra_sectors import EXTRA
 from new_sectors import NEW
 from more_sectors import EXTRA as MORE
 from platform_sectors import PLATFORMS
-SECTORS += EXTRA + NEW + MORE + PLATFORMS
+from gap_sectors import GAPS
+SECTORS += EXTRA + NEW + MORE + PLATFORMS + GAPS
 
 # Fail before copying a template: duplicate keys would make Java Map.of seeds crash at startup.
 if len({s[0] for s in SECTORS}) != len(SECTORS) or len({s[1] for s in SECTORS}) != len(SECTORS):

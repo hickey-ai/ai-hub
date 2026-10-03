@@ -6,7 +6,7 @@
 
 ### Turn a real need into software you can see and run.
 
-**88 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
+**98 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
 
 [Explore the ecosystem](#-ai-hub-ecosystem-matrix) · [Get started](#-quick-start) · [All projects](#-project-universe) · [Screenshots](#-real-screenshots) · [Architecture](#-architecture)
 
@@ -34,7 +34,7 @@
 | Layer | Projects / entry points | What to explore | Current scope |
 | :--- | :--- | :--- | :--- |
 | **Workflow applications** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | Storefront purchase flow, administration dashboard and experiment records | Feature depth varies; these are not complete production products |
-| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 88 projects**, not additional systems |
+| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 98 projects**, not additional systems |
 | **Sector record desks** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [more sectors ↓](#-project-universe) | Industry records, related entries, search and forms | Mostly single-user local demos; no real ticketing, diagnosis, closing or regulatory workflows |
 | **Creative utilities** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill workspace, HTML mini-games and directory demo, public-page crawling | Local utilities and demos, not a hosted AI platform or large-scale crawler |
 
@@ -191,6 +191,25 @@ The newest projects cover content and procurement (cms, wms, b2b); care and serv
 <tr><td width="50%" align="center"><a href="./eldercare/README.md"><img src="./eldercare/screenshots/secondary.png" alt="Eldercare notes" width="100%" /></a><br/><b>Eldercare · eldercare</b></td><td width="50%" align="center"><a href="./civic/README.md"><img src="./civic/screenshots/editor.png" alt="Civic-service application editor" width="100%" /></a><br/><b>Civic services · civic</b></td></tr>
 </table>
 
+## 🧭 Ten more industry record desks
+
+Each is a **single-user local demo** built with Vue 3 and Java 21: two related record types, validation, search, CRUD and JSON persistence. They do not operate real transit, regulated traceability, emergency response, ticket sales, bidding or audits.
+
+| Project | Available local records | URL |
+| :--- | :--- | :--- |
+| [transit](./transit/README.md) | routes & trip records | `http://127.0.0.1:8169` |
+| [foodsafety](./foodsafety/README.md) | food batches & trace events | `http://127.0.0.1:8170` |
+| [emergency](./emergency/README.md) | inspection sites & finding records | `http://127.0.0.1:8171` |
+| [events](./events/README.md) | venues & show records | `http://127.0.0.1:8172` |
+| [maritime](./maritime/README.md) | berths & port-call records | `http://127.0.0.1:8173` |
+| [museum](./museum/README.md) | collections & loan records | `http://127.0.0.1:8174` |
+| [autosales](./autosales/README.md) | vehicle listings & leads | `http://127.0.0.1:8175` |
+| [procurement](./procurement/README.md) | requests & quote records | `http://127.0.0.1:8176` |
+| [calibration](./calibration/README.md) | instruments & calibration logs | `http://127.0.0.1:8177` |
+| [auditfirm](./auditfirm/README.md) | engagements & workpaper logs | `http://127.0.0.1:8178` |
+
+From the repository root, run `./transit/run.ps1` on Windows or `./transit/run.sh` on macOS/Linux; substitute the project directory and port for the others. Each project README shows four real UI screenshots.
+
 ## 🖼️ Real screenshots
 
 These images were captured from running applications, not mockups. Click through to the individual project for details.
@@ -201,7 +220,7 @@ These images were captured from running applications, not mockups. Click through
 </table>
 
 <details>
-<summary><b>Browse screenshots for all 88 projects</b></summary>
+<summary><b>Browse screenshots for all 98 projects</b></summary>
 
 | Project | Local address | Actual screenshots |
 | :--- | :--- | :--- |
@@ -293,6 +312,16 @@ These images were captured from running applications, not mockups. Click through
 | [ticketops](./ticketops/README.md) | http://127.0.0.1:8166 | [Overview](./ticketops/screenshots/overview.png) · [Queues](./ticketops/screenshots/primary.png) · [Tickets](./ticketops/screenshots/secondary.png) · [Editor](./ticketops/screenshots/editor.png) |
 | [bugtrack](./bugtrack/README.md) | http://127.0.0.1:8167 | [Overview](./bugtrack/screenshots/overview.png) · [Projects](./bugtrack/screenshots/primary.png) · [Defects](./bugtrack/screenshots/secondary.png) · [Editor](./bugtrack/screenshots/editor.png) |
 | [gridops](./gridops/README.md) | http://127.0.0.1:8168 | [Overview](./gridops/screenshots/overview.png) · [Cases](./gridops/screenshots/cases.png) · [Timeline](./gridops/screenshots/timeline.png) · [Editor](./gridops/screenshots/editor.png) |
+| [transit](./transit/README.md) | http://127.0.0.1:8169 | [Overview](./transit/screenshots/overview.png) · [Primary records](./transit/screenshots/primary.png) · [Related records](./transit/screenshots/secondary.png) · [Editor](./transit/screenshots/editor.png) |
+| [foodsafety](./foodsafety/README.md) | http://127.0.0.1:8170 | [Overview](./foodsafety/screenshots/overview.png) · [Primary records](./foodsafety/screenshots/primary.png) · [Related records](./foodsafety/screenshots/secondary.png) · [Editor](./foodsafety/screenshots/editor.png) |
+| [emergency](./emergency/README.md) | http://127.0.0.1:8171 | [Overview](./emergency/screenshots/overview.png) · [Primary records](./emergency/screenshots/primary.png) · [Related records](./emergency/screenshots/secondary.png) · [Editor](./emergency/screenshots/editor.png) |
+| [events](./events/README.md) | http://127.0.0.1:8172 | [Overview](./events/screenshots/overview.png) · [Primary records](./events/screenshots/primary.png) · [Related records](./events/screenshots/secondary.png) · [Editor](./events/screenshots/editor.png) |
+| [maritime](./maritime/README.md) | http://127.0.0.1:8173 | [Overview](./maritime/screenshots/overview.png) · [Primary records](./maritime/screenshots/primary.png) · [Related records](./maritime/screenshots/secondary.png) · [Editor](./maritime/screenshots/editor.png) |
+| [museum](./museum/README.md) | http://127.0.0.1:8174 | [Overview](./museum/screenshots/overview.png) · [Primary records](./museum/screenshots/primary.png) · [Related records](./museum/screenshots/secondary.png) · [Editor](./museum/screenshots/editor.png) |
+| [autosales](./autosales/README.md) | http://127.0.0.1:8175 | [Overview](./autosales/screenshots/overview.png) · [Primary records](./autosales/screenshots/primary.png) · [Related records](./autosales/screenshots/secondary.png) · [Editor](./autosales/screenshots/editor.png) |
+| [procurement](./procurement/README.md) | http://127.0.0.1:8176 | [Overview](./procurement/screenshots/overview.png) · [Primary records](./procurement/screenshots/primary.png) · [Related records](./procurement/screenshots/secondary.png) · [Editor](./procurement/screenshots/editor.png) |
+| [calibration](./calibration/README.md) | http://127.0.0.1:8177 | [Overview](./calibration/screenshots/overview.png) · [Primary records](./calibration/screenshots/primary.png) · [Related records](./calibration/screenshots/secondary.png) · [Editor](./calibration/screenshots/editor.png) |
+| [auditfirm](./auditfirm/README.md) | http://127.0.0.1:8178 | [Overview](./auditfirm/screenshots/overview.png) · [Primary records](./auditfirm/screenshots/primary.png) · [Related records](./auditfirm/screenshots/secondary.png) · [Editor](./auditfirm/screenshots/editor.png) |
 
 </details>
 
@@ -309,11 +338,13 @@ These images were captured from running applications, not mockups. Click through
 ## ✅ Validation and limits
 
 ```powershell
-./test-all.ps1      # Windows: build/package/test 88 projects, including four mini-program builds
-./smoke-test.ps1    # Windows: start 88 real services and check their pages/assets/APIs
+./test-all.ps1      # Windows: build/package/test 98 projects, including four mini-program builds
+./smoke-test.ps1    # Windows: start 98 real services and check their pages/assets/APIs
 ```
 
-On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. **Every project provides a `run.ps1` and an executable `run.sh`.** Screenshots live in each project's `screenshots/` directory. GitHub Actions selects changed projects on push/PR and checks the full 88-project catalog weekly or when shared build tools change. CI verifies builds, backend tests and packaged static pages; **it does not exercise every browser or business workflow**. [Quality loop ledger (Chinese)](./docs/quality-loop.md).
+On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. **Every project provides a `run.ps1` and an executable `run.sh`.** Screenshots live in each project's `screenshots/` directory. GitHub Actions selects changed projects on push/PR and checks the full 98-project catalog weekly or when shared build tools change. CI verifies builds, backend tests and packaged static pages; **it does not exercise every browser or business workflow**. [Quality loop ledger (Chinese)](./docs/quality-loop.md).
+
+**New-project validation (October 3, 2026).** Each of the ten new demos was built, backend-tested, packaged, live-process smoke-tested and browser-checked; **a fresh full 98-project run is still pending**. See the per-project screenshots.
 
 **Additional validation (October 3, 2026).** The new gridops individually passed Vue build, Java tests/package, live service page/API checks and browser create/transition/refresh persistence. **The full 88-project suite has not been rerun**; the older 87-project validation below is historical, not proof of a fresh full pass.
 
