@@ -144,6 +144,8 @@ Attraction operations and real-estate viewings join travel, clinical, education,
 <tr><td width="50%" align="center"><a href="./scenic/README.md"><img src="./scenic/screenshots/overview.png" alt="Attraction and visitor record overview" width="100%" /></a><br/><b>Scenic attractions · scenic</b></td><td width="50%" align="center"><a href="./realestate/README.md"><img src="./realestate/screenshots/primary.png" alt="Property listing records" width="100%" /></a><br/><b>Real estate · realestate</b></td></tr>
 </table>
 
+| Sector | Project | Local demo | Port |
+| :--- | :--- | :--- | ---: |
 | **Travel, parks & attractions** | [parking · Parking](./parking/README.md) | parking areas & stays; local record demo | `8130` |
 |  | [charging · EV charging](./charging/README.md) | stations & charging sessions; local record demo | `8131` |
 |  | [parkops · Park operations](./parkops/README.md) | parks & inspections; local record demo | `8132` |
@@ -287,7 +289,6 @@ These images were captured from running applications, not mockups. Click through
 | [crossborder](./crossborder/README.md) | http://127.0.0.1:8162 | [Overview](./crossborder/screenshots/overview.png) · [Primary records](./crossborder/screenshots/primary.png) · [Related records](./crossborder/screenshots/secondary.png) · [Editor](./crossborder/screenshots/editor.png) |
 | [returns](./returns/README.md) | http://127.0.0.1:8163 | [Overview](./returns/screenshots/overview.png) · [Primary records](./returns/screenshots/primary.png) · [Related records](./returns/screenshots/secondary.png) · [Editor](./returns/screenshots/editor.png) |
 | [realestate](./realestate/README.md) | http://127.0.0.1:8164 | [Overview](./realestate/screenshots/overview.png) · [Primary records](./realestate/screenshots/primary.png) · [Related records](./realestate/screenshots/secondary.png) · [Editor](./realestate/screenshots/editor.png) |
-
 | [testops](./testops/README.md) | http://127.0.0.1:8165 | [Overview](./testops/screenshots/overview.png) · [Cases](./testops/screenshots/primary.png) · [Manual runs](./testops/screenshots/secondary.png) · [Editor](./testops/screenshots/editor.png) |
 | [ticketops](./ticketops/README.md) | http://127.0.0.1:8166 | [Overview](./ticketops/screenshots/overview.png) · [Queues](./ticketops/screenshots/primary.png) · [Tickets](./ticketops/screenshots/secondary.png) · [Editor](./ticketops/screenshots/editor.png) |
 | [bugtrack](./bugtrack/README.md) | http://127.0.0.1:8167 | [Overview](./bugtrack/screenshots/overview.png) · [Projects](./bugtrack/screenshots/primary.png) · [Defects](./bugtrack/screenshots/secondary.png) · [Editor](./bugtrack/screenshots/editor.png) |

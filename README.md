@@ -140,6 +140,8 @@
 
 景区管理、房产交易及出行、医疗、教育、宠物、门店、企业和供应链等方向均可单独启动。**每个新增项目是可操作的本机单用户记录样板**：两类关联资源、字段校验、检索／增删改、本地 JSON 持久化；不是完整行业生产系统。特别是景区票务／容量控制、房产交易／合同签署、医疗检验、停车计费、跨境合规和真实收付款均未实现。
 
+| 行业方向 | 项目入口 | 已演示内容 | 本机端口 |
+| :--- | :--- | :--- | ---: |
 | **出行、园区与景区** | [parking · 停车场](./parking/README.md) | 停车区域／停车记录 · 车位与进出场登记（本机记录样板） | `8130` |
 |  | [charging · 充电站](./charging/README.md) | 充电站点／充电记录 · 充电站点与充电登记（本机记录样板） | `8131` |
 |  | [parkops · 园区运营](./parkops/README.md) | 园区档案／巡检记录 · 园区设施与巡检台账（本机记录样板） | `8132` |
@@ -248,7 +250,6 @@
 | [legal](./legal/README.md) | 委托人档案与案件进度，本机演示样板 | http://127.0.0.1:8111 | [总览](./legal/screenshots/overview.png) · [委托人档案](./legal/screenshots/primary.png) · [案件进度](./legal/screenshots/secondary.png) · [编辑表单](./legal/screenshots/editor.png) |
 | [culture](./culture/README.md) | 场馆空间与活动安排，本机演示样板 | http://127.0.0.1:8112 | [总览](./culture/screenshots/overview.png) · [场馆空间](./culture/screenshots/primary.png) · [活动安排](./culture/screenshots/secondary.png) · [编辑表单](./culture/screenshots/editor.png) |
 | [community](./community/README.md) | 服务项目与服务需求，本机演示样板 | http://127.0.0.1:8113 | [总览](./community/screenshots/overview.png) · [服务项目](./community/screenshots/primary.png) · [服务需求](./community/screenshots/secondary.png) · [编辑表单](./community/screenshots/editor.png) |
-
 | [cms](./cms/README.md) | 内容栏目与稿件记录的本机演示 | http://127.0.0.1:8114 | [总览](./cms/screenshots/overview.png) · [内容栏目](./cms/screenshots/primary.png) · [稿件记录](./cms/screenshots/secondary.png) · [编辑表单](./cms/screenshots/editor.png) |
 | [wms](./wms/README.md) | 仓库库位与作业记录的本机演示 | http://127.0.0.1:8115 | [总览](./wms/screenshots/overview.png) · [仓库库位](./wms/screenshots/primary.png) · [作业记录](./wms/screenshots/secondary.png) · [编辑表单](./wms/screenshots/editor.png) |
 | [b2b](./b2b/README.md) | 供应商档案与采购订单的本机演示 | http://127.0.0.1:8116 | [总览](./b2b/screenshots/overview.png) · [供应商档案](./b2b/screenshots/primary.png) · [采购订单](./b2b/screenshots/secondary.png) · [编辑表单](./b2b/screenshots/editor.png) |
@@ -300,7 +301,6 @@
 | [crossborder](./crossborder/README.md) | 跨境商品与跨境运单的本机记录演示 | http://127.0.0.1:8162 | [总览](./crossborder/screenshots/overview.png) · [跨境商品](./crossborder/screenshots/primary.png) · [跨境运单](./crossborder/screenshots/secondary.png) · [编辑表单](./crossborder/screenshots/editor.png) |
 | [returns](./returns/README.md) | 商品档案与退换申请的本机记录演示 | http://127.0.0.1:8163 | [总览](./returns/screenshots/overview.png) · [商品档案](./returns/screenshots/primary.png) · [退换申请](./returns/screenshots/secondary.png) · [编辑表单](./returns/screenshots/editor.png) |
 | [realestate](./realestate/README.md) | 房源档案与带看记录的本机记录演示 | http://127.0.0.1:8164 | [总览](./realestate/screenshots/overview.png) · [房源档案](./realestate/screenshots/primary.png) · [带看记录](./realestate/screenshots/secondary.png) · [编辑表单](./realestate/screenshots/editor.png) |
-
 | [testops](./testops/README.md) | 测试用例与手工执行记录的本机演示 | http://127.0.0.1:8165 | [总览](./testops/screenshots/overview.png) · [测试用例](./testops/screenshots/primary.png) · [执行记录](./testops/screenshots/secondary.png) · [编辑表单](./testops/screenshots/editor.png) |
 | [ticketops](./ticketops/README.md) | 队列与内部工单的本机演示 | http://127.0.0.1:8166 | [总览](./ticketops/screenshots/overview.png) · [队列](./ticketops/screenshots/primary.png) · [工单](./ticketops/screenshots/secondary.png) · [编辑表单](./ticketops/screenshots/editor.png) |
 | [bugtrack](./bugtrack/README.md) | 项目与缺陷记录的本机演示 | http://127.0.0.1:8167 | [总览](./bugtrack/screenshots/overview.png) · [项目](./bugtrack/screenshots/primary.png) · [缺陷](./bugtrack/screenshots/secondary.png) · [编辑表单](./bugtrack/screenshots/editor.png) |
