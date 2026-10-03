@@ -6,7 +6,7 @@
 
 ### Turn a real need into software you can see and run.
 
-**87 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
+**88 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
 
 [Explore the ecosystem](#-ai-hub-ecosystem-matrix) · [Get started](#-quick-start) · [All projects](#-project-universe) · [Screenshots](#-real-screenshots) · [Architecture](#-architecture)
 
@@ -34,7 +34,7 @@
 | Layer | Projects / entry points | What to explore | Current scope |
 | :--- | :--- | :--- | :--- |
 | **Workflow applications** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | Storefront purchase flow, administration dashboard and experiment records | Feature depth varies; these are not complete production products |
-| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 87 projects**, not additional systems |
+| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 88 projects**, not additional systems |
 | **Sector record desks** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [more sectors ↓](#-project-universe) | Industry records, related entries, search and forms | Mostly single-user local demos; no real ticketing, diagnosis, closing or regulatory workflows |
 | **Creative utilities** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill workspace, HTML mini-games and directory demo, public-page crawling | Local utilities and demos, not a hosted AI platform or large-scale crawler |
 
@@ -115,9 +115,14 @@ Each link opens that project's README with its startup notes and screenshots. So
 | **Infrastructure & civic** | [telecom · Telecom facilities](./telecom/README.md) | Sites and maintenance tasks; local-only demo | `8127` |
 |  | [itops · IT operations](./itops/README.md) | Assets and incident notes; local-only demo | `8128` |
 |  | [civic · Civic services](./civic/README.md) | Services and application records; local-only demo | `8129` |
+|  | [gridops · Grid case workflow](./gridops/README.md) | Intake, processing, verification, closure and history; original local demo | `8168` |
 | **Quality & internal support** | [testops · Test management](./testops/README.md) | Test cases and manual execution records; local demo | `8165` |
 |  | [ticketops · Internal tickets](./ticketops/README.md) | Queues, priorities, assignees and status; local demo | `8166` |
 |  | [bugtrack · Defect tracker](./bugtrack/README.md) | Projects, defects, reproduction steps and status; local demo | `8167` |
+
+## 🏙️ New: grid case workflow
+
+[gridops](./gridops/README.md) is an **original local prototype** inspired by the publicly described social-governance domain: intake → processing → verification → closure, rejection to processing, event history and JSON persistence. It is not a copy of anyone's customer software. [Actual page screenshots](./gridops/README.md) and [public-domain research / honest status matrix](./docs/company-research.md) show what is implemented and what is still missing.
 
 ## 🧪 Testing, tickets & defects · 3 new platforms
 
@@ -194,7 +199,7 @@ These images were captured from running applications, not mockups. Click through
 </table>
 
 <details>
-<summary><b>Browse screenshots for all 87 projects</b></summary>
+<summary><b>Browse screenshots for all 88 projects</b></summary>
 
 | Project | Local address | Actual screenshots |
 | :--- | :--- | :--- |
@@ -286,6 +291,7 @@ These images were captured from running applications, not mockups. Click through
 | [testops](./testops/README.md) | http://127.0.0.1:8165 | [Overview](./testops/screenshots/overview.png) · [Cases](./testops/screenshots/primary.png) · [Manual runs](./testops/screenshots/secondary.png) · [Editor](./testops/screenshots/editor.png) |
 | [ticketops](./ticketops/README.md) | http://127.0.0.1:8166 | [Overview](./ticketops/screenshots/overview.png) · [Queues](./ticketops/screenshots/primary.png) · [Tickets](./ticketops/screenshots/secondary.png) · [Editor](./ticketops/screenshots/editor.png) |
 | [bugtrack](./bugtrack/README.md) | http://127.0.0.1:8167 | [Overview](./bugtrack/screenshots/overview.png) · [Projects](./bugtrack/screenshots/primary.png) · [Defects](./bugtrack/screenshots/secondary.png) · [Editor](./bugtrack/screenshots/editor.png) |
+| [gridops](./gridops/README.md) | http://127.0.0.1:8168 | [Overview](./gridops/screenshots/overview.png) · [Cases](./gridops/screenshots/cases.png) · [Timeline](./gridops/screenshots/timeline.png) · [Editor](./gridops/screenshots/editor.png) |
 
 </details>
 
@@ -302,11 +308,13 @@ These images were captured from running applications, not mockups. Click through
 ## ✅ Validation and limits
 
 ```powershell
-./test-all.ps1      # Windows: build/package/test 87 projects, including four mini-program builds
-./smoke-test.ps1    # Windows: start 87 real services and check their pages/assets/APIs
+./test-all.ps1      # Windows: build/package/test 88 projects, including four mini-program builds
+./smoke-test.ps1    # Windows: start 88 real services and check their pages/assets/APIs
 ```
 
-On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. **Every project provides a `run.ps1` and an executable `run.sh`.** Screenshots live in each project's `screenshots/` directory. GitHub Actions selects changed projects on push/PR and checks the full 87-project catalog weekly or when shared build tools change. CI verifies builds, backend tests and packaged static pages; **it does not exercise every browser or business workflow**. [Quality loop ledger (Chinese)](./docs/quality-loop.md).
+On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. **Every project provides a `run.ps1` and an executable `run.sh`.** Screenshots live in each project's `screenshots/` directory. GitHub Actions selects changed projects on push/PR and checks the full 88-project catalog weekly or when shared build tools change. CI verifies builds, backend tests and packaged static pages; **it does not exercise every browser or business workflow**. [Quality loop ledger (Chinese)](./docs/quality-loop.md).
+
+**Additional validation (October 3, 2026).** The new gridops individually passed Vue build, Java tests/package, live service page/API checks and browser create/transition/refresh persistence. **The full 88-project suite has not been rerun**; the older 87-project validation below is historical, not proof of a fresh full pass.
 
 **Validation record (October 2, 2026).** The previous 84 projects passed frontend builds, backend tests/packages and real-process page/API smoke checks. The three new platforms—testops, ticketops and bugtrack—individually passed frontend builds, backend tests/packages, real-process smoke checks and browser form checks, with four actual screenshots each. The full 87-project scripts now include them, but **a full 87-project run was not completed in this round**. These checks validate local demos, **not** production performance, security or regulatory compliance.
 

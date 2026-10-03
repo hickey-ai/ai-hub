@@ -6,7 +6,7 @@
 
 ### 把每一种真实需求，变成看得见的软件。
 
-**87 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
+**88 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
 
 [探索生态矩阵](#-ai-hub-生态矩阵) · [一键体验](#-快速开始) · [全部项目](#-项目宇宙) · [页面截图](#-真实页面) · [架构与边界](#-系统架构)
 
@@ -34,7 +34,7 @@
 | 生态层 | 代表项目 / 入口 | 你能体验到什么 | 当前边界 |
 | :--- | :--- | :--- | :--- |
 | **业务流程应用** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | 商城购买链路、管理控制台、实验记录等各有侧重的独立体验 | 功能深度不一致；不等于生产级全功能产品 |
-| **移动端触点** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | 四个项目的 uni-app 微信小程序构建，连接各自 Java API | **4 个构建目标包含在 87 个项目内**，不是额外四套系统 |
+| **移动端触点** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | 四个项目的 uni-app 微信小程序构建，连接各自 Java API | **4 个构建目标包含在 88 个项目内**，不是额外四套系统 |
 | **行业记录样板** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [更多行业 ↓](#-项目宇宙) | 行业档案、关联记录、搜索和表单；用来讨论具体业务需求 | 多数为本机单用户记录演示，不含真实票务、诊断、交易或监管流程 |
 | **创意与效率工具** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill 工作台、HTML 小游戏与黄页样板、公开页面抓取 | 本机工具与演示，不是托管 AI 平台或大规模爬虫服务 |
 
@@ -115,9 +115,14 @@
 | **基础设施与公共事务** | [telecom · 通信设施](./telecom/README.md) | 通信站点、维护任务的本机记录样板 | `8127` |
 |  | [itops · IT 运维](./itops/README.md) | 设备资产、故障记录的本机记录样板 | `8128` |
 |  | [civic · 公共服务](./civic/README.md) | 服务事项、办理登记的本机记录样板 | `8129` |
+|  | [gridops · 网格事件](./gridops/README.md) | 登记、处置、核验、办结与时间线（原创本机演示） | `8168` |
 | **质量与内部支持** | [testops · 测试管理](./testops/README.md) | 测试用例与手工执行结果记录（本机样板） | `8165` |
 |  | [ticketops · 内部工单](./ticketops/README.md) | 队列、优先级、处理人与状态（本机样板） | `8166` |
 |  | [bugtrack · 缺陷跟踪](./bugtrack/README.md) | 项目、缺陷、复现步骤与验证状态（本机样板） | `8167` |
+
+## 🏙️ 新增：网格事件工作台
+
+[gridops](./gridops/README.md) 以公开的社会治理业务方向为参考，**原创实现**登记 → 处理 → 核验 → 办结、退回处理、时间线和本地 JSON 持久化；配有[四张真实页面截图](./gridops/README.md)。不复制第三方软件，也不代表官网客户系统已复刻。公开来源、已有样板与尚未做的行业方向见 [调研与实施清单](./docs/company-research.md)。
 
 ## 🧪 测试、工单与缺陷 · 新增 3 个平台
 
@@ -206,7 +211,7 @@
 </table>
 
 <details>
-<summary><b>展开全部 87 个项目的页面截图索引</b></summary>
+<summary><b>展开全部 88 个项目的页面截图索引</b></summary>
 
 | 项目 | 已演示能力 | 本机地址 | 页面截图 |
 | :--- | :--- | :--- | :--- |
@@ -299,6 +304,7 @@
 | [testops](./testops/README.md) | 测试用例与手工执行记录的本机演示 | http://127.0.0.1:8165 | [总览](./testops/screenshots/overview.png) · [测试用例](./testops/screenshots/primary.png) · [执行记录](./testops/screenshots/secondary.png) · [编辑表单](./testops/screenshots/editor.png) |
 | [ticketops](./ticketops/README.md) | 队列与内部工单的本机演示 | http://127.0.0.1:8166 | [总览](./ticketops/screenshots/overview.png) · [队列](./ticketops/screenshots/primary.png) · [工单](./ticketops/screenshots/secondary.png) · [编辑表单](./ticketops/screenshots/editor.png) |
 | [bugtrack](./bugtrack/README.md) | 项目与缺陷记录的本机演示 | http://127.0.0.1:8167 | [总览](./bugtrack/screenshots/overview.png) · [项目](./bugtrack/screenshots/primary.png) · [缺陷](./bugtrack/screenshots/secondary.png) · [编辑表单](./bugtrack/screenshots/editor.png) |
+| [gridops](./gridops/README.md) | 网格事件登记与流转本机演示 | http://127.0.0.1:8168 | [总览](./gridops/screenshots/overview.png) · [事件](./gridops/screenshots/cases.png) · [时间线](./gridops/screenshots/timeline.png) · [登记](./gridops/screenshots/editor.png) |
 
 </details>
 
@@ -308,7 +314,7 @@
 
 **关键设计：**
 
-1. **项目独立：**87 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
+1. **项目独立：**88 个系统各自拥有目录、Java 服务、端口和本地数据文件；不需要先启动一个公共网关或数据库。
 2. **Web 一体交付：**Vue 页面由 Vite 构建后放入 Spring Boot 的静态资源目录，随可执行 jar 一起提供；浏览器通过同源 `/api` 请求业务接口。
 3. **小程序单独构建：**shop、barber、dining、selfshop 的 uni-app 构建微信小程序产物；小程序和电脑端的代码形态不同，但对应 Java API 保持独立。
 4. **数据本机持久化：**业务数据位于各项目的 `data/<项目>.json`，重启仍保留。停服后复制 JSON 文件备份；停服后移走它可重置演示数据。文件损坏时服务拒绝启动，避免覆盖原数据。
@@ -317,13 +323,15 @@
 ## ✅ 验证与使用边界
 
 ```powershell
-./test-all.ps1      # Windows：87 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
-./smoke-test.ps1    # Windows：启动 87 个真实服务，检查页面、JS 与 API
+./test-all.ps1      # Windows：88 项目构建、后端测试、jar 检查；包含 4 个微信小程序构建
+./smoke-test.ps1    # Windows：启动 88 个真实服务，检查页面、JS 与 API
 ```
+
+**补充验证（2026-10-03）：**新增 gridops 单独通过 Vue 构建、Java 测试与打包、真实服务页面/API、浏览器创建和完整流转/刷新持久化检查；**88 项全量未重跑**，历史 87 项验证记录见下方，不能将旧记录视为本轮全量通过。
 
 **验证记录（2026-10-02）：**此前 84 个项目完成前端构建、后端测试、打包和真实 Java 进程的页面/API 冒烟；本轮新增的 testops、ticketops、bugtrack 分别通过前端构建、后端测试/打包、真实进程冒烟及浏览器表单检查，各附 4 张实际截图。87 个项目的完整脚本已经纳入新入口，但**本轮未重新跑完 87 项全量检查**。这些检查验证本机演示，不代表生产环境的性能、安全或行业合规认证。
 
-macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。**每个项目都提供 `run.ps1` 和可执行的 `run.sh`**；截图保存在各项目的 `screenshots/`。GitHub Actions 对推送/PR 自动挑选有变更的项目构建与运行后端测试；共享构建脚本变更和每周定时任务覆盖完整 87 项。CI 仅检查构建、后端测试与打包静态页面，**不等于 87 项浏览器/业务流程测试**。[查看 100 轮质量自查账本](./docs/quality-loop.md)。
+macOS / Linux 可运行 `./test-all.sh`；各项目也可单独运行 `mvn -f <项目>/backend/pom.xml test`。**每个项目都提供 `run.ps1` 和可执行的 `run.sh`**；截图保存在各项目的 `screenshots/`。GitHub Actions 对推送/PR 自动挑选有变更的项目构建与运行后端测试；共享构建脚本变更和每周定时任务覆盖完整 88 项。CI 仅检查构建、后端测试与打包静态页面，**不等于 88 项浏览器/业务流程测试**。[查看 100 轮质量自查账本](./docs/quality-loop.md)。
 
 > [!IMPORTANT]
 > **这是可直接在本机体验、学习和二次开发的样板，不是可直接上生产的 SaaS。** 默认绑定 `127.0.0.1`；没有统一登录鉴权、正式权限隔离、支付、加密、不可篡改审计、数据库迁移与多实例并发保障。金融、医疗、未成年人、门禁、科研等敏感场景尤其不能直接处理真实业务数据。正式部署前须完成安全、隐私、合规与灾备设计。

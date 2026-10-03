@@ -40,8 +40,8 @@ def main():
     parser.add_argument("--head", default="HEAD")
     args = parser.parse_args()
     known = projects()
-    if len(known) != 87:
-        raise SystemExit(f"Expected 87 runnable projects, found {len(known)}; update this guard when the catalog changes")
+    if len(known) != 88:
+        raise SystemExit(f"Expected 88 runnable projects, found {len(known)}; update this guard when the catalog changes")
     changed = changed_files(args.base, args.head)
     chosen = known if changed is None else select(changed, known)
     print("matrix=" + json.dumps({"include": [{"project": name} for name in chosen]}, separators=(",", ":")))
