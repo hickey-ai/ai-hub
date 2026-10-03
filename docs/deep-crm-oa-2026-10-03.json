@@ -1,0 +1,24 @@
+[
+  {
+    "project": "crm",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 11
+  },
+  {
+    "project": "oa",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  }
+]

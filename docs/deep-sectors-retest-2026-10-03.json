@@ -1,0 +1,28 @@
+[
+  {
+    "project": "testops",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "schedule",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 21
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "project": "finance",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 13
+  },
+  {
+    "project": "health",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 13
+  },
+  {
+    "project": "wellness",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 12
+  },
+  {
+    "project": "hospital",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 12
+  },
+  {
+    "project": "school",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 12
+  },
+  {
+    "project": "access",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 12
+  }
+]

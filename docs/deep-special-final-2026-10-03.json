@@ -1,0 +1,216 @@
+[
+  {
+    "project": "shop",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "mini-program build pages",
+      "browser product detail/cart/checkout and API stock",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 11
+  },
+  {
+    "project": "manage",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  },
+  {
+    "project": "crm",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 10
+  },
+  {
+    "project": "oa",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  },
+  {
+    "project": "finance",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  },
+  {
+    "project": "health",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  },
+  {
+    "project": "wellness",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 10
+  },
+  {
+    "project": "hospital",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 10
+  },
+  {
+    "project": "school",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 10
+  },
+  {
+    "project": "access",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "browser create/edit/delete",
+      "refresh persistence",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  },
+  {
+    "project": "ai",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "4 browser workspace tabs",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  },
+  {
+    "project": "html",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "4 browser workspace tabs",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 8
+  },
+  {
+    "project": "crawler",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "3 browser workspace tabs",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  },
+  {
+    "project": "gridops",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "3 browser workspace tabs",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 10
+  },
+  {
+    "project": "labbook",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "4 browser workspace tabs",
+      "real browser render",
+      "no JS/HTTP 5xx errors"
+    ],
+    "seconds": 9
+  },
+  {
+    "project": "barber",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "mini-program build pages"
+    ],
+    "seconds": 6
+  },
+  {
+    "project": "dining",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "mini-program build pages"
+    ],
+    "seconds": 7
+  },
+  {
+    "project": "selfshop",
+    "result": "pass",
+    "checks": [
+      "isolated Java startup",
+      "live API response",
+      "mini-program build pages"
+    ],
+    "seconds": 7
+  }
+]

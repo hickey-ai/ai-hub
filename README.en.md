@@ -329,10 +329,10 @@ These images were captured from running applications, not mockups. Click through
 
 ![Independent local projects: client, Vue interface, Java service, JSON storage and validation pipeline](./docs/architecture.svg)
 
-1. **Independent projects.** Each directory runs its own Java service on its own port and keeps its own local data; no shared gateway or database is required.
+1. **Independent projects.** Each directory runs its own Java service on its own port; business projects that save records use separate local data. No shared gateway or database is required.
 2. **Web delivery.** Vite builds the Vue frontend into Spring Boot static resources. The executable jar serves both the UI and same-origin `/api` endpoints.
 3. **Mini-program builds.** shop, barber, dining and selfshop also build uni-app WeChat mini-program artifacts; the mini-program frontend is separate from the desktop UI where applicable.
-4. **Local persistence.** Data lives in `data/<project>.json`. Stop the service before copying the JSON file for backup or moving it away to reset demo data. A damaged file prevents startup instead of silently replacing it.
+4. **Local persistence.** Record-based business projects store data in their own `data/<project>.json` (or a file documented in that project). Stop the service before copying the file for backup or moving it away to reset demo data. Storage for tools such as `ai`, `html`, and `crawler` differs; consult each project README.
 5. **Validation, not production architecture.** Build, backend tests, jar checks and real-process smoke tests are available, but there is no claim of high availability or multi-user production safety.
 
 ## ✅ Validation and limits
@@ -344,14 +344,10 @@ These images were captured from running applications, not mockups. Click through
 
 On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. **Every project provides a `run.ps1` and an executable `run.sh`.** Screenshots live in each project's `screenshots/` directory. GitHub Actions selects changed projects on push/PR and checks the full 98-project catalog weekly or when shared build tools change. CI verifies builds, backend tests and packaged static pages; **it does not exercise every browser or business workflow**. [Quality loop ledger (Chinese)](./docs/quality-loop.md).
 
-**New-project validation (October 3, 2026).** Each of the ten new demos was built, backend-tested, packaged, live-process smoke-tested and browser-checked; **a fresh full 98-project run is still pending**. See the per-project screenshots.
-
-**Additional validation (October 3, 2026).** The new gridops individually passed Vue build, Java tests/package, live service page/API checks and browser create/transition/refresh persistence. **The full 88-project suite has not been rerun**; the older 87-project validation below is historical, not proof of a fresh full pass.
-
-**Validation record (October 2, 2026).** The previous 84 projects passed frontend builds, backend tests/packages and real-process page/API smoke checks. The three new platforms—testops, ticketops and bugtrack—individually passed frontend builds, backend tests/packages, real-process smoke checks and browser form checks, with four actual screenshots each. The full 87-project scripts now include them, but **a full 87-project run was not completed in this round**. These checks validate local demos, **not** production performance, security or regulatory compliance.
+**Per-project validation (October 3, 2026).** All 98 projects passed frontend/mini-program builds, 137 Maven tests, packaging, and live Java process page/JS/API smoke checks (API-only for three mini-program-only projects). All 80 config-driven sector demos passed browser CRUD/search, API validation/references and restart persistence. The remaining 18 have project-specific checks: six legacy record apps now have edit/delete and JSON persistence with browser regressions; shop passed browser demo checkout and stock verification. See the [98-row test matrix, raw failure/retest evidence and remaining limits](./docs/project-validation-2026-10-03.md). A mini-program build is not a WeChat device acceptance test, and these local demos are not production-ready SaaS.
 
 > [!IMPORTANT]
-> These are runnable local examples for learning and further development, **not production-ready SaaS applications**. The default host is `127.0.0.1`. There is no shared authentication, formal permission isolation, payment integration, encryption, tamper-proof audit, database migrations or multi-instance concurrency guarantee. In particular, do not use sensitive real-world financial, medical, child, access-control or research data without a proper security, privacy, compliance and disaster-recovery design.
+> These are runnable local examples for learning and further development, **not production-ready SaaS applications**. The default host is `127.0.0.1`. There is no shared authentication, formal permission isolation, payment integration, encryption, tamper-proof audit, database migrations or multi-instance concurrency guarantee. In particular, do not use sensitive real-world financial, medical, child, access-control or research data without a proper security, privacy, compliance and disaster-recovery design. **Each of the four mini-program builds currently reports 45 npm dependency audit findings (20 high); upgrades and device security retests remain open.**
 
 ## 🌱 What's next?
 

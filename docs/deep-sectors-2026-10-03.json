@@ -1,0 +1,132 @@
+[
+  {
+    "project": "transit",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "foodsafety",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "emergency",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "events",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "maritime",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "museum",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "autosales",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "procurement",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "calibration",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "auditfirm",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  }
+]

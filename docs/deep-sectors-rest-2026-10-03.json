@@ -1,0 +1,898 @@
+[
+  {
+    "project": "wms",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "wedding",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "water",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "veterinary",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "training",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 14
+  },
+  {
+    "project": "ticketops",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "testops",
+    "result": "fail",
+    "seconds": 13,
+    "error": "locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.drawer') to be hidden\u001b[22m\n\u001b[2m    14 × locator resolved to visible <section class=\"drawer\">…</section>\u001b[22m\n\n    at browserCheck (E:\\ai\\ai-hub\\tools\\verify-sectors.cjs:86:35)\n    at async verify (E:\\ai\\ai-hub\\tools\\verify-sectors.cjs:115:5)\n    at async E:\\ai\\ai-hub\\tools\\verify-sectors.cjs:161:24"
+  },
+  {
+    "project": "telecom",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 14
+  },
+  {
+    "project": "service",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "schedule",
+    "result": "fail",
+    "seconds": 14,
+    "error": "locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.drawer') to be hidden\u001b[22m\n\u001b[2m    14 × locator resolved to visible <section class=\"drawer\">…</section>\u001b[22m\n\n    at browserCheck (E:\\ai\\ai-hub\\tools\\verify-sectors.cjs:86:35)\n    at async verify (E:\\ai\\ai-hub\\tools\\verify-sectors.cjs:115:5)\n    at async E:\\ai\\ai-hub\\tools\\verify-sectors.cjs:161:24"
+  },
+  {
+    "project": "scenic",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 21
+  },
+  {
+    "project": "sanitation",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 23
+  },
+  {
+    "project": "returns",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 23
+  },
+  {
+    "project": "rental",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 21
+  },
+  {
+    "project": "rehab",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 19
+  },
+  {
+    "project": "realestate",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "qms",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 21
+  },
+  {
+    "project": "property",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 22
+  },
+  {
+    "project": "projectops",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 25
+  },
+  {
+    "project": "pos",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "photography",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "pharmacy",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "petgrooming",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "petcare",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "petboarding",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "parkops",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "parking",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "parenting",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "mining",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "manufacturing",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "maintenance",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 21
+  },
+  {
+    "project": "loyalty",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 19
+  },
+  {
+    "project": "logistics",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "lis",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 21
+  },
+  {
+    "project": "library",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "legal",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "laundry",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "kindergarten",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "itops",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "insurance",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "hrm",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "hospitality",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 19
+  },
+  {
+    "project": "homeservice",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "gym",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "freshdelivery",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "forestry",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "fleet",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "fishery",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "exam",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "erp",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "energy",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "elearning",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 18
+  },
+  {
+    "project": "eldercare",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "dental",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "culture",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 20
+  },
+  {
+    "project": "crossborder",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "contracts",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "construction",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "community",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "coldchain",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "cms",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "clinic",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 17
+  },
+  {
+    "project": "civic",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "charging",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "carcare",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "bugtrack",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "b2b",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 16
+  },
+  {
+    "project": "agriculture",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 15
+  },
+  {
+    "project": "aesthetics",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 19
+  },
+  {
+    "project": "accounting",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 22
+  }
+]
