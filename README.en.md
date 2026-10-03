@@ -29,7 +29,7 @@
 
 ## 🧩 ai-hub ecosystem matrix
 
-![ai-hub ecosystem matrix: workflow apps, mini-programs, sector record desks, creative tools, and the independent local build chain](./docs/ecosystem-matrix.svg)
+![ai-hub ecosystem matrix: workflow apps, mini-programs, sector record desks, creative tools, and the independent local build chain](./docs/ecosystem-matrix.en.svg)
 
 | Layer | Projects / entry points | What to explore | Current scope |
 | :--- | :--- | :--- | :--- |

@@ -33,12 +33,12 @@
 
 | 生态层 | 代表项目 / 入口 | 你能体验到什么 | 当前边界 |
 | :--- | :--- | :--- | :--- |
-| **业务流程应用** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | 商城购买链路、管理控制台、实验记录等各有侧重的独立体验 | 功能深度不一致；不等于生产级全功能产品 |
-| **移动端触点** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | 四个项目的 uni-app 微信小程序构建，连接各自 Java API | **4 个构建目标包含在 98 个项目内**，不是额外四套系统 |
-| **行业记录样板** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [更多行业 ↓](#-项目宇宙) | 行业档案、关联记录、搜索和表单；用来讨论具体业务需求 | 多数为本机单用户记录演示，不含真实票务、诊断、交易或监管流程 |
-| **创意与效率工具** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill 工作台、HTML 小游戏与黄页样板、公开页面抓取 | 本机工具与演示，不是托管 AI 平台或大规模爬虫服务 |
+| **业务流程应用** | [商城](./shop/README.md) · [管理后台](./manage/README.md) · [实验记录](./labbook/README.md) | 商城购买链路、管理控制台、实验记录等各有侧重的独立体验 | 功能深度不一致；不等于生产级全功能产品 |
+| **移动端触点** | [商城](./shop/README.md) · [理发预约](./barber/README.md) · [点餐](./dining/README.md) · [自助购物](./selfshop/README.md) | 四个项目的微信小程序构建，连接各自的后端接口 | **4 个构建目标包含在 98 个项目内**，不是额外四套系统 |
+| **行业记录样板** | [景区管理](./scenic/README.md) · [房产管理](./realestate/README.md) · [健康管理](./health/README.md) · [企业资源管理](./erp/README.md) · [更多行业 ↓](#-项目宇宙) | 行业档案、关联记录、搜索和表单；用来讨论具体业务需求 | 多数为本机单用户记录演示，不含真实票务、诊断、交易或监管流程 |
+| **创意与效率工具** | [智能工具](./ai/README.md) · [网页创意](./html/README.md) · [网页采集](./crawler/README.md) | 命令行与技能工作台、网页小游戏与黄页样板、公开页面抓取 | 本机工具与演示，不是托管式智能平台或大规模爬虫服务 |
 
-**共同的交付方式，不是共享单体服务：**各项目独立目录、独立端口；需保存记录的业务项目使用各自的本机数据文件；Vue 3 页面经构建由 Java 21 / Spring Boot 服务提供，配有测试脚本和实际截图。[看完整架构](#-系统架构) · [看使用边界](#-验证与使用边界)
+**共同的交付方式，不是共享单体服务：**各项目独立目录、独立端口；需保存记录的业务项目使用各自的本机数据文件；网页经构建后由各自的后端服务提供，配有测试脚本和实际截图。[看完整架构](#-系统架构) · [看使用边界](#-验证与使用边界)
 
 <details>
 <summary><b>展开 ai-hub 业务星图动效</b></summary>
