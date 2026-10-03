@@ -4,4 +4,4 @@ cd "$(dirname "$0")"
 npm --prefix frontend ci
 npm --prefix frontend run build -- --outDir ../backend/src/main/resources/static --emptyOutDir
 mvn -f backend/pom.xml package
-java -jar backend/target/labbook-api-0.1.0.jar
+java -jar backend/target/wellness-api-0.1.0.jar

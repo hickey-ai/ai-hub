@@ -306,7 +306,7 @@ These images were captured from running applications, not mockups. Click through
 ./smoke-test.ps1    # Windows: start 87 real services and check their pages/assets/APIs
 ```
 
-On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. Screenshots live in each project's `screenshots/` directory.
+On macOS/Linux, use `./test-all.sh`; to test just one backend, run `mvn -f <project>/backend/pom.xml test`. **Every project provides a `run.ps1` and an executable `run.sh`.** Screenshots live in each project's `screenshots/` directory. GitHub Actions selects changed projects on push/PR and checks the full 87-project catalog weekly or when shared build tools change. CI verifies builds, backend tests and packaged static pages; **it does not exercise every browser or business workflow**. [Quality loop ledger (Chinese)](./docs/quality-loop.md).
 
 **Validation record (October 2, 2026).** The previous 84 projects passed frontend builds, backend tests/packages and real-process page/API smoke checks. The three new platforms—testops, ticketops and bugtrack—individually passed frontend builds, backend tests/packages, real-process smoke checks and browser form checks, with four actual screenshots each. The full 87-project scripts now include them, but **a full 87-project run was not completed in this round**. These checks validate local demos, **not** production performance, security or regulatory compliance.
 

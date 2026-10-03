@@ -1,30 +1,68 @@
-name: Verify four projects
+name: Verify changed projects and weekly full catalog
 on:
   push:
   pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 2 * * 0' # Sunday 02:17 UTC; all 87 projects
+permissions:
+  contents: read
 jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.projects.outputs.matrix }}
+      has_projects: ${{ steps.projects.outputs.has_projects }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check matrix selection
+        run: python3 -m unittest discover -s tools -p 'test_ci_matrix.py'
+      - id: projects
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python3 tools/ci-matrix.py --base "$BASE_SHA" --head "$GITHUB_SHA" >> "$GITHUB_OUTPUT"
   build:
+    needs: discover
+    if: needs.discover.outputs.has_projects == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        project: [shop, manage, crm, oa]
+      max-parallel: 6
+      matrix: ${{ fromJSON(needs.discover.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: npm
-          cache-dependency-path: ${{ matrix.project }}/frontend/package-lock.json
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
           cache: maven
           cache-dependency-path: ${{ matrix.project }}/backend/pom.xml
-      - if: matrix.project == 'shop'
-        run: npm --prefix shop/miniprogram ci && npm --prefix shop/miniprogram run build:mp-weixin
-      - run: npm --prefix ${{ matrix.project }}/frontend ci
-      - run: npm --prefix ${{ matrix.project }}/frontend run build -- --outDir ../backend/src/main/resources/static --emptyOutDir
-      - run: mvn -f ${{ matrix.project }}/backend/pom.xml package
-      - run: jar tf ${{ matrix.project }}/backend/target/${{ matrix.project }}-api-0.1.0.jar | grep -qx 'BOOT-INF/classes/static/index.html'
+      - name: Build mini-program when present
+        shell: bash
+        run: |
+          if [ -f "${{ matrix.project }}/miniprogram/package-lock.json" ]; then
+            npm --prefix "${{ matrix.project }}/miniprogram" ci
+            npm --prefix "${{ matrix.project }}/miniprogram" run build:mp-weixin
+          fi
+      - name: Build Vue frontend when present
+        shell: bash
+        run: |
+          if [ -f "${{ matrix.project }}/frontend/package-lock.json" ]; then
+            npm --prefix "${{ matrix.project }}/frontend" ci
+            npm --prefix "${{ matrix.project }}/frontend" run build -- --outDir ../backend/src/main/resources/static --emptyOutDir
+          fi
+      - run: mvn -B -f "${{ matrix.project }}/backend/pom.xml" package
+      - name: Check packaged frontend
+        shell: bash
+        run: |
+          jar="${{ matrix.project }}/backend/target/${{ matrix.project }}-api-0.1.0.jar"
+          if [ -f "${{ matrix.project }}/frontend/package-lock.json" ]; then
+            jar tf "$jar" | grep -x 'BOOT-INF/classes/static/index.html' > /dev/null
+          else
+            test -f "$jar"
+          fi
