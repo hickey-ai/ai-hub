@@ -56,7 +56,22 @@ jobs:
             npm --prefix "${{ matrix.project }}/frontend" ci
             npm --prefix "${{ matrix.project }}/frontend" run build -- --outDir ../backend/src/main/resources/static --emptyOutDir
           fi
-      - run: mvn -B -f "${{ matrix.project }}/backend/pom.xml" package
+      - name: Build and test Java backend
+        id: backend
+        shell: bash
+        run: |
+          set -o pipefail
+          mvn -B -f "${{ matrix.project }}/backend/pom.xml" package 2>&1 | tee "$RUNNER_TEMP/maven-${{ matrix.project }}.log"
+      - name: Preserve Maven diagnostics on failure
+        if: ${{ failure() && steps.backend.outcome == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: maven-diagnostics-${{ matrix.project }}
+          path: |
+            ${{ runner.temp }}/maven-${{ matrix.project }}.log
+            ${{ matrix.project }}/backend/target/surefire-reports/**
+          if-no-files-found: warn
+          retention-days: 7
       - name: Check packaged frontend
         shell: bash
         run: |
