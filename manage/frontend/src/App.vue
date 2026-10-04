@@ -7,7 +7,7 @@ const page = ref('控制台')
 const users = ref([]), roles = ref([]), menus = ref([]), departments = ref([]), logs = ref([])
 const metrics = ref({ users: 0, active: 0, roles: 0, departments: 0 })
 const profile = ref({ name: '林晓雨', email: 'xiaoyu@example.com', role: '超级管理员', department: '产品研发', phone: '138****8000', lastLogin: '2026-10-01 09:42:18' })
-const search = ref(''), statusFilter = ref('全部状态'), modal = ref(false), editing = ref(null), error = ref(''), loading = ref(true)
+const search = ref(''), statusFilter = ref('全部状态'), modal = ref(false), editing = ref(null), error = ref(''), loading = ref(true), authRequired = ref(false)
 const collapsed = ref(false), mobileOpen = ref(false), profileOpen = ref(false), noticeOpen = ref(false)
 const form = ref({ name:'', email:'', role:'编辑', department:'产品研发', status:'正常' })
 const nav = [
@@ -26,8 +26,8 @@ const date = new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'long',day:'n
 const pageMeta = computed(() => ({
   '控制台': ['首页', '欢迎回来，林晓雨'], '用户管理': ['系统管理 / 用户管理', '用户管理'], '角色管理': ['系统管理 / 角色管理', '角色管理'], '菜单管理': ['系统管理 / 菜单管理', '菜单管理'], '部门管理': ['系统管理 / 部门管理', '部门管理'], '操作日志': ['系统监控 / 操作日志', '操作日志'], '个人中心': ['个人设置 / 个人中心', '个人中心']
 }[page.value]))
-async function api(path, options) { const r = await fetch(path, options); if (!r.ok) throw new Error('请求失败'); return r.status === 204 ? null : r.json() }
-async function load() { loading.value = true; try { const [u,r,m,d,l,p] = await Promise.all(['/api/users','/api/roles','/api/menus','/api/departments','/api/logs','/api/profile'].map(path => api(path))); users.value=u; roles.value=r; menus.value=m; departments.value=d; logs.value=l; profile.value=p; metrics.value=await api('/api/metrics'); error.value='' } catch (e) { error.value='服务暂不可用，请启动 manage/backend 后刷新。' } finally { loading.value=false } }
+async function api(path, options) { const r = await fetch(path, options); if (!r.ok) { const error = new Error('请求失败'); error.status = r.status; throw error } return r.status === 204 ? null : r.json() }
+async function load() { loading.value = true; try { const [u,r,m,d,l,p] = await Promise.all(['/api/users','/api/roles','/api/menus','/api/departments','/api/logs','/api/profile'].map(path => api(path))); users.value=u; roles.value=r; menus.value=m; departments.value=d; logs.value=l; profile.value=p; metrics.value=await api('/api/metrics'); error.value=''; authRequired.value=false } catch (e) { authRequired.value=e.status === 401; error.value=authRequired.value ? 'API 已启用鉴权' : '服务暂不可用，请启动 manage/backend 后刷新。' } finally { loading.value=false } }
 function go(label) { page.value=label; mobileOpen.value=false; profileOpen.value=false; noticeOpen.value=false }
 function openCreate(){ editing.value=null; form.value={name:'',email:'',role:'编辑',department:'产品研发',status:'正常'}; modal.value=true }
 function openEdit(u){ editing.value=u.id; form.value={name:u.name,email:u.email,role:u.role,department:u.department,status:u.status}; modal.value=true }
@@ -37,7 +37,8 @@ function exportLogs(){ const csv=['操作人,操作,模块,IP,时间,状态',...
 onMounted(load)
 </script>
 <template>
-<div class="app-shell" :class="{collapsed, 'mobile-open': mobileOpen}">
+<div v-if="authRequired" class="auth-notice"><div class="auth-card"><span class="brand-mark">A</span><h1>此管理界面尚未接入单点登录</h1><p>后端 API 已要求鉴权中心签发的有效令牌。此页面不能代替登录，请勿将演示资料误认为当前用户数据。</p><p>开发者可使用携带 Bearer 令牌的 API 客户端访问；浏览器登录需另行接入授权码与 PKCE 流程。</p><button class="outline-btn" @click="load">重新检查</button></div></div>
+<div v-else class="app-shell" :class="{collapsed, 'mobile-open': mobileOpen}">
   <div class="mobile-mask" v-if="mobileOpen" @click="mobileOpen=false"></div>
   <aside class="sidebar">
     <div class="brand"><span class="brand-mark">A</span><div class="brand-text"><b>ai-hub</b><small>ADMIN CONSOLE</small></div><button class="collapse-btn" @click="collapsed=!collapsed">‹</button></div>
@@ -46,7 +47,7 @@ onMounted(load)
     <div class="sidebar-bottom"><div class="help-card"><span class="help-star">✦</span><b>需要帮助？</b><small>查看使用文档和接口说明</small><a href="mailto:3174667330@qq.com">联系我们 ↗</a></div><div class="side-user"><span class="avatar avatar-orange">林</span><div class="nav-label"><b>林晓雨</b><small>超级管理员</small></div><span class="more">···</span></div></div>
   </aside>
   <section class="main-area">
-    <header class="topbar"><button class="mobile-menu" @click="mobileOpen=true">☰</button><div class="crumb"><span>{{pageMeta[0]}}</span><b>/</b><strong>{{pageMeta[1]}}</strong></div><div class="top-actions"><div class="global-search">⌕ <span>搜索菜单、用户</span><kbd>⌘ K</kbd></div><button class="icon-btn" @click="noticeOpen=!noticeOpen">♢<i></i></button><div class="top-profile" @click="profileOpen=!profileOpen"><span class="avatar avatar-orange">林</span><span class="top-name">林晓雨</span><span class="down">⌄</span><div v-if="profileOpen" class="profile-pop"><b>林晓雨</b><small>超级管理员</small><hr><button @click.stop="go('个人中心')">个人中心</button><button>退出登录</button></div></div><div v-if="noticeOpen" class="notice-pop"><b>通知中心</b><p>暂无未读通知</p></div></div></header>
+    <header class="topbar"><button class="mobile-menu" @click="mobileOpen=true">☰</button><div class="crumb"><span>{{pageMeta[0]}}</span><b>/</b><strong>{{pageMeta[1]}}</strong></div><div class="top-actions"><div class="global-search">⌕ <span>搜索菜单、用户</span><kbd>⌘ K</kbd></div><button class="icon-btn" @click="noticeOpen=!noticeOpen">♢<i></i></button><div class="top-profile" @click="profileOpen=!profileOpen"><span class="avatar avatar-orange">林</span><span class="top-name">林晓雨</span><span class="down">⌄</span><div v-if="profileOpen" class="profile-pop"><b>林晓雨</b><small>超级管理员</small><hr><button @click.stop="go('个人中心')">个人中心</button><button disabled title="演示版尚未实现登录会话">退出登录（未接入）</button></div></div><div v-if="noticeOpen" class="notice-pop"><b>通知中心</b><p>暂无未读通知</p></div></div></header>
     <main class="content">
       <div v-if="error" class="error-banner">{{error}}<button @click="error=''">×</button></div>
       <template v-if="page==='控制台'"><div class="heading welcome"><div><div class="eyebrow">WORKSPACE OVERVIEW</div><h1>早上好，林晓雨 <span>✳</span></h1><p>今天是 {{date}}，这里是你的工作空间概览。</p></div><button class="outline-btn" @click="go('用户管理')">查看用户管理 ↗</button></div>
@@ -64,5 +65,5 @@ onMounted(load)
     </main><footer>© 2026 ai-hub · 通用管理后台 <span>Vue 3 + Java 21 · RuoYi-style starter</span></footer>
   </section>
 </div>
-<div v-if="modal" class="modal-backdrop" @click.self="modal=false"><form class="modal" @submit.prevent="save"><div class="modal-header"><div><div class="eyebrow">SYSTEM / USER</div><h2>{{editing ? '编辑用户' : '添加用户'}}</h2></div><button type="button" @click="modal=false">×</button></div><label>姓名<input v-model="form.name" required placeholder="请输入姓名"/></label><label>邮箱<input v-model="form.email" required type="email" placeholder="name@example.com"/></label><div class="form-grid"><label>角色<select v-model="form.role"><option v-for="r in roles" :key="r.name">{{r.name}}</option></select></label><label>状态<select v-model="form.status"><option>正常</option><option>停用</option></select></label></div><label>部门<input v-model="form.department" required placeholder="所属部门"/></label><div class="modal-actions"><button type="button" class="outline-btn" @click="modal=false">取消</button><button class="primary-btn">保存用户</button></div></form></div>
+<div v-if="modal && !authRequired" class="modal-backdrop" @click.self="modal=false"><form class="modal" @submit.prevent="save"><div class="modal-header"><div><div class="eyebrow">SYSTEM / USER</div><h2>{{editing ? '编辑用户' : '添加用户'}}</h2></div><button type="button" @click="modal=false">×</button></div><label>姓名<input v-model="form.name" required placeholder="请输入姓名"/></label><label>邮箱<input v-model="form.email" required type="email" placeholder="name@example.com"/></label><div class="form-grid"><label>角色<select v-model="form.role"><option v-for="r in roles" :key="r.name">{{r.name}}</option></select></label><label>状态<select v-model="form.status"><option>正常</option><option>停用</option></select></label></div><label>部门<input v-model="form.department" required placeholder="所属部门"/></label><div class="modal-actions"><button type="button" class="outline-btn" @click="modal=false">取消</button><button class="primary-btn">保存用户</button></div></form></div>
 </template>

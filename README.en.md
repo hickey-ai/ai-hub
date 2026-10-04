@@ -107,9 +107,11 @@ Captured application pages, not design mockups. A screenshot is an entry point, 
 ./smoke-test.ps1   # Windows: live-service page, asset and API smoke checks
 ```
 
-Use `./test-all.sh` on macOS/Linux or `mvn -f <project>/backend/pom.xml test` for a single backend. Recorded evidence as of **October 4, 2026**: round 4 passed 98/98 builds, 139 Maven tests and 99/99 remote CI jobs. Earlier live-service smoke checks covered all 98, and browser workflow checks covered 80 sector record demos; see the [per-project evidence](./docs/project-validation-2026-10-03.md). Round 5 only added manifest preflight and ran nine script tests; it **did not rerun all business tests**. The [quality ledger](./docs/quality-loop.md) separates each round's scope.
+Use `./test-all.sh` on macOS/Linux or `mvn -f <project>/backend/pom.xml test` for a single backend. Recorded evidence as of **October 4, 2026**: round 4 passed 98/98 builds, 139 Maven tests and 99/99 remote CI jobs. Earlier live-service smoke checks covered all 98, and browser workflow checks covered 80 sector record demos; see the [per-project evidence](./docs/project-validation-2026-10-03.md). Round 5 only added manifest preflight and ran nine script tests; it **did not rerun all business tests**. The [quality ledger](./docs/quality-loop.md) separates each round's scope. This authentication pass reran `./test-all.ps1`: 101/101 builds/packages passed, with 153 tests across 117 Surefire reports and no failures or errors; this is not a browser/device or production acceptance test.
 
 > [!IMPORTANT]
+> **Authentication pilot:** Only the [manage API](./manage/README.md) has optional OIDC/JWT issuer validation. Its browser UI has no SSO login, no server-side RBAC, and the other 100 projects remain unauthenticated. See the [security inventory and setup](./docs/auth-integration.md) (Chinese).
+
 > These are runnable local starting points, **not production-ready business systems**. Unified authentication/authorization, real payments, encryption, tamper-proof audit, database migrations and concurrency guarantees are not universally provided. Do not enter real sensitive medical, financial, child, access-control or research data. A mini-program build is not a WeChat device acceptance test; production requires dedicated security, privacy, compliance, backup and business verification.
 
 ## 📚 Documentation and customization

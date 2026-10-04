@@ -9,6 +9,7 @@
 | [项目分类目录](./project-catalog.md) / [English](./project-catalog.en.md) | 12 类、101 项的主分类、功能入口、端口 | 每个项目恰好归类一次；小程序为交付形态 |
 | [截图索引](./screenshots.md) / [English](./screenshots.en.md) | 每项 README 与现有截图的直接链接 | 截图不等于真机或生产验收 |
 | [架构图](./architecture.svg) | 各目录独立的 Web/Java/API/本机数据链路 | 本机演示，不是分布式生产拓扑 |
+| [鉴权现状与接入试点](./auth-integration.md) | 101 项鉴权盘点、manage 的 JWT 配置与未完成项 | 仅 manage API 试点，非全局单点登录 |
 | [新增三项目验证](./priority-three-validation-2026-10-04.md) | 快递驿站、再生资源回收、托育机构的测试证据 | 不等于全量 101 项重测或生产验收 |
 | [逐项目验证](./project-validation-2026-10-03.md) | 98 行逐项目测试范围和原始记录 | 历史验证快照；后续轮次见账本 |
 | [持续自查账本](./quality-loop.md) | 100 轮中已实际执行的轮次、证据与遗留 | 不把构建成功当作所有功能验收 |

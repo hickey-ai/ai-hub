@@ -5,6 +5,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
@@ -63,16 +65,25 @@ class ManageController {
     @GetMapping("/menus") List<Menu> menus() { return List.of(new Menu(1,"系统管理","目录","/system","system:manage","正常"),new Menu(2,"用户管理","菜单","/system/user","system:user:list","正常"),new Menu(3,"角色管理","菜单","/system/role","system:role:list","正常"),new Menu(4,"菜单管理","菜单","/system/menu","system:menu:list","正常"),new Menu(5,"部门管理","菜单","/system/dept","system:dept:list","正常"),new Menu(6,"日志管理","目录","/monitor","monitor:log","正常"),new Menu(7,"操作日志","菜单","/monitor/operlog","monitor:operlog:list","正常")); }
     @GetMapping("/departments") List<Department> departments() { return List.of(new Department(1,"总部","林晓雨",users.size(),"正常"),new Department(2,"产品研发","李知远",countDept("产品研发"),"正常"),new Department(3,"运营中心","陈一鸣",countDept("运营中心"),"正常"),new Department(4,"内容团队","王若琳",countDept("内容团队"),"正常"),new Department(5,"财务部","张可欣",countDept("财务部"),"正常"),new Department(6,"市场部","何佳宁",countDept("市场部"),"正常")); }
     @GetMapping("/logs") synchronized List<LogEntry> logs() {
-        return auditLogs.isEmpty() ? List.of(new LogEntry(1,"林晓雨","查询用户列表","用户管理","127.0.0.1","2026-10-01 09:42:18","成功"),new LogEntry(2,"陈一鸣","更新角色权限","角色管理","127.0.0.1","2026-10-01 09:36:04","成功"),new LogEntry(3,"王若琳","导出操作日志","日志管理","127.0.0.1","2026-10-01 09:20:51","成功"),new LogEntry(4,"赵思齐","登录系统","认证中心","127.0.0.1","2026-09-30 18:15:29","失败"),new LogEntry(5,"林晓雨","新增部门","部门管理","127.0.0.1","2026-09-30 17:03:11","成功")) : List.copyOf(auditLogs);
+        return auditLogs.isEmpty() && !tokenMode() ? List.of(new LogEntry(1,"林晓雨","查询用户列表","用户管理","127.0.0.1","2026-10-01 09:42:18","成功"),new LogEntry(2,"陈一鸣","更新角色权限","角色管理","127.0.0.1","2026-10-01 09:36:04","成功"),new LogEntry(3,"王若琳","导出操作日志","日志管理","127.0.0.1","2026-10-01 09:20:51","成功"),new LogEntry(4,"赵思齐","登录系统","认证中心","127.0.0.1","2026-09-30 18:15:29","失败"),new LogEntry(5,"林晓雨","新增部门","部门管理","127.0.0.1","2026-09-30 17:03:11","成功")) : List.copyOf(auditLogs);
     }
-    @GetMapping("/profile") Profile profile() { return new Profile("林晓雨","xiaoyu@example.com","超级管理员","产品研发","138****8000","2026-10-01 09:42:18"); }
+    @GetMapping("/profile") Profile profile() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth instanceof JwtAuthenticationToken jwt) {
+            return new Profile(jwt.getName(), "", "已认证（权限未配置）", "", "", "");
+        }
+        return new Profile("林晓雨","xiaoyu@example.com","超级管理员","产品研发","138****8000","2026-10-01 09:42:18");
+    }
+    private boolean tokenMode() {
+        return SecurityContextHolder.getContext().getAuthentication() instanceof JwtAuthenticationToken;
+    }
     private int count(String role) { return (int)users.values().stream().filter(u->u.role().equals(role)).count(); }
     private int countDept(String dept) { return (int)users.values().stream().filter(u->u.department().equals(dept)).count(); }
     private void commit(Map<Long, User> updated, long newNextId, String action) {
         List<LogEntry> updatedLogs = new ArrayList<>(auditLogs);
         long updatedNextLogId = nextLogId;
         if (action != null) {
-            updatedLogs.add(new LogEntry(nextLogId, "演示管理员", action, "用户管理", "127.0.0.1",
+            updatedLogs.add(new LogEntry(nextLogId, tokenMode() ? SecurityContextHolder.getContext().getAuthentication().getName() : "演示管理员", action, "用户管理", "127.0.0.1",
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), "成功"));
             updatedNextLogId++;
         }
