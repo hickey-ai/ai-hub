@@ -14,7 +14,7 @@ class BuildPreflightTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix="aihub-preflight-") as temporary:
             root = Path(temporary)
             shutil.copy2(ROOT / script, root / script)
-            for index in range(98):
+            for index in range(101):
                 (root / f"project-{index:02d}" / "backend").mkdir(parents=True)
                 (root / f"project-{index:02d}" / "backend" / "pom.xml").write_text("<project/>")
             client_dir = root / "project-00" / client

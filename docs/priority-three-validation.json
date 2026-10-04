@@ -1,0 +1,41 @@
+[
+  {
+    "project": "parcelstation",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 13
+  },
+  {
+    "project": "recycling",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 12
+  },
+  {
+    "project": "childcare",
+    "result": "pass",
+    "checks": [
+      "browser navigation",
+      "browser CRUD/search",
+      "validation",
+      "API CRUD",
+      "referential integrity",
+      "restart persistence"
+    ],
+    "seconds": 12
+  }
+]

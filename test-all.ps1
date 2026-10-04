@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 Push-Location $PSScriptRoot
 try {
     $projects = @(Get-ChildItem -Directory | Where-Object { Test-Path (Join-Path $_.FullName 'backend/pom.xml') } | Sort-Object Name)
-    if ($projects.Count -ne 98) { throw "Expected 98 runnable projects, found $($projects.Count)" }
+    if ($projects.Count -ne 101) { throw "Expected 101 runnable projects, found $($projects.Count)" }
     foreach ($project in $projects) {
         foreach ($client in @('frontend', 'miniprogram')) {
             $manifest = Join-Path $project.FullName "$client/package.json"

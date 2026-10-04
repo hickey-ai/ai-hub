@@ -8,8 +8,8 @@ for project_dir in */; do
   [[ -f "$project/backend/pom.xml" ]] || continue
   projects+=("$project")
 done
-if [[ "${#projects[@]}" -ne 98 ]]; then
-  echo "Expected 98 runnable projects, found ${#projects[@]}" >&2
+if [[ "${#projects[@]}" -ne 101 ]]; then
+  echo "Expected 101 runnable projects, found ${#projects[@]}" >&2
   exit 1
 fi
 
