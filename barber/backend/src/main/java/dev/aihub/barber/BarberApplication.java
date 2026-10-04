@@ -43,6 +43,7 @@ class BarberController {
     return Map.of("date",date,"barberId",barberId,"available",available);
   }
   @GetMapping("/bookings") synchronized List<Booking> bookings(@RequestParam String phone){return bookings.stream().filter(b->b.phone().equals(phone)).sorted(Comparator.comparingLong(Booking::id).reversed()).toList();}
+  @GetMapping("/bookings/{id}") synchronized Booking booking(@PathVariable long id,@RequestParam String phone){return bookings.stream().filter(b->b.id()==id && b.phone().equals(phone)).findFirst().orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"预约不存在"));}
   @PostMapping("/bookings") @ResponseStatus(HttpStatus.CREATED) synchronized Booking book(@RequestBody BookingInput input){
     Service s=services.stream().filter(x->x.id()==input.serviceId()).findFirst().orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST,"服务不存在"));
     Barber b=barbers.stream().filter(x->x.id()==input.barberId()).findFirst().orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST,"发型师不存在"));
@@ -50,15 +51,26 @@ class BarberController {
     if(!times.contains(input.time()) || blank(input.customer()) || input.phone()==null || !input.phone().matches("1\\d{10}")) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"请填写姓名、11 位手机号和有效时段");
     if(bookings.stream().anyMatch(x->x.barberId()==b.id() && x.date().equals(input.date()) && x.time().equals(input.time()) && x.status().equals("已预约"))) throw new ResponseStatusException(HttpStatus.CONFLICT,"该时段已被预约");
     Booking booking=new Booking(bookings.stream().mapToLong(Booking::id).max().orElse(0)+1,s.id(),s.name(),b.id(),b.name(),input.date(),input.time(),input.customer().trim(),input.phone(),s.price(),"已预约");
-    bookings.add(booking); save(); return booking;
+    List<Booking> updated = new ArrayList<>(bookings);
+    updated.add(booking);
+    save(updated);
+    bookings.clear();
+    bookings.addAll(updated);
+    return booking;
   }
   @PostMapping("/bookings/{id}/cancel") synchronized Booking cancel(@PathVariable long id,@RequestParam String phone){
     for(int i=0;i<bookings.size();i++){Booking x=bookings.get(i); if(x.id()==id && x.phone().equals(phone)){
       if(!x.status().equals("已预约")) throw new ResponseStatusException(HttpStatus.CONFLICT,"预约已取消");
-      Booking changed=new Booking(x.id(),x.serviceId(),x.serviceName(),x.barberId(),x.barberName(),x.date(),x.time(),x.customer(),x.phone(),x.price(),"已取消"); bookings.set(i,changed);save();return changed;
+      Booking changed=new Booking(x.id(),x.serviceId(),x.serviceName(),x.barberId(),x.barberName(),x.date(),x.time(),x.customer(),x.phone(),x.price(),"已取消");
+      List<Booking> updated = new ArrayList<>(bookings);
+      updated.set(i, changed);
+      save(updated);
+      bookings.clear();
+      bookings.addAll(updated);
+      return changed;
     }}throw new ResponseStatusException(HttpStatus.NOT_FOUND,"预约不存在");
   }
   private void checkDate(String value){try {LocalDate day=LocalDate.parse(value);if(day.isBefore(LocalDate.now())||day.isAfter(LocalDate.now().plusDays(14))) throw new IllegalArgumentException();}catch(Exception e){throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"仅能预约未来 14 天");}}
   private boolean blank(String s){return s==null||s.isBlank();}
-  private void save(){try{Files.createDirectories(file.toAbsolutePath().getParent());Path temp=file.resolveSibling(file.getFileName()+".tmp");mapper.writeValue(temp.toFile(),bookings);Files.move(temp,file,StandardCopyOption.REPLACE_EXISTING);}catch(Exception e){throw new IllegalStateException("预约保存失败",e);}}
+  private void save(List<Booking> snapshot){try{Files.createDirectories(file.toAbsolutePath().getParent());Path temp=file.resolveSibling(file.getFileName()+".tmp");mapper.writeValue(temp.toFile(),snapshot);Files.move(temp,file,StandardCopyOption.REPLACE_EXISTING);}catch(Exception e){throw new IllegalStateException("预约保存失败",e);}}
 }

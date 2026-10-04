@@ -22,6 +22,7 @@
 - `GET /api/barbers` 设计师
 - `GET /api/slots?barberId=1&date=2026-10-02` 可预约时段
 - `GET /api/bookings?phone=13800138000` 查询预约
+- `GET /api/bookings/{id}?phone=13800138000` 查看预约详情；预约编号和手机号必须同时匹配
 - `POST /api/bookings` 创建预约
 - `POST /api/bookings/{id}/cancel?phone=13800138000` 取消预约
 
@@ -45,4 +46,4 @@ java -jar backend/target/barber-api-0.1.0.jar
 
 ## 边界
 
-这是可运行的预约演示，不包含真实门店排班、会员、收银、支付、退款、短信通知或多门店运营。订单数据默认写入 `data/barber.json`，适合单机演示，不适合多实例生产部署。
+这是可运行的预约演示，不包含真实门店排班、会员、收银、支付、退款、短信通知或多门店运营。预约详情、列表和取消接口使用手机号做演示级隔离，不是登录鉴权。预约数据默认写入 `data/barber.json`，写盘失败不会污染当前进程中的预约列表；适合单机演示，不适合多实例生产部署。

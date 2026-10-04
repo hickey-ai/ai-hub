@@ -100,6 +100,12 @@ class ShopController {
         if (start >= matched.size()) return new ProductPage(List.of(), matched.size(), page, size);
         return new ProductPage(matched.subList((int) start, (int) Math.min(start + size, matched.size())), matched.size(), page, size);
     }
+    @GetMapping("/orders") synchronized List<Order> orders(@RequestParam String email) {
+        String normalized = email == null ? "" : email.trim();
+        if (!normalized.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "邮箱格式无效");
+        return orders.stream().filter(o -> o.email().equalsIgnoreCase(normalized)).sorted(Comparator.comparingLong(Order::id).reversed()).toList();
+    }
+
     @PostMapping("/orders") @ResponseStatus(HttpStatus.CREATED)
     synchronized Order checkout(@Valid @RequestBody CheckoutRequest request) {
         Map<Long, Integer> quantities = new LinkedHashMap<>();

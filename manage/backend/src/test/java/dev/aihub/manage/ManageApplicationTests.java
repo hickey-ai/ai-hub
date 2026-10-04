@@ -22,6 +22,7 @@ class ManageApplicationTests {
             .andExpect(status().isCreated()).andExpect(jsonPath("$.id").value(9));
         mvc.perform(post("/api/users").contentType(MediaType.APPLICATION_JSON).content(body)).andExpect(status().isConflict());
         mvc.perform(get("/api/metrics")).andExpect(jsonPath("$.users").value(9));
+        mvc.perform(get("/api/logs")).andExpect(status().isOk()).andExpect(jsonPath("$[0].action").value("新增用户：测试成员"));
         mvc.perform(delete("/api/users/9")).andExpect(status().isNoContent());
         mvc.perform(get("/api/metrics")).andExpect(jsonPath("$.users").value(8));
     }

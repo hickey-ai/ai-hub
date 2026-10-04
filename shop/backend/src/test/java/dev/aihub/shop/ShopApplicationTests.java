@@ -39,5 +39,7 @@ class ShopApplicationTests {
         mvc.perform(post("/api/orders").contentType(MediaType.APPLICATION_JSON).content("""
             {"customer":"测试用户","email":"test@example.com","items":[{"productId":1,"quantity":100}]}
             """)).andExpect(status().isConflict());
+        mvc.perform(get("/api/orders").param("email","test@example.com")).andExpect(status().isOk()).andExpect(jsonPath("$[0].email").value("test@example.com"));
+        mvc.perform(get("/api/orders").param("email","bad-email")).andExpect(status().isBadRequest());
     }
 }

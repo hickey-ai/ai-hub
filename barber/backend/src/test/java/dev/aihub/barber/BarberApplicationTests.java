@@ -19,6 +19,8 @@ class BarberApplicationTests {
   mvc.perform(post("/api/bookings").contentType(MediaType.APPLICATION_JSON).content(body)).andExpect(status().isCreated()).andExpect(jsonPath("$.id").value(1));
   mvc.perform(post("/api/bookings").contentType(MediaType.APPLICATION_JSON).content(body)).andExpect(status().isConflict());
   mvc.perform(get("/api/bookings").param("phone","13800138000")).andExpect(jsonPath("$[0].status").value("已预约"));
+  mvc.perform(get("/api/bookings/1").param("phone","13800138000")).andExpect(jsonPath("$.customer").value("测试"));
+  mvc.perform(get("/api/bookings/1").param("phone","13900139000")).andExpect(status().isNotFound());
   mvc.perform(post("/api/bookings/1/cancel").param("phone","13800138000")).andExpect(jsonPath("$.status").value("已取消"));
   mvc.perform(post("/api/bookings").contentType(MediaType.APPLICATION_JSON).content(body)).andExpect(status().isCreated());
  }

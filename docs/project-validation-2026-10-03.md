@@ -21,7 +21,7 @@
 | [auditfirm](../auditfirm/README.md) | 1 | S · PASS | PASS |
 | [autosales](../autosales/README.md) | 1 | S · PASS | PASS |
 | [b2b](../b2b/README.md) | 1 | S · PASS | PASS |
-| [barber](../barber/README.md) | 2 | M · PASS | PASS |
+| [barber](../barber/README.md) | 4 | M · PASS | PASS |
 | [bugtrack](../bugtrack/README.md) | 2 | S · PASS | PASS |
 | [calibration](../calibration/README.md) | 1 | S · PASS | PASS |
 | [carcare](../carcare/README.md) | 2 | S · PASS | PASS |
@@ -123,3 +123,24 @@
 - [80 项最终深测结果](./deep-sectors-final-2026-10-03.json) · [原始 70 项批次（含两项失败）](./deep-sectors-rest-2026-10-03.json) · [两项修正重测](./deep-sectors-retest-2026-10-03.json)
 - [18 项特殊项目最终结果](./deep-special-final-2026-10-03.json) · [六项旧记录台浏览器/截图](./deep-legacy-2026-10-03.json) · [CRM/OA 修正复测](./deep-crm-oa-2026-10-03.json)
 - 构建原始日志 `test-all-2026-10-03.log`、冒烟原始日志 `smoke-test-confirm-2026-10-03.log`（脚本进程退出码 0）保留在本机且被 Git 忽略；复现脚本见 [tools/README](../tools/README.md)。
+
+
+## 2026-10-04 增量验证（第 3 轮）
+
+本轮按照“先补可直接使用的业务闭环，再扩展行业样板”的优先级，处理了三个高频项目的持久化边界：
+
+- `manage`：用户新增、编辑、删除与操作日志改为同一份本地状态原子提交；写盘失败时用户状态、日志和下一个日志编号都保持不变。
+- `shop`：保留按邮箱查询订单的演示接口，并明确该接口不是登录鉴权。
+- `barber`：预约创建与取消改为先写入完整快照、成功后再替换内存；新增预约详情接口，要求预约编号和手机号同时匹配。
+
+验证命令及结果：
+
+```text
+mvn -B -f manage/backend/pom.xml test  -> 4 tests, 0 failures, 0 errors
+mvn -B -f shop/backend/pom.xml test    -> 5 tests, 0 failures, 0 errors
+mvn -B -f barber/backend/pom.xml test  -> 4 tests, 0 failures, 0 errors
+git diff --check                         -> 通过
+真实 Java 进程（临时端口 18082/18081/18091） -> 首页、创建、查询/手机号隔离、重启持久化均通过
+```
+
+本轮仍未完成微信开发者工具/真机联调、真实支付、登录鉴权、并发部署及生产安全验收；因此不能将上述本机 JSON 演示项目宣称为生产系统。

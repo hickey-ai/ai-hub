@@ -10,6 +10,8 @@
 
 | 第 2 轮（2/100） | 2026-10-03 | 核实首次远端 CI 的 veterinary 失败发生在 Maven package，前端构建成功；远端 job 日志接口返回 403，尚不能确定根因。本机从 clean 开始重建不能复现。为避免下次失败只剩红色 job 而缺诊断，CI 在 Maven 步骤使用 `pipefail` 和 `tee` 保存完整日志，并在失败时上传 Maven 日志与 Surefire 报告（保留 7 天）；未凭猜测改业务代码。 | 本机 Java 21、Node 24 执行 veterinary `npm ci`、Vite 构建和 `mvn -B ... clean package` 通过（1 个 MockMvc 测试，0 失败），jar 含首页；CI YAML 解析、5 个矩阵选择器测试、Git Bash 语法检查和 `git diff --check` 通过。此为 Windows 本机验证，不等于 Ubuntu 远端 87 项通过。 | 失败根因仍待新远端运行与日志；仅诊断能力已改进 |
 
+| 第 3 轮（3/100） | 2026-10-04 | 对照“用户可直接使用”的边界复查 `manage`、`shop`、`barber`：发现管理后台审计日志在写盘失败时会先写入内存，理发预约在写盘失败时会先改内存；均可能出现未落盘的幽灵状态。已改为先生成完整快照并成功写盘，再替换内存；补充商城订单查询说明、预约详情手机号隔离与重启/失败回滚测试。 | `mvn -B -f manage/backend/pom.xml test`：4/4；`mvn -B -f shop/backend/pom.xml test`：5/5；`mvn -B -f barber/backend/pom.xml test`：4/4；`git diff --check`：通过；三份新打包 jar 在临时端口启动后完成首页、创建、查询/隔离与重启持久化冒烟。 | 本轮改进已验证；登录鉴权、微信真机、真实支付、并发与生产安全验收仍未完成 |
+
 ## 每轮要问的问题
 
 1. 用户能不能按 README 在对应操作系统直接启动？脚本是否检查失败并给出有效错误？
