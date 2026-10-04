@@ -2,33 +2,38 @@
 $ErrorActionPreference = 'Stop'
 Push-Location $PSScriptRoot
 try {
-    foreach ($project in @('shop', 'barber', 'dining', 'selfshop')) {
-        Write-Host "=== $project mini-program ==="
-        npm.cmd --prefix "$project/miniprogram" ci
-        if ($LASTEXITCODE -ne 0) { throw "$project mini-program npm ci failed" }
-        npm.cmd --prefix "$project/miniprogram" run build:mp-weixin
-        if ($LASTEXITCODE -ne 0) { throw "$project mini-program build failed" }
+    $projects = @(Get-ChildItem -Directory | Where-Object { Test-Path (Join-Path $_.FullName 'backend/pom.xml') } | Sort-Object Name)
+    if ($projects.Count -ne 98) { throw "Expected 98 runnable projects, found $($projects.Count)" }
+
+    foreach ($project in ($projects | Where-Object { Test-Path (Join-Path $_.FullName 'miniprogram/package-lock.json') })) {
+        Write-Host "=== $($project.Name) mini-program ==="
+        npm.cmd --prefix "$($project.Name)/miniprogram" ci
+        if ($LASTEXITCODE -ne 0) { throw "$($project.Name) mini-program npm ci failed" }
+        npm.cmd --prefix "$($project.Name)/miniprogram" run build:mp-weixin
+        if ($LASTEXITCODE -ne 0) { throw "$($project.Name) mini-program build failed" }
     }
-    foreach ($project in @('shop', 'manage', 'crm', 'oa', 'finance', 'health', 'wellness', 'hospital', 'school', 'access', 'schedule', 'carcare', 'parenting', 'labbook', 'ai', 'html', 'crawler', 'erp', 'manufacturing', 'logistics', 'property', 'agriculture', 'construction', 'hospitality', 'hrm', 'service', 'energy', 'legal', 'culture', 'community', 'cms', 'wms', 'b2b', 'eldercare', 'pharmacy', 'insurance', 'rental', 'homeservice', 'water', 'sanitation', 'mining', 'forestry', 'fishery', 'telecom', 'itops', 'civic', 'parking', 'charging', 'parkops', 'fleet', 'scenic', 'clinic', 'dental', 'aesthetics', 'rehab', 'lis', 'kindergarten', 'training', 'elearning', 'exam', 'library', 'petcare', 'petboarding', 'petgrooming', 'veterinary', 'pos', 'loyalty', 'laundry', 'gym', 'photography', 'wedding', 'accounting', 'contracts', 'projectops', 'maintenance', 'qms', 'coldchain', 'freshdelivery', 'crossborder', 'returns', 'realestate', 'testops', 'ticketops', 'bugtrack', 'gridops', 'transit', 'foodsafety', 'emergency', 'events', 'maritime', 'museum', 'autosales', 'procurement', 'calibration', 'auditfirm')) {
-        Write-Host "=== $project ==="
-        npm.cmd --prefix "$project/frontend" ci
-        if ($LASTEXITCODE -ne 0) { throw "$project npm ci failed" }
-        npm.cmd --prefix "$project/frontend" run build -- --outDir ../backend/src/main/resources/static --emptyOutDir
-        if ($LASTEXITCODE -ne 0) { throw "$project frontend build failed" }
-        mvn.cmd -f "$project/backend/pom.xml" package
-        if ($LASTEXITCODE -ne 0) { throw "$project backend tests/package failed" }
-        $jar = "$project/backend/target/$project-api-0.1.0.jar"
+
+    foreach ($project in ($projects | Where-Object { Test-Path (Join-Path $_.FullName 'frontend/package-lock.json') })) {
+        Write-Host "=== $($project.Name) ==="
+        npm.cmd --prefix "$($project.Name)/frontend" ci
+        if ($LASTEXITCODE -ne 0) { throw "$($project.Name) npm ci failed" }
+        npm.cmd --prefix "$($project.Name)/frontend" run build -- --outDir ../backend/src/main/resources/static --emptyOutDir
+        if ($LASTEXITCODE -ne 0) { throw "$($project.Name) frontend build failed" }
+        mvn.cmd -f "$($project.Name)/backend/pom.xml" package
+        if ($LASTEXITCODE -ne 0) { throw "$($project.Name) backend tests/package failed" }
+        $jar = "$($project.Name)/backend/target/$($project.Name)-api-0.1.0.jar"
         $entries = & jar tf $jar
         if ($LASTEXITCODE -ne 0 -or $entries -notcontains 'BOOT-INF/classes/static/index.html') {
-            throw "$project jar does not contain the frontend"
+            throw "$($project.Name) jar does not contain the frontend"
         }
     }
-    foreach ($project in @('barber', 'dining', 'selfshop')) {
-        Write-Host "=== $project backend ==="
-        mvn.cmd -f "$project/backend/pom.xml" package
-        if ($LASTEXITCODE -ne 0) { throw "$project backend tests/package failed" }
-        $jar = "$project/backend/target/$project-api-0.1.0.jar"
-        if (-not (Test-Path $jar)) { throw "$project jar missing" }
+
+    foreach ($project in ($projects | Where-Object { -not (Test-Path (Join-Path $_.FullName 'frontend/package-lock.json')) })) {
+        Write-Host "=== $($project.Name) backend ==="
+        mvn.cmd -f "$($project.Name)/backend/pom.xml" package
+        if ($LASTEXITCODE -ne 0) { throw "$($project.Name) backend tests/package failed" }
+        $jar = "$($project.Name)/backend/target/$($project.Name)-api-0.1.0.jar"
+        if (-not (Test-Path $jar)) { throw "$($project.Name) jar missing" }
     }
-    Write-Host 'All ninety-eight projects passed.'
+    Write-Host "All $($projects.Count) projects passed."
 } finally { Pop-Location }
