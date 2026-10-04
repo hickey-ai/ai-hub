@@ -16,6 +16,18 @@ class PersistenceTests {
         assertEquals(16, restarted.products().getFirst().stock());
         assertEquals(1002, restarted.checkout(new CheckoutRequest("顾客", "buyer@example.com", List.of(new CartLine(1, 1)))).id());
     }
+    @Test void overflowingCartDoesNotCreateAStateFile() {
+        String file = dir.resolve("overflow.json").toString();
+        ShopController app = new ShopController(new ObjectMapper().findAndRegisterModules(), file);
+        org.springframework.web.server.ResponseStatusException error = assertThrows(
+            org.springframework.web.server.ResponseStatusException.class,
+            () -> app.checkout(new CheckoutRequest("顾客", "buyer@example.com",
+                List.of(new CartLine(1, Integer.MAX_VALUE), new CartLine(1, Integer.MAX_VALUE)))));
+        assertEquals(org.springframework.http.HttpStatus.BAD_REQUEST, error.getStatusCode());
+        assertEquals(18, app.products().getFirst().stock());
+        assertTrue(app.orders("buyer@example.com").isEmpty());
+        assertFalse(java.nio.file.Files.exists(Path.of(file)));
+    }
     @Test void failedWriteDoesNotChangeMemory() throws Exception {
         String file = dir.resolve("blocked.json").toString();
         ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();

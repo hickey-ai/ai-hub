@@ -109,7 +109,13 @@ class ShopController {
     @PostMapping("/orders") @ResponseStatus(HttpStatus.CREATED)
     synchronized Order checkout(@Valid @RequestBody CheckoutRequest request) {
         Map<Long, Integer> quantities = new LinkedHashMap<>();
-        for (CartLine line : request.items()) quantities.merge(line.productId(), line.quantity(), Integer::sum);
+        for (CartLine line : request.items()) {
+            int previous = quantities.getOrDefault(line.productId(), 0);
+            if (line.quantity() > Integer.MAX_VALUE - previous) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "商品数量超出可支持范围");
+            }
+            quantities.put(line.productId(), previous + line.quantity());
+        }
         List<OrderItem> lines = new ArrayList<>();
         for (var entry : quantities.entrySet()) {
             Product p = products.get(entry.getKey());

@@ -28,6 +28,19 @@ class ShopApplicationTests {
         mvc.perform(get("/api/products/search").param("size", "101")).andExpect(status().isBadRequest());
         mvc.perform(get("/api/products/search").param("minPrice", "200").param("maxPrice", "100")).andExpect(status().isBadRequest());
     }
+    @Test void duplicateCartLinesCannotOverflowQuantity() throws Exception {
+        String email = "overflow@example.com";
+        String before = mvc.perform(get("/api/products/2"))
+            .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        mvc.perform(post("/api/orders").contentType(MediaType.APPLICATION_JSON).content("""
+            {"customer":"溢出测试","email":"overflow@example.com","items":[{"productId":2,"quantity":2147483647},{"productId":2,"quantity":2147483647}]}
+            """))
+            .andExpect(status().isBadRequest());
+        mvc.perform(get("/api/products/2"))
+            .andExpect(status().isOk()).andExpect(content().json(before));
+        mvc.perform(get("/api/orders").param("email", email))
+            .andExpect(status().isOk()).andExpect(jsonPath("$").isEmpty());
+    }
     @Test void catalogAndCheckout() throws Exception {
         mvc.perform(get("/api/products")).andExpect(status().isOk()).andExpect(jsonPath("$[0].name").value("Arc 台灯"));
         String body = """ 
