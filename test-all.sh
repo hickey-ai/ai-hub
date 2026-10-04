@@ -14,6 +14,15 @@ if [[ "${#projects[@]}" -ne 98 ]]; then
 fi
 
 for project in "${projects[@]}"; do
+  for client in frontend miniprogram; do
+    if [[ ( -f "$project/$client/package.json" && ! -f "$project/$client/package-lock.json" ) || ( ! -f "$project/$client/package.json" && -f "$project/$client/package-lock.json" ) ]]; then
+      echo "$project/$client needs both package.json and package-lock.json for reproducible builds" >&2
+      exit 1
+    fi
+  done
+done
+
+for project in "${projects[@]}"; do
   if [[ -f "$project/miniprogram/package-lock.json" ]]; then
     npm --prefix "$project/miniprogram" ci
     npm --prefix "$project/miniprogram" run build:mp-weixin

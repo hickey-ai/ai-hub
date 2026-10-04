@@ -4,6 +4,15 @@ Push-Location $PSScriptRoot
 try {
     $projects = @(Get-ChildItem -Directory | Where-Object { Test-Path (Join-Path $_.FullName 'backend/pom.xml') } | Sort-Object Name)
     if ($projects.Count -ne 98) { throw "Expected 98 runnable projects, found $($projects.Count)" }
+    foreach ($project in $projects) {
+        foreach ($client in @('frontend', 'miniprogram')) {
+            $manifest = Join-Path $project.FullName "$client/package.json"
+            $lock = Join-Path $project.FullName "$client/package-lock.json"
+            if ((Test-Path $manifest) -ne (Test-Path $lock)) {
+                throw "$($project.Name)/$client needs both package.json and package-lock.json for reproducible builds"
+            }
+        }
+    }
 
     foreach ($project in ($projects | Where-Object { Test-Path (Join-Path $_.FullName 'miniprogram/package-lock.json') })) {
         Write-Host "=== $($project.Name) mini-program ==="

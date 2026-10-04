@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Check matrix selection
-        run: python3 -m unittest discover -s tools -p 'test_ci_matrix.py'
+        run: python3 -m unittest discover -s tools -p 'test_*.py'
       - id: projects
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
