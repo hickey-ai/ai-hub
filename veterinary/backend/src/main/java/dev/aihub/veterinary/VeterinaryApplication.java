@@ -51,6 +51,8 @@ class RecordsController {
         } else {
             seed("clinics", Map.of("name", "演示宠物诊所A", "focus", "日常咨询", "location", "虚构演示地址"));
             seed("visits", Map.of("clinicId", 1, "petAlias", "团团", "eventDate", "2026-10-01", "status", "已预约", "notes", "虚构演示记录"));
+            // Persist the initial demo snapshot as well: otherwise a first-run restart silently resets edits.
+            persist();
         }
     }
 

@@ -22,6 +22,10 @@ class VeterinaryApplicationTests {
     @Test void crudValidationAndPersistence() throws Exception {
         String resource="visits";
         mvc.perform(get("/api/clinics")).andExpect(status().isOk()).andExpect(jsonPath("$[0].id").exists());
+        assertTrue(Files.exists(FILE), "first startup must persist the seeded snapshot");
+        var restarted = new RecordsController(mapper, FILE.toString());
+        assertEquals(1, restarted.list("clinics").size());
+        assertEquals(1, restarted.list("visits").size());
         mvc.perform(get("/api/unknown")).andExpect(status().isNotFound());
         mvc.perform(post("/api/"+resource).contentType(MediaType.APPLICATION_JSON).content("{}")).andExpect(status().isBadRequest());
         String payload=mapper.writeValueAsString(mapper.readValue("{\"clinicId\": 1, \"petAlias\": \"团团\", \"eventDate\": \"2026-10-01\", \"status\": \"已预约\", \"notes\": \"虚构演示记录\"}",java.util.Map.class));
