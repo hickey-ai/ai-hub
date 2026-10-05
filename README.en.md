@@ -27,6 +27,8 @@
 
 <div align="center"><sub>These are screenshots from running projects, not mockups. Click any image for its project guide and more screenshots.</sub></div>
 
+**MIIT-aligned product matrix:** [Explore 12 customer domains × 4 software-industry reporting directions, all 101 project links and acceptance criteria for missing directions](./docs/product-matrix.en.md). Customer domains are not revenue categories; only the software-product direction has local demos today.
+
 ## 🧩 ai-hub ecosystem matrix
 
 ![ai-hub ecosystem matrix: workflow apps, mini-programs, sector record desks, creative tools, and the independent local build chain](./docs/ecosystem-matrix.en.svg)

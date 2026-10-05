@@ -7,6 +7,7 @@
 | 文档 | 用途 | 范围 |
 | :--- | :--- | :--- |
 | [项目分类目录](./project-catalog.md) / [English](./project-catalog.en.md) | 12 类、101 项的主分类、功能入口、端口 | 每个项目恰好归类一次；小程序为交付形态 |
+| [产品矩阵](./product-matrix.md) / [English](./product-matrix.en.md) | 12 个业务场景 × 工信部 4 个软件业统计方向，逐项对应 101 个项目 | 未交付方向列出验收标准，不冒称已实现 |
 | [截图索引](./screenshots.md) / [English](./screenshots.en.md) | 每项 README 与现有截图的直接链接 | 截图不等于真机或生产验收 |
 | [架构图](./architecture.svg) | 各目录独立的 Web/Java/API/本机数据链路 | 本机演示，不是分布式生产拓扑 |
 | [鉴权现状与接入试点](./auth-integration.md) | 101 项鉴权盘点、manage 的 JWT 配置与未完成项 | 仅 manage API 试点，非全局单点登录 |
