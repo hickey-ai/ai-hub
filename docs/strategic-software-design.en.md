@@ -1,6 +1,7 @@
 # Strategic software delivery design
 
-**[中文](./strategic-software-design.md) · [English](./strategic-software-design.en.md)**  
+**[中文](./strategic-software-design.md) · [English](./strategic-software-design.en.md)**
+
 October 6, 2026. Engineering plan following the [capability gap review](./strategic-software-gap.en.md), not a certification or a claim that every strategic-software category has been implemented.
 
 ```text

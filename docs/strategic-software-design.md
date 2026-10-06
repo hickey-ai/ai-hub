@@ -1,6 +1,7 @@
 # 国家战略软件建设设计：先交付可验证的能力
 
-**[中文](./strategic-software-design.md) · [English](./strategic-software-design.en.md)**  
+**[中文](./strategic-software-design.md) · [English](./strategic-software-design.en.md)**
+
 2026-10-06 · 对照[国家战略软件缺口](./strategic-software-gap.md)。本设计是 ai-hub 的工程计划，不是政策认证或全部战略软件已交付的声明。
 
 ## 目标与分层
