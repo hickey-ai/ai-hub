@@ -8,11 +8,11 @@
 
 ## 核心流程与限制
 
-包裹先以「待取件」入库，可登记签收或异常；异常件须填写处理备注，可退回待取件。包裹编号不能重复，同一待取件取件码不能重复；已签收不能回退。这里只记录人工确认，**不向收件人发送短信，也不核验取件人身份**。
+包裹先以「待取件」入库，可登记签收或异常；异常件须填写处理备注，可退回待取件。包裹编号不能重复，同一待取件取件码不能重复；已签收不能回退。货架容量按未签收包裹（含异常件）占用计算：满架时拒绝入库、移入或重新上架；已签收释放容量，已有包裹在架时不能将容量调低到占用量以下。这里只记录人工确认，**不向收件人发送短信，也不核验取件人身份**。
 
 ## API 与测试
 
-`GET /api/{resource}`、`POST /api/{resource}`、`PUT /api/{resource}/{id}`、`DELETE /api/{resource}/{id}`。字段、必填、类别、数字、日期、关联关系均在服务端校验。无效输入 400、不存在 404、编号冲突/非法状态跳转或删除被引用档案 409。执行 `mvn -f parcelstation/backend/pom.xml test`，或根目录运行 `./test-all.ps1`。真实浏览器/API/重启验证见[三项目验证记录](../docs/priority-three-validation-2026-10-04.md)。
+`GET /api/{resource}`、`POST /api/{resource}`、`PUT /api/{resource}/{id}`、`DELETE /api/{resource}/{id}`。字段、必填、类别、数字、日期、关联关系均在服务端校验。无效输入 400、不存在 404、编号冲突/非法状态跳转/超出货架容量或删除被引用档案 409。执行 `mvn -f parcelstation/backend/pom.xml test`，或根目录运行 `./test-all.ps1`。真实浏览器/API/重启验证见[三项目验证记录](../docs/priority-three-validation-2026-10-04.md)。
 
 ## 真实页面截图
 

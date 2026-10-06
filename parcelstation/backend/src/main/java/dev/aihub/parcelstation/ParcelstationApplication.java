@@ -159,7 +159,21 @@ class RecordsController {
         } catch (NumberFormatException | ResponseStatusException ex) { bad("请先选择有效的关联档案"); }
     }
     private void checkBusiness(String resource, Map<String,Object> item, long id) {
+        if (resource.equals("shelves")) {
+            long occupied = records("parcels").stream().filter(row -> ((Number)row.get("shelfId")).longValue() == id
+                    && !row.get("status").equals("已签收")).count();
+            if (occupied > ((Number)item.get("capacity")).longValue())
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "货架容量不能小于在架包裹数");
+        }
         if (resource.equals("parcels")) {
+            if (!item.get("status").equals("已签收")) {
+                long shelfId = ((Number)item.get("shelfId")).longValue();
+                long occupied = records("parcels").stream().filter(row -> ((Number)row.get("shelfId")).longValue() == shelfId
+                        && !row.get("status").equals("已签收") && ((Number)row.get("id")).longValue() != id).count();
+                var shelf = records("shelves").get(indexOf(records("shelves"), shelfId));
+                if (occupied >= ((Number)shelf.get("capacity")).longValue())
+                    throw new ResponseStatusException(HttpStatus.CONFLICT, "货架已满，请先选择其他货架");
+            }
             unique("parcels", "trackingNo", (String)item.get("trackingNo"), id);
             if (item.get("status").equals("待取件")) uniqueActiveCode((String)item.get("pickupCode"), id);
             if (item.get("status").equals("异常件") && ((String)item.get("notes")).isBlank()) bad("异常件须填写处理备注");

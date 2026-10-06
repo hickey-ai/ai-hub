@@ -19,6 +19,44 @@ class ParcelstationApplicationTests {
     @DynamicPropertySource static void props(DynamicPropertyRegistry r) { r.add("aihub.data-file",()->FILE.toString()); }
     @Autowired MockMvc mvc;
     @Autowired ObjectMapper mapper;
+    @Test void shelfCapacityCountsOnlyParcelsStillOnShelf() throws Exception {
+        String shelf = "{\"code\":\"CAP-ONE\",\"name\":\"单格货架\",\"capacity\":1,\"location\":\"演示区\"}";
+        long shelfId = mapper.readTree(mvc.perform(post("/api/shelves").contentType(MediaType.APPLICATION_JSON).content(shelf))
+                .andExpect(status().isCreated()).andReturn().getResponse().getContentAsString()).get("id").asLong();
+        String first = parcel(shelfId, "CAP-P1", "CAP-C1", "待取件");
+        long firstId = mapper.readTree(mvc.perform(post("/api/parcels").contentType(MediaType.APPLICATION_JSON).content(first))
+                .andExpect(status().isCreated()).andReturn().getResponse().getContentAsString()).get("id").asLong();
+        mvc.perform(post("/api/parcels").contentType(MediaType.APPLICATION_JSON).content(parcel(shelfId, "CAP-P2", "CAP-C2", "待取件")))
+                .andExpect(status().isConflict());
+        String smaller = shelf.replace("\"capacity\":1", "\"capacity\":0");
+        mvc.perform(put("/api/shelves/" + shelfId).contentType(MediaType.APPLICATION_JSON).content(smaller))
+                .andExpect(status().isConflict());
+        mvc.perform(put("/api/parcels/" + firstId).contentType(MediaType.APPLICATION_JSON)
+                .content(parcel(shelfId, "CAP-P1", "CAP-C1", "异常件"))).andExpect(status().isOk());
+        mvc.perform(post("/api/parcels").contentType(MediaType.APPLICATION_JSON).content(parcel(shelfId, "CAP-P2", "CAP-C2", "待取件")))
+                .andExpect(status().isConflict());
+        mvc.perform(put("/api/parcels/" + firstId).contentType(MediaType.APPLICATION_JSON)
+                .content(parcel(shelfId, "CAP-P1", "CAP-C1", "已签收"))).andExpect(status().isConflict());
+        // Exception parcels must return to pending before they can be signed under the existing transition rule.
+        mvc.perform(put("/api/parcels/" + firstId).contentType(MediaType.APPLICATION_JSON).content(first)).andExpect(status().isOk());
+        mvc.perform(put("/api/parcels/" + firstId).contentType(MediaType.APPLICATION_JSON)
+                .content(parcel(shelfId, "CAP-P1", "CAP-C1", "已签收"))).andExpect(status().isOk());
+        mvc.perform(post("/api/parcels").contentType(MediaType.APPLICATION_JSON).content(parcel(shelfId, "CAP-P2", "CAP-C2", "待取件")))
+                .andExpect(status().isCreated());
+        mvc.perform(put("/api/parcels/" + firstId).contentType(MediaType.APPLICATION_JSON).content(first))
+                .andExpect(status().isConflict());
+        assertEquals(2, new RecordsController(mapper, FILE.toString()).list("parcels").stream()
+                .filter(row -> ((Number)row.get("shelfId")).longValue() == shelfId).count());
+        assertEquals(1, new RecordsController(mapper, FILE.toString()).list("shelves").stream()
+                .filter(row -> ((Number)row.get("id")).longValue() == shelfId).findFirst().orElseThrow().get("capacity"));
+    }
+
+    private String parcel(long shelfId, String tracking, String code, String status) throws Exception {
+        return mapper.writeValueAsString(java.util.Map.of("shelfId", shelfId, "trackingNo", tracking,
+                "recipient", "演示顾客", "pickupCode", code, "eventDate", "2026-10-04", "status", status,
+                "notes", status.equals("异常件") ? "等待处理" : ""));
+    }
+
     @Test void crudValidationAndPersistence() throws Exception {
         String resource="parcels";
         mvc.perform(get("/api/shelves")).andExpect(status().isOk()).andExpect(jsonPath("$[0].id").exists());
