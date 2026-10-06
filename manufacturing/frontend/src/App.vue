@@ -10,6 +10,19 @@ const notice = ref('')
 const search = ref('')
 const editorOpen = ref(false)
 const editId = ref(null)
+const trace = ref(null)
+const traceOpen = ref(false)
+const outputQuantity = ref(1)
+const actionPending = ref(false)
+const eventLabels = { START:'开始生产', OUTPUT:'模拟产出', FAULT:'模拟故障', RESUME:'恢复生产', QC:'提交质检', FINISH:'质检完成' }
+const traceActions = computed(() => {
+  const status = trace.value?.order.status
+  if (status === '待排产') return ['START']
+  if (status === '生产中') return trace.value?.produced === trace.value?.order.quantity ? ['FAULT','QC'] : ['OUTPUT','FAULT']
+  if (status === '异常停机') return ['RESUME']
+  if (status === '质检中') return ['FINISH']
+  return []
+})
 const form = reactive({})
 const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}` }
 const now = () => `${today()}T09:00`
@@ -75,6 +88,24 @@ async function toggle(item) {
   try { await api(`events/${item.id}`,{method:'PUT',body:JSON.stringify({...item,done:!item.done})}); rows.events=await api('events'); error.value='' }
   catch(e) { error.value=e.message }
 }
+async function openTrace(item) {
+  error.value = ''
+  try { trace.value = await api(`workorders/${item.id}/trace`); outputQuantity.value = 1; traceOpen.value = true }
+  catch (e) { error.value = e.message }
+}
+async function simulate(kind) {
+  if (actionPending.value) return
+  actionPending.value = true; error.value = ''
+  const id = trace.value.order.id
+  const eventId = globalThis.crypto?.randomUUID?.() || `sim-${Date.now()}-${Math.random().toString(36).slice(2)}`
+  try {
+    await api(`workorders/${id}/simulate`, { method:'POST', body:JSON.stringify({eventId,kind,quantity:kind==='OUTPUT' ? Number(outputQuantity.value) : 0}) })
+    trace.value = await api(`workorders/${id}/trace`)
+    rows.workorders = await api('workorders')
+    notice.value = `${eventLabels[kind]}已记录`;
+  } catch (e) { error.value = e.message }
+  finally { actionPending.value = false }
+}
 onMounted(load)
 </script>
 
@@ -101,11 +132,18 @@ onMounted(load)
       <template v-else-if="active==='week'"><section class="panel calendar-panel"><div class="panel-title"><div><span class="kicker">UPCOMING</span><h3>按日期查看未来安排</h3></div><span class="pill">{{weekItems.length}} 条日程</span></div><div v-if="!weekGroups.length" class="empty">近期没有安排，可以新增一条日程。</div><div v-for="[date,items] in weekGroups" :key="date" class="day-group"><h4>{{date}} <small>{{items.length}} 项</small></h4><div v-for="item in items" :key="item.id" class="event-row"><time>{{item.startAt.slice(11,16)}}<span>{{item.endAt.slice(11,16)}}</span></time><span class="event-line"></span><div><strong>{{item.title}}</strong><small>{{item.category}} · {{item.notes || '无备注'}}</small></div><span class="pill" :class="{muted:item.done}">{{item.done?'已完成':'待完成'}}</span><button class="text-action" @click="openEditor(config.entities[0],item)">编辑</button></div></div></section></template>
       <template v-else><section class="panel records-panel"><div class="panel-title"><div><span class="kicker">{{config.en}} / RECORDS</span><h3>{{currentEntity.title}} <small>{{count(currentEntity.key)}} 条</small></h3></div><button class="secondary" @click="openEditor(currentEntity)">＋ 添加{{currentEntity.singular}}</button></div><div class="toolbar"><input v-model="search" type="search" placeholder="搜索记录关键词…" aria-label="搜索记录"><span>支持新增、修改和删除 · 自动保存</span></div>
         <div v-if="!filtered.length" class="empty">{{search?'没有匹配的记录':'暂无记录，点击上方按钮开始。'}}</div>
-        <div v-else class="table-wrap"><table><thead><tr><th v-for="col in currentEntity.columns" :key="col">{{fieldName(col)}}</th><th>操作</th></tr></thead><tbody><tr v-for="item in filtered" :key="item.id"><td v-for="(col,index) in currentEntity.columns" :key="col"><strong v-if="index===0">{{display(col,item[col])}}</strong><span v-else-if="col==='category'||col==='type'||col==='done'" class="pill">{{display(col,item[col])}}</span><span v-else>{{display(col,item[col])}}</span></td><td class="actions"><button @click="openEditor(currentEntity,item)">编辑</button><button v-if="currentEntity.key==='events'" @click="toggle(item)">{{item.done?'撤销完成':'完成'}}</button><button class="danger" @click="remove(currentEntity,item)">删除</button></td></tr></tbody></table></div>
+        <div v-else class="table-wrap"><table><thead><tr><th v-for="col in currentEntity.columns" :key="col">{{fieldName(col)}}</th><th>操作</th></tr></thead><tbody><tr v-for="item in filtered" :key="item.id"><td v-for="(col,index) in currentEntity.columns" :key="col"><strong v-if="index===0">{{display(col,item[col])}}</strong><span v-else-if="col==='category'||col==='type'||col==='done'" class="pill">{{display(col,item[col])}}</span><span v-else>{{display(col,item[col])}}</span></td><td class="actions"><button @click="openEditor(currentEntity,item)">编辑</button><button v-if="currentEntity.key==='events'" @click="toggle(item)">{{item.done?'撤销完成':'完成'}}</button><button v-if="currentEntity.key==='workorders'" @click="openTrace(item)">模拟设备</button><button class="danger" @click="remove(currentEntity,item)">删除</button></td></tr></tbody></table></div>
       </section></template>
       <footer>AI-HUB · Vue 3 + Java 21 <span>本机单用户演示 · 不建议直接用于生产</span></footer>
     </main>
   </div>
+  <div v-if="traceOpen && trace" class="overlay" @click.self="traceOpen=false"><section class="drawer trace-drawer" aria-label="离线设备模拟与工单追溯"><div class="drawer-head"><div><span class="kicker">OFFLINE SIMULATOR · SIM-01</span><h2>工单模拟与追溯</h2></div><button class="close" aria-label="关闭模拟器" @click="traceOpen=false">×</button></div>
+    <p class="trace-warning">仅本机离线模拟，不连接真实生产设备；接口无鉴权，勿用于实际生产。</p>
+    <h3>{{trace.order.orderNo}} · {{trace.order.product}}</h3><p>状态：<b>{{trace.order.status}}</b>　已产出：<b>{{trace.produced}} / {{trace.order.quantity}}</b></p>
+    <div v-if="error" class="alert" role="alert">{{error}}</div>
+    <div class="trace-controls"><label v-if="traceActions.includes('OUTPUT')">模拟产出数量 <input v-model.number="outputQuantity" type="number" min="1" :max="trace.order.quantity-trace.produced" step="1"></label><button v-for="kind in traceActions" :key="kind" class="secondary" :disabled="actionPending" @click="simulate(kind)">{{eventLabels[kind]}}</button></div>
+    <h3>事件记录 <small>{{trace.events.length}} 条</small></h3><p v-if="!trace.events.length" class="form-help">还没有模拟事件。按当前工单状态选择上方操作。</p><ol class="trace-list"><li v-for="event in [...trace.events].reverse()" :key="event.eventId"><b>{{eventLabels[event.kind]}}</b><span>{{event.kind==='OUTPUT' ? `+${event.quantity} 件 · ` : ''}}{{event.deviceId}} · {{new Date(event.time).toLocaleString()}}</span></li></ol>
+  </section></div>
   <div v-if="editorOpen" class="overlay" @click.self="editorOpen=false"><section class="drawer"><div class="drawer-head"><div><span class="kicker">RECORD EDITOR</span><h2>{{editId?'编辑':'新增'}}{{currentEntity.singular}}</h2></div><button class="close" aria-label="关闭" @click="editorOpen=false">×</button></div><form @submit.prevent="save"><label v-for="field in currentEntity.fields" :key="field[0]" class="field"><span>{{field[1]}} <b v-if="field[3]">*</b></span><select v-if="field[2]==='select'" v-model="form[field[0]]" :required="field[3]"><option v-for="x in field[4]" :key="x" :value="x">{{x}}</option></select><select v-else-if="field[2]==='relation'" v-model="form[field[0]]" required><option disabled value="">请选择</option><option v-for="x in rows[field[4]]||[]" :key="x.id" :value="x.id">{{x[config.entities.find(e=>e.key===field[4]).fields[0][0]]}}</option></select><textarea v-else-if="field[2]==='textarea'" v-model="form[field[0]]" rows="3" maxlength="500" placeholder="可选备注"></textarea><input v-else-if="field[2]==='checkbox'" v-model="form[field[0]]" type="checkbox" class="check"><input v-else v-model="form[field[0]]" :type="field[2]==='money'?'number':field[2]" :step="field[2]==='money'?'0.01':undefined" :min="field[2]==='money'||field[2]==='number'?'0':undefined" :required="field[3]" maxlength="500"></label><p v-if="currentEntity.fields.some(f=>f[2]==='relation')" class="form-help">请先创建对应档案，再添加记录。</p><div class="drawer-actions"><button type="button" class="cancel" @click="editorOpen=false">取消</button><button type="submit" class="primary">保存记录</button></div></form></section></div>
 </div>
 </template>

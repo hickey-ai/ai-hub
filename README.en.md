@@ -27,7 +27,7 @@
 
 <div align="center"><sub>These are screenshots from running projects, not mockups. Click any image for its project guide and more screenshots.</sub></div>
 
-**Strategic-software gap:** [Compare foundational and industrial software, AI integration and security with what this repository actually implements](./docs/strategic-software-gap.en.md). Many industry demos do not imply an OS, database or design-software capability.
+**Strategic-software gap:** [Compare foundational and industrial software, AI integration and security with what this repository actually implements](./docs/strategic-software-gap.en.md). Many industry demos do not imply an OS, database or design-software capability. [First implemented increment: offline manufacturing simulation and the staged design](./docs/strategic-software-design.en.md).
 
 **MIIT-aligned product matrix:** [Explore 12 customer domains × 4 software-industry reporting directions, all 101 project links and acceptance criteria for missing directions](./docs/product-matrix.en.md). Customer domains are not revenue categories; only the software-product direction has local demos today.
 

@@ -27,6 +27,7 @@ class RecordsController {
     private final Path file;
     private final Map<String, List<Map<String,Object>>> data = new LinkedHashMap<>();
     private long nextId = 1;
+    private final List<Map<String,Object>> productionEvents = new ArrayList<>();
 
     RecordsController(ObjectMapper mapper, @Value("${aihub.data-file}") String fileName) {
         this.mapper = mapper;
@@ -37,6 +38,16 @@ class RecordsController {
                 Map<String,Object> saved = mapper.readValue(file.toFile(), new TypeReference<>() {});
                 if (!(saved.get("nextId") instanceof Number)) throw new IOException("missing nextId");
                 nextId = ((Number)saved.get("nextId")).longValue();
+                Object storedEvents = saved.getOrDefault("productionEvents", List.of());
+                if (!(storedEvents instanceof List<?> eventList)) throw new IOException("invalid productionEvents");
+                for (Object value : eventList) {
+                    if (!(value instanceof Map<?,?> row) || !(row.get("eventId") instanceof String)
+                        || !(row.get("workorderId") instanceof Number) || !(row.get("kind") instanceof String)
+                        || !(row.get("quantity") instanceof Number) || !(row.get("time") instanceof String))
+                        throw new IOException("invalid production event");
+                    @SuppressWarnings("unchecked") Map<String,Object> item = (Map<String,Object>) row;
+                    productionEvents.add(new LinkedHashMap<>(item));
+                }
                 for (String name : data.keySet()) {
                     if (!(saved.get(name) instanceof List<?> list)) throw new IOException("missing " + name);
                     for (Object value : list) {
@@ -83,7 +94,13 @@ class RecordsController {
         int index = indexOf(list, id);
         var item = validate(resource, input);
         item.put("id", id);
-        var previous = list.set(index, item);
+        var previous = list.get(index);
+        if (resource.equals("workorders") && productionEvents.stream().anyMatch(e -> ((Number)e.get("workorderId")).longValue() == id)) {
+            for (String key : List.of("materialId", "orderNo", "product", "quantity", "dueDate", "status"))
+                if (!String.valueOf(previous.get(key)).equals(String.valueOf(item.get(key))))
+                    throw new ResponseStatusException(HttpStatus.CONFLICT, "已有模拟事件的工单只能修改备注");
+        }
+        list.set(index, item);
         try { persist(); }
         catch (RuntimeException ex) { list.set(index, previous); throw ex; }
         return item;
@@ -94,12 +111,89 @@ class RecordsController {
     synchronized void delete(@PathVariable String resource, @PathVariable long id) {
         var list = records(resource);
         int index = indexOf(list, id);
+        if (resource.equals("workorders") && productionEvents.stream()
+            .anyMatch(e -> ((Number)e.get("workorderId")).longValue() == id))
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "有追溯事件的工单不可删除");
         if (resource.equals("materials") && records("workorders").stream()
             .anyMatch(row -> ((Number) row.get("materialId")).longValue() == id))
             throw new ResponseStatusException(HttpStatus.CONFLICT, "请先删除关联记录");
         var removed = list.remove(index);
         try { persist(); }
         catch (RuntimeException ex) { list.add(index, removed); throw ex; }
+    }
+
+    // This is a deterministic offline device simulator, not a PLC/OT interface.
+    @GetMapping("/workorders/{id}/trace")
+    synchronized Map<String,Object> trace(@PathVariable long id) {
+        var order = records("workorders").get(indexOf(records("workorders"), id));
+        long produced = productionEvents.stream()
+            .filter(e -> ((Number)e.get("workorderId")).longValue() == id && e.get("kind").equals("OUTPUT"))
+            .mapToLong(e -> ((Number)e.get("quantity")).longValue()).sum();
+        var result = new LinkedHashMap<String,Object>();
+        result.put("order", new LinkedHashMap<>(order));
+        result.put("produced", produced);
+        result.put("events", productionEvents.stream().filter(e -> ((Number)e.get("workorderId")).longValue() == id)
+            .map(LinkedHashMap::new).toList());
+        return result;
+    }
+
+    @PostMapping("/workorders/{id}/simulate")
+    @ResponseStatus(HttpStatus.CREATED)
+    synchronized Map<String,Object> simulate(@PathVariable long id, @RequestBody Map<String,Object> input) {
+        var orders = records("workorders");
+        int index = indexOf(orders, id);
+        if (input == null) bad("事件不能为空");
+        Object rawId = input.get("eventId"), rawKind = input.get("kind");
+        if (!(rawId instanceof String) || !((String)rawId).matches("[A-Za-z0-9_-]{1,80}")
+            || !(rawKind instanceof String) || !List.of("START", "OUTPUT", "FAULT", "RESUME", "QC", "FINISH").contains(rawKind))
+            bad("eventId 或 kind 不合法");
+        String eventId = (String) rawId, kind = (String) rawKind;
+        long quantity;
+        try { quantity = new BigDecimal(String.valueOf(input.get("quantity"))).longValueExact(); }
+        catch (NumberFormatException | ArithmeticException ex) { bad("quantity 必须为整数"); return Map.of(); }
+        if (kind.equals("OUTPUT") ? quantity <= 0 : quantity != 0) bad("该事件的 quantity 不合法");
+        for (var existing : productionEvents) if (existing.get("eventId").equals(eventId)) {
+            if (((Number)existing.get("workorderId")).longValue() == id
+                && existing.get("kind").equals(kind) && ((Number)existing.get("quantity")).longValue() == quantity)
+                return new LinkedHashMap<>(existing); // durable idempotency, including after restart
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "eventId 已用于其他事件");
+        }
+        var order = orders.get(index);
+        String status = (String)order.get("status");
+        String required = switch (kind) {
+            case "START" -> "待排产";
+            case "OUTPUT", "FAULT", "QC" -> "生产中";
+            case "RESUME" -> "异常停机";
+            default -> "质检中";
+        };
+        if (!status.equals(required)) throw new ResponseStatusException(HttpStatus.CONFLICT, "工单状态不允许该事件");
+        long produced = (long)trace(id).get("produced");
+        long planned = ((Number)order.get("quantity")).longValue();
+        if (kind.equals("OUTPUT") && quantity > planned - produced)
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "产出超过计划数量");
+        if (kind.equals("QC") && (planned == 0 || produced != planned))
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "必须完成计划产量后再提交质检");
+        String nextStatus = switch (kind) {
+            case "START", "RESUME" -> "生产中";
+            case "FAULT" -> "异常停机";
+            case "QC" -> "质检中";
+            case "FINISH" -> "已完成";
+            default -> status;
+        };
+        var updated = new LinkedHashMap<>(order);
+        updated.put("status", nextStatus);
+        var event = new LinkedHashMap<String,Object>();
+        event.put("eventId", eventId);
+        event.put("workorderId", id);
+        event.put("deviceId", "SIM-01");
+        event.put("kind", kind);
+        event.put("quantity", quantity);
+        event.put("time", Instant.now().toString());
+        orders.set(index, updated);
+        productionEvents.add(event);
+        try { persist(); }
+        catch (RuntimeException ex) { productionEvents.remove(productionEvents.size()-1); orders.set(index, order); throw ex; }
+        return new LinkedHashMap<>(event);
     }
 
     private List<Map<String,Object>> records(String resource) {
@@ -171,7 +265,7 @@ class RecordsController {
                 text(input, out, "product", true);
                 number(input, out, "quantity");
                 date(input, out, "dueDate");
-                choice(input, out, "status", "待排产", "生产中", "质检中", "已完成");
+                choice(input, out, "status", "待排产", "生产中", "异常停机", "质检中", "已完成");
                 text(input, out, "notes", false);
             } default -> throw new ResponseStatusException(HttpStatus.NOT_FOUND); }
         return out;
@@ -185,6 +279,7 @@ class RecordsController {
                 var snapshot = new LinkedHashMap<String,Object>();
                 snapshot.put("nextId", nextId);
                 snapshot.putAll(data);
+                snapshot.put("productionEvents", productionEvents);
                 mapper.writerWithDefaultPrettyPrinter().writeValue(temp.toFile(), snapshot);
                 try { Files.move(temp, file, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE); }
                 catch (AtomicMoveNotSupportedException ex) { Files.move(temp, file, StandardCopyOption.REPLACE_EXISTING); }
