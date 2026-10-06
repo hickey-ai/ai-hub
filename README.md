@@ -27,6 +27,8 @@
 
 <div align="center"><sub>以上均为实际运行页面，而非效果图。点击图片查看项目说明与更多截图。</sub></div>
 
+**国家战略软件核对：**[基础软件、工业软件、人工智能融合与安全底座的真实缺口及可验证里程碑](./docs/strategic-software-gap.md)。行业业务项目多，不等于掌握操作系统、数据库或工业设计软件。
+
 **产品矩阵（工信部软件业口径）：**[查看 12 类 × 4 个软件业统计方向的完整对应、101 项入口及缺口验收清单](./docs/product-matrix.md)。业务场景分类≠软件业收入分类；目前只有软件产品方向的本机样板，其余方向尚未交付。
 
 ## 🧩 ai-hub 生态矩阵
@@ -120,6 +122,6 @@ macOS/Linux 可运行 `./test-all.sh`；单项目运行 `mvn -f <项目>/backend
 
 ## 📚 文档导航与定制
 
-[完整分类](./docs/project-catalog.md) · [全部截图](./docs/screenshots.md) · [架构说明](./docs/README.md) · [验证矩阵](./docs/project-validation-2026-10-03.md) · [建设调研](./docs/business-map.md)
+[国家战略软件缺口](./docs/strategic-software-gap.md) · [完整分类](./docs/project-catalog.md) · [全部截图](./docs/screenshots.md) · [架构说明](./docs/README.md) · [验证矩阵](./docs/project-validation-2026-10-03.md) · [建设调研](./docs/business-map.md)
 
 你愿意讲清楚业务场景、用户规模和关键流程，我们就能从现有项目出发讨论定制开发。**QQ 3174667330 · 3174667330@qq.com**。

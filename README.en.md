@@ -27,6 +27,8 @@
 
 <div align="center"><sub>These are screenshots from running projects, not mockups. Click any image for its project guide and more screenshots.</sub></div>
 
+**Strategic-software gap:** [Compare foundational and industrial software, AI integration and security with what this repository actually implements](./docs/strategic-software-gap.en.md). Many industry demos do not imply an OS, database or design-software capability.
+
 **MIIT-aligned product matrix:** [Explore 12 customer domains × 4 software-industry reporting directions, all 101 project links and acceptance criteria for missing directions](./docs/product-matrix.en.md). Customer domains are not revenue categories; only the software-product direction has local demos today.
 
 ## 🧩 ai-hub ecosystem matrix
@@ -118,6 +120,6 @@ Use `./test-all.sh` on macOS/Linux or `mvn -f <project>/backend/pom.xml test` fo
 
 ## 📚 Documentation and customization
 
-[Full catalog](./docs/project-catalog.en.md) · [All screenshots](./docs/screenshots.en.md) · [Documentation guide](./docs/README.md) · [Validation matrix](./docs/project-validation-2026-10-03.md) · [Research map (Chinese)](./docs/business-map.md)
+[Strategic-software gaps](./docs/strategic-software-gap.en.md) · [Full catalog](./docs/project-catalog.en.md) · [All screenshots](./docs/screenshots.en.md) · [Documentation guide](./docs/README.md) · [Validation matrix](./docs/project-validation-2026-10-03.md) · [Research map (Chinese)](./docs/business-map.md)
 
 If you have a concrete workflow and user base in mind, we can discuss custom development starting from a relevant project. **QQ 3174667330 · 3174667330@qq.com**.

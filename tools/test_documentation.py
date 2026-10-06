@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECTS = {p.name for p in ROOT.iterdir() if (p / "backend/pom.xml").is_file()}
 CATALOGS = ("docs/project-catalog.md", "docs/project-catalog.en.md")
 SCREENSHOTS = ("docs/screenshots.md", "docs/screenshots.en.md")
-PAGES = ("README.md", "README.en.md", "docs/README.md", "docs/product-matrix.md", "docs/product-matrix.en.md", *CATALOGS, *SCREENSHOTS)
+PAGES = ("README.md", "README.en.md", "docs/README.md", "docs/product-matrix.md", "docs/product-matrix.en.md", "docs/strategic-software-gap.md", "docs/strategic-software-gap.en.md", *CATALOGS, *SCREENSHOTS)
 
 
 class DocumentationTests(unittest.TestCase):

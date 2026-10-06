@@ -7,6 +7,7 @@
 | 文档 | 用途 | 范围 |
 | :--- | :--- | :--- |
 | [项目分类目录](./project-catalog.md) / [English](./project-catalog.en.md) | 12 类、101 项的主分类、功能入口、端口 | 每个项目恰好归类一次；小程序为交付形态 |
+| [国家战略软件缺口](./strategic-software-gap.md) / [English](./strategic-software-gap.en.md) | 对照十五五规划的基础软件、工业软件等方向及本仓库真实能力 | 与软件业收入统计口径不同；不把行业样板当战略软件交付 |
 | [产品矩阵](./product-matrix.md) / [English](./product-matrix.en.md) | 12 个业务场景 × 工信部 4 个软件业统计方向，逐项对应 101 个项目 | 未交付方向列出验收标准，不冒称已实现 |
 | [截图索引](./screenshots.md) / [English](./screenshots.en.md) | 每项 README 与现有截图的直接链接 | 截图不等于真机或生产验收 |
 | [架构图](./architecture.svg) | 各目录独立的 Web/Java/API/本机数据链路 | 本机演示，不是分布式生产拓扑 |
