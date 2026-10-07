@@ -1,8 +1,8 @@
-# Project catalog · 101 independent projects
+# Project catalog · 102 independent projects
 
 [简体中文](./project-catalog.md) · **English**
 
-Each project is assigned to **exactly one primary category**; the four mini-programs are included in the 101 projects, not counted again. Category names describe discovery paths, **not production-readiness**. Most sector apps are local single-user record demos. See [screenshots](./screenshots.en.md) and [validation evidence](./project-validation-2026-10-03.md).
+Each project is assigned to **exactly one primary category**; the four mini-programs are included in the 102 projects, not counted again. Category names describe discovery paths, **not production-readiness**. Most sector apps are local single-user record demos. See [screenshots](./screenshots.en.md) and [validation evidence](./project-validation-2026-10-03.md).
 
 ## Categories
 
@@ -16,7 +16,7 @@ Each project is assigned to **exactly one primary category**; the four mini-prog
 - [Property, parks & construction · 4](#places)
 - [Agriculture, resources & environment · 7](#resources)
 - [Public services & infrastructure · 6](#public)
-- [Developer operations & digital tools · 7](#digital)
+- [Developer operations & digital tools · 8](#digital)
 - [Home & personal planning · 2](#personal)
 
 <a id="commerce"></a>
@@ -172,7 +172,7 @@ Each project is assigned to **exactly one primary category**; the four mini-prog
 | [Telecom facilities · `telecom`](../telecom/README.md) | Sites and maintenance tasks; local-only demo | Web | `8127` | [View](../telecom/screenshots/overview.png) |
 
 <a id="digital"></a>
-## Developer operations & digital tools · 7
+## Developer operations & digital tools · 8
 
 | Project | Available local scope | Client | Port | Screenshot |
 | :--- | :--- | :--- | ---: | :--- |
@@ -183,6 +183,7 @@ Each project is assigned to **exactly one primary category**; the four mini-prog
 | [Test management · `testops`](../testops/README.md) | Test cases and manual execution records; local demo | Web | `8165` | [View](../testops/screenshots/overview.png) |
 | [Internal tickets · `ticketops`](../ticketops/README.md) | Queues, priorities, assignees and status; local demo | Web | `8166` | [View](../ticketops/screenshots/overview.png) |
 | [Defect tracker · `bugtrack`](../bugtrack/README.md) | Projects, defects, reproduction steps and status; local demo | Web | `8167` | [View](../bugtrack/screenshots/overview.png) |
+| [Security and identity center · `authcenter`](../authcenter/README.md) | RSA JWT issuance, JWKS discovery, audience isolation, login and admin audit pilot | Web | `8182` | [View](../authcenter/screenshots/overview.png) |
 
 <a id="personal"></a>
 ## Home & personal planning · 2

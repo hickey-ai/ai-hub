@@ -1,4 +1,4 @@
-# 页面截图索引 · 全部 101 个项目
+# 页面截图索引 · 全部 102 个项目
 
 **简体中文 · [English](./screenshots.en.md)**
 
@@ -16,7 +16,7 @@
 - [地产、园区与工程 · 4](#places)
 - [农林渔矿、能源与环境 · 7](#resources)
 - [公共服务与设施安全 · 6](#public)
-- [研发协作与数字工具 · 7](#digital)
+- [研发协作与数字工具 · 8](#digital)
 - [家庭与日程 · 2](#personal)
 
 <a id="commerce"></a>
@@ -172,7 +172,7 @@
 | [telecom](../telecom/README.md) | 通信站点与维护任务的本机演示 | http://127.0.0.1:8127 | [总览](../telecom/screenshots/overview.png) · [通信站点](../telecom/screenshots/primary.png) · [维护任务](../telecom/screenshots/secondary.png) · [编辑表单](../telecom/screenshots/editor.png) |
 
 <a id="digital"></a>
-## 研发协作与数字工具 · 7
+## 研发协作与数字工具 · 8
 
 | 项目 | 已演示能力 | 本机地址 | 页面截图 |
 | :--- | :--- | :--- | :--- |
@@ -183,6 +183,7 @@
 | [testops](../testops/README.md) | 测试用例与手工执行记录的本机演示 | http://127.0.0.1:8165 | [总览](../testops/screenshots/overview.png) · [测试用例](../testops/screenshots/primary.png) · [执行记录](../testops/screenshots/secondary.png) · [编辑表单](../testops/screenshots/editor.png) |
 | [ticketops](../ticketops/README.md) | 队列与内部工单的本机演示 | http://127.0.0.1:8166 | [总览](../ticketops/screenshots/overview.png) · [队列](../ticketops/screenshots/primary.png) · [工单](../ticketops/screenshots/secondary.png) · [编辑表单](../ticketops/screenshots/editor.png) |
 | [bugtrack](../bugtrack/README.md) | 项目与缺陷记录的本机演示 | http://127.0.0.1:8167 | [总览](../bugtrack/screenshots/overview.png) · [项目](../bugtrack/screenshots/primary.png) · [缺陷](../bugtrack/screenshots/secondary.png) · [编辑表单](../bugtrack/screenshots/editor.png) |
+| [authcenter](../authcenter/README.md) | RSA JWT 签发、公钥发现、受众隔离、登录与管理员审计试点 | http://127.0.0.1:8182 | [安全中心总览](../authcenter/screenshots/overview.png) · [登录会话与审计](../authcenter/screenshots/session.png) |
 
 <a id="personal"></a>
 ## 家庭与日程 · 2

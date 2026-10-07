@@ -4,7 +4,7 @@
 
 The **12 customer domains** are repository navigation, while MIIT software-industry operating reports separately track revenue from **software products, IT services, information-security products and services, and embedded-system software**. These axes cannot be added together. This matrix indicates an **approximate product-form direction**, not official classification, reported revenue or certification. Source: [MIIT 2025 software-industry operating report](https://www.miit.gov.cn/gxsj/tjfx/rjy/art/2026/art_65a12a560865432bb1548fdddc74f19c.html) (accessed 2026-10-05). Consult the applicable official reporting rules for any formal filing.
 
-The 101 existing projects are independent local applications/tools, so they appear only under the software-product direction. The other columns say “not delivered” rather than mislabeling record screens as services, security products or firmware. **A catalog link proves existence, not production readiness.**
+The 102 projects are local applications/tools. The authcenter security pilot is marked separately in the security direction, not as official revenue classification. IT services and embedded software remain undelivered. **A catalog link proves existence, not production readiness.**
 
 | Customer domain | Software-product direction (existing) | IT services | Security products and services | Embedded-system software |
 | :--- | :--- | :---: | :---: | :---: |
@@ -18,7 +18,7 @@ The 101 existing projects are independent local applications/tools, so they appe
 | [Property, parks & construction](./project-catalog.en.md#places) | 4 projects · [View projects](#matrix-places) | Not delivered | Not delivered | Not delivered |
 | [Agriculture, resources & environment](./project-catalog.en.md#resources) | 7 projects · [View projects](#matrix-resources) | Not delivered | Not delivered | Not delivered |
 | [Public services & infrastructure](./project-catalog.en.md#public) | 6 projects · [View projects](#matrix-public) | Not delivered | Not delivered | Not delivered |
-| [Developer operations & digital tools](./project-catalog.en.md#digital) | 7 projects · [View projects](#matrix-digital) | Not delivered | Not delivered | Not delivered |
+| [Developer operations & digital tools](./project-catalog.en.md#digital) | 8 projects · [View projects](#matrix-digital) | Not delivered | Security pilot (not production-ready) | Not delivered |
 | [Home & personal planning](./project-catalog.en.md#personal) | 2 projects · [View projects](#matrix-personal) | Not delivered | Not delivered | Not delivered |
 
 ## Projects by customer domain
@@ -74,9 +74,9 @@ The 101 existing projects are independent local applications/tools, so they appe
 [Access control](../access/README.md) · [Community services](../community/README.md) · [Civic services](../civic/README.md) · [Grid case workflow](../gridops/README.md) · [Emergency inspection](../emergency/README.md) · [Telecom facilities](../telecom/README.md)
 
 <a id="matrix-digital"></a>
-### Developer operations & digital tools · 7
+### Developer operations & digital tools · 8
 
-[AI workspace](../ai/README.md) · [HTML studio](../html/README.md) · [Web crawler](../crawler/README.md) · [IT operations](../itops/README.md) · [Test management](../testops/README.md) · [Internal tickets](../ticketops/README.md) · [Defect tracker](../bugtrack/README.md)
+[AI workspace](../ai/README.md) · [HTML studio](../html/README.md) · [Web crawler](../crawler/README.md) · [IT operations](../itops/README.md) · [Test management](../testops/README.md) · [Internal tickets](../ticketops/README.md) · [Defect tracker](../bugtrack/README.md) · [Security and identity center](../authcenter/README.md)
 
 <a id="matrix-personal"></a>
 ### Home & personal planning · 2
@@ -84,16 +84,16 @@ The 101 existing projects are independent local applications/tools, so they appe
 [Schedule](../schedule/README.md) · [Parenting journal](../parenting/README.md)
 
 
-**Totals:** 12 customer domains, 101 unique projects, four statistical directions. Only the software-product direction currently contains repository demos. Four mini-program builds are included in the 101, not counted again.
+**Totals:** 12 customer domains, 102 unique projects, four statistical directions. Software products are local demos and the security direction has a local pilot. Four mini-program builds are included in the 102, not counted again.
 
 ## Missing directions: delivery criteria, not placeholder projects
 
 | Direction and priority | Related demos (not equivalent) | Minimum acceptance before claiming delivery |
 | :--- | :--- | :--- |
-| Security products and services · first | [manage](../manage/README.md) has a JWT API pilot; [access](../access/README.md) records physical access | Shared identity and authorization, server-side 401/403 per tenant/role/resource, verifiable audit, key rotation and invalid-token tests, and secure browser/mini-program login. [Current auth boundary](./auth-integration.md). **Not delivered.** |
+| Security products and services · first | [authcenter](../authcenter/README.en.md) offers a local JWT/JWKS/audit pilot; [manage](../manage/README.md) can validate its tokens | Shared identity and authorization, server-side 401/403 per tenant/role/resource, verifiable audit, key rotation and invalid-token tests, and secure browser/mini-program login. [Current auth boundary](./auth-integration.md). **Pilot delivered; production capabilities not delivered.** |
 | IT services · next | [ticketops](../ticketops/README.md) and [itops](../itops/README.md) are local applications | Defined customers and SLAs, assignment/escalation/follow-up, measured fulfillment and tenant isolation, with an automated multi-user end-to-end scenario. Revenue classification requires actual service evidence. **Not delivered.** |
 | Embedded-system software · after hardware is available | [access](../access/README.md) and [telecom](../telecom/README.md) are management screens | Specify a device/firmware target, device-side capture, offline buffering, secure updates, hardware-in-loop testing, recovery and rollback. No embedded claim without device evidence. **Not delivered.** |
 
 ## Maintenance and verification
 
-Assign a primary customer domain and an evidence-based statistical direction independently. Update the bilingual [catalog](./project-catalog.en.md), screenshots and this matrix together. Run `python tools/generate_product_matrix.py --check` and `python -m unittest discover -s tools -p "test_*.py"`. Existing evidence: [project validation](./project-validation-2026-10-03.md) and [quality log](./quality-loop.md). This matrix adds no backend systems or claim of exhaustive 101-project acceptance.
+Assign a primary customer domain and an evidence-based statistical direction independently. Update the bilingual [catalog](./project-catalog.en.md), screenshots and this matrix together. Run `python tools/generate_product_matrix.py --check` and `python -m unittest discover -s tools -p "test_*.py"`. Existing evidence: [project validation](./project-validation-2026-10-03.md) and [quality log](./quality-loop.md). This matrix does not claim exhaustive 102-project acceptance; see authcenter for pilot-specific tests.

@@ -1,7 +1,7 @@
 # Strategic software: ai-hub capability gap
 
 **[中文](./strategic-software-gap.md) · [English](./strategic-software-gap.en.md)**  
-Reviewed October 6, 2026 against the 101 current projects. “Strategic software” is a convenient shorthand for national policy priorities, **not an official certification or project eligibility claim**. The [product matrix](./product-matrix.en.md) instead uses four software-industry revenue reporting directions. These are different classification axes.
+Reviewed October 7, 2026 against the 102 current projects. “Strategic software” is a convenient shorthand for national policy priorities, **not an official certification or project eligibility claim**. The [product matrix](./product-matrix.en.md) instead uses four software-industry revenue reporting directions. These are different classification axes.
 
 ## Policy basis
 
@@ -21,11 +21,11 @@ Reviewed October 6, 2026 against the 101 current projects. “Strategic software
 | Industrial business management | [erp](../erp/README.md), [supply](../procurement/README.md) are local records | **Demo.** Test purchase → receipt → stock → settlement, duplicate requests, concurrent deduction, authorization and reversal. |
 | Embedded/device software | [access](../access/README.md), [telecom](../telecom/README.md) are management pages | **No firmware.** Name a device/protocol, then test secure handshake, offline recovery and update rollback; hardware-in-loop testing is additional. |
 | AI/software integration | [ai](../ai/README.md) supplies CLI/skill/prompt templates, without model inference | **Demo.** An optional model gateway first needs authentication, timeout/cost limits, sensitive-data protection, evaluation and human review. |
-| Trust/security foundation | [manage](../manage/README.md) pilots external-issuer JWT validation for its API only | **No shared identity platform.** Complete one real project's browser login, resource-level 401/403, authorization regression, audit and expiry; see [security inventory](./auth-integration.md). |
+| Trust/security foundation | [authcenter](../authcenter/README.en.md) issues RSA JWTs with JWKS and audience isolation; [manage](../manage/README.md) can verify them for its API | **Local pilot only.** Browser login, role/data authorization, durable audits, key rotation and production security are missing; see [security inventory](./auth-integration.md). |
 | Industry application software | [catalog](./project-catalog.en.md) covers many domains | Mostly single-user local demos. Each proposed launch needs an end-to-end business workflow plus security, backup, device/browser and actual-user acceptance. |
 
-**First implemented increment (October 6, 2026):** [manufacturing](../manufacturing/README.md) gained offline simulation, durable idempotent events and a trace UI; see the [design and acceptance plan](./strategic-software-design.en.md). This is not physical-device or industrial-control software.
+**Delivered increment (October 6–7, 2026):** [manufacturing](../manufacturing/README.md) gained offline simulation, durable idempotent events and a trace UI; see the [design and acceptance plan](./strategic-software-design.en.md). The [authcenter](../authcenter/README.en.md) local JWT/JWKS pilot was also added. Neither is production-ready.
 
-**Recommended sequence:** reusable authentication and testing first; then one manufacturing workflow with a device simulator; only then evaluate the far more costly OS/database/compiler/simulation tracks. Vue + Java 21 are suitable for these business UIs, not a mandatory implementation language for kernels or firmware. Do not create empty directories to inflate coverage.
+**Recommended sequence:** the authcenter JWT/JWKS pilot is in place, but reusable authorization and testing remain first; then one manufacturing workflow with a device simulator; only then evaluate the far more costly OS/database/compiler/simulation tracks. Vue + Java 21 are suitable for these business UIs, not a mandatory implementation language for kernels or firmware. Do not create empty directories to inflate coverage.
 
-This is a documentation and capability review, **not** a rerun of all 101 business flows, real devices or production compliance checks. See [existing test evidence](./project-validation-2026-10-03.md); update statuses only with runnable commands, tests and known limitations.
+On October 7, 2026 the local full build passed 102/102 project packages, four mini-program builds and 160 Maven tests. This does **not** verify all 102 browser business flows, real devices or production compliance. See [existing test evidence](./project-validation-2026-10-03.md); update statuses only with runnable commands, tests and known limitations.

@@ -12,7 +12,7 @@ spec.loader.exec_module(module)
 
 class MatrixTests(unittest.TestCase):
     def test_catalog(self):
-        self.assertEqual(len(module.projects()), 101)
+        self.assertEqual(len(module.projects()), 102)
         self.assertIn("testops", module.projects())
         self.assertIn("barber", module.projects())
         self.assertIn("auditfirm", module.projects())
@@ -32,7 +32,7 @@ class MatrixTests(unittest.TestCase):
         )
         outputs = dict(line.split("=", 1) for line in result.stdout.splitlines())
         self.assertEqual(outputs["has_projects"], "true")
-        self.assertEqual(len(json.loads(outputs["matrix"])["include"]), 101)
+        self.assertEqual(len(json.loads(outputs["matrix"])["include"]), 102)
     def test_docs_only(self):
         self.assertEqual(module.select(["README.md", "docs/architecture.svg"], module.projects()), [])
 

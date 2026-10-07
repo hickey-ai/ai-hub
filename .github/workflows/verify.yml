@@ -4,7 +4,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '17 2 * * 0' # Sunday 02:17 UTC; all 101 projects
+    - cron: '17 2 * * 0' # Sunday 02:17 UTC; all 102 projects
 permissions:
   contents: read
 jobs:

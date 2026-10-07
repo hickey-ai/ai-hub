@@ -4,7 +4,7 @@
 
 这里的 **12 类**是 ai-hub 按客户任务建立的导航；工信部软件业运行情况按 **软件产品、信息技术服务、信息安全产品和服务、嵌入式系统软件** 分项统计业务收入。两者不是同一分类体系，不能直接相加。下表只表示本仓库项目的**产品形态对应方向**，不是企业收入归属、官方认定或产品认证。依据：[工信部《2025年软件业运行情况》](https://www.miit.gov.cn/gxsj/tjfx/rjy/art/2026/art_65a12a560865432bb1548fdddc74f19c.html)（访问：2026-10-05）；应以相应时期的统计报表和正式标准为准。
 
-现有 101 项都是独立本机应用/工具样板，故仅放在“软件产品方向”；其他三列用“未交付”而不是把一个记录界面硬算为服务、安全产品或固件。**目录链接证明项目存在，不证明生产就绪。**
+现有 102 项为独立本机应用/工具；安全与身份中心在“信息安全产品和服务”列标为本机试点，不代表收入分类或产品认证。信息技术服务与嵌入式软件仍未交付。**目录链接证明项目存在，不证明生产就绪。**
 
 | 客户业务场景 | 软件产品方向（现有项目） | 信息技术服务 | 信息安全产品和服务 | 嵌入式系统软件 |
 | :--- | :--- | :---: | :---: | :---: |
@@ -18,7 +18,7 @@
 | [地产、园区与工程](./project-catalog.md#places) | 4 项 · [查看项目](#matrix-places) | 待建设 | 待建设 | 待建设 |
 | [农林渔矿、能源与环境](./project-catalog.md#resources) | 7 项 · [查看项目](#matrix-resources) | 待建设 | 待建设 | 待建设 |
 | [公共服务与设施安全](./project-catalog.md#public) | 6 项 · [查看项目](#matrix-public) | 待建设 | 待建设 | 待建设 |
-| [研发协作与数字工具](./project-catalog.md#digital) | 7 项 · [查看项目](#matrix-digital) | 待建设 | 待建设 | 待建设 |
+| [研发协作与数字工具](./project-catalog.md#digital) | 8 项 · [查看项目](#matrix-digital) | 待建设 | 安全底座试点（未达生产验收） | 待建设 |
 | [家庭与日程](./project-catalog.md#personal) | 2 项 · [查看项目](#matrix-personal) | 待建设 | 待建设 | 待建设 |
 
 ## 逐场景项目入口
@@ -74,9 +74,9 @@
 [门禁](../access/README.md) · [社区公益](../community/README.md) · [公共服务](../civic/README.md) · [网格事件](../gridops/README.md) · [应急消防巡检](../emergency/README.md) · [通信设施](../telecom/README.md)
 
 <a id="matrix-digital"></a>
-### 研发协作与数字工具 · 7
+### 研发协作与数字工具 · 8
 
-[AI 工作台](../ai/README.md) · [HTML 创意工坊](../html/README.md) · [网页抓取](../crawler/README.md) · [IT 运维](../itops/README.md) · [测试管理](../testops/README.md) · [内部工单](../ticketops/README.md) · [缺陷跟踪](../bugtrack/README.md)
+[AI 工作台](../ai/README.md) · [HTML 创意工坊](../html/README.md) · [网页抓取](../crawler/README.md) · [IT 运维](../itops/README.md) · [测试管理](../testops/README.md) · [内部工单](../ticketops/README.md) · [缺陷跟踪](../bugtrack/README.md) · [安全与身份中心](../authcenter/README.md)
 
 <a id="matrix-personal"></a>
 ### 家庭与日程 · 2
@@ -84,16 +84,16 @@
 [日程](../schedule/README.md) · [养娃](../parenting/README.md)
 
 
-**合计：** 12 个客户场景、101 个不重复项目、4 个软件业统计方向；当前仅“软件产品方向”有样板，另外三个方向均没有通过下述验收的独立交付。四个小程序包含在 101 项内，不额外计数。
+**合计：** 12 个客户场景、102 个不重复项目、4 个软件业统计方向；软件产品方向为本机样板，安全方向新增本机试点；其他方向仍未交付。四个小程序包含在 102 项内，不额外计数。
 
 ## 缺失赛道：先定义可验收的产品，再建设
 
 | 方向与优先级 | 当前关联项目（不能替代交付） | 必须补齐的能力与最低验收 |
 | :--- | :--- | :--- |
-| 信息安全产品和服务 · 优先 | [管理后台](../manage/README.md) 仅有 JWT API 试点；[门禁](../access/README.md) 管理物理通行 | 独立可复用身份与授权能力；服务端按租户/角色/资源拒绝越权（401/403），可验证审计、密钥轮换与异常令牌测试；浏览器和小程序完成安全登录。详见[鉴权边界](./auth-integration.md)。**未交付。** |
+| 信息安全产品和服务 · 优先 | [安全与身份中心](../authcenter/README.md) 是 JWT/JWKS/审计本机试点；[管理后台](../manage/README.md) 可校验签发令牌 | 独立可复用身份与授权能力；服务端按租户/角色/资源拒绝越权（401/403），可验证审计、密钥轮换与异常令牌测试；浏览器和小程序完成安全登录。详见[鉴权边界](./auth-integration.md)。**试点已交付，生产能力未交付。** |
 | 信息技术服务 · 其次 | [内部工单](../ticketops/README.md)、[运维](../itops/README.md) 是本机软件 | 明确服务对象、服务级别、工单分派/升级/回访、履约度量与多租户隔离；至少一个跨用户端到端场景及自动化测试。只有真实对外服务及运营证据时再讨论收入归类。**未交付。** |
 | 嵌入式系统软件 · 硬件条件具备后 | [门禁](../access/README.md)、[通信设施](../telecom/README.md) 是管理页面 | 明确目标设备与固件环境，完成设备侧采集/离线缓冲/安全更新、硬件在环测试、断网恢复及回滚；没有设备测试就不宣称嵌入式交付。**未交付。** |
 
 ## 维护与验证
 
-新增产品先确定**客户场景主分类**，再依据实际交付内容判断**统计方向**；软件交付不能自动推断服务收入。同步更新中英文[分类目录](./project-catalog.md)、截图与本矩阵；运行 `python tools/generate_product_matrix.py --check` 和 `python -m unittest discover -s tools -p "test_*.py"`。逐项目已验证范围见[验证记录](./project-validation-2026-10-03.md)及[质量账本](./quality-loop.md)；本矩阵没有新增后端业务系统或宣称 101 项逐页验收。
+新增产品先确定**客户场景主分类**，再依据实际交付内容判断**统计方向**；软件交付不能自动推断服务收入。同步更新中英文[分类目录](./project-catalog.md)、截图与本矩阵；运行 `python tools/generate_product_matrix.py --check` 和 `python -m unittest discover -s tools -p "test_*.py"`。逐项目已验证范围见[验证记录](./project-validation-2026-10-03.md)及[质量账本](./quality-loop.md)；本矩阵没有宣称 102 项逐页验收；安全底座试点的测试范围见项目说明。

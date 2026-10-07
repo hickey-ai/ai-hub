@@ -1,4 +1,4 @@
-# Screenshots · all 101 projects
+# Screenshots · all 102 projects
 
 **[简体中文](./screenshots.md) · English**
 
@@ -16,7 +16,7 @@ These are captured application pages, not design mockups. Mini-program screensho
 - [Property, parks & construction · 4](#places)
 - [Agriculture, resources & environment · 7](#resources)
 - [Public services & infrastructure · 6](#public)
-- [Developer operations & digital tools · 7](#digital)
+- [Developer operations & digital tools · 8](#digital)
 - [Home & personal planning · 2](#personal)
 
 <a id="commerce"></a>
@@ -172,7 +172,7 @@ These are captured application pages, not design mockups. Mini-program screensho
 | [telecom](../telecom/README.md) | http://127.0.0.1:8127 | [Overview](../telecom/screenshots/overview.png) · [Primary records](../telecom/screenshots/primary.png) · [Related records](../telecom/screenshots/secondary.png) · [Editor](../telecom/screenshots/editor.png) |
 
 <a id="digital"></a>
-## Developer operations & digital tools · 7
+## Developer operations & digital tools · 8
 
 | Project | Local address | Actual screenshots |
 | :--- | :--- | :--- |
@@ -183,6 +183,7 @@ These are captured application pages, not design mockups. Mini-program screensho
 | [testops](../testops/README.md) | http://127.0.0.1:8165 | [Overview](../testops/screenshots/overview.png) · [Cases](../testops/screenshots/primary.png) · [Manual runs](../testops/screenshots/secondary.png) · [Editor](../testops/screenshots/editor.png) |
 | [ticketops](../ticketops/README.md) | http://127.0.0.1:8166 | [Overview](../ticketops/screenshots/overview.png) · [Queues](../ticketops/screenshots/primary.png) · [Tickets](../ticketops/screenshots/secondary.png) · [Editor](../ticketops/screenshots/editor.png) |
 | [bugtrack](../bugtrack/README.md) | http://127.0.0.1:8167 | [Overview](../bugtrack/screenshots/overview.png) · [Projects](../bugtrack/screenshots/primary.png) · [Defects](../bugtrack/screenshots/secondary.png) · [Editor](../bugtrack/screenshots/editor.png) |
+| [authcenter](../authcenter/README.md) | http://127.0.0.1:8182 | [Security center overview](../authcenter/screenshots/overview.png) · [Session and audit](../authcenter/screenshots/session.png) |
 
 <a id="personal"></a>
 ## Home & personal planning · 2

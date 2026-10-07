@@ -6,7 +6,7 @@
 
 ### Turn a real need into software you can see and run.
 
-**101 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
+**102 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
 
 [Explore the ecosystem](#-ai-hub-ecosystem-matrix) · [Get started](#-quick-start) · [All projects](#-explore-by-domain) · [Screenshots](#-screen-previews) · [Architecture](#-architecture-and-delivery)
 
@@ -27,9 +27,9 @@
 
 <div align="center"><sub>These are screenshots from running projects, not mockups. Click any image for its project guide and more screenshots.</sub></div>
 
-**Strategic-software gap:** [Compare foundational and industrial software, AI integration and security with what this repository actually implements](./docs/strategic-software-gap.en.md). Many industry demos do not imply an OS, database or design-software capability. [First implemented increment: offline manufacturing simulation and the staged design](./docs/strategic-software-design.en.md).
+**Strategic-software gap:** [Compare foundational and industrial software, AI integration and security with what this repository actually implements](./docs/strategic-software-gap.en.md). Many industry demos do not imply an OS, database or design-software capability. [Offline manufacturing simulation and its staged design](./docs/strategic-software-design.en.md) and a [local security foundation pilot](./authcenter/README.en.md) are now available.
 
-**MIIT-aligned product matrix:** [Explore 12 customer domains × 4 software-industry reporting directions, all 101 project links and acceptance criteria for missing directions](./docs/product-matrix.en.md). Customer domains are not revenue categories; only the software-product direction has local demos today.
+**MIIT-aligned product matrix:** [Explore 12 customer domains × 4 software-industry reporting directions, all 102 project links and acceptance criteria for missing directions](./docs/product-matrix.en.md). Customer domains are not revenue categories; software products remain local demos and a security foundation pilot has been added.
 
 ## 🧩 ai-hub ecosystem matrix
 
@@ -38,8 +38,9 @@
 | Layer | Projects / entry points | What to explore | Current scope |
 | :--- | :--- | :--- | :--- |
 | **Workflow applications** | [shop](./shop/README.md) · [manage](./manage/README.md) · [labbook](./labbook/README.md) | Storefront purchase flow, administration dashboard and experiment records | Feature depth varies; these are not complete production products |
-| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 101 projects**, not additional systems |
+| **Mobile touchpoints** | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) · [selfshop](./selfshop/README.md) | Four uni-app WeChat mini-program builds, each with its project's Java API | The **4 build targets are included within the 102 projects**, not additional systems |
 | **Sector record desks** | [scenic](./scenic/README.md) · [realestate](./realestate/README.md) · [health](./health/README.md) · [erp](./erp/README.md) · [more sectors ↓](#-explore-by-domain) | Industry records, related entries, search and forms | Mostly single-user local demos; no real ticketing, diagnosis, closing or regulatory workflows |
+| **Security and identity pilot** | [authcenter](./authcenter/README.en.md) · [manage API integration](./docs/auth-integration.md) | Local token signing, public-key discovery, audience restrictions and protected API validation | Local pilot only; no browser SSO, resource authorization, key rotation or ecosystem-wide rollout |
 | **Creative utilities** | [ai](./ai/README.md) · [html](./html/README.md) · [crawler](./crawler/README.md) | CLI / skill workspace, HTML mini-games and directory demo, public-page crawling | Local utilities and demos, not a hosted AI platform or large-scale crawler |
 
 **Shared delivery conventions, not a shared monolith:** Each project owns its directory, port and data file. Vue 3 pages are built and served by a Java 21 / Spring Boot application, with test scripts and actual screenshots. [See the architecture](#-architecture-and-delivery) · [Read the limits](#-verification-and-safety-limits)
@@ -66,7 +67,7 @@ Open `http://127.0.0.1:8081`, then press `Ctrl+C` to stop. Substitute another di
 
 ## 🗂️ Explore by domain
 
-**101 independent projects · 12 non-overlapping primary categories.** Release batches are no longer used as categories. Mini-program support is a **cross-cutting client type**, not four additional projects. Feature depth varies: consult each project README and the [validation matrix](./docs/project-validation-2026-10-03.md).
+**102 independent projects · 12 non-overlapping primary categories.** Release batches are no longer used as categories. Mini-program support is a **cross-cutting client type**, not four additional projects. Feature depth varies: consult each project README and the [validation matrix](./docs/project-validation-2026-10-03.md).
 
 | Category | Projects | Start here | Complete list |
 | :--- | ---: | :--- | :--- |
@@ -80,7 +81,7 @@ Open `http://127.0.0.1:8081`, then press `Ctrl+C` to stop. Substitute another di
 | Property, parks & construction | 4 | [realestate](./realestate/README.md) · [property](./property/README.md) · [construction](./construction/README.md) | [Browse](./docs/project-catalog.en.md#places) |
 | Agriculture, resources & environment | 7 | [agriculture](./agriculture/README.md) · [energy](./energy/README.md) · [water](./water/README.md) | [Browse](./docs/project-catalog.en.md#resources) |
 | Public services & infrastructure | 6 | [gridops](./gridops/README.md) · [access](./access/README.md) · [civic](./civic/README.md) | [Browse](./docs/project-catalog.en.md#public) |
-| Developer operations & digital tools | 7 | [testops](./testops/README.md) · [ticketops](./ticketops/README.md) · [ai](./ai/README.md) | [Browse](./docs/project-catalog.en.md#digital) |
+| Developer operations & digital tools | 8 | [testops](./testops/README.md) · [ticketops](./ticketops/README.md) · [authcenter](./authcenter/README.en.md) | [Browse](./docs/project-catalog.en.md#digital) |
 | Home & personal planning | 2 | [schedule](./schedule/README.md) · [parenting](./parenting/README.md) | [Browse](./docs/project-catalog.en.md#personal) |
 
 > “Software for every profession” is a vision, not a claim of complete industry coverage. The [full catalog](./docs/project-catalog.en.md) lists every project, its local scope, port and screenshot.
@@ -94,14 +95,14 @@ Captured application pages, not design mockups. A screenshot is an entry point, 
 <tr><td width="50%" align="center"><a href="./ai/README.md"><img src="./ai/screenshots/overview.png" alt="Local AI tools" width="100%" /></a><br/><b>AI tools · digital creation</b></td><td width="50%" align="center"><a href="./realestate/README.md"><img src="./realestate/screenshots/primary.png" alt="Real estate listings" width="100%" /></a><br/><b>Real estate · property</b></td></tr>
 </table>
 
-[All 101 projects' screenshot links](./docs/screenshots.en.md) · [Project catalog](./docs/project-catalog.en.md).
+[All 102 projects' screenshot links](./docs/screenshots.en.md) · [Project catalog](./docs/project-catalog.en.md).
 
 ## 🧭 Architecture and delivery
 
 ![Independent frontend, Java service, local data and verification per project](./docs/architecture.svg)
 
 - **Independent apps, not one monolith:** each directory has its own Java 21/Spring Boot service and port. Vue 3 Web builds are served from their corresponding jars alongside same-origin `/api` endpoints.
-- **Client types do not inflate the count:** shop has desktop and WeChat mini-program clients; barber, dining and selfshop are mini-program-only. These four builds are part of the 101.
+- **Client types do not inflate the count:** shop has desktop and WeChat mini-program clients; barber, dining and selfshop are mini-program-only. These four builds are part of the 102.
 - **Local data:** record-based examples use separate local JSON files. Consult each README for its backup/reset behavior. Default binding is `127.0.0.1`; **do not expose directly to the public internet**.
 
 ## ✅ Verification and safety limits
@@ -111,10 +112,10 @@ Captured application pages, not design mockups. A screenshot is an entry point, 
 ./smoke-test.ps1   # Windows: live-service page, asset and API smoke checks
 ```
 
-Use `./test-all.sh` on macOS/Linux or `mvn -f <project>/backend/pom.xml test` for a single backend. Recorded evidence as of **October 4, 2026**: round 4 passed 98/98 builds, 139 Maven tests and 99/99 remote CI jobs. Earlier live-service smoke checks covered all 98, and browser workflow checks covered 80 sector record demos; see the [per-project evidence](./docs/project-validation-2026-10-03.md). Round 5 only added manifest preflight and ran nine script tests; it **did not rerun all business tests**. The [quality ledger](./docs/quality-loop.md) separates each round's scope. This authentication pass reran `./test-all.ps1`: 101/101 builds/packages passed, with 153 tests across 117 Surefire reports and no failures or errors; this is not a browser/device or production acceptance test.
+Use `./test-all.sh` on macOS/Linux or `mvn -f <project>/backend/pom.xml test` for one backend. **On October 7, 2026, the Windows full-build script passed 102/102 project builds/packages, all four mini-program builds, 160 Maven tests across 118 Surefire reports (0 failures/errors/skips), and 16 root tooling tests.** The security-center pilot also passed a live browser login/session-clear check and a 401/200/401 token integration with the manage API. Historical service/browser checks covered 98 projects and 80 sector demos respectively; see the [per-project evidence](./docs/project-validation-2026-10-03.md). This is **not** exhaustive browser, device, business-flow or production acceptance for all 102. The [quality ledger](./docs/quality-loop.md) records only rounds actually executed; the scheduled follow-up has been cancelled.
 
 > [!IMPORTANT]
-> **Authentication pilot:** Only the [manage API](./manage/README.md) has optional OIDC/JWT issuer validation. Its browser UI has no SSO login, no server-side RBAC, and the other 100 projects remain unauthenticated. See the [security inventory and setup](./docs/auth-integration.md) (Chinese).
+> **Authentication pilot:** The local [security and identity center](./authcenter/README.en.md) issues RSA JWTs and publishes JWKS; the [manage API](./manage/README.md) can validate them when configured. Its browser UI has no SSO login or server-side RBAC, and the other 100 business projects remain unintegrated. See the [security inventory and setup](./docs/auth-integration.md) (Chinese).
 
 > These are runnable local starting points, **not production-ready business systems**. Unified authentication/authorization, real payments, encryption, tamper-proof audit, database migrations and concurrency guarantees are not universally provided. Do not enter real sensitive medical, financial, child, access-control or research data. A mini-program build is not a WeChat device acceptance test; production requires dedicated security, privacy, compliance, backup and business verification.
 

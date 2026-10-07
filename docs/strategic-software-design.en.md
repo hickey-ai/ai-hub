@@ -25,4 +25,4 @@ Each demo retains its own local JSON; this is neither a transactional platform n
 | P2 AI integration | Opt-in gateway with no bundled keys, limits, timeout/fallback, sensitive-data checks, evaluation and human review. |
 | Separate R&D programs | OS, database, compiler, middleware, cloud platform and firmware need appropriate languages, expertise and benchmarks; Vue/Java record screens do not satisfy them. |
 
-Run `mvn -f manufacturing/backend/pom.xml test` and `npm --prefix manufacturing/frontend run build`. Tests cover simulated transitions, idempotency, invalid input, persistence and API guards; they do not certify real hardware or all 101 apps.
+Run `mvn -f manufacturing/backend/pom.xml test` and `npm --prefix manufacturing/frontend run build`. Tests cover simulated transitions, idempotency, invalid input, persistence and API guards; they do not certify real hardware or all 102 apps.

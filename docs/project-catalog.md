@@ -1,8 +1,8 @@
-# 项目分类目录 · 101 个独立项目
+# 项目分类目录 · 102 个独立项目
 
 **简体中文** · [English](./project-catalog.en.md)
 
-每个项目只归入**一个主分类**；4 个微信小程序已包含在 101 项中，不重复计数。分类是寻找业务的入口，**不代表生产成熟度**。多数行业方向是本机单用户记录样板；完整页面见[截图索引](./screenshots.md)，验证层级见[逐项目测试记录](./project-validation-2026-10-03.md)。
+每个项目只归入**一个主分类**；4 个微信小程序已包含在 102 项中，不重复计数。分类是寻找业务的入口，**不代表生产成熟度**。多数行业方向是本机单用户记录样板；完整页面见[截图索引](./screenshots.md)，验证层级见[逐项目测试记录](./project-validation-2026-10-03.md)。
 
 ## 分类导航
 
@@ -16,7 +16,7 @@
 - [地产、园区与工程 · 4](#places)
 - [农林渔矿、能源与环境 · 7](#resources)
 - [公共服务与设施安全 · 6](#public)
-- [研发协作与数字工具 · 7](#digital)
+- [研发协作与数字工具 · 8](#digital)
 - [家庭与日程 · 2](#personal)
 
 <a id="commerce"></a>
@@ -172,7 +172,7 @@
 | [通信设施 · `telecom`](../telecom/README.md) | 通信站点、维护任务 | 电脑端 | `8127` | [查看](../telecom/screenshots/overview.png) |
 
 <a id="digital"></a>
-## 研发协作与数字工具 · 7
+## 研发协作与数字工具 · 8
 
 | 项目 | 本机可体验范围 | 入口 | 端口 | 截图 |
 | :--- | :--- | :--- | ---: | :--- |
@@ -183,6 +183,7 @@
 | [测试管理 · `testops`](../testops/README.md) | 测试用例与手工执行结果记录 | 电脑端 | `8165` | [查看](../testops/screenshots/overview.png) |
 | [内部工单 · `ticketops`](../ticketops/README.md) | 队列、优先级、处理人与状态 | 电脑端 | `8166` | [查看](../ticketops/screenshots/overview.png) |
 | [缺陷跟踪 · `bugtrack`](../bugtrack/README.md) | 项目、缺陷、复现步骤与验证状态 | 电脑端 | `8167` | [查看](../bugtrack/screenshots/overview.png) |
+| [安全与身份中心 · `authcenter`](../authcenter/README.md) | RSA JWT 签发、公钥发现、受众隔离、登录与管理员审计试点 | 电脑端 | `8182` | [查看](../authcenter/screenshots/overview.png) |
 
 <a id="personal"></a>
 ## 家庭与日程 · 2

@@ -12,7 +12,7 @@ from generate_product_matrix import catalog, render  # noqa: E402
 class ProductMatrixTests(unittest.TestCase):
     def test_catalog_and_bilingual_matrix_exactly_cover_runnable_projects(self):
         actual = {p.name for p in ROOT.iterdir() if (p / 'backend/pom.xml').is_file()}
-        self.assertEqual(len(actual), 101)
+        self.assertEqual(len(actual), 102)
         zh = {anchor: {slug for _, slug in entries} for anchor, _, entries in catalog('zh')}
         en = {anchor: {slug for _, slug in entries} for anchor, _, entries in catalog('en')}
         self.assertEqual(zh, en, 'The primary customer category must agree in both languages')
@@ -27,12 +27,16 @@ class ProductMatrixTests(unittest.TestCase):
                 self.assertEqual(matrix, render(language), 'Regenerate with python tools/generate_product_matrix.py')
                 table = matrix.split('## 缺失赛道' if language == 'zh' else '## Missing directions')[0]
                 linked = re.findall(r'\]\(\.\./([a-z0-9]+)/README\.md\)', table)
-                self.assertEqual(len(linked), 101)
+                self.assertEqual(len(linked), 102)
                 self.assertEqual(set(linked), actual)
                 self.assertIn('2025', matrix)
                 for row in table.splitlines():
                     if row.startswith('| ['):
-                        self.assertEqual(row.count('待建设' if language == 'zh' else 'Not delivered'), 3)
+                        if '#digital)' in row:
+                            self.assertEqual(row.count('待建设' if language == 'zh' else 'Not delivered'), 2)
+                            self.assertIn('安全底座试点' if language == 'zh' else 'Security pilot', row)
+                        else:
+                            self.assertEqual(row.count('待建设' if language == 'zh' else 'Not delivered'), 3)
 
 
 if __name__ == '__main__':

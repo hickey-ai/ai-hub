@@ -13,7 +13,7 @@ PAGES = ("README.md", "README.en.md", "docs/README.md", "docs/product-matrix.md"
 
 class DocumentationTests(unittest.TestCase):
     def test_exactly_one_category_per_project_in_both_languages(self):
-        self.assertEqual(len(PROJECTS), 101)
+        self.assertEqual(len(PROJECTS), 102)
         for name in CATALOGS:
             with self.subTest(name=name):
                 text = (ROOT / name).read_text(encoding="utf-8")
@@ -53,6 +53,17 @@ class DocumentationTests(unittest.TestCase):
                 self.assertEqual(len(projects), len(PROJECTS))
                 indexed = {p.removeprefix("../") for p in re.findall(r'\]\((\.\./[^)]+/screenshots/[^)]+\.png)\)', text)}
                 self.assertEqual(indexed, actual)
+
+    def test_independent_projects_have_unique_default_ports(self):
+        owners = {}
+        for project in sorted(PROJECTS):
+            config = ROOT / project / "backend/src/main/resources/application.properties"
+            self.assertTrue(config.is_file(), project)
+            matches = re.findall(r"^server\.port=(\d{4})$", config.read_text(encoding="utf-8"), re.M)
+            self.assertEqual(len(matches), 1, project)
+            port = matches[0]
+            self.assertNotIn(port, owners, f"{project} and {owners.get(port)} both use port {port}")
+            owners[port] = project
 
     def test_catalog_ports_match_backend_configuration(self):
         for name in CATALOGS:
