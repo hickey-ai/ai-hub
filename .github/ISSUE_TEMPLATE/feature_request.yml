@@ -1,0 +1,25 @@
+name: Feature request
+description: Propose a concrete workflow or improvement
+labels: [enhancement]
+body:
+  - type: input
+    id: project
+    attributes:
+      label: 关联项目
+      placeholder: shop / manage / new domain
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决的真实问题
+      description: 请描述使用者、场景和当前痛点。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 可验收结果
+      description: 请写出可通过页面、API 或自动化测试验证的结果。
+    validations:
+      required: true

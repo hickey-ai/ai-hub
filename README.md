@@ -8,11 +8,36 @@
 
 **102 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
 
-[探索生态矩阵](#-ai-hub-生态矩阵) · [一键体验](#-快速开始) · [全部项目](#-按业务找项目) · [页面截图](#-页面预览) · [架构与边界](#-架构与交付边界)
+[探索生态矩阵](#-ai-hub-生态矩阵) · [30 秒选择入口](#-30-秒选择入口) · [快速开始](#-快速开始) · [全部项目](#-按业务找项目) · [页面截图](#-页面预览) · [架构与边界](#-架构与交付边界) · [贡献与安全](#-文档导航与定制)
+
+</div>
+
+<div align="center">
+
+[![验证工作流](https://github.com/hickey-ai/ai-hub/actions/workflows/verify.yml/badge.svg)](https://github.com/hickey-ai/ai-hub/actions/workflows/verify.yml)
+[![项目目录](https://img.shields.io/badge/项目目录-102%20个-1677ff)](./docs/project-catalog.md)
+[![技术栈](https://img.shields.io/badge/Vue%203%20%2B%20Java%2021-42b883?logo=vuedotjs&logoColor=white)](./docs/README.md)
+[![本机优先](https://img.shields.io/badge/本机优先-安全边界-111827)](./SECURITY.md)
+
+[GitHub](https://github.com/hickey-ai/ai-hub) · [Gitee](https://gitee.com/codingdb/ai-hub)
 
 </div>
 
 > **ai-hub 是持续生长的业务软件合集。** 从有完整交互流程的精选项目，到覆盖更多职业的轻量记录样板，再到小程序和创意工具：选一个目录，运行、查看页面、验证功能，然后按自己的业务继续改造。**“让每种职业都有软件”是愿景，不是已经覆盖所有行业流程的承诺。**
+
+## ⭐ 30 秒选择入口
+
+第一次来，不需要先读完 102 个目录。建议按下面的顺序体验：
+
+| 你想快速了解 | 先打开 | 重点看什么 |
+| :--- | :--- | :--- |
+| 完整业务流程和页面质感 | [商城](./shop/README.md) | 商品、购物车、订单和电脑端体验 |
+| 通用后台和企业运营 | [管理后台](./manage/README.md) | 控制台、用户、角色和业务接口 |
+| 共性安全能力 | [安全与身份中心](./authcenter/README.md) | JWT、JWKS、受众隔离和审计试点 |
+| 科研与专业记录 | [实验记录](./labbook/README.md) | 实验、修订、检索和导出 |
+| 行业扩展方向 | [完整分类目录](./docs/project-catalog.md) | 12 类业务、端口、截图和边界 |
+
+**如果 ai-hub 帮你找到一个可复用的起点，欢迎点 Star 作为长期关注；如果你发现了问题或有真实流程，欢迎提交 [Issue](https://github.com/hickey-ai/ai-hub/issues) 或查看[贡献指南](./CONTRIBUTING.md)。**
 
 ## ✨ 从这里进入
 
@@ -123,6 +148,6 @@ macOS/Linux 可运行 `./test-all.sh`；单项目运行 `mvn -f <项目>/backend
 
 ## 📚 文档导航与定制
 
-[国家战略软件缺口](./docs/strategic-software-gap.md) · [完整分类](./docs/project-catalog.md) · [全部截图](./docs/screenshots.md) · [架构说明](./docs/README.md) · [验证矩阵](./docs/project-validation-2026-10-03.md) · [建设调研](./docs/business-map.md)
+[快速开始](./docs/getting-started.md) · [贡献指南](./CONTRIBUTING.md) · [安全策略](./SECURITY.md) · [版本记录](./CHANGELOG.md) · [国家战略软件缺口](./docs/strategic-software-gap.md) · [完整分类](./docs/project-catalog.md) · [全部截图](./docs/screenshots.md) · [架构说明](./docs/README.md) · [验证矩阵](./docs/project-validation-2026-10-03.md) · [建设调研](./docs/business-map.md)
 
 你愿意讲清楚业务场景、用户规模和关键流程，我们就能从现有项目出发讨论定制开发。**QQ 3174667330 · 3174667330@qq.com**。

@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible problem in a project
+labels: [bug]
+body:
+  - type: input
+    id: project
+    attributes:
+      label: 项目目录
+      placeholder: shop / manage / ...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 请给出最小、可重复的步骤。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境与日志
+      description: 请提供操作系统、Java/Node 版本和相关日志，不要粘贴密钥或真实数据。
+    validations:
+      required: true

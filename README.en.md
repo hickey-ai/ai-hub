@@ -8,11 +8,36 @@
 
 **102 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
 
-[Explore the ecosystem](#-ai-hub-ecosystem-matrix) · [Get started](#-quick-start) · [All projects](#-explore-by-domain) · [Screenshots](#-screen-previews) · [Architecture](#-architecture-and-delivery)
+[Explore the ecosystem](#-ai-hub-ecosystem-matrix) · [30-second entry](#-choose-an-entry-in-30-seconds) · [Quick start](#-quick-start) · [All projects](#-explore-by-domain) · [Screenshots](#-screen-previews) · [Architecture](#-architecture-and-delivery) · [Contribute](#-documentation-and-customization)
+
+</div>
+
+<div align="center">
+
+[![Verification workflow](https://github.com/hickey-ai/ai-hub/actions/workflows/verify.yml/badge.svg)](https://github.com/hickey-ai/ai-hub/actions/workflows/verify.yml)
+[![Project catalog](https://img.shields.io/badge/project%20catalog-102%20apps-1677ff)](./docs/project-catalog.en.md)
+[![Stack](https://img.shields.io/badge/Vue%203%20%2B%20Java%2021-42b883?logo=vuedotjs&logoColor=white)](./docs/README.md)
+[![Local first](https://img.shields.io/badge/local--first-safety%20boundaries-111827)](./SECURITY.md)
+
+[GitHub](https://github.com/hickey-ai/ai-hub) · [Gitee](https://gitee.com/codingdb/ai-hub)
 
 </div>
 
 > **ai-hub is a growing collection of business software projects.** Explore selected workflows, lightweight record desks for many professions, mini-programs and creative utilities. Pick one directory, run it, inspect the actual pages and adapt it to a concrete need. **Software for every profession is a vision, not a claim of complete industry coverage today.**
+
+## ⭐ Choose an entry in 30 seconds
+
+You do not need to read all 102 directories first. Start with one of these paths:
+
+| You want to see | Start with | Focus |
+| :--- | :--- | :--- |
+| A complete workflow and polished pages | [shop](./shop/README.md) | Catalog, cart, orders and desktop experience |
+| A reusable operations workspace | [manage](./manage/README.md) | Dashboard, users, roles and business APIs |
+| Shared security capabilities | [authcenter](./authcenter/README.en.md) | JWT, JWKS, audience isolation and audit pilot |
+| Research and professional records | [labbook](./labbook/README.md) | Experiments, revisions, search and export |
+| The full industry map | [project catalog](./docs/project-catalog.en.md) | 12 domains, ports, screenshots and boundaries |
+
+**If ai-hub gives you a useful starting point, a Star is a helpful way to follow the project. If you find a problem or have a real workflow, open an [Issue](https://github.com/hickey-ai/ai-hub/issues) or read the [contribution guide](./CONTRIBUTING.en.md).**
 
 ## ✨ Pick an entry point
 
@@ -121,6 +146,6 @@ Use `./test-all.sh` on macOS/Linux or `mvn -f <project>/backend/pom.xml test` fo
 
 ## 📚 Documentation and customization
 
-[Strategic-software gaps](./docs/strategic-software-gap.en.md) · [Full catalog](./docs/project-catalog.en.md) · [All screenshots](./docs/screenshots.en.md) · [Documentation guide](./docs/README.md) · [Validation matrix](./docs/project-validation-2026-10-03.md) · [Research map (Chinese)](./docs/business-map.md)
+[Getting started](./docs/getting-started.en.md) · [Contributing](./CONTRIBUTING.en.md) · [Security](./SECURITY.md) · [Changelog](./CHANGELOG.md) · [Strategic-software gaps](./docs/strategic-software-gap.en.md) · [Full catalog](./docs/project-catalog.en.md) · [All screenshots](./docs/screenshots.en.md) · [Documentation guide](./docs/README.md) · [Validation matrix](./docs/project-validation-2026-10-03.md) · [Research map (Chinese)](./docs/business-map.md)
 
 If you have a concrete workflow and user base in mind, we can discuss custom development starting from a relevant project. **QQ 3174667330 · 3174667330@qq.com**.
