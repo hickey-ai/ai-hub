@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECTS = {p.name for p in ROOT.iterdir() if (p / "backend/pom.xml").is_file()}
 CATALOGS = ("docs/project-catalog.md", "docs/project-catalog.en.md")
 SCREENSHOTS = ("docs/screenshots.md", "docs/screenshots.en.md")
-PAGES = ("README.md", "README.en.md", "docs/README.md", "docs/product-matrix.md", "docs/product-matrix.en.md", "docs/strategic-software-gap.md", "docs/strategic-software-gap.en.md", "docs/strategic-software-design.md", "docs/strategic-software-design.en.md", *CATALOGS, *SCREENSHOTS)
+PAGES = ("README.md", "README.en.md", "docs/README.md", "docs/getting-started.md", "docs/getting-started.en.md", "docs/product-matrix.md", "docs/product-matrix.en.md", "docs/strategic-software-gap.md", "docs/strategic-software-gap.en.md", "docs/strategic-software-design.md", "docs/strategic-software-design.en.md", *CATALOGS, *SCREENSHOTS)
 
 
 class DocumentationTests(unittest.TestCase):
@@ -76,6 +76,17 @@ class DocumentationTests(unittest.TestCase):
                     actual.update(re.findall(r'(?:server\.port\s*=|port:\s*)(\d{4})', content))
                 with self.subTest(catalog=name, project=project):
                     self.assertIn(port, actual)
+
+    def test_quickstart_commands_and_ports_match_flagship_projects(self):
+        for project in ("shop", "manage", "authcenter"):
+            config = ROOT / project / "backend/src/main/resources/application.properties"
+            port = re.search(r"^server[.]port=([0-9]{4})$", config.read_text(encoding="utf-8"), re.M).group(1)
+            for name in ("docs/getting-started.md", "docs/getting-started.en.md"):
+                text = (ROOT / name).read_text(encoding="utf-8")
+                with self.subTest(project=project, guide=name):
+                    self.assertIn(f"./{project}/run.ps1", text)
+                    self.assertIn(f"./{project}/run.sh", text)
+                    self.assertIn(f"http://127.0.0.1:{port}", text)
 
 
 if __name__ == "__main__":

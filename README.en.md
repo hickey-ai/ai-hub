@@ -8,7 +8,7 @@
 
 **102 independent runnable projects** &nbsp;·&nbsp; **4 WeChat mini-program builds** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **Local-first**
 
-[Explore the ecosystem](#-ai-hub-ecosystem-matrix) · [30-second entry](#-choose-an-entry-in-30-seconds) · [Quick start](#-quick-start) · [All projects](#-explore-by-domain) · [Screenshots](#-screen-previews) · [Architecture](#-architecture-and-delivery) · [Contribute](#-documentation-and-customization)
+[Pick a project](#-start-here) · [Quick start](#-quick-start) · [Ecosystem matrix](#-ai-hub-ecosystem-matrix) · [All projects](#-explore-by-domain) · [Screenshots](#-screen-previews) · [Architecture](#-architecture-and-delivery) · [Docs & customization](#-documentation-and-customization)
 
 </div>
 
@@ -25,36 +25,21 @@
 
 > **ai-hub is a growing collection of business software projects.** Explore selected workflows, lightweight record desks for many professions, mini-programs and creative utilities. Pick one directory, run it, inspect the actual pages and adapt it to a concrete need. **Software for every profession is a vision, not a claim of complete industry coverage today.**
 
-## ⭐ Choose an entry in 30 seconds
+## ⭐ Start here
 
-You do not need to read all 102 directories first. Start with one of these paths:
-
-| You want to see | Start with | Focus |
-| :--- | :--- | :--- |
-| A complete workflow and polished pages | [shop](./shop/README.md) | Catalog, cart, orders and desktop experience |
-| A reusable operations workspace | [manage](./manage/README.md) | Dashboard, users, roles and business APIs |
-| Shared security capabilities | [authcenter](./authcenter/README.en.md) | JWT, JWKS, audience isolation and audit pilot |
-| Research and professional records | [labbook](./labbook/README.md) | Experiments, revisions, search and export |
-| The full industry map | [project catalog](./docs/project-catalog.en.md) | 12 domains, ports, screenshots and boundaries |
-
-**If ai-hub gives you a useful starting point, a Star is a helpful way to follow the project. If you find a problem or have a real workflow, open an [Issue](https://github.com/hickey-ai/ai-hub/issues) or read the [contribution guide](./CONTRIBUTING.en.md).**
-
-## ✨ Pick an entry point
+Pick a running page. Each project starts independently; you do not need to deploy the whole collection. [Follow the hands-on guide](./docs/getting-started.en.md).
 
 <table>
 <tr>
-<td width="25%" align="center"><a href="./shop/README.md"><img src="./shop/screenshots/desktop-home.png" alt="shop desktop storefront screenshot" width="100%" /></a><br/><b>01 · Commerce</b><br/><sub>shop · catalog / cart / orders</sub></td>
-<td width="25%" align="center"><a href="./manage/README.md"><img src="./manage/screenshots/dashboard.png" alt="manage dashboard screenshot" width="100%" /></a><br/><b>02 · Operations</b><br/><sub>manage · dashboard / users / roles</sub></td>
-<td width="25%" align="center"><a href="./labbook/README.md"><img src="./labbook/screenshots/overview.png" alt="labbook experiment records screenshot" width="100%" /></a><br/><b>03 · Research</b><br/><sub>labbook · experiments / revisions</sub></td>
-<td width="25%" align="center"><a href="./scenic/README.md"><img src="./scenic/screenshots/overview.png" alt="scenic attraction record demo screenshot" width="100%" /></a><br/><b>04 · Sector demos</b><br/><sub>scenic · attractions / visitor records</sub></td>
+<td width="33%" align="center"><a href="./shop/README.md"><img src="./shop/screenshots/desktop-home.png" alt="running desktop shop page" width="100%" /></a><br/><b>Shop</b><br/><sub>Catalog · cart · demo order<br/>Local port 8081</sub></td>
+<td width="33%" align="center"><a href="./manage/README.md"><img src="./manage/screenshots/dashboard.png" alt="running manage dashboard" width="100%" /></a><br/><b>Manage</b><br/><sub>Dashboard · users · logs<br/>Local port 8082</sub></td>
+<td width="33%" align="center"><a href="./authcenter/README.en.md"><img src="./authcenter/screenshots/overview.png" alt="running security and identity center" width="100%" /></a><br/><b>Authcenter</b><br/><sub>Demo login · tokens · audit<br/>Local port 8182</sub></td>
 </tr>
 </table>
 
-<div align="center"><sub>These are screenshots from running projects, not mockups. Click any image for its project guide and more screenshots.</sub></div>
+<div align="center"><sub>Real application screenshots, not mockups. Click an image for features, more screens and limitations.</sub></div>
 
-**Strategic-software gap:** [Compare foundational and industrial software, AI integration and security with what this repository actually implements](./docs/strategic-software-gap.en.md). Many industry demos do not imply an OS, database or design-software capability. [Offline manufacturing simulation and its staged design](./docs/strategic-software-design.en.md) and a [local security foundation pilot](./authcenter/README.en.md) are now available.
-
-**MIIT-aligned product matrix:** [Explore 12 customer domains × 4 software-industry reporting directions, all 102 project links and acceptance criteria for missing directions](./docs/product-matrix.en.md). Customer domains are not revenue categories; software products remain local demos and a security foundation pilot has been added.
+For research records, start with [labbook](./labbook/README.md); for other professions, browse the [full catalog](./docs/project-catalog.en.md). Found a useful starting point? [Star the GitHub project](https://github.com/hickey-ai/ai-hub), open an [Issue](https://github.com/hickey-ai/ai-hub/issues) or read the [contribution guide](./CONTRIBUTING.en.md).
 
 ## 🧩 ai-hub ecosystem matrix
 
@@ -88,7 +73,7 @@ Install **Java 21, Maven, Node.js 20.19+/22.12+, and npm**. From the repository 
 | :--- | :--- |
 | `./shop/run.ps1` | `./shop/run.sh` |
 
-Open `http://127.0.0.1:8081`, then press `Ctrl+C` to stop. Substitute another directory and use its port from the [catalog](./docs/project-catalog.en.md). The barber, dining and self-shopping apps are **mini-program-only**: their UI requires the corresponding WeChat tooling, not a desktop browser.
+Open `http://127.0.0.1:8081`, then press `Ctrl+C` to stop. Follow the [hands-on guide](./docs/getting-started.en.md) for manage, authcenter and mini-program steps. Barber, dining and self-shopping are **mini-program-only**; their build output is not a desktop Web page.
 
 ## 🗂️ Explore by domain
 
@@ -146,6 +131,8 @@ Use `./test-all.sh` on macOS/Linux or `mvn -f <project>/backend/pom.xml test` fo
 
 ## 📚 Documentation and customization
 
-[Getting started](./docs/getting-started.en.md) · [Contributing](./CONTRIBUTING.en.md) · [Security](./SECURITY.md) · [Changelog](./CHANGELOG.md) · [Strategic-software gaps](./docs/strategic-software-gap.en.md) · [Full catalog](./docs/project-catalog.en.md) · [All screenshots](./docs/screenshots.en.md) · [Documentation guide](./docs/README.md) · [Validation matrix](./docs/project-validation-2026-10-03.md) · [Research map (Chinese)](./docs/business-map.md)
+[Getting started](./docs/getting-started.en.md) · [Full catalog](./docs/project-catalog.en.md) · [All screenshots](./docs/screenshots.en.md) · [Product matrix & gaps](./docs/product-matrix.en.md) · [Strategic-software gaps](./docs/strategic-software-gap.en.md) · [Manufacturing stages](./docs/strategic-software-design.en.md) · [Documentation guide](./docs/README.md) · [Validation matrix](./docs/project-validation-2026-10-03.md) · [Research map (Chinese)](./docs/business-map.md) · [Contributing](./CONTRIBUTING.en.md) · [Security](./SECURITY.md) · [Changelog](./CHANGELOG.md)
+
+The 12 customer-domain categories are not software revenue categories. Sector demos do not imply that an OS, database or industrial design suite has been delivered; the matrix and gap analysis distinguish working examples from unmet milestones.
 
 If you have a concrete workflow and user base in mind, we can discuss custom development starting from a relevant project. **QQ 3174667330 · 3174667330@qq.com**.

@@ -8,7 +8,7 @@
 
 **102 个独立可运行项目** &nbsp;·&nbsp; **4 个微信小程序构建** &nbsp;·&nbsp; **Vue 3 + Java 21** &nbsp;·&nbsp; **本机优先**
 
-[探索生态矩阵](#-ai-hub-生态矩阵) · [30 秒选择入口](#-30-秒选择入口) · [快速开始](#-快速开始) · [全部项目](#-按业务找项目) · [页面截图](#-页面预览) · [架构与边界](#-架构与交付边界) · [贡献与安全](#-文档导航与定制)
+[选择一个项目](#-从这里开始) · [快速开始](#-快速开始) · [生态矩阵](#-ai-hub-生态矩阵) · [全部项目](#-按业务找项目) · [页面截图](#-页面预览) · [架构与边界](#-架构与交付边界) · [文档与定制](#-文档导航与定制)
 
 </div>
 
@@ -25,36 +25,21 @@
 
 > **ai-hub 是持续生长的业务软件合集。** 从有完整交互流程的精选项目，到覆盖更多职业的轻量记录样板，再到小程序和创意工具：选一个目录，运行、查看页面、验证功能，然后按自己的业务继续改造。**“让每种职业都有软件”是愿景，不是已经覆盖所有行业流程的承诺。**
 
-## ⭐ 30 秒选择入口
+## ⭐ 从这里开始
 
-第一次来，不需要先读完 102 个目录。建议按下面的顺序体验：
-
-| 你想快速了解 | 先打开 | 重点看什么 |
-| :--- | :--- | :--- |
-| 完整业务流程和页面质感 | [商城](./shop/README.md) | 商品、购物车、订单和电脑端体验 |
-| 通用后台和企业运营 | [管理后台](./manage/README.md) | 控制台、用户、角色和业务接口 |
-| 共性安全能力 | [安全与身份中心](./authcenter/README.md) | JWT、JWKS、受众隔离和审计试点 |
-| 科研与专业记录 | [实验记录](./labbook/README.md) | 实验、修订、检索和导出 |
-| 行业扩展方向 | [完整分类目录](./docs/project-catalog.md) | 12 类业务、端口、截图和边界 |
-
-**如果 ai-hub 帮你找到一个可复用的起点，欢迎点 Star 作为长期关注；如果你发现了问题或有真实流程，欢迎提交 [Issue](https://github.com/hickey-ai/ai-hub/issues) 或查看[贡献指南](./CONTRIBUTING.md)。**
-
-## ✨ 从这里进入
+选一个实际运行的页面开始；每个项目都可独立启动，无需先部署整套生态。[照步骤运行与体验](./docs/getting-started.md)。
 
 <table>
 <tr>
-<td width="25%" align="center"><a href="./shop/README.md"><img src="./shop/screenshots/desktop-home.png" alt="shop 电脑端商城首页截图" width="100%" /></a><br/><b>01 · 交易体验</b><br/><sub>shop · 商品 / 购物车 / 订单</sub></td>
-<td width="25%" align="center"><a href="./manage/README.md"><img src="./manage/screenshots/dashboard.png" alt="manage 管理后台截图" width="100%" /></a><br/><b>02 · 企业运营</b><br/><sub>manage · 控制台 / 用户 / 角色</sub></td>
-<td width="25%" align="center"><a href="./labbook/README.md"><img src="./labbook/screenshots/overview.png" alt="labbook 实验记录截图" width="100%" /></a><br/><b>03 · 科研记录</b><br/><sub>labbook · 实验 / 修订 / 导出</sub></td>
-<td width="25%" align="center"><a href="./scenic/README.md"><img src="./scenic/screenshots/overview.png" alt="scenic 景区管理记录样板截图" width="100%" /></a><br/><b>04 · 行业样板</b><br/><sub>scenic · 景点 / 游客记录</sub></td>
+<td width="33%" align="center"><a href="./shop/README.md"><img src="./shop/screenshots/desktop-home.png" alt="商城电脑端实际页面" width="100%" /></a><br/><b>商城</b><br/><sub>商品浏览 · 购物车 · 演示订单<br/>本机 8081</sub></td>
+<td width="33%" align="center"><a href="./manage/README.md"><img src="./manage/screenshots/dashboard.png" alt="管理后台实际页面" width="100%" /></a><br/><b>管理后台</b><br/><sub>控制台 · 用户管理 · 操作日志<br/>本机 8082</sub></td>
+<td width="33%" align="center"><a href="./authcenter/README.md"><img src="./authcenter/screenshots/overview.png" alt="安全与身份中心实际页面" width="100%" /></a><br/><b>安全与身份中心</b><br/><sub>演示登录 · 令牌 · 审计<br/>本机 8182</sub></td>
 </tr>
 </table>
 
-<div align="center"><sub>以上均为实际运行页面，而非效果图。点击图片查看项目说明与更多截图。</sub></div>
+<div align="center"><sub>真实运行页面，不是效果图。点击图片查看功能、更多截图和使用边界。</sub></div>
 
-**国家战略软件核对：**[基础软件、工业软件、人工智能融合与安全底座的真实缺口及可验证里程碑](./docs/strategic-software-gap.md)。行业业务项目多，不等于掌握操作系统、数据库或工业设计软件。[制造工单离线模拟与后续阶段](./docs/strategic-software-design.md)；[安全与身份中心本机试点](./authcenter/README.md)也已加入。
-
-**产品矩阵（工信部软件业口径）：**[查看 12 类 × 4 个软件业统计方向的完整对应、102 项入口及缺口验收清单](./docs/product-matrix.md)。业务场景分类≠软件业收入分类；软件产品方向是本机样板，安全方向新增本机试点，其他方向尚未交付。
+科研记录可从[实验记录](./labbook/README.md)开始；其他职业请看[完整分类目录](./docs/project-catalog.md)。找到有用的起点，欢迎在 [GitHub 点 Star](https://github.com/hickey-ai/ai-hub)；发现问题或有真实业务流程，可提交 [Issue](https://github.com/hickey-ai/ai-hub/issues) 或阅读[贡献指南](./CONTRIBUTING.md)。
 
 ## 🧩 ai-hub 生态矩阵
 
@@ -86,7 +71,7 @@
 | :--- | :--- |
 | `./shop/run.ps1` | `./shop/run.sh` |
 
-浏览器打开 `http://127.0.0.1:8081`；按 `Ctrl+C` 停止。换一个项目时，将命令中的 `shop` 换成对应目录，再按[分类目录](./docs/project-catalog.md)打开相应端口。**仅小程序**的理发、点餐、自助购物项目通过对应 Java API 和微信开发工具体验界面，不能把小程序构建产物当成电脑端页面。
+浏览器打开 `http://127.0.0.1:8081`；按 `Ctrl+C` 停止。管理后台、安全中心及小程序的具体步骤见[快速开始指南](./docs/getting-started.md)。**仅小程序**的理发、点餐、自助购物项目不能把构建产物当成电脑端页面。
 
 ## 🗂️ 按业务找项目
 
@@ -148,6 +133,8 @@ macOS/Linux 可运行 `./test-all.sh`；单项目运行 `mvn -f <项目>/backend
 
 ## 📚 文档导航与定制
 
-[快速开始](./docs/getting-started.md) · [贡献指南](./CONTRIBUTING.md) · [安全策略](./SECURITY.md) · [版本记录](./CHANGELOG.md) · [国家战略软件缺口](./docs/strategic-software-gap.md) · [完整分类](./docs/project-catalog.md) · [全部截图](./docs/screenshots.md) · [架构说明](./docs/README.md) · [验证矩阵](./docs/project-validation-2026-10-03.md) · [建设调研](./docs/business-map.md)
+[快速开始](./docs/getting-started.md) · [完整分类](./docs/project-catalog.md) · [全部截图](./docs/screenshots.md) · [产品矩阵与缺口验收](./docs/product-matrix.md) · [国家战略软件缺口](./docs/strategic-software-gap.md) · [制造工单阶段设计](./docs/strategic-software-design.md) · [架构说明](./docs/README.md) · [验证矩阵](./docs/project-validation-2026-10-03.md) · [建设调研](./docs/business-map.md) · [贡献指南](./CONTRIBUTING.md) · [安全策略](./SECURITY.md) · [版本记录](./CHANGELOG.md)
+
+业务场景的 12 类分类不等同于软件业收入分类；行业样板也不代表已经交付操作系统、数据库或工业设计软件。上面的产品矩阵和战略软件缺口文件分别列出已实现内容与待验收事项。
 
 你愿意讲清楚业务场景、用户规模和关键流程，我们就能从现有项目出发讨论定制开发。**QQ 3174667330 · 3174667330@qq.com**。

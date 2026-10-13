@@ -1,41 +1,44 @@
-# Getting started: try the 3 flagship projects first
+# Getting started: try 3 representative projects locally
 
-If you are new to ai-hub, do not choose randomly from 102 directories. The sequence below gives you a useful first impression locally.
+Run the commands below from the **repository root**. Install Java 21, Maven, Node.js 20.19+/22.12+, and npm. On first run, the scripts download dependencies, build the Vue client, execute backend tests, and package the service. Each command occupies its terminal; wait for the server to start before opening the page and press `Ctrl+C` to stop it. The projects are independent, so start with just one.
 
-## 1. Shop: start with a complete workflow
+| Project | Windows PowerShell | macOS / Linux | Local page |
+| :--- | :--- | :--- | :--- |
+| Shop | `./shop/run.ps1` | `./shop/run.sh` | `http://127.0.0.1:8081` |
+| Manage | `./manage/run.ps1` | `./manage/run.sh` | `http://127.0.0.1:8082` |
+| Authcenter | `./authcenter/run.ps1` | `./authcenter/run.sh` | `http://127.0.0.1:8182` |
 
-```bash
-./shop/run.sh
-```
+## 1. Shop: from catalog to demo order
 
-Open `http://127.0.0.1:8081` and explore the catalog, cart and order flow. The desktop client and mini-program build live under `shop`.
+Start shop and open `http://127.0.0.1:8081`:
 
-## 2. Manage: see the operations workspace
+1. Filter or search the catalog, then open a product to inspect its details, price, and stock.
+2. Add it to the cart, change the quantity, proceed to checkout, and enter a **fictional** name and email address.
+3. Submit to see a demo order number. No real payment or delivery occurs. Orders and stock persist in `shop/data/shop.json`; repeated checkouts change the demo stock.
 
-```bash
-./manage/run.sh
-```
+To restore the initial catalog, stop the service first, back up or delete `shop/data/shop.json`, then restart. **Do not delete it while the service is running.** The WeChat mini-program needs a separate `./shop/run-miniprogram.ps1` or `./shop/run-miniprogram.sh` build. Import `shop/miniprogram/dist/build/mp-weixin/` in WeChat DevTools. A browser screenshot is not a device acceptance test; see the [shop guide](../shop/README.md) for AppID, approved HTTPS domain, and device setup.
 
-Open the port listed in the catalog and explore the dashboard, users, roles and business data. To validate API tokens, start `authcenter` and follow the [integration guide](./auth-integration.md).
+## 2. Manage: users and activity
 
-## 3. Authcenter: inspect the shared foundation pilot
+Start manage and open `http://127.0.0.1:8082`. The default is an **unauthenticated local demo**:
 
-```bash
-./authcenter/run.sh
-```
+1. Inspect dashboard metrics and search or filter demo members under User Management.
+2. Add a user with fictional details and check that the list updates.
+3. Open Operation Logs to see the change. Users and new log entries persist in `manage/data/manage.json`. To restore defaults, stop the service first, then back up or delete this file.
 
-Open `http://127.0.0.1:8182` and use the demo account in its README to inspect token issuing, key discovery and audit events. This is a local pilot, not a production identity platform.
+The default mode has no real identity verification; displayed roles and menus are not access controls. **When `AIHUB_AUTH_ISSUER_URI` is configured, `/api/**` requires a JWT, but the browser has no SSO login flow and cannot complete the steps above in the same way.** Use an API client and the [authentication integration guide](./auth-integration.md) for token testing. A single config value does not deliver a complete browser login.
 
-## Choose another project
+## 3. Authcenter: local token pilot
 
-- By profession or sector: [project catalog](./project-catalog.en.md).
-- By software-industry direction: [product matrix](./product-matrix.en.md).
-- By screenshot: [screenshot index](./screenshots.en.md).
-- By evidence: [validation record](./project-validation-2026-10-03.md).
+Start authcenter separately and open `http://127.0.0.1:8182`:
 
-## Troubleshooting
+1. Sign in with the demo account `admin / admin123` to inspect the session and administrator audit view. `operator / operator123` cannot view administrator audit events.
+2. Inspect the discovery and public-key endpoints, then clear the session in the UI. Clearing the browser token **does not revoke** an already issued JWT.
 
-- **Port conflict:** each project has its own port; use the README and catalog, then stop the process holding the port.
-- **Frontend dependency failure:** use Node.js 20.19+/22.12+, remove the project `node_modules`, and run `npm ci` again.
-- **Stale page:** build the frontend before starting the backend; do not treat the source directory as the jar's static page.
-- **Public deployment:** do not expose these demo services directly. Complete authentication, authorization, key management, persistence, backups, rate limits, logging and security review first.
+Accounts, RSA keys, and audit events are for local demonstration; restarting invalidates old tokens. To connect the manage API, run manage in **another terminal** with a compatible issuer and audience configured before startup. See the [integration guide](./auth-integration.md) and [authcenter guide](../authcenter/README.en.md) for commands, 401/200 checks, and limitations. **Never use demo credentials or tokens for a public deployment.**
+
+## More projects and verification
+
+- Browse by profession in the [catalog](./project-catalog.en.md), by software-industry direction in the [product matrix](./product-matrix.en.md), or by page in the [screenshot index](./screenshots.en.md). Barber, dining, and self-shopping have mini-program UIs only, not desktop pages.
+- After code changes, run `./test-all.ps1` or `./test-all.sh` at the repository root for build and backend checks. The [historical per-project validation record](./project-validation-2026-10-03.md) does not claim acceptance of every page or device.
+- On a port conflict, stop the process occupying that port. For a stale page, rerun the project's start script. Services bind to `127.0.0.1` by default; **do not expose them directly to the internet or enter real sensitive data**. See the [security policy](../SECURITY.md).
