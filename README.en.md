@@ -39,6 +39,18 @@ Pick a running page. Each project starts independently; you do not need to deplo
 
 <div align="center"><sub>Real application screenshots, not mockups. Click an image for features, more screens and limitations.</sub></div>
 
+### ⚡ Start one project in 60 seconds
+
+From the repository root, install Java 21, Maven, Node.js 20.19+/22.12+, and npm, then copy one command:
+
+```powershell
+./shop/run.ps1        # Windows: shop, open http://127.0.0.1:8081
+./manage/run.ps1     # Windows: manage, open http://127.0.0.1:8082
+./authcenter/run.ps1  # Windows: authcenter, open http://127.0.0.1:8182
+```
+
+On macOS/Linux, replace `.ps1` with `.sh`. The first run installs dependencies, builds the frontend, runs backend tests, and starts the service. See the [hands-on guide](./docs/getting-started.en.md) for the full flow.
+
 For research records, start with [labbook](./labbook/README.md); for other professions, browse the [full catalog](./docs/project-catalog.en.md). Found a useful starting point? [Star the GitHub project](https://github.com/hickey-ai/ai-hub), open an [Issue](https://github.com/hickey-ai/ai-hub/issues) or read the [contribution guide](./CONTRIBUTING.en.md).
 
 ## 🧩 ai-hub ecosystem matrix

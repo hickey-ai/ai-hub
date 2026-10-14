@@ -39,6 +39,18 @@
 
 <div align="center"><sub>真实运行页面，不是效果图。点击图片查看功能、更多截图和使用边界。</sub></div>
 
+### ⚡ 60 秒启动一个项目
+
+在仓库根目录准备 Java 21、Maven、Node.js 20.19+/22.12+ 和 npm，复制一条命令即可开始：
+
+```powershell
+./shop/run.ps1       # Windows：商城，打开 http://127.0.0.1:8081
+./manage/run.ps1    # Windows：管理后台，打开 http://127.0.0.1:8082
+./authcenter/run.ps1 # Windows：鉴权中心，打开 http://127.0.0.1:8182
+```
+
+macOS/Linux 将 `.ps1` 换成 `.sh`。首次运行会安装依赖、构建前端、运行后端测试并启动服务；完整操作步骤见[快速开始](./docs/getting-started.md)。
+
 科研记录可从[实验记录](./labbook/README.md)开始；其他职业请看[完整分类目录](./docs/project-catalog.md)。找到有用的起点，欢迎在 [GitHub 点 Star](https://github.com/hickey-ai/ai-hub)；发现问题或有真实业务流程，可提交 [Issue](https://github.com/hickey-ai/ai-hub/issues) 或阅读[贡献指南](./CONTRIBUTING.md)。
 
 ## 🧩 ai-hub 生态矩阵
