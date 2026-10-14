@@ -81,7 +81,7 @@ class DocumentationTests(unittest.TestCase):
         for project in ("shop", "manage", "authcenter"):
             config = ROOT / project / "backend/src/main/resources/application.properties"
             port = re.search(r"^server[.]port=([0-9]{4})$", config.read_text(encoding="utf-8"), re.M).group(1)
-            for name in ("docs/getting-started.md", "docs/getting-started.en.md"):
+            for name in ("README.md", "README.en.md", "docs/getting-started.md", "docs/getting-started.en.md"):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 with self.subTest(project=project, guide=name):
                     self.assertIn(f"./{project}/run.ps1", text)

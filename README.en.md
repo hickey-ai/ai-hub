@@ -39,17 +39,24 @@ Pick a running page. Each project starts independently; you do not need to deplo
 
 <div align="center"><sub>Real application screenshots, not mockups. Click an image for features, more screens and limitations.</sub></div>
 
-### ⚡ Start one project in 60 seconds
+## ⚡ Quick start
 
-From the repository root, install Java 21, Maven, Node.js 20.19+/22.12+, and npm, then copy one command:
+Install **Java 21, Maven, Node.js 20.19+/22.12+, and npm**. Start with shop from the **repository root**:
 
 ```powershell
-./shop/run.ps1        # Windows: shop, open http://127.0.0.1:8081
-./manage/run.ps1     # Windows: manage, open http://127.0.0.1:8082
-./authcenter/run.ps1  # Windows: authcenter, open http://127.0.0.1:8182
+./shop/run.ps1
 ```
 
-On macOS/Linux, replace `.ps1` with `.sh`. The first run installs dependencies, builds the frontend, runs backend tests, and starts the service. See the [hands-on guide](./docs/getting-started.en.md) for the full flow.
+On macOS/Linux, run `./shop/run.sh`. The first run downloads dependencies, builds the frontend, runs backend tests, and starts the service. Its duration depends on your network and machine. Wait for the server startup log, open `http://127.0.0.1:8081`, and press `Ctrl+C` to stop.
+
+Alternatively, choose one of these projects and run it in a separate terminal:
+
+| Project | Windows PowerShell | macOS / Linux | Local page |
+| :--- | :--- | :--- | :--- |
+| Manage | `./manage/run.ps1` | `./manage/run.sh` | `http://127.0.0.1:8082` |
+| Authcenter | `./authcenter/run.ps1` | `./authcenter/run.sh` | `http://127.0.0.1:8182` |
+
+[Full walkthrough and demo accounts](./docs/getting-started.en.md). Barber, dining, and self-shopping have mini-program UIs only and require WeChat DevTools.
 
 For research records, start with [labbook](./labbook/README.md); for other professions, browse the [full catalog](./docs/project-catalog.en.md). Found a useful starting point? [Star the GitHub project](https://github.com/hickey-ai/ai-hub), open an [Issue](https://github.com/hickey-ai/ai-hub/issues) or read the [contribution guide](./CONTRIBUTING.en.md).
 
@@ -76,16 +83,6 @@ For research records, start with [labbook](./labbook/README.md); for other profe
 > **New this round:** [Parcel station](./parcelstation/README.md), [Recycling](./recycling/README.md), and [Childcare](./childcare/README.md). [Three-project checks and limits](./docs/priority-three-validation-2026-10-04.md) are separate from the historical 98-project validation snapshot.
 
 > 💬 **Need something for your profession?** Add QQ **3174667330** to discuss custom development. Bring your use case, number of users and essential workflows. These runnable projects are starting points; a production deployment needs further design, implementation and acceptance testing.
-
-## ⚡ Quick start
-
-Install **Java 21, Maven, Node.js 20.19+/22.12+, and npm**. From the repository root (the first run downloads dependencies):
-
-| Windows PowerShell | macOS / Linux |
-| :--- | :--- |
-| `./shop/run.ps1` | `./shop/run.sh` |
-
-Open `http://127.0.0.1:8081`, then press `Ctrl+C` to stop. Follow the [hands-on guide](./docs/getting-started.en.md) for manage, authcenter and mini-program steps. Barber, dining and self-shopping are **mini-program-only**; their build output is not a desktop Web page.
 
 ## 🗂️ Explore by domain
 

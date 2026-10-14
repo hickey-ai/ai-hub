@@ -39,17 +39,24 @@
 
 <div align="center"><sub>真实运行页面，不是效果图。点击图片查看功能、更多截图和使用边界。</sub></div>
 
-### ⚡ 60 秒启动一个项目
+## ⚡ 快速开始
 
-在仓库根目录准备 Java 21、Maven、Node.js 20.19+/22.12+ 和 npm，复制一条命令即可开始：
+准备 **Java 21、Maven、Node.js 20.19+/22.12+ 和 npm**。先选商城，在**仓库根目录**运行：
 
 ```powershell
-./shop/run.ps1       # Windows：商城，打开 http://127.0.0.1:8081
-./manage/run.ps1    # Windows：管理后台，打开 http://127.0.0.1:8082
-./authcenter/run.ps1 # Windows：鉴权中心，打开 http://127.0.0.1:8182
+./shop/run.ps1
 ```
 
-macOS/Linux 将 `.ps1` 换成 `.sh`。首次运行会安装依赖、构建前端、运行后端测试并启动服务；完整操作步骤见[快速开始](./docs/getting-started.md)。
+macOS/Linux 运行 `./shop/run.sh`。首次执行会联网安装依赖、构建前端、运行后端测试并启动服务，耗时取决于网络与本机环境。看到启动完成日志后，打开 `http://127.0.0.1:8081`，按 `Ctrl+C` 停止。
+
+也可选择下面一项，在单独终端运行：
+
+| 项目 | Windows PowerShell | macOS / Linux | 本机页面 |
+| :--- | :--- | :--- | :--- |
+| 管理后台 | `./manage/run.ps1` | `./manage/run.sh` | `http://127.0.0.1:8082` |
+| 安全与身份中心 | `./authcenter/run.ps1` | `./authcenter/run.sh` | `http://127.0.0.1:8182` |
+
+[完整体验步骤与演示账号](./docs/getting-started.md)。理发、点餐、自助购物只有小程序界面，需要微信开发者工具体验。
 
 科研记录可从[实验记录](./labbook/README.md)开始；其他职业请看[完整分类目录](./docs/project-catalog.md)。找到有用的起点，欢迎在 [GitHub 点 Star](https://github.com/hickey-ai/ai-hub)；发现问题或有真实业务流程，可提交 [Issue](https://github.com/hickey-ai/ai-hub/issues) 或阅读[贡献指南](./CONTRIBUTING.md)。
 
@@ -74,16 +81,6 @@ macOS/Linux 将 `.ps1` 换成 `.sh`。首次运行会安装依赖、构建前端
 </details>
 
 > 💬 **你的行业还缺合适的软件？** 可加 QQ **3174667330** 讨论定制开发：告诉我们业务场景、使用人数与期待的流程。现有项目是可以运行和验证的起点，正式上线需要进一步设计、开发与验收。
-
-## ⚡ 快速开始
-
-准备 **Java 21、Maven、Node.js 20.19+/22.12+、npm**。在仓库根目录执行；首次安装依赖需联网：
-
-| Windows PowerShell | macOS / Linux |
-| :--- | :--- |
-| `./shop/run.ps1` | `./shop/run.sh` |
-
-浏览器打开 `http://127.0.0.1:8081`；按 `Ctrl+C` 停止。管理后台、安全中心及小程序的具体步骤见[快速开始指南](./docs/getting-started.md)。**仅小程序**的理发、点餐、自助购物项目不能把构建产物当成电脑端页面。
 
 ## 🗂️ 按业务找项目
 
