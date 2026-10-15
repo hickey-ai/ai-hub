@@ -13,3 +13,15 @@
 - **验证：**`python -m unittest discover -s tools -p 'test_*.py' -q` 通过 17 项；现有启动命令/端口检查扩展到两份根 README。`python tools/generate_product_matrix.py --check` 通过，`git diff --check` 通过。仅验证文档与工具，没有重跑 102 个项目或测量真实转化。
 - **下一次观察：**优先核对公开仓库描述和 topics 与当前定位是否一致；有仓库管理能力时再处理。继续记录可见 Star/Fork 和实际用户反馈，访问或克隆数据不可取得时保持缺口说明；不以单日计数或一次排版调整声称增长成功。
 - **知识库状态：**首页及项目/产品索引的 `updated` 为 2026-08-21，超过 30 天，属于明显过期索引；本轮未找到 ai-hub 对应档案，未写入知识库。
+
+## 2026-10-15：先检查工具，减少首次构建受阻
+
+- **本轮触发：**2026-10-15 09:53（北京时间），仅执行本轮增长复盘；未恢复旧质量自查，也未继续提交待人工审阅的 Spring 报告。
+- **公开快照：**[GitHub 官方 API](https://api.github.com/repos/hickey-ai/ai-hub) 返回 0 Star、0 Fork、0 个未关闭 Issue/PR，topics 仍为空，描述仍只提商城、后台与建设清单；[Gitee 官方 API](https://gitee.com/api/v5/repos/codingdb/ai-hub) 本轮可读取，返回 **1 Star、0 Fork、0 个未关闭 Issue**。这是首次拿到的 Gitee 数字，上轮网页 404 并不是 0，不能声称本日增加 1 Star。没有取得访问量、访问来源、克隆量、README 点击或留存数据，无法把计数归因于近期改动。
+- **同类项目：**本轮读取 [litemall 官方 README](https://github.com/linlinjava/litemall/blob/master/README.md)，其快速启动按后端与不同前端拆成步骤，并说明真实微信登录/支付需另外配置。只参考说明的具体程度，不将其布局或热度当作增长因果证据。
+- **观察与假设：**现有快速开始列了 Java、Maven、Node.js、npm 版本要求，却没有让新用户先核对终端实际使用的版本；即使安装 Java 21，Maven 仍可能使用另一套 JDK。提前给出只读版本检查与判读方式，可以让用户在下载依赖前发现环境差异；本轮没有真实用户失败工单，因此这仍是待验证的使用障碍假设。
+- **实际修改：**在中英文快速开始的启动命令表前新增 `java -version`、`mvn -v`、`node --version`、`npm --version`；说明 Java 与 Maven 的 JDK 都应为 21，命令不可用时先修正本机工具配置，并明确版本检查不代表应用验收通过。只改两份指南与此记录，不新增应用、依赖、遥测或系统配置。
+- **执行限制：**最初拟同时补充下载代码步骤的写入命令被自动审批拒绝，仅返回 `blocked by policy`，没有更细原因，未执行该修改；本轮改为范围更小的只读工具检查说明，该写入已获执行。没有绕过审批或请求额外权限。
+- **验证：**本机实际执行四条只读命令：Java 21，Maven 3.6.3 且使用 Java 21，Node.js v24.14.1，npm 11.11.0；只验证当前 Windows 环境，未运行 macOS/Linux。`python -m unittest discover -s tools -p 'test_*.py' -q`：17 项通过；`python tools/generate_product_matrix.py --check` 通过；`git diff --check` 通过。没有重跑 102 项构建，也没有证明转化提升。
+- **下一次观察：**区分首次获得的 Gitee 计数与后续真实变化；继续关注启动环境相关用户反馈。有可用仓库管理能力时再核对 About/topics，当前没有可用 `gh` 命令；不把单日排版或说明改动当作获星的原因。
+- **知识库：**首页、项目及产品索引仍为 2026-08-21，超过 30 天，明显过期；目录文件名未找到对应 ai-hub 档案，本轮不写入知识库。

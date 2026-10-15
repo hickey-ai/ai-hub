@@ -2,6 +2,19 @@
 
 Run the commands below from the **repository root**. Install Java 21, Maven, Node.js 20.19+/22.12+, and npm. On first run, the scripts download dependencies, build the Vue client, execute backend tests, and package the service. Each command occupies its terminal; wait for the server to start before opening the page and press `Ctrl+C` to stop it. The projects are independent, so start with just one.
 
+## Check the tools before building
+
+Run these read-only checks in a terminal:
+
+```sh
+java -version
+mvn -v
+node --version
+npm --version
+```
+
+`java -version` should report Java 21, and the Java version shown by `mvn -v` should also be 21. Node.js must meet the version requirement above. If a command is missing or Maven uses a different JDK, fix the local tool setup first and reopen the terminal. These checks confirm tool availability; they do not verify dependency downloads, free ports, or business functionality.
+
 | Project | Windows PowerShell | macOS / Linux | Local page |
 | :--- | :--- | :--- | :--- |
 | Shop | `./shop/run.ps1` | `./shop/run.sh` | `http://127.0.0.1:8081` |
