@@ -44,10 +44,10 @@ Pick a running page. Each project starts independently; you do not need to deplo
 Install **Java 21, Maven, Node.js 20.19+/22.12+, and npm**. Start with shop from the **repository root**:
 
 ```powershell
-./shop/run.ps1
+./run-demo.ps1
 ```
 
-On macOS/Linux, run `./shop/run.sh`. The first run downloads dependencies, builds the frontend, runs backend tests, and starts the service. Its duration depends on your network and machine. Wait for the server startup log, open `http://127.0.0.1:8081`, and press `Ctrl+C` to stop.
+On macOS/Linux, run `./run-demo.sh`. The first run downloads dependencies, builds the frontend, runs backend tests, and starts the service. Its duration depends on your network and machine. Wait for the server startup log, open `http://127.0.0.1:8081`, and press `Ctrl+C` to stop.
 
 Alternatively, choose one of these projects and run it in a separate terminal:
 

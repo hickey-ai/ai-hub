@@ -77,6 +77,15 @@ class DocumentationTests(unittest.TestCase):
                 with self.subTest(catalog=name, project=project):
                     self.assertIn(port, actual)
 
+    def test_root_demo_scripts_exist_and_are_referenced(self):
+        self.assertTrue((ROOT / "run-demo.ps1").is_file())
+        self.assertTrue((ROOT / "run-demo.sh").is_file())
+        for name in ("README.md", "README.en.md"):
+            text = (ROOT / name).read_text(encoding="utf-8")
+            with self.subTest(name=name):
+                self.assertIn("./run-demo.ps1", text)
+                self.assertIn("./run-demo.sh", text)
+
     def test_quickstart_commands_and_ports_match_flagship_projects(self):
         for project in ("shop", "manage", "authcenter"):
             config = ROOT / project / "backend/src/main/resources/application.properties"
@@ -84,8 +93,12 @@ class DocumentationTests(unittest.TestCase):
             for name in ("README.md", "README.en.md", "docs/getting-started.md", "docs/getting-started.en.md"):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 with self.subTest(project=project, guide=name):
-                    self.assertIn(f"./{project}/run.ps1", text)
-                    self.assertIn(f"./{project}/run.sh", text)
+                    if project == "shop" and name in ("README.md", "README.en.md"):
+                        self.assertIn("./run-demo.ps1", text)
+                        self.assertIn("./run-demo.sh", text)
+                    else:
+                        self.assertIn(f"./{project}/run.ps1", text)
+                        self.assertIn(f"./{project}/run.sh", text)
                     self.assertIn(f"http://127.0.0.1:{port}", text)
 
 

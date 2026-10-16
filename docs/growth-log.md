@@ -25,3 +25,13 @@
 - **验证：**本机实际执行四条只读命令：Java 21，Maven 3.6.3 且使用 Java 21，Node.js v24.14.1，npm 11.11.0；只验证当前 Windows 环境，未运行 macOS/Linux。`python -m unittest discover -s tools -p 'test_*.py' -q`：17 项通过；`python tools/generate_product_matrix.py --check` 通过；`git diff --check` 通过。没有重跑 102 项构建，也没有证明转化提升。
 - **下一次观察：**区分首次获得的 Gitee 计数与后续真实变化；继续关注启动环境相关用户反馈。有可用仓库管理能力时再核对 About/topics，当前没有可用 `gh` 命令；不把单日排版或说明改动当作获星的原因。
 - **知识库：**首页、项目及产品索引仍为 2026-08-21，超过 30 天，明显过期；目录文件名未找到对应 ai-hub 档案，本轮不写入知识库。
+
+## 2026-10-16：减少首次体验的目录判断
+
+- **本轮触发：**2026-10-16 09:31（北京时间）；继续围绕真实流量与首次激活，不恢复已取消的质量自查。
+- **公开证据：**GitHub API 仍返回 0 Star、0 Fork、0 个未关闭 Issue/PR，topics 为空；Gitee API 仍返回 1 Star、0 Fork、0 个未关闭 Issue。昨日在 GitHub Traffic 页面看到最近 14 天 **14 次页面访问、2 个独立访客、2,404 次克隆、198 个独立克隆者**；本轮没有把克隆者当真实用户，也没有重复声称它们全部来自 CI。Traffic 页面证据保存在仓库外的 `E:\ai\upstream-reviews\ai-hub-growth-20261015`。
+- **观察与假设：**用户从仓库根目录开始时，仍需先理解 `shop` 子目录才能运行第一个页面；根目录的一个可执行演示入口可以减少目录判断和命令复制错误。它不能解决曝光不足，也不代表会增加 Star。
+- **实际修改：**新增 `run-demo.ps1` 与 `run-demo.sh`，从仓库根目录转发到商城的现有启动脚本；中英文 README 的首个命令改为根目录演示入口；文档测试增加脚本存在性与引用检查。没有新增依赖、遥测、网络服务或业务功能。
+- **验证：**`python -m unittest discover -s tools -p 'test_*.py' -q` 通过 **18 项**；`python tools/generate_product_matrix.py --check` 通过；`git diff --check` 通过。`run-demo.sh` 在当前 Windows PowerShell 中没有可用的 `sh` 命令，因此未运行 shell 语法检查；脚本内容保持 POSIX `sh` 语法，未声称 Linux 执行已验证。未运行完整 102 项构建。
+- **下一次观察：**重新查看 Traffic 的页面访问、独立访客和来源；如果访问仍低，优先处理 GitHub About/topics、许可证和一个可下载/可直接体验的旗舰版本，而不是继续添加行业目录。
+- **知识库：**知识库首页、项目与产品索引的 `updated` 仍为 2026-08-21，已过期；本轮未找到 ai-hub 对应知识库档案，未写入。
