@@ -91,7 +91,7 @@ For research records, start with [labbook](./labbook/README.md); for other profe
 | Category | Projects | Start here | Complete list |
 | :--- | ---: | :--- | :--- |
 | Retail, dining & local services | 13 | [shop](./shop/README.md) · [barber](./barber/README.md) · [dining](./dining/README.md) | [Browse](./docs/project-catalog.en.md#commerce) |
-| Enterprise & professional services | 13 | [manage](./manage/README.md) · [crm](./crm/README.md) · [auditfirm](./auditfirm/README.md) | [Browse](./docs/project-catalog.en.md#enterprise) |
+| Enterprise & professional services | 13 | [manage](./manage/README.md) · [CRM (English UI & CSV)](./crm/README.en.md) · [auditfirm](./auditfirm/README.md) | [Browse](./docs/project-catalog.en.md#enterprise) |
 | Supply chain, manufacturing & quality | 14 | [erp](./erp/README.md) · [wms](./wms/README.md) · [foodsafety](./foodsafety/README.md) | [Browse](./docs/project-catalog.en.md#supply) |
 | Health, healthcare & eldercare | 10 | [hospital](./hospital/README.md) · [health](./health/README.md) · [eldercare](./eldercare/README.md) | [Browse](./docs/project-catalog.en.md#care) |
 | Pet services | 4 | [petcare](./petcare/README.md) · [veterinary](./veterinary/README.md) | [Browse](./docs/project-catalog.en.md#pets) |

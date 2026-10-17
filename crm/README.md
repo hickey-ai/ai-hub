@@ -1,5 +1,7 @@
 # CRM · orbit 客户关系样板
 
+**简体中文** · [English](./README.en.md)
+
 ![销售漏斗实际运行截图](./screenshots/pipeline.png)
 
 客户建档、商机创建、跟进记录、合法阶段推进及赢单/流失。 Vue 3 + Java 21/Spring Boot；页面截图来自本地实际运行。
@@ -20,11 +22,20 @@
 
 数据保存在本项目 `data/crm.json`，停止服务后可复制备份；如需恢复默认演示数据，停止后删除该文件并重启。文件损坏时启动会报错，不会自动清空。不要多个进程共用此文件。
 
+英文运行实图：[商机看板](./screenshots/pipeline-en.png) · [客户列表](./screenshots/customers-en.png) · [跟进详情](./screenshots/followup-en.png) · [筛选导出](./screenshots/export-en.png)
+
+## 中英文界面与商机导出
+
+右上角可切换中文/English，语言偏好保存在当前浏览器；客户、商机、跟进等已有业务数据不自动翻译。金额始终为人民币整元，英文模式不会换算为美元。
+
+在“全部商机”搜索客户、商机或负责人，点击“导出 CSV”即可导出当前筛选结果。文件包含编号、客户、金额、阶段、负责人和创建日期，表头和阶段跟随界面语言。支持带逗号、引号、换行的内容，并对表格公式前缀做防护。CSV 是报表，不是可恢复备份；恢复数据仍须停服后备份/还原 `data/crm.json`。
+
 ## 测试
 
 ```sh
 mvn -f backend/pom.xml test
 npm --prefix frontend ci
+npm --prefix frontend test
 npm --prefix frontend run build
 ```
 
