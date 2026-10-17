@@ -35,3 +35,14 @@
 - **验证：**`python -m unittest discover -s tools -p 'test_*.py' -q` 通过 **18 项**；`python tools/generate_product_matrix.py --check` 通过；`git diff --check` 通过。`run-demo.sh` 在当前 Windows PowerShell 中没有可用的 `sh` 命令，因此未运行 shell 语法检查；脚本内容保持 POSIX `sh` 语法，未声称 Linux 执行已验证。未运行完整 102 项构建。
 - **下一次观察：**重新查看 Traffic 的页面访问、独立访客和来源；如果访问仍低，优先处理 GitHub About/topics、许可证和一个可下载/可直接体验的旗舰版本，而不是继续添加行业目录。
 - **知识库：**知识库首页、项目与产品索引的 `updated` 仍为 2026-08-21，已过期；本轮未找到 ai-hub 对应知识库档案，未写入。
+
+## 2026-10-17：修复 macOS/Linux 演示入口的执行权限
+
+- **本轮触发：**2026-10-17 09:27:58（北京时间，按触发消息记录），仅执行本轮增长复盘，未恢复旧质量自查。
+- **公开快照：**[GitHub 官方 API](https://api.github.com/repos/hickey-ai/ai-hub) 返回 0 Star、0 Fork、0 个未关闭 Issue/PR，topics 仍为空；[Gitee 官方 API](https://gitee.com/api/v5/repos/codingdb/ai-hub) 返回 1 Star、0 Fork、0 个未关闭 Issue。计数与上轮一致。未重新读取登录后的 Traffic，不把 10 月 15 日保存的访问/克隆数据当作本轮实时数据；也没有取得用户留存或 README 点击数据。
+- **同类项目核对：**通过 GitHub README API 读取 [RuoYi-Vue-Plus 当前 README](https://github.com/dromara/RuoYi-Vue-Plus/blob/6.X/README.md)，仍在第 23 行提供演示入口、第 31 行提供文档入口，并列出部署说明。这里只作为易用入口的参考，不据此推断其关注增长原因。litemall 本轮读取超时，未沿用旧内容冒充新调研。
+- **具体缺口：**上一轮新建的 `run-demo.sh` 在 Git 索引中是 `100644`，但中英文 README 要求直接执行 `./run-demo.sh`；macOS/Linux 新检出的文件因此缺少执行位，在进入 npm/Maven 构建前就会被权限阻止。其委托的 `shop/run.sh` 已是 `100755`，问题来自根入口，不需要重复修改业务脚本。
+- **假设与修改：**补齐一个用户能直接触发的启动故障，比继续微调文案更有价值。仅将 `run-demo.sh` 的 Git 模式改为 `100755`，保持现有脚本内容不变。在现有文档测试中校验根脚本与被调用脚本的执行位，另加一个无依赖下载、无服务启动的委托测试：在带空格的目录中，从仓库外调用根入口，用临时子脚本确认工作目录正确，并核对成功码 0 与失败码 7 均原样传播。
+- **验证证据：**先加执行位断言，旧模式下准确失败于 `run-demo.sh`；改为可执行后通过。`python -m unittest discover -s tools -p 'test_*.py' -q` 共 **19 项通过**，包括 Git Bash 中的两种退出码子场景；`python tools/generate_product_matrix.py --check` 通过；`git diff --check` 与索引差异检查通过。没有新增库、修改全局 Git 配置、安装依赖或运行 102 个项目构建。运行验证来自 Windows 的 Git Bash，不声称做过 macOS/Linux 原生系统或商城业务端到端验收。
+- **结果与下一次观察：**本轮确认并修复了文档启动命令与实际交付文件权限不一致的问题，不代表 Star 或转化已提升。继续优先关注曝光来源、旗舰体验与 About/topics；若涉及使用许可，先核对来源与用户授权，不自动假设现有全部代码/素材已有可再许可结论。
+- **知识库：**首页、项目及产品索引仍标注 2026-08-21，已超过 30 天，明显过期；目录中未发现对应 ai-hub 档案，未写知识库。

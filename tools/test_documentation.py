@@ -1,5 +1,6 @@
 """Keep the bilingual documentation index aligned with the runnable catalog."""
 import re
+import subprocess
 import unittest
 from pathlib import Path
 from urllib.parse import unquote
@@ -80,6 +81,14 @@ class DocumentationTests(unittest.TestCase):
     def test_root_demo_scripts_exist_and_are_referenced(self):
         self.assertTrue((ROOT / "run-demo.ps1").is_file())
         self.assertTrue((ROOT / "run-demo.sh").is_file())
+        modes = subprocess.run(
+            ["git", "ls-files", "-s", "--", "run-demo.sh", "shop/run.sh"],
+            cwd=ROOT, text=True, capture_output=True, check=True,
+        ).stdout.splitlines()
+        self.assertEqual(len(modes), 2)
+        for entry in modes:
+            with self.subTest(script=entry.split("\t", 1)[1]):
+                self.assertTrue(entry.startswith("100755 "), "Direct shell launch needs an executable Git file mode")
         for name in ("README.md", "README.en.md"):
             text = (ROOT / name).read_text(encoding="utf-8")
             with self.subTest(name=name):
