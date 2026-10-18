@@ -38,6 +38,13 @@ The launcher installs dependencies, builds the frontend, runs backend tests and 
 
 CSV uses UTF-8 with BOM and quoted fields. Formula-like cell prefixes are escaped for spreadsheet import; treat exports as untrusted data and do not remove the protection or enable external spreadsheet content. CSV is a report, **not a restorable backup**, and no import feature is included.
 
+## Edit customer details
+
+In **Customers**, choose **Edit** beside a customer. Update the name, contact, industry or owner, then choose **Save changes**. **Cancel** leaves the saved record unchanged. The customer ID and existing opportunity links stay the same; opportunity displays, search and CSV exports use the updated customer name. Blank required fields are rejected. If saving fails, the form keeps your input and shows an error so you can correct it and retry. Changes use the same local JSON storage and backup procedure described below.
+
+![Edit customer details, with existing opportunities kept linked](./screenshots/customer-edit-en.png)
+![Saved customer details and the unchanged opportunity count](./screenshots/customer-updated-en.png)
+
 ## Data and backups
 
 Records are saved to `data/crm.json`, relative to the launcher directory. Stop the application before copying the file for backup or restoring a copy. Do not run multiple instances against one file. To reset fictional demonstration data, stop the application, back up and remove this file, then restart. A damaged file fails startup instead of silently resetting your records. Initial sample records are Chinese; English records can be added using the form.

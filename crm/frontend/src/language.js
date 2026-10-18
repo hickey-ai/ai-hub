@@ -1,4 +1,8 @@
 const english = {
+  "编辑": "Edit",
+  "编辑客户": "Edit customer",
+  "保存修改": "Save changes",
+  "更新客户资料，已有商机保持关联。": "Update customer details. Existing opportunities stay linked.",
   "林": "D",
   "当前工作空间": "In this workspace",
   "持续跟进中": "Follow-ups in progress",

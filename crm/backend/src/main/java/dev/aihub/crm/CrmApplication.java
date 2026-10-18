@@ -64,6 +64,12 @@ class CrmController {
         Map<Long, Customer> updated = new LinkedHashMap<>(customers); updated.put(id, customer);
         commit(updated, opportunities, activities, customerId + 1, opportunityId, activityId); return customer;
     }
+    @PutMapping("/customers/{id}") synchronized Customer updateCustomer(@PathVariable long id, @Valid @RequestBody CustomerInput input) {
+        if (!customers.containsKey(id)) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "客户不存在");
+        Customer customer = new Customer(id, input.name().trim(), input.contact().trim(), input.industry().trim(), input.owner().trim());
+        Map<Long, Customer> updated = new LinkedHashMap<>(customers); updated.put(id, customer);
+        commit(updated, opportunities, activities, customerId, opportunityId, activityId); return customer;
+    }
     @GetMapping("/opportunities") synchronized List<Opportunity> opportunities() { return List.copyOf(opportunities.values()); }
     @PostMapping("/opportunities") @ResponseStatus(HttpStatus.CREATED) synchronized Opportunity createOpportunity(@Valid @RequestBody OpportunityInput input) {
         if (!customers.containsKey(input.customerId())) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "客户不存在");

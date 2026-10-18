@@ -28,6 +28,23 @@ class CrmApplicationTests {
         mvc.perform(post("/api/opportunities/4/activities").contentType(MediaType.APPLICATION_JSON).content("{\"note\":\"迟到的记录\"}"))
             .andExpect(status().isConflict());
     }
+    @Test void customerEditValidatesAndPreservesReferences() throws Exception {
+        String body = """
+            {"name":" Acme Studio ","contact":" Alex ","industry":" Software ","owner":" Morgan "}
+            """;
+        mvc.perform(put("/api/customers/1").contentType(MediaType.APPLICATION_JSON).content(body))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.id").value(1))
+            .andExpect(jsonPath("$.name").value("Acme Studio"))
+            .andExpect(jsonPath("$.contact").value("Alex"))
+            .andExpect(jsonPath("$.industry").value("Software"))
+            .andExpect(jsonPath("$.owner").value("Morgan"));
+        mvc.perform(put("/api/customers/1").contentType(MediaType.APPLICATION_JSON)
+            .content(body.replace(" Acme Studio ", "   "))).andExpect(status().isBadRequest());
+        mvc.perform(put("/api/customers/999").contentType(MediaType.APPLICATION_JSON).content(body))
+            .andExpect(status().isNotFound());
+        mvc.perform(get("/api/customers")).andExpect(jsonPath("$[0].name").value("Acme Studio"));
+        mvc.perform(get("/api/opportunities")).andExpect(jsonPath("$[0].customerId").value(1));
+    }
     @Test void invalidReferencesAndTransitions() throws Exception {
         mvc.perform(post("/api/opportunities").contentType(MediaType.APPLICATION_JSON).content("{\"customerId\":999,\"title\":\"X\",\"amount\":1,\"owner\":\"A\"}"))
             .andExpect(status().isNotFound());
