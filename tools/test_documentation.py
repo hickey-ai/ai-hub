@@ -78,14 +78,14 @@ class DocumentationTests(unittest.TestCase):
                 with self.subTest(catalog=name, project=project):
                     self.assertIn(port, actual)
 
-    def test_root_demo_scripts_exist_and_are_referenced(self):
+    def test_shell_launchers_are_executable_and_root_demo_is_documented(self):
         self.assertTrue((ROOT / "run-demo.ps1").is_file())
         self.assertTrue((ROOT / "run-demo.sh").is_file())
         modes = subprocess.run(
-            ["git", "ls-files", "-s", "--", "run-demo.sh", "shop/run.sh"],
+            ["git", "ls-files", "-s", "--", "*.sh"],
             cwd=ROOT, text=True, capture_output=True, check=True,
         ).stdout.splitlines()
-        self.assertEqual(len(modes), 2)
+        self.assertGreater(len(modes), 0)
         for entry in modes:
             with self.subTest(script=entry.split("\t", 1)[1]):
                 self.assertTrue(entry.startswith("100755 "), "Direct shell launch needs an executable Git file mode")
