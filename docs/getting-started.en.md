@@ -1,4 +1,4 @@
-# Getting started: try 3 representative projects locally
+# Getting started: try 4 representative projects locally
 
 Run the commands below from the **repository root**. Install Java 21, Maven, Node.js 20.19+/22.12+, and npm. On first run, the scripts download dependencies, build the Vue client, execute backend tests, and package the service. Each command occupies its terminal; wait for the server to start before opening the page and press `Ctrl+C` to stop it. The projects are independent, so start with just one.
 
@@ -18,6 +18,7 @@ npm --version
 | Project | Windows PowerShell | macOS / Linux | Local page |
 | :--- | :--- | :--- | :--- |
 | Shop | `./shop/run.ps1` | `./shop/run.sh` | `http://127.0.0.1:8081` |
+| [CRM](../crm/README.en.md) | `./run-demo.ps1 crm` | `./run-demo.sh crm` | `http://127.0.0.1:8083` |
 | Manage | `./manage/run.ps1` | `./manage/run.sh` | `http://127.0.0.1:8082` |
 | Authcenter | `./authcenter/run.ps1` | `./authcenter/run.sh` | `http://127.0.0.1:8182` |
 
@@ -49,6 +50,17 @@ Start authcenter separately and open `http://127.0.0.1:8182`:
 2. Inspect the discovery and public-key endpoints, then clear the session in the UI. Clearing the browser token **does not revoke** an already issued JWT.
 
 Accounts, RSA keys, and audit events are for local demonstration; restarting invalidates old tokens. To connect the manage API, run manage in **another terminal** with a compatible issuer and audience configured before startup. See the [integration guide](./auth-integration.md) and [authcenter guide](../authcenter/README.en.md) for commands, 401/200 checks, and limitations. **Never use demo credentials or tokens for a public deployment.**
+
+## 4. CRM: customers and opportunity follow-up
+
+From the repository root, run `./run-demo.ps1 crm` (Windows) or `./run-demo.sh crm` (macOS/Linux), then open `http://127.0.0.1:8083`:
+
+1. Choose **English** in the top bar. In **Customers**, add a fictional customer, then **Edit** the contact details and save. The customer ID and existing opportunity links remain stable.
+2. In **Pipeline**, create an opportunity for that customer. Add a follow-up note and progress it through the stages to **Won** or **Lost**. Amounts are CNY in whole yuan; switching language does not convert currency.
+3. In **All opportunities**, search by customer, title or owner and choose **Export CSV**. The report contains only matching opportunities and uses the current customer name. CSV is not a restorable backup.
+4. Stop with `Ctrl+C`, rerun the same launcher and confirm the saved records remain. To back up, stop the application and copy `crm/data/crm.json`; do not delete or replace it while the service runs.
+
+This local single-user application has no sign-in or role enforcement. Keep it on the loopback interface and use fictional details. [Full CRM workflow, screenshots and limits](../crm/README.en.md).
 
 ## More projects and verification
 

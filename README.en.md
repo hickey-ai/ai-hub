@@ -53,8 +53,11 @@ Alternatively, choose one of these projects and run it in a separate terminal:
 
 | Project | Windows PowerShell | macOS / Linux | Local page |
 | :--- | :--- | :--- | :--- |
+| [CRM · customers and pipeline](./crm/README.en.md) | `./run-demo.ps1 crm` | `./run-demo.sh crm` | `http://127.0.0.1:8083` |
 | Manage | `./manage/run.ps1` | `./manage/run.sh` | `http://127.0.0.1:8082` |
 | Authcenter | `./authcenter/run.ps1` | `./authcenter/run.sh` | `http://127.0.0.1:8182` |
+
+CRM supports English/Chinese switching, customer creation and editing, opportunity follow-up and filtered CSV reports. Try it with fictional data; it is a single-user local application without sign-in. [CRM walkthrough](./docs/getting-started.en.md#4-crm-customers-and-opportunity-follow-up).
 
 [Full walkthrough and demo accounts](./docs/getting-started.en.md). Barber, dining, and self-shopping have mini-program UIs only and require WeChat DevTools.
 

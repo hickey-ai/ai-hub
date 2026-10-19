@@ -53,8 +53,11 @@ macOS/Linux 运行 `./run-demo.sh`。首次执行会联网安装依赖、构建�
 
 | 项目 | Windows PowerShell | macOS / Linux | 本机页面 |
 | :--- | :--- | :--- | :--- |
+| [CRM · 客户与商机](./crm/README.md) | `./run-demo.ps1 crm` | `./run-demo.sh crm` | `http://127.0.0.1:8083` |
 | 管理后台 | `./manage/run.ps1` | `./manage/run.sh` | `http://127.0.0.1:8082` |
 | 安全与身份中心 | `./authcenter/run.ps1` | `./authcenter/run.sh` | `http://127.0.0.1:8182` |
+
+CRM 支持中英文切换、客户新增与编辑、商机跟进和筛选后 CSV 报表。请用虚构数据体验；当前为无登录的本机单用户应用。[CRM 体验步骤](./docs/getting-started.md#4-crm客户与商机跟进)。
 
 [完整体验步骤与演示账号](./docs/getting-started.md)。理发、点餐、自助购物只有小程序界面，需要微信开发者工具体验。
 
