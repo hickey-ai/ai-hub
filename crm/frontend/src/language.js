@@ -85,7 +85,9 @@ const english = {
   "导出 CSV": "Export CSV",
   "编号": "ID",
   "客户编号": "Customer ID",
-  "创建日期": "Created on"
+  "创建日期": "Created on",
+  "编辑商机": "Edit opportunity",
+  "更新商机资料，客户关联、阶段和跟进记录保持不变。": "Update details while keeping the customer, stage and follow-up history."
 }
 
 export function translate(text, language) {

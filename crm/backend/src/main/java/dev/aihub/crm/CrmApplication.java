@@ -20,6 +20,7 @@ record Customer(long id, String name, String contact, String industry, String ow
 record CustomerInput(@NotBlank String name, @NotBlank String contact, @NotBlank String industry, @NotBlank String owner) {}
 record Opportunity(long id, long customerId, String title, long amount, String stage, String owner, LocalDate createdAt) {}
 record OpportunityInput(@Positive long customerId, @NotBlank String title, @Positive long amount, @NotBlank String owner) {}
+record OpportunityDetailsInput(@NotBlank String title, @Positive long amount, @NotBlank String owner) {}
 record Activity(long id, long opportunityId, String note, LocalDate date) {}
 record ActivityInput(@NotBlank String note) {}
 record StageInput(@NotBlank String stage) {}
@@ -77,6 +78,13 @@ class CrmController {
         Opportunity opportunity = new Opportunity(id, input.customerId(), input.title().trim(), input.amount(), "发现需求", input.owner().trim(), LocalDate.now());
         Map<Long, Opportunity> updated = new LinkedHashMap<>(opportunities); updated.put(id, opportunity);
         commit(customers, updated, activities, customerId, opportunityId + 1, activityId); return opportunity;
+    }
+    @PutMapping("/opportunities/{id}") synchronized Opportunity updateOpportunity(@PathVariable long id, @Valid @RequestBody OpportunityDetailsInput input) {
+        Opportunity old = opportunity(id);
+        if (old.stage().startsWith("已")) throw new ResponseStatusException(HttpStatus.CONFLICT, "已结束商机不可编辑");
+        Opportunity next = new Opportunity(id, old.customerId(), input.title().trim(), input.amount(), old.stage(), input.owner().trim(), old.createdAt());
+        Map<Long, Opportunity> updated = new LinkedHashMap<>(opportunities); updated.put(id, next);
+        commit(customers, updated, activities, customerId, opportunityId, activityId); return next;
     }
     @PatchMapping("/opportunities/{id}/stage") synchronized Opportunity changeStage(@PathVariable long id, @Valid @RequestBody StageInput input) {
         Opportunity old = opportunity(id);

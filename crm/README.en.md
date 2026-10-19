@@ -45,6 +45,15 @@ In **Customers**, choose **Edit** beside a customer. Update the name, contact, i
 ![Edit customer details, with existing opportunities kept linked](./screenshots/customer-edit-en.png)
 ![Saved customer details and the unchanged opportunity count](./screenshots/customer-updated-en.png)
 
+## Edit an open opportunity
+
+Open an opportunity from **Pipeline** or **All opportunities**, then choose **Edit opportunity**. Update its title, estimated value or owner and choose **Save changes**; **Cancel** discards unsaved edits. Values must be positive whole yuan: the API rejects fractional amounts rather than rounding or truncating them, for both new and edited opportunities.
+
+The customer selector is locked while editing. Opportunity ID, customer link, stage, creation date and follow-up history stay unchanged. The pipeline total, search results and CSV report reflect saved details. Won and lost opportunities cannot be edited; the server also rejects a save if the opportunity closed after the form opened. A failed save keeps the form input for correction. These updates do not add an audit log or multi-user access control.
+
+![Edit an opportunity while preserving its customer and stage](./screenshots/opportunity-edit-en.png)
+![Saved value and owner, with the original stage and follow-up](./screenshots/opportunity-updated-en.png)
+
 ## Data and backups
 
 Records are saved to `data/crm.json`, relative to the launcher directory. Stop the application before copying the file for backup or restoring a copy. Do not run multiple instances against one file. To reset fictional demonstration data, stop the application, back up and remove this file, then restart. A damaged file fails startup instead of silently resetting your records. Initial sample records are Chinese; English records can be added using the form.
