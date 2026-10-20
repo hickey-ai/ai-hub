@@ -71,6 +71,13 @@ class CrmController {
         Map<Long, Customer> updated = new LinkedHashMap<>(customers); updated.put(id, customer);
         commit(updated, opportunities, activities, customerId, opportunityId, activityId); return customer;
     }
+    @DeleteMapping("/customers/{id}") @ResponseStatus(HttpStatus.NO_CONTENT) synchronized void deleteCustomer(@PathVariable long id) {
+        if (!customers.containsKey(id)) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "客户不存在");
+        if (opportunities.values().stream().anyMatch(o -> o.customerId() == id))
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "客户有关联商机，不可删除");
+        Map<Long, Customer> updated = new LinkedHashMap<>(customers); updated.remove(id);
+        commit(updated, opportunities, activities, customerId, opportunityId, activityId);
+    }
     @GetMapping("/opportunities") synchronized List<Opportunity> opportunities() { return List.copyOf(opportunities.values()); }
     @PostMapping("/opportunities") @ResponseStatus(HttpStatus.CREATED) synchronized Opportunity createOpportunity(@Valid @RequestBody OpportunityInput input) {
         if (!customers.containsKey(input.customerId())) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "客户不存在");

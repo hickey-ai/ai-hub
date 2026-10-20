@@ -12,6 +12,7 @@ watch(language, value => {
 const customers = ref([]), opportunities = ref([]), stats = ref({ customers: 0, active: 0, won: 0, pipeline: 0 })
 const selected = ref(null), activities = ref([]), tab = ref('商机看板'), modal = ref(''), busy = ref(false), error = ref(''), search = ref(''), note = ref('')
 const editingCustomerId = ref(null), editingDealId = ref(null)
+const deleteDialog = ref(null), deletingCustomer = ref(null)
 const customerForm = ref({ name: '', contact: '', industry: '', owner: '' })
 const dealForm = ref({ customerId: '', title: '', amount: '', owner: '' })
 const stages = ['发现需求', '方案沟通', '商务谈判', '已赢单', '已流失']
@@ -21,8 +22,10 @@ const currency = n => new Intl.NumberFormat(language.value === 'zh' ? 'zh-CN' : 
 const customerName = id => customers.value.find(c => c.id === id)?.name || t('未知客户')
 async function api(path, options) {
   const response = await fetch('/api' + path, { headers: { 'Content-Type': 'application/json' }, ...options })
+  if (response.status === 409 && options?.method === 'DELETE' && path.startsWith('/customers/'))
+    throw new Error(t('客户有关联商机，不可删除。请保留客户及其历史记录。'))
   if (!response.ok) throw new Error(`${t('操作失败')} (HTTP ${response.status}). ${t('请检查输入或当前状态')}`)
-  return response.json()
+  return response.status === 204 ? null : response.json()
 }
 async function load() {
   try {
@@ -51,6 +54,19 @@ async function saveCustomer() {
       method: id === null ? 'POST' : 'PUT', body: JSON.stringify(customerForm.value),
     })
     modal.value = ''
+  })
+}
+function confirmDeleteCustomer(customer) {
+  deletingCustomer.value = customer
+  error.value = ''
+  deleteDialog.value.showModal()
+}
+async function deleteCustomer() {
+  if (busy.value || !deletingCustomer.value) return
+  await act(async () => {
+    await api(`/customers/${deletingCustomer.value.id}`, { method: 'DELETE' })
+    deleteDialog.value.close()
+    deletingCustomer.value = null
   })
 }
 function openDeal(deal = null) {
@@ -105,12 +121,24 @@ onMounted(load)
       <div class="page-heading"><div><div class="eyebrow">CUSTOMER RELATIONSHIP · 2026</div><h1>{{ t(tab === '商机看板' ? '让每个机会，向前一步。' : tab) }}</h1><p>{{ t(tab === '商机看板' ? '掌握销售节奏，聚焦值得投入的每一次对话。' : '清晰管理客户与商机，持续推动业务增长。') }}</p></div><button class="primary" @click="tab === '客户列表' ? openCustomer() : openDeal()">＋ {{ t(tab === '客户列表' ? '新增客户' : '新建商机') }}</button></div>
       <div class="stat-grid"><div class="stat-card"><span>{{ t('客户总数') }}</span><strong>{{ stats.customers }}</strong><small>{{ t('当前工作空间') }}</small><i>♧</i></div><div class="stat-card"><span>{{ t('进行中商机') }}</span><strong>{{ stats.active }}</strong><small>{{ t('持续跟进中') }}</small><i>◇</i></div><div class="stat-card"><span>{{ t('预计商机金额') }}</span><strong>{{ currency(stats.pipeline) }}</strong><small>{{ t('未结束商机汇总') }}</small><i>↗</i></div><div class="stat-card"><span>{{ t('已赢单') }}</span><strong>{{ stats.won }}</strong><small>{{ t('累计转化项目') }}</small><i>✦</i></div></div>
       <template v-if="tab === '商机看板'"><div class="section-title"><div><h2>{{ t('销售漏斗') }}</h2><p>{{ t('跟随商机从发现需求走向成交') }}</p></div><button class="text-button" @click="tab = '全部商机'">{{ t('查看全部 →') }}</button></div><div class="board"><div v-for="(stage, index) in stages.slice(0,3)" :key="stage" class="stage-column"><div class="stage-head"><span class="stage-icon">{{ ['◌','◈','◆'][index] }}</span><b>{{ t(stage) }}</b><em>{{ activeDeals.filter(o => o.stage === stage).length }}</em></div><div v-for="deal in activeDeals.filter(o => o.stage === stage)" :key="deal.id" class="deal-card" @click="selectDeal(deal)"><div class="deal-customer">{{ customerName(deal.customerId) }}</div><h3>{{ deal.title }}</h3><strong>{{ currency(deal.amount) }}</strong><div class="deal-foot"><span class="mini-avatar">{{ deal.owner[0] }}</span>{{ deal.owner }}<span class="right">{{ deal.createdAt }}</span></div></div><div v-if="!activeDeals.some(o => o.stage === stage)" class="column-empty">{{ t('暂无商机 · 等待新的机会') }}</div></div></div></template>
-      <template v-else-if="tab === '客户列表'"><div class="panel"><div class="panel-head"><h2>{{ t('客户档案') }} <em>{{ customers.length }}</em></h2><span>{{ t('建立连接，记录每一位合作伙伴') }}</span></div><div class="table-wrap"><table><thead><tr><th>{{ t('客户名称') }}</th><th>{{ t('联系人') }}</th><th>{{ t('所属行业') }}</th><th>{{ t('负责人') }}</th><th>{{ t('关联商机') }}</th><th>{{ t('操作') }}</th></tr></thead><tbody><tr v-for="customer in customers" :key="customer.id"><td><b class="customer-cell"><span class="customer-icon">{{ customer.name[0] }}</span>{{ customer.name }}</b></td><td>{{ customer.contact }}</td><td>{{ customer.industry }}</td><td>{{ customer.owner }}</td><td>{{ opportunities.filter(o => o.customerId === customer.id).length }}</td><td><button class="text-button" :disabled="busy" @click="openCustomer(customer)" :aria-label="t('编辑客户') + ': ' + customer.name">{{ t('编辑') }}</button></td></tr></tbody></table></div></div></template>
+      <template v-else-if="tab === '客户列表'"><div class="panel"><div class="panel-head"><h2>{{ t('客户档案') }} <em>{{ customers.length }}</em></h2><span>{{ t('建立连接，记录每一位合作伙伴') }}</span></div><div class="table-wrap"><table><thead><tr><th>{{ t('客户名称') }}</th><th>{{ t('联系人') }}</th><th>{{ t('所属行业') }}</th><th>{{ t('负责人') }}</th><th>{{ t('关联商机') }}</th><th>{{ t('操作') }}</th></tr></thead><tbody><tr v-for="customer in customers" :key="customer.id"><td><b class="customer-cell"><span class="customer-icon">{{ customer.name[0] }}</span>{{ customer.name }}</b></td><td>{{ customer.contact }}</td><td>{{ customer.industry }}</td><td>{{ customer.owner }}</td><td>{{ opportunities.filter(o => o.customerId === customer.id).length }}</td><td><button class="text-button" :disabled="busy" @click="openCustomer(customer)" :aria-label="t('编辑客户') + ': ' + customer.name">{{ t('编辑') }}</button><button class="text-button danger-text" :disabled="busy || opportunities.some(o => o.customerId === customer.id)" @click="confirmDeleteCustomer(customer)" :aria-label="t('删除客户') + ': ' + customer.name">{{ t('删除') }}</button><small v-if="opportunities.some(o => o.customerId === customer.id)" class="delete-hint">{{ t('关联商机，保留客户') }}</small></td></tr></tbody></table></div></div></template>
       <template v-else><div class="panel"><div class="panel-head"><button class="outline" :disabled="busy || !visibleDeals.length" @click="exportDeals">{{ t('导出 CSV') }}</button><h2>{{ t('全部商机') }} <em>{{ opportunities.length }}</em></h2><input v-model="search" :placeholder="t('搜索商机、客户或负责人')" /></div><div class="table-wrap"><table><thead><tr><th>{{ t('商机名称') }}</th><th>{{ t('客户') }}</th><th>{{ t('金额') }}</th><th>{{ t('阶段') }}</th><th>{{ t('负责人') }}</th><th>{{ t('操作') }}</th></tr></thead><tbody><tr v-for="deal in visibleDeals" :key="deal.id"><td><b>{{ deal.title }}</b></td><td>{{ customerName(deal.customerId) }}</td><td>{{ currency(deal.amount) }}</td><td><span :class="['badge', deal.stage.startsWith('已') ? 'muted' : '']">{{ t(deal.stage) }}</span></td><td>{{ deal.owner }}</td><td><button class="text-button" @click="selectDeal(deal)">{{ t('查看详情 →') }}</button></td></tr></tbody></table><div v-if="!visibleDeals.length" class="empty">{{ t('没有匹配的商机') }}</div></div></div></template>
       <footer>orbit CRM · Vue 3 + Java 21 <span>{{ t('演示记录保存在本机 data/crm.json') }}</span></footer>
     </div>
   </main>
   <div v-if="selected" class="overlay" @click.self="selected = null"><div class="drawer"><button class="close" @click="selected = null">×</button><div class="eyebrow">OPPORTUNITY / #{{ selected.id }}</div><h2>{{ selected.title }}</h2><p>{{ customerName(selected.customerId) }} · {{ selected.owner }}</p><button v-if="!selected.stage.startsWith('已')" class="outline" :disabled="busy" @click="openDeal(selected)">{{ t('编辑商机') }}</button><div class="drawer-amount">{{ currency(selected.amount) }}<small>{{ t('预计成交金额') }}</small></div><div class="drawer-section"><h3>{{ t('商机阶段') }} <span class="badge">{{ t(selected.stage) }}</span></h3><div v-if="!selected.stage.startsWith('已')" class="action-row"><button v-if="selected.stage !== '商务谈判'" class="primary" :disabled="busy" @click="advance(selected, stages[stages.indexOf(selected.stage)+1])">{{ t('推进到下一阶段 →') }}</button><button v-if="selected.stage === '商务谈判'" class="primary" :disabled="busy" @click="advance(selected, '已赢单')">{{ t('标记赢单 ✓') }}</button><button class="outline" :disabled="busy" @click="advance(selected, '已流失')">{{ t('标记流失') }}</button></div></div><div class="drawer-section"><h3>{{ t('跟进记录') }} <span>{{ activities.length }}</span></h3><div v-if="!activities.length" class="empty">{{ t('尚无跟进记录') }}</div><div v-for="item in activities" :key="item.id" class="activity"><span>●</span><div><b>{{ item.note }}</b><small>{{ item.date }}</small></div></div><form v-if="!selected.stage.startsWith('已')" @submit.prevent="followUp"><textarea v-model="note" required :placeholder="t('记录一次沟通或下一步计划…')"></textarea><button class="primary" :disabled="busy">{{ t('添加跟进') }}</button></form></div></div></div>
   <div v-if="modal" class="overlay" @click.self="modal = ''"><form class="dialog" @submit.prevent="modal === 'customer' ? saveCustomer() : saveDeal()"><button type="button" class="close" @click="modal = ''">×</button><div class="eyebrow">{{ (modal === 'customer' ? editingCustomerId : editingDealId) !== null ? 'EDIT' : 'NEW' }} {{ modal === 'customer' ? 'CUSTOMER' : 'OPPORTUNITY' }}</div><h2>{{ t(modal === 'customer' ? (editingCustomerId === null ? '新增客户' : '编辑客户') : (editingDealId === null ? '新建商机' : '编辑商机')) }}</h2><p>{{ t(modal === 'customer' && editingCustomerId !== null ? '更新客户资料，已有商机保持关联。' : modal === 'deal' && editingDealId !== null ? '更新商机资料，客户关联、阶段和跟进记录保持不变。' : '填写必要信息，开始一段新的业务旅程。') }}</p><p v-if="error" class="alert" role="alert">{{ error }}</p><template v-if="modal === 'customer'"><label>{{ t('客户名称') }}<input v-model="customerForm.name" required :placeholder="t('例如：青禾科技')" /></label><label>{{ t('联系人') }}<input v-model="customerForm.contact" required :placeholder="t('姓名与联系方式')" /></label><label>{{ t('所属行业') }}<input v-model="customerForm.industry" required :placeholder="t('例如：科技互联网')" /></label><label>{{ t('负责人') }}<input v-model="customerForm.owner" required :placeholder="t('例如：林知夏')" /></label></template><template v-else><label>{{ t('关联客户') }}<select v-model="dealForm.customerId" required :disabled="editingDealId !== null"><option value="" disabled>{{ t('选择客户') }}</option><option v-for="c in customers" :key="c.id" :value="c.id">{{ c.name }}</option></select></label><label>{{ t('商机名称') }}<input v-model="dealForm.title" required :placeholder="t('例如：年度服务采购')" /></label><label>{{ t('预计金额（元）') }}<input v-model="dealForm.amount" required type="number" min="1" placeholder="50000" /></label><label>{{ t('负责人') }}<input v-model="dealForm.owner" required :placeholder="t('例如：林知夏')" /></label></template><div class="dialog-actions"><button type="button" class="outline" @click="modal = ''">{{ t('取消') }}</button><button class="primary" :disabled="busy">{{ t((modal === 'customer' ? editingCustomerId : editingDealId) !== null ? '保存修改' : '确认创建') }}</button></div></form></div>
+  <dialog ref="deleteDialog" class="dialog delete-dialog" aria-labelledby="delete-customer-title" aria-describedby="delete-customer-help" @cancel="busy ? $event.preventDefault() : deletingCustomer = null">
+    <form @submit.prevent="deleteCustomer">
+      <h2 id="delete-customer-title">{{ t('删除客户') }}</h2>
+      <p><strong>{{ deletingCustomer?.name }}</strong></p>
+      <p id="delete-customer-help">{{ t('仅可删除没有任何商机的客户。删除后无法撤销，请先确认已有备份。') }}</p>
+      <p v-if="error" class="alert" role="alert">{{ error }}</p>
+      <div class="dialog-actions">
+        <button type="button" class="outline" autofocus :disabled="busy" @click="deleteDialog.close(); deletingCustomer = null">{{ t('取消') }}</button>
+        <button class="primary danger" :disabled="busy || !deletingCustomer">{{ t('确认删除') }}</button>
+      </div>
+    </form>
+  </dialog>
 </div>
 </template>

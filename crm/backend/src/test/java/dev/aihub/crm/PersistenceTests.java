@@ -50,6 +50,27 @@ class PersistenceTests {
         assertEquals(409, error.getStatusCode().value());
         assertEquals(won, app.opportunities().getFirst());
     }
+    @Test void deletionSurvivesRestartAndFailedWriteKeepsCustomer() throws Exception {
+        Path file = dir.resolve("delete.json");
+        ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+        CrmController app = new CrmController(mapper, file.toString());
+        Customer removed = app.createCustomer(new CustomerInput("Duplicate demo", "Alex", "Software", "Morgan"));
+        Customer retained = app.createCustomer(new CustomerInput("Retained demo", "Sam", "Software", "Morgan"));
+        var deals = app.opportunities();
+        var history = app.activities(1);
+        app.deleteCustomer(removed.id());
+        CrmController restarted = new CrmController(mapper, file.toString());
+        assertFalse(restarted.customers().stream().anyMatch(c -> c.id() == removed.id()));
+        assertEquals(deals, restarted.opportunities());
+        assertEquals(history, restarted.activities(1));
+        assertEquals(retained.id() + 1,
+            restarted.createCustomer(new CustomerInput("Next demo", "A", "S", "M")).id());
+        java.nio.file.Files.delete(file);
+        java.nio.file.Files.createDirectory(file);
+        assertThrows(IllegalStateException.class, () -> restarted.deleteCustomer(retained.id()));
+        assertTrue(restarted.customers().contains(retained));
+        assertEquals(deals, restarted.opportunities());
+    }
     @Test void corruptFileRefusesStartup() throws Exception {
         Path file = dir.resolve("corrupt.json");
         java.nio.file.Files.writeString(file, "not-json");

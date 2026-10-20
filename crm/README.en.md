@@ -45,6 +45,15 @@ In **Customers**, choose **Edit** beside a customer. Update the name, contact, i
 ![Edit customer details, with existing opportunities kept linked](./screenshots/customer-edit-en.png)
 ![Saved customer details and the unchanged opportunity count](./screenshots/customer-updated-en.png)
 
+## Remove an unused customer
+
+In **Customers**, choose **Delete** for a customer with no opportunities. The confirmation names the customer and focuses **Cancel** first. Cancel or Escape leaves the record unchanged; **Delete permanently** removes it from the directory and updates the total. Make a backup first: there is no undo or recycle bin.
+
+Customers linked to any opportunity, including won or lost opportunities, cannot be deleted. The API checks this again at deletion time and returns HTTP 409 if another operation linked an opportunity after the dialog opened. It never deletes opportunities or follow-up history. If saving fails, the customer stays in the list and the dialog shows an error; correct the problem before retrying. Deletion is saved to the same local JSON file and deleted IDs are not reused.
+
+![Delete confirmation naming a fictional customer, with Cancel focused](./screenshots/customer-delete-en.png)
+![Customers with linked opportunities keep their records and cannot be deleted](./screenshots/customer-delete-protected-en.png)
+
 ## Edit an open opportunity
 
 Open an opportunity from **Pipeline** or **All opportunities**, then choose **Edit opportunity**. Update its title, estimated value or owner and choose **Save changes**; **Cancel** discards unsaved edits. Values must be positive whole yuan: the API rejects fractional amounts rather than rounding or truncating them, for both new and edited opportunities.

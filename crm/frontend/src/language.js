@@ -1,4 +1,10 @@
 const english = {
+  "删除客户": "Delete customer",
+  "删除": "Delete",
+  "确认删除": "Delete permanently",
+  "关联商机，保留客户": "Linked opportunities: keep customer",
+  "仅可删除没有任何商机的客户。删除后无法撤销，请先确认已有备份。": "Only customers without any opportunities can be deleted. This cannot be undone; make sure you have a backup.",
+  "客户有关联商机，不可删除。请保留客户及其历史记录。": "This customer has linked opportunities and cannot be deleted. Keep the customer and its history.",
   "编辑": "Edit",
   "编辑客户": "Edit customer",
   "保存修改": "Save changes",
