@@ -4,3 +4,4 @@
 .language-select{background:#fff;border:1px solid #dce7df;border-radius:6px;padding:6px;color:#34513e;font:inherit}.panel-head{gap:14px;flex-wrap:wrap}.panel-head input{max-width:100%;min-width:0}.nav-item{min-height:42px}.top-actions{flex-wrap:wrap}@media(max-width:700px){.top-actions{font-size:9px;gap:6px}.topbar{gap:8px;height:auto;min-height:68px}.page-heading{gap:12px;flex-wrap:wrap}}
 
 .delete-dialog{border:1px solid #dce7df}.delete-dialog::backdrop{background:#0c2119a6}.delete-dialog p{font-size:13px;line-height:1.6;overflow-wrap:anywhere}.danger-text{color:#a13c2f}.primary.danger{background:#a13c2f;color:#fff}.delete-hint{display:block;margin-top:6px;color:#6a8071;font-size:10px}
+.panel-head .customer-search{width:320px;max-width:100%}

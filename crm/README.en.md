@@ -38,6 +38,10 @@ The launcher installs dependencies, builds the frontend, runs backend tests and 
 
 CSV uses UTF-8 with BOM and quoted fields. Formula-like cell prefixes are escaped for spreadsheet import; treat exports as untrusted data and do not remove the protection or enable external spreadsheet content. CSV is a report, **not a restorable backup**, and no import feature is included.
 
+## Find a customer
+
+In **Customers**, search by name, contact, industry or owner. Matching ignores letter case and surrounding spaces and supports Chinese text. The count shows matching / total customers. **Clear search** restores the full directory when there are no matches. Searching only filters this view: it does not delete records or change opportunity links, and it is separate from the opportunity search.
+
 ## Edit customer details
 
 In **Customers**, choose **Edit** beside a customer. Update the name, contact, industry or owner, then choose **Save changes**. **Cancel** leaves the saved record unchanged. The customer ID and existing opportunity links stay the same; opportunity displays, search and CSV exports use the updated customer name. Blank required fields are rejected. If saving fails, the form keeps your input and shows an error so you can correct it and retry. Changes use the same local JSON storage and backup procedure described below.
@@ -76,7 +80,7 @@ npm --prefix frontend run build
 mvn -f backend/pom.xml test
 ```
 
-The frontend tests cover CSV quoting, formula prefixes, filtered exports and translated stage presentation. Backend tests cover the business API and persistence. Run the launcher to verify the packaged frontend as well.
+The frontend tests cover customer search across fields, CSV quoting, formula prefixes, filtered exports and translated stage presentation. Backend tests cover the business API and persistence. Run the launcher to verify the packaged frontend as well.
 
 ## Current scope
 
