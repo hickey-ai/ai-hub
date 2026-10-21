@@ -67,6 +67,12 @@ The customer selector is locked while editing. Opportunity ID, customer link, st
 ![Edit an opportunity while preserving its customer and stage](./screenshots/opportunity-edit-en.png)
 ![Saved value and owner, with the original stage and follow-up](./screenshots/opportunity-updated-en.png)
 
+## Correct a follow-up note
+
+Open an **open** opportunity and choose **Edit follow-up** beside a note. Correct the text and choose **Save changes**. Cancel or Escape discards unsaved edits. The note keeps its ID, original date, list position and opportunity link; multiline text is preserved. Blank notes are rejected. This is a correction of the existing note, with no revision history or audit log; back up the local data before changes you need to retain.
+
+Won or lost opportunities cannot be edited. The API also rejects a save with HTTP 409 if the opportunity closed after the editor opened, and returns 404 for a note outside the specified opportunity. A failed save leaves the existing record unchanged and keeps the editor text for retry. Only one local application process should access the data file.
+
 ## Data and backups
 
 Records are saved to `data/crm.json`, relative to the launcher directory. Stop the application before copying the file for backup or restoring a copy. Do not run multiple instances against one file. To reset fictional demonstration data, stop the application, back up and remove this file, then restart. A damaged file fails startup instead of silently resetting your records. Initial sample records are Chinese; English records can be added using the form.

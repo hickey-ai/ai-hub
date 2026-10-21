@@ -114,6 +114,18 @@ class CrmController {
         List<Activity> updated = new ArrayList<>(activities); updated.add(activity);
         commit(customers, opportunities, updated, customerId, opportunityId, activityId + 1); return activity;
     }
+    @PutMapping("/opportunities/{id}/activities/{activityId}") synchronized Activity updateActivity(@PathVariable long id, @PathVariable long activityId, @Valid @RequestBody ActivityInput input) {
+        if (opportunity(id).stage().startsWith("已")) throw new ResponseStatusException(HttpStatus.CONFLICT, "已结束商机不可修改跟进");
+        for (int i = 0; i < activities.size(); i++) {
+            Activity old = activities.get(i);
+            if (old.id() == activityId && old.opportunityId() == id) {
+                Activity next = new Activity(old.id(), id, input.note().trim(), old.date());
+                List<Activity> updated = new ArrayList<>(activities); updated.set(i, next);
+                commit(customers, opportunities, updated, customerId, opportunityId, this.activityId); return next;
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "跟进记录不存在");
+    }
     @GetMapping("/stats") synchronized CrmStats stats() {
         return new CrmStats(customers.size(), (int) opportunities.values().stream().filter(o -> !o.stage().startsWith("已")).count(), (int) opportunities.values().stream().filter(o -> o.stage().equals("已赢单")).count(), opportunities.values().stream().filter(o -> !o.stage().startsWith("已")).mapToLong(Opportunity::amount).sum());
     }

@@ -28,6 +28,31 @@ class PersistenceTests {
         assertEquals("首次拜访", restarted.activities(deal.id()).getFirst().note());
         assertEquals(5, restarted.createCustomer(new CustomerInput("新客户", "李经理", "教育", "顾晨")).id());
     }
+    @Test void correctedActivitySurvivesRestartAndFailedWriteCanBeRetried() throws Exception {
+        Path file = dir.resolve("activity-edit.json");
+        ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+        CrmController app = new CrmController(mapper, file.toString());
+        Activity original = app.activities(1).getFirst();
+        Activity corrected = app.updateActivity(1, original.id(), new ActivityInput(" Revised demo note "));
+        assertEquals(new Activity(original.id(), original.opportunityId(), "Revised demo note", original.date()), corrected);
+        CrmController restarted = new CrmController(mapper, file.toString());
+        assertEquals(corrected, restarted.activities(1).getFirst());
+        assertEquals(app.opportunities(), restarted.opportunities());
+        assertEquals(app.customers(), restarted.customers());
+        Activity added = restarted.addActivity(1, new ActivityInput("Second demo note"));
+        assertEquals(3, added.id(), "Editing must not consume a new activity ID");
+        byte[] saved = java.nio.file.Files.readAllBytes(file);
+        java.nio.file.Files.delete(file); java.nio.file.Files.createDirectory(file);
+        assertThrows(IllegalStateException.class,
+            () -> restarted.updateActivity(1, corrected.id(), new ActivityInput("Retry demo note")));
+        assertEquals(corrected, restarted.activities(1).getFirst());
+        assertEquals(added, restarted.activities(1).getLast());
+        java.nio.file.Files.delete(file); java.nio.file.Files.write(file, saved);
+        Activity retried = restarted.updateActivity(1, corrected.id(), new ActivityInput("Retry demo note"));
+        CrmController afterRetry = new CrmController(mapper, file.toString());
+        assertEquals(retried, afterRetry.activities(1).getFirst());
+        assertEquals(added, afterRetry.activities(1).getLast());
+    }
     @Test void failedWriteDoesNotChangeMemory() throws Exception {
         String file = dir.resolve("blocked.json").toString();
         ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();

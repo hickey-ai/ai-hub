@@ -16,6 +16,7 @@ const customerSearch = ref('')
 const visibleCustomers = computed(() => filterCustomers(customers.value, customerSearch.value))
 const editingCustomerId = ref(null), editingDealId = ref(null)
 const deleteDialog = ref(null), deletingCustomer = ref(null)
+const activityDialog = ref(null), editingActivity = ref(null), activityNote = ref('')
 const customerForm = ref({ name: '', contact: '', industry: '', owner: '' })
 const dealForm = ref({ customerId: '', title: '', amount: '', owner: '' })
 const stages = ['发现需求', '方案沟通', '商务谈判', '已赢单', '已流失']
@@ -27,6 +28,8 @@ async function api(path, options) {
   const response = await fetch('/api' + path, { headers: { 'Content-Type': 'application/json' }, ...options })
   if (response.status === 409 && options?.method === 'DELETE' && path.startsWith('/customers/'))
     throw new Error(t('客户有关联商机，不可删除。请保留客户及其历史记录。'))
+  if (response.status === 409 && options?.method === 'PUT' && /^\/opportunities\/[^/]+\/activities\//.test(path))
+    throw new Error(t('商机已结束，不可修改跟进记录。请关闭编辑并刷新页面。'))
   if (!response.ok) throw new Error(`${t('操作失败')} (HTTP ${response.status}). ${t('请检查输入或当前状态')}`)
   return response.status === 204 ? null : response.json()
 }
@@ -93,6 +96,23 @@ async function saveDeal() {
 }
 async function advance(deal, stage) { await act(() => api(`/opportunities/${deal.id}/stage`, { method: 'PATCH', body: JSON.stringify({ stage }) })) }
 async function followUp() { if (!selected.value) return; await act(async () => { await api(`/opportunities/${selected.value.id}/activities`, { method: 'POST', body: JSON.stringify({ note: note.value }) }); note.value = '' }) }
+function openActivity(item) {
+  editingActivity.value = item
+  activityNote.value = item.note
+  error.value = ''
+  activityDialog.value.showModal()
+}
+async function saveActivity() {
+  if (busy.value || !editingActivity.value) return
+  await act(async () => {
+    const item = editingActivity.value
+    await api(`/opportunities/${item.opportunityId}/activities/${item.id}`, {
+      method: 'PUT', body: JSON.stringify({ note: activityNote.value }),
+    })
+    activityDialog.value.close()
+    editingActivity.value = null
+  })
+}
 function exportDeals() {
   const csv = opportunitiesCsv(visibleDeals.value, customers.value, t)
   const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }))
@@ -129,8 +149,20 @@ onMounted(load)
       <footer>orbit CRM · Vue 3 + Java 21 <span>{{ t('演示记录保存在本机 data/crm.json') }}</span></footer>
     </div>
   </main>
-  <div v-if="selected" class="overlay" @click.self="selected = null"><div class="drawer"><button class="close" @click="selected = null">×</button><div class="eyebrow">OPPORTUNITY / #{{ selected.id }}</div><h2>{{ selected.title }}</h2><p>{{ customerName(selected.customerId) }} · {{ selected.owner }}</p><button v-if="!selected.stage.startsWith('已')" class="outline" :disabled="busy" @click="openDeal(selected)">{{ t('编辑商机') }}</button><div class="drawer-amount">{{ currency(selected.amount) }}<small>{{ t('预计成交金额') }}</small></div><div class="drawer-section"><h3>{{ t('商机阶段') }} <span class="badge">{{ t(selected.stage) }}</span></h3><div v-if="!selected.stage.startsWith('已')" class="action-row"><button v-if="selected.stage !== '商务谈判'" class="primary" :disabled="busy" @click="advance(selected, stages[stages.indexOf(selected.stage)+1])">{{ t('推进到下一阶段 →') }}</button><button v-if="selected.stage === '商务谈判'" class="primary" :disabled="busy" @click="advance(selected, '已赢单')">{{ t('标记赢单 ✓') }}</button><button class="outline" :disabled="busy" @click="advance(selected, '已流失')">{{ t('标记流失') }}</button></div></div><div class="drawer-section"><h3>{{ t('跟进记录') }} <span>{{ activities.length }}</span></h3><div v-if="!activities.length" class="empty">{{ t('尚无跟进记录') }}</div><div v-for="item in activities" :key="item.id" class="activity"><span>●</span><div><b>{{ item.note }}</b><small>{{ item.date }}</small></div></div><form v-if="!selected.stage.startsWith('已')" @submit.prevent="followUp"><textarea v-model="note" required :placeholder="t('记录一次沟通或下一步计划…')"></textarea><button class="primary" :disabled="busy">{{ t('添加跟进') }}</button></form></div></div></div>
+  <div v-if="selected" class="overlay" @click.self="selected = null"><div class="drawer"><button class="close" @click="selected = null">×</button><div class="eyebrow">OPPORTUNITY / #{{ selected.id }}</div><h2>{{ selected.title }}</h2><p>{{ customerName(selected.customerId) }} · {{ selected.owner }}</p><button v-if="!selected.stage.startsWith('已')" class="outline" :disabled="busy" @click="openDeal(selected)">{{ t('编辑商机') }}</button><div class="drawer-amount">{{ currency(selected.amount) }}<small>{{ t('预计成交金额') }}</small></div><div class="drawer-section"><h3>{{ t('商机阶段') }} <span class="badge">{{ t(selected.stage) }}</span></h3><div v-if="!selected.stage.startsWith('已')" class="action-row"><button v-if="selected.stage !== '商务谈判'" class="primary" :disabled="busy" @click="advance(selected, stages[stages.indexOf(selected.stage)+1])">{{ t('推进到下一阶段 →') }}</button><button v-if="selected.stage === '商务谈判'" class="primary" :disabled="busy" @click="advance(selected, '已赢单')">{{ t('标记赢单 ✓') }}</button><button class="outline" :disabled="busy" @click="advance(selected, '已流失')">{{ t('标记流失') }}</button></div></div><div class="drawer-section"><h3>{{ t('跟进记录') }} <span>{{ activities.length }}</span></h3><div v-if="!activities.length" class="empty">{{ t('尚无跟进记录') }}</div><div v-for="item in activities" :key="item.id" class="activity"><span>●</span><div><b class="activity-note">{{ item.note }}</b><small>{{ item.date }}</small><button v-if="!selected.stage.startsWith('已')" class="text-button" :disabled="busy" :aria-label="t('编辑跟进') + ' #' + item.id" @click="openActivity(item)">{{ t('编辑跟进') }}</button></div></div><form v-if="!selected.stage.startsWith('已')" @submit.prevent="followUp"><textarea v-model="note" required :placeholder="t('记录一次沟通或下一步计划…')"></textarea><button class="primary" :disabled="busy">{{ t('添加跟进') }}</button></form></div></div></div>
   <div v-if="modal" class="overlay" @click.self="modal = ''"><form class="dialog" @submit.prevent="modal === 'customer' ? saveCustomer() : saveDeal()"><button type="button" class="close" @click="modal = ''">×</button><div class="eyebrow">{{ (modal === 'customer' ? editingCustomerId : editingDealId) !== null ? 'EDIT' : 'NEW' }} {{ modal === 'customer' ? 'CUSTOMER' : 'OPPORTUNITY' }}</div><h2>{{ t(modal === 'customer' ? (editingCustomerId === null ? '新增客户' : '编辑客户') : (editingDealId === null ? '新建商机' : '编辑商机')) }}</h2><p>{{ t(modal === 'customer' && editingCustomerId !== null ? '更新客户资料，已有商机保持关联。' : modal === 'deal' && editingDealId !== null ? '更新商机资料，客户关联、阶段和跟进记录保持不变。' : '填写必要信息，开始一段新的业务旅程。') }}</p><p v-if="error" class="alert" role="alert">{{ error }}</p><template v-if="modal === 'customer'"><label>{{ t('客户名称') }}<input v-model="customerForm.name" required :placeholder="t('例如：青禾科技')" /></label><label>{{ t('联系人') }}<input v-model="customerForm.contact" required :placeholder="t('姓名与联系方式')" /></label><label>{{ t('所属行业') }}<input v-model="customerForm.industry" required :placeholder="t('例如：科技互联网')" /></label><label>{{ t('负责人') }}<input v-model="customerForm.owner" required :placeholder="t('例如：林知夏')" /></label></template><template v-else><label>{{ t('关联客户') }}<select v-model="dealForm.customerId" required :disabled="editingDealId !== null"><option value="" disabled>{{ t('选择客户') }}</option><option v-for="c in customers" :key="c.id" :value="c.id">{{ c.name }}</option></select></label><label>{{ t('商机名称') }}<input v-model="dealForm.title" required :placeholder="t('例如：年度服务采购')" /></label><label>{{ t('预计金额（元）') }}<input v-model="dealForm.amount" required type="number" min="1" placeholder="50000" /></label><label>{{ t('负责人') }}<input v-model="dealForm.owner" required :placeholder="t('例如：林知夏')" /></label></template><div class="dialog-actions"><button type="button" class="outline" @click="modal = ''">{{ t('取消') }}</button><button class="primary" :disabled="busy">{{ t((modal === 'customer' ? editingCustomerId : editingDealId) !== null ? '保存修改' : '确认创建') }}</button></div></form></div>
+  <dialog ref="activityDialog" class="dialog activity-dialog" aria-labelledby="edit-activity-title" aria-describedby="edit-activity-help" @cancel="busy ? $event.preventDefault() : editingActivity = null">
+    <form @submit.prevent="saveActivity">
+      <h2 id="edit-activity-title">{{ t('编辑跟进') }} #{{ editingActivity?.id }}</h2>
+      <p id="edit-activity-help">{{ t('只修改备注，保留原日期和商机关联。已结束商机不可修改。') }}</p>
+      <p v-if="error" class="alert" role="alert">{{ error }}</p>
+      <label>{{ t('跟进备注') }}<textarea v-model="activityNote" required autofocus :aria-label="t('跟进备注')"></textarea></label>
+      <div class="dialog-actions">
+        <button type="button" class="outline" :disabled="busy" @click="activityDialog.close(); editingActivity = null">{{ t('取消') }}</button>
+        <button class="primary" :disabled="busy || !activityNote.trim()">{{ t('保存修改') }}</button>
+      </div>
+    </form>
+  </dialog>
   <dialog ref="deleteDialog" class="dialog delete-dialog" aria-labelledby="delete-customer-title" aria-describedby="delete-customer-help" @cancel="busy ? $event.preventDefault() : deletingCustomer = null">
     <form @submit.prevent="deleteCustomer">
       <h2 id="delete-customer-title">{{ t('删除客户') }}</h2>
